@@ -3,9 +3,10 @@ import { getSongBySlug } from '../data/songs';
 import { ChordLine } from '../components/ChordLine';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
-import { MelodyStaff } from '../components/MelodyStaff';
+import { LeadSheetStaff } from '../components/LeadSheetStaff';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
-import { shouldPreferFlats } from '../lib/theory';
+import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
+import { computeVocalRange } from '../lib/leadsheet';
 
 export function SongPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -16,21 +17,58 @@ export function SongPage() {
   if (!song) {
     return (
       <div className="page">
-        <p>Brano non trovato.</p>
-        <Link to="/">Torna alla libreria</Link>
+        <p>Song not found.</p>
+        <Link to="/">Back to the library</Link>
       </div>
     );
   }
 
   const preferFlats = shouldPreferFlats(song.originalKey);
+  const vocalRange = computeVocalRange(song.leadSheet, songPrefs.semitones, preferFlats);
+  const displayedKey = transposeKeyLabel(song.originalKey, songPrefs.semitones, globalPrefs.system, preferFlats);
 
   return (
     <div className="page song-page">
       <Link to="/" className="back-link">
-        ← Libreria
+        ← Library
       </Link>
       <h1>{song.title}</h1>
-      <p className="song-meta">{song.artist}</p>
+      <p className="song-meta">
+        {song.artist}
+        {song.composer ? ` · written by ${song.composer}` : ''}
+      </p>
+
+      <div className="song-facts">
+        <span>
+          <strong>Key</strong> {displayedKey}
+        </span>
+        <span>
+          <strong>Meter</strong> {song.timeSignature}
+        </span>
+        <span>
+          <strong>Tempo</strong> {song.tempoMarking ? `${song.tempoMarking}, ` : ''}♩ = {song.tempoBpm}
+        </span>
+        {vocalRange && (
+          <span>
+            <strong>Vocal range</strong> {vocalRange.low}–{vocalRange.high}
+          </span>
+        )}
+      </div>
+
+      {(song.links.spotify || song.links.youtube) && (
+        <div className="song-links">
+          {song.links.spotify && (
+            <a href={song.links.spotify} target="_blank" rel="noreferrer noopener" className="link-pill spotify">
+              Listen on Spotify
+            </a>
+          )}
+          {song.links.youtube && (
+            <a href={song.links.youtube} target="_blank" rel="noreferrer noopener" className="link-pill youtube">
+              Watch on YouTube
+            </a>
+          )}
+        </div>
+      )}
 
       <TransposeControls
         originalKey={song.originalKey}
@@ -41,14 +79,28 @@ export function SongPage() {
         capo={song.capo}
       />
 
-      {song.melody?.map((line, i) => (
-        <MelodyStaff key={i} melody={line} semitones={songPrefs.semitones} preferFlats={preferFlats} />
-      ))}
+      {song.leadSheet && song.leadSheet.length > 0 && (
+        <div className="lead-sheet">
+          <h2>Lead sheet</h2>
+          {song.leadSheet.map((system, i) => (
+            <LeadSheetStaff
+              key={i}
+              system={system}
+              timeSignature={song.timeSignature}
+              semitones={songPrefs.semitones}
+              preferFlats={preferFlats}
+              chordSystem={globalPrefs.system}
+              tempo={i === 0 ? { bpm: song.tempoBpm, marking: song.tempoMarking } : undefined}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="song-body">
+        <h2>Full lyrics &amp; chords</h2>
         {song.sections.map((section, i) => (
           <div className="song-section" key={i}>
-            <h2>{section.label}</h2>
+            <h3>{section.label}</h3>
             {section.lines.map((line, j) => (
               <ChordLine
                 key={j}

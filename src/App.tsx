@@ -8,7 +8,7 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/canzoni/:slug" element={<SongPage />} />
+        <Route path="/songs/:slug" element={<SongPage />} />
       </Routes>
       <FeedbackBox />
     </>

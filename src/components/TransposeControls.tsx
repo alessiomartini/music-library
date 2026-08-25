@@ -16,15 +16,15 @@ export function TransposeControls({ originalKey, semitones, onSemitonesChange, s
   return (
     <div className="transpose-controls">
       <div className="control-group">
-        <span className="control-label">Tonalità</span>
-        <button type="button" onClick={() => onSemitonesChange(semitones - 1)} aria-label="Trasponi giù">
+        <span className="control-label">Key</span>
+        <button type="button" onClick={() => onSemitonesChange(semitones - 1)} aria-label="Transpose down">
           −
         </button>
         <span className="current-key">
           {displayedKey}
-          {capo ? <span className="capo-hint"> (capotasto {capo})</span> : null}
+          {capo ? <span className="capo-hint"> (capo {capo})</span> : null}
         </span>
-        <button type="button" onClick={() => onSemitonesChange(semitones + 1)} aria-label="Trasponi su">
+        <button type="button" onClick={() => onSemitonesChange(semitones + 1)} aria-label="Transpose up">
           +
         </button>
         {semitones !== 0 && (
@@ -35,21 +35,21 @@ export function TransposeControls({ originalKey, semitones, onSemitonesChange, s
       </div>
 
       <div className="control-group">
-        <span className="control-label">Accordi</span>
+        <span className="control-label">Chords</span>
         <div className="toggle-pair">
           <button
             type="button"
             className={system === 'it' ? 'active' : ''}
             onClick={() => onSystemChange('it')}
           >
-            Italiano
+            Italian
           </button>
           <button
             type="button"
             className={system === 'en' ? 'active' : ''}
             onClick={() => onSystemChange('en')}
           >
-            Inglese
+            English
           </button>
         </div>
       </div>

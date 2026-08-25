@@ -180,3 +180,21 @@ export function transposePitch(pitch: string, semitones: number, preferFlats: bo
   const vexAccidental = newSpelling.slice(1).replace('#', '#').replace('b', 'b');
   return `${newSpelling[0].toLowerCase()}${vexAccidental}/${octave + octaveShift}`;
 }
+
+/** Absolute semitone index of a VexFlow-style pitch (for comparing/sorting pitches). */
+export function pitchAbsoluteIndex(pitch: string): number {
+  const [note, octaveStr] = pitch.split('/');
+  const letter = note[0].toUpperCase();
+  const accidental = note.slice(1).replace('n', '').replace(/x/g, '##');
+  const idx = indexOfNote(letter + accidental);
+  return parseInt(octaveStr, 10) * 12 + idx;
+}
+
+/** Human-readable scientific pitch label, e.g. "f#/4" -> "F#4". */
+export function pitchLabel(pitch: string, preferFlats: boolean): string {
+  const [note, octaveStr] = pitch.split('/');
+  const letter = note[0].toUpperCase();
+  const accidental = note.slice(1).replace('n', '').replace(/x/g, '##');
+  const idx = indexOfNote(letter + accidental);
+  return `${spellNote(idx, preferFlats)}${octaveStr}`;
+}

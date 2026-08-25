@@ -4,14 +4,22 @@ export const amaraTerraMia: Song = {
   slug: 'amara-terra-mia',
   title: 'Amara terra mia',
   artist: 'Domenico Modugno',
+  composer: 'Domenico Modugno',
   originalKey: 'Am',
   timeSignature: '4/4',
+  tempoBpm: 100,
+  tempoMarking: 'Moderato',
+  links: {
+    spotify: 'https://open.spotify.com/track/4w1aaqoCHbY8FY58GG5uWI',
+    youtube: 'https://www.youtube.com/watch?v=oRa39T_O4yU',
+  },
   notes:
-    'Brano trascritto a memoria: testo e accordi sono una bozza da verificare/correggere ' +
-    'con lo spartito originale prima di considerarli definitivi.',
+    'Transcribed from memory: lyrics and chords are a draft to be checked against the ' +
+    'original score. The engraved lead sheet covers only the opening phrase; tempo is ' +
+    'an approximate indication. Lyrics are kept in the original Italian.',
   sections: [
     {
-      label: 'Strofa 1',
+      label: 'Verse 1',
       lines: [
         '[Am]Amara terra [Dm]mia, amara e [E7]bella',
         '[Am]cosa ti [Dm]resta o [E7]terra delle [Am]tue promesse',
@@ -20,7 +28,7 @@ export const amaraTerraMia: Song = {
       ],
     },
     {
-      label: 'Strofa 2',
+      label: 'Verse 2',
       lines: [
         '[Am]Amara terra [Dm]mia, amara e [E7]sola',
         '[Am]e cosa [Dm]tieni in [E7]serbo, o mia [Am]terra amara',
@@ -29,22 +37,27 @@ export const amaraTerraMia: Song = {
       ],
     },
   ],
-  melody: [
+  leadSheet: [
     {
-      label: 'Voce — inizio Strofa 1 (bozza)',
-      timeSignature: '4/4',
+      label: 'Verse 1 (opening)',
       measures: [
-        { notes: [
-          { pitch: 'a/4', duration: 'q', lyric: 'A-' },
-          { pitch: 'a/4', duration: '8', lyric: 'ma-' },
-          { pitch: 'g/4', duration: '8', lyric: 'ra' },
-          { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
-          { pitch: 'e/4', duration: 'q', lyric: 'ra' },
-        ] },
-        { notes: [
-          { pitch: 'a/4', duration: 'q', lyric: 'mi-' },
-          { pitch: 'e/4', duration: 'h', lyric: 'a' },
-        ] },
+        {
+          melody: [
+            { pitch: 'a/4', duration: 'q', lyric: 'A-', chord: 'Am' },
+            { pitch: 'a/4', duration: '8', lyric: 'ma-' },
+            { pitch: 'g/4', duration: '8', lyric: 'ra' },
+            { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
+            { pitch: 'e/4', duration: 'q', lyric: 'ra' },
+          ],
+          bass: [{ pitch: 'a/3', duration: 'w' }],
+        },
+        {
+          melody: [
+            { pitch: 'a/4', duration: 'q', lyric: 'mi-', chord: 'Dm' },
+            { pitch: 'e/4', duration: 'hd', lyric: 'a' },
+          ],
+          bass: [{ pitch: 'd/3', duration: 'w' }],
+        },
       ],
     },
   ],

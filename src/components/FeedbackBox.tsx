@@ -28,13 +28,13 @@ export function FeedbackBox() {
   return (
     <div className={`feedback-box ${open ? 'open' : ''}`}>
       <button type="button" className="feedback-toggle" onClick={() => setOpen((o) => !o)}>
-        📝 Note per migliorare il sito {pending > 0 ? `(${pending})` : ''}
+        📝 Site improvement notes {pending > 0 ? `(${pending})` : ''}
       </button>
       {open && (
         <div className="feedback-panel">
           <div className="feedback-add">
             <textarea
-              placeholder="Aggiungi un'idea o un bug da sistemare…"
+              placeholder="Add an idea or a bug to fix…"
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               onKeyDown={(e) => {
@@ -43,18 +43,18 @@ export function FeedbackBox() {
               rows={2}
             />
             <button type="button" onClick={addNote}>
-              Aggiungi
+              Add
             </button>
           </div>
           <ul className="feedback-list">
-            {notes.length === 0 && <li className="feedback-empty">Nessuna nota, per ora.</li>}
+            {notes.length === 0 && <li className="feedback-empty">No notes yet.</li>}
             {notes.map((n) => (
               <li key={n.id} className={n.done ? 'done' : ''}>
                 <label>
                   <input type="checkbox" checked={n.done} onChange={() => toggleDone(n.id)} />
                   <span>{n.text}</span>
                 </label>
-                <button type="button" className="remove-btn" onClick={() => remove(n.id)} aria-label="Elimina nota">
+                <button type="button" className="remove-btn" onClick={() => remove(n.id)} aria-label="Delete note">
                   ×
                 </button>
               </li>

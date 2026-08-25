@@ -26,10 +26,10 @@ export function KeyPreference({ originalKey, preferredKey, note, system, onSave,
 
   return (
     <div className="key-preference">
-      <h3>Tonalità preferita per cantarla</h3>
+      <h3>Preferred key to sing it in</h3>
       <div className="key-preference-row">
         <select value={draftKey} onChange={(e) => setDraftKey(e.target.value)}>
-          <option value="">— non impostata —</option>
+          <option value="">— not set —</option>
           {ALL_KEYS_SHARP.map((_, i) => {
             const label = keyName(i, system, preferFlats);
             return (
@@ -40,17 +40,17 @@ export function KeyPreference({ originalKey, preferredKey, note, system, onSave,
           })}
         </select>
         <button type="button" onClick={handleApply} disabled={!draftKey}>
-          Applica trasposizione
+          Apply transposition
         </button>
       </div>
       <textarea
-        placeholder="Note libere, es. 'meglio un tono sotto per la mia voce'…"
+        placeholder="Free-form notes, e.g. 'a tone lower suits my voice better'…"
         value={draftNote}
         onChange={(e) => setDraftNote(e.target.value)}
         rows={2}
       />
       <button type="button" className="save-btn" onClick={handleSave}>
-        Salva preferenza
+        Save preference
       </button>
     </div>
   );
