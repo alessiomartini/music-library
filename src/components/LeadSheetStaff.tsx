@@ -1,15 +1,5 @@
 import { useEffect, useRef } from 'react';
-import {
-  Renderer,
-  Stave,
-  StaveNote,
-  Voice,
-  Formatter,
-  Accidental,
-  Dot,
-  Annotation,
-  StaveConnector,
-} from 'vexflow';
+import { Renderer, Stave, StaveNote, Voice, Formatter, Accidental, Dot, Annotation, Stem } from 'vexflow';
 import type { LeadSheetNote, LeadSheetSystem } from '../lib/types';
 import { convertChord, transposePitch, type ChordSystem } from '../lib/theory';
 
@@ -19,24 +9,32 @@ interface Props {
   semitones: number;
   preferFlats: boolean;
   chordSystem: ChordSystem;
+  showBass: boolean;
   tempo?: { bpm: number; marking?: string };
 }
 
 const MEASURE_WIDTH = 190;
-const FIRST_MEASURE_EXTRA = 60;
+const FIRST_MEASURE_EXTRA = 55;
 const MEASURE_GAP = 14;
 const STAVE_X = 10;
-const TREBLE_Y = 60;
-const BASS_Y = 178;
-const SYSTEM_HEIGHT = 260;
+const STAVE_Y = 60;
+const SYSTEM_HEIGHT = 220;
 
-function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, clef: 'treble' | 'bass') {
+const MELODY_COLOR = 'var(--melody-color, #08060d)';
+const BASS_COLOR = 'var(--bass-color, #b45309)';
+
+function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, stemDirection: number) {
   if (n.rest) {
-    return new StaveNote({ keys: [clef === 'bass' ? 'd/3' : 'b/4'], duration: n.duration + 'r', clef });
+    return new StaveNote({ keys: ['b/4'], duration: n.duration.replace('d', '') + 'r' });
   }
   const pitch = transposePitch(n.pitch, semitones, preferFlats);
   const accidental = pitch.split('/')[0].slice(1);
-  const note = new StaveNote({ keys: [pitch], duration: n.duration.replace('d', ''), clef });
+  const note = new StaveNote({
+    keys: [pitch],
+    duration: n.duration.replace('d', ''),
+    stemDirection,
+    autoStem: false,
+  });
   if (accidental === '#' || accidental === 'b' || accidental === 'n') {
     note.addModifier(new Accidental(accidental));
   }
@@ -46,7 +44,7 @@ function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, 
   return note;
 }
 
-export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, chordSystem, tempo }: Props) {
+export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, chordSystem, showBass, tempo }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,29 +59,21 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     const context = renderer.getContext();
 
     let x = STAVE_X;
-    let firstTrebleStave: Stave | null = null;
-    let firstBassStave: Stave | null = null;
 
     system.measures.forEach((measure, i) => {
       const measureWidth = MEASURE_WIDTH + (i === 0 ? FIRST_MEASURE_EXTRA : 0);
-      const trebleStave = new Stave(x, TREBLE_Y, measureWidth);
-      const bassStave = new Stave(x, BASS_Y, measureWidth);
+      const stave = new Stave(x, STAVE_Y, measureWidth);
 
       if (i === 0) {
-        trebleStave.addClef('treble').addTimeSignature(timeSignature);
-        bassStave.addClef('bass').addTimeSignature(timeSignature);
+        stave.addClef('treble').addTimeSignature(timeSignature);
         if (tempo) {
-          trebleStave.setTempo({ duration: 'q', bpm: tempo.bpm, name: tempo.marking }, -18);
+          stave.setTempo({ duration: 'q', bpm: tempo.bpm, name: tempo.marking }, -18);
         }
-        firstTrebleStave = trebleStave;
-        firstBassStave = bassStave;
       }
+      stave.setContext(context).draw();
 
-      trebleStave.setContext(context).draw();
-      bassStave.setContext(context).draw();
-
-      const trebleNotes = measure.melody.map((n) => toStaveNote(n, semitones, preferFlats, 'treble'));
-      const bassNotes = measure.bass.map((n) => toStaveNote(n, semitones, preferFlats, 'bass'));
+      const melodyNotes = measure.melody.map((n) => toStaveNote(n, semitones, preferFlats, Stem.UP));
+      melodyNotes.forEach((note) => note.setStyle({ fillStyle: MELODY_COLOR, strokeStyle: MELODY_COLOR }));
 
       measure.melody.forEach((n, idx) => {
         if (!n.chord) return;
@@ -91,31 +81,37 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
         const annotation = new Annotation(text);
         annotation.setFont('Arial', 12, 'bold');
         annotation.setVerticalJustification(Annotation.VerticalJustify.TOP);
-        trebleNotes[idx].addModifier(annotation);
+        melodyNotes[idx].addModifier(annotation);
       });
 
       const beats = timeSignature.split('/').map(Number);
-      const trebleVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
-      trebleVoice.setStrict(false);
-      trebleVoice.addTickables(trebleNotes);
+      const melodyVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
+      melodyVoice.setStrict(false);
+      melodyVoice.addTickables(melodyNotes);
 
-      const bassVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
-      bassVoice.setStrict(false);
-      bassVoice.addTickables(bassNotes);
+      const voices = [melodyVoice];
+      let bassNotes: StaveNote[] = [];
+      if (showBass && measure.bass.length > 0) {
+        bassNotes = measure.bass.map((n) => toStaveNote(n, semitones, preferFlats, Stem.DOWN));
+        bassNotes.forEach((note) => note.setStyle({ fillStyle: BASS_COLOR, strokeStyle: BASS_COLOR }));
+        const bassVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
+        bassVoice.setStrict(false);
+        bassVoice.addTickables(bassNotes);
+        voices.push(bassVoice);
+      }
 
-      const formatWidth = trebleStave.getNoteEndX() - trebleStave.getNoteStartX() - 10;
-      new Formatter().joinVoices([trebleVoice, bassVoice]).format([trebleVoice, bassVoice], formatWidth);
-      trebleVoice.draw(context, trebleStave);
-      bassVoice.draw(context, bassStave);
+      const formatWidth = stave.getNoteEndX() - stave.getNoteStartX() - 10;
+      new Formatter().joinVoices(voices).format(voices, formatWidth);
+      voices.forEach((voice) => voice.draw(context, stave));
 
       // Lyrics under the melody notes.
       const svg = container.querySelector('svg');
       measure.melody.forEach((n, idx) => {
         if (!n.lyric || !svg) return;
-        const noteX = trebleNotes[idx].getAbsoluteX();
+        const noteX = melodyNotes[idx].getAbsoluteX();
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', String(noteX));
-        text.setAttribute('y', String(TREBLE_Y + 65));
+        text.setAttribute('y', String(STAVE_Y + 65));
         text.setAttribute('font-size', '10.5');
         text.setAttribute('class', 'melody-lyric');
         text.textContent = n.lyric;
@@ -124,12 +120,7 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
 
       x += measureWidth + MEASURE_GAP;
     });
-
-    if (firstTrebleStave && firstBassStave) {
-      new StaveConnector(firstTrebleStave, firstBassStave).setType('brace').setContext(context).draw();
-      new StaveConnector(firstTrebleStave, firstBassStave).setType('singleLeft').setContext(context).draw();
-    }
-  }, [system, timeSignature, semitones, preferFlats, chordSystem, tempo]);
+  }, [system, timeSignature, semitones, preferFlats, chordSystem, showBass, tempo]);
 
   return (
     <div className="lead-sheet-system">

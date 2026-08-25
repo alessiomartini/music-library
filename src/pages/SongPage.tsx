@@ -81,7 +81,20 @@ export function SongPage() {
 
       {song.leadSheet && song.leadSheet.length > 0 && (
         <div className="lead-sheet">
-          <h2>Lead sheet</h2>
+          <div className="lead-sheet-header">
+            <h2>Lead sheet</h2>
+            <div className="lead-sheet-legend">
+              <span className="legend-swatch melody">Melody</span>
+              <span className="legend-swatch bass">Bass &amp; embellishments</span>
+              <button
+                type="button"
+                className={`bass-toggle ${globalPrefs.showBass ? 'active' : ''}`}
+                onClick={() => setGlobalPrefs({ ...globalPrefs, showBass: !globalPrefs.showBass })}
+              >
+                {globalPrefs.showBass ? 'Hide' : 'Show'} bass &amp; embellishments
+              </button>
+            </div>
+          </div>
           {song.leadSheet.map((system, i) => (
             <LeadSheetStaff
               key={i}
@@ -90,6 +103,7 @@ export function SongPage() {
               semitones={songPrefs.semitones}
               preferFlats={preferFlats}
               chordSystem={globalPrefs.system}
+              showBass={globalPrefs.showBass}
               tempo={i === 0 ? { bpm: song.tempoBpm, marking: song.tempoMarking } : undefined}
             />
           ))}
@@ -113,6 +127,13 @@ export function SongPage() {
           </div>
         ))}
       </div>
+
+      {song.history && (
+        <div className="song-history">
+          <h2>History &amp; trivia</h2>
+          <p>{song.history}</p>
+        </div>
+      )}
 
       <KeyPreference
         originalKey={song.originalKey}

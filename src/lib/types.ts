@@ -47,5 +47,7 @@ export interface Song {
   /** Engraved lead-sheet excerpt: melody + chord symbols + bass line. */
   leadSheet?: LeadSheetSystem[];
   links: SongLinks;
+  /** Background/trivia shown in a "History & trivia" section. */
+  history?: string;
   notes?: string;
 }
