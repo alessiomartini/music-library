@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Renderer, Stave, StaveNote, Voice, Formatter, Accidental, Dot, Annotation, Stem } from 'vexflow';
-import type { LeadSheetNote, LeadSheetSystem } from '../lib/types';
+import type { LeadSheetMeasure, LeadSheetNote, LeadSheetSystem } from '../lib/types';
 import { convertChord, transposePitch, type ChordSystem } from '../lib/theory';
 
 interface Props {
@@ -10,16 +10,18 @@ interface Props {
   preferFlats: boolean;
   chordSystem: ChordSystem;
   showBass: boolean;
-  tempo?: { bpm: number; marking?: string };
 }
 
-const MEASURE_WIDTH = 150;
-const FIRST_MEASURE_EXTRA = 48;
-const MEASURE_GAP = 12;
-const STAVE_X = 8;
-const ROW_HEIGHT = 168;
-const ROW_HEADER = 58;
-const BOTTOM_PADDING = 24;
+const MIN_MEASURE_WIDTH = 60;
+const MEASURE_PADDING = 22;
+const FIRST_MEASURE_EXTRA = 46;
+const MEASURE_GAP = 10;
+const STAVE_X = 6;
+const ROW_HEADER = 26; // room above the staff for chord symbols
+const STAFF_BOTTOM = 40; // staff top to its bottom line, at default line spacing
+const LYRIC_GAP = 12; // gap between the lowest content (staff or bass) and the lyric baseline
+const LYRIC_HEIGHT = 14; // space reserved below the lyric baseline before the next row
+const TOP_PADDING = 8;
 
 function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, stemDirection: number) {
   if (n.rest) {
@@ -42,20 +44,64 @@ function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, 
   return note;
 }
 
-/** Greedily pack measure indices into rows that fit within `availWidth`. */
-function packRows(measureCount: number, availWidth: number): number[][] {
+interface MeasureVoices {
+  melodyNotes: StaveNote[];
+  bassNotes: StaveNote[];
+  voices: Voice[];
+}
+
+function buildMeasureVoices(
+  measure: LeadSheetMeasure,
+  timeSignature: string,
+  semitones: number,
+  preferFlats: boolean,
+  chordSystem: ChordSystem,
+  showBass: boolean,
+): MeasureVoices {
+  const beats = timeSignature.split('/').map(Number);
+
+  const melodyNotes = measure.melody.map((n) => toStaveNote(n, semitones, preferFlats, Stem.UP));
+  measure.melody.forEach((n, idx) => {
+    if (!n.chord) return;
+    const text = convertChord(n.chord, semitones, chordSystem, preferFlats);
+    const annotation = new Annotation(text);
+    annotation.setFont('Arial', 11, 'bold');
+    annotation.setVerticalJustification(Annotation.VerticalJustify.TOP);
+    melodyNotes[idx].addModifier(annotation);
+  });
+  const melodyVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
+  melodyVoice.setStrict(false);
+  melodyVoice.addTickables(melodyNotes);
+
+  const voices = [melodyVoice];
+  let bassNotes: StaveNote[] = [];
+  if (showBass && measure.bass.length > 0) {
+    bassNotes = measure.bass.map((n) => toStaveNote(n, semitones, preferFlats, Stem.DOWN));
+    const bassVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
+    bassVoice.setStrict(false);
+    bassVoice.addTickables(bassNotes);
+    voices.push(bassVoice);
+  }
+
+  return { melodyNotes, bassNotes, voices };
+}
+
+/** Greedily pack measures into rows that fit within `availWidth`, using
+ * each measure's own natural content width (dense measures get more room,
+ * sparse ones less, so labels never have to collide to fit a fixed slot). */
+function packRows(measureWidths: number[], availWidth: number): number[][] {
   const rows: number[][] = [];
   let current: number[] = [];
   let currentWidth = STAVE_X;
 
-  for (let i = 0; i < measureCount; i++) {
-    const w = MEASURE_WIDTH + (current.length === 0 ? FIRST_MEASURE_EXTRA : 0);
+  for (let i = 0; i < measureWidths.length; i++) {
+    const w = measureWidths[i] + (current.length === 0 ? FIRST_MEASURE_EXTRA : 0);
     if (current.length > 0 && currentWidth + w + MEASURE_GAP > availWidth) {
       rows.push(current);
       current = [];
       currentWidth = STAVE_X;
     }
-    const actualW = MEASURE_WIDTH + (current.length === 0 ? FIRST_MEASURE_EXTRA : 0);
+    const actualW = measureWidths[i] + (current.length === 0 ? FIRST_MEASURE_EXTRA : 0);
     current.push(i);
     currentWidth += actualW + MEASURE_GAP;
   }
@@ -63,7 +109,7 @@ function packRows(measureCount: number, availWidth: number): number[][] {
   return rows;
 }
 
-export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, chordSystem, showBass, tempo }: Props) {
+export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, chordSystem, showBass }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
@@ -99,83 +145,102 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     const melodyColor = computed.getPropertyValue('--melody-color').trim() || '#08060d';
     const bassColor = computed.getPropertyValue('--bass-color').trim() || '#b45309';
 
-    // Leave a right-hand margin so wide chord annotations near the end of a
-    // row (e.g. "Re7sus4/Fa#") have room to spill without hitting the edge.
-    const contentWidth = Math.max(MEASURE_WIDTH + FIRST_MEASURE_EXTRA, width - 65);
-    const rows = packRows(system.measures.length, contentWidth);
-    const totalHeight = rows.length * ROW_HEIGHT + BOTTOM_PADDING;
+    // Each measure gets exactly the width its own notes/chords/lyrics need,
+    // instead of a fixed slot — a busy measure won't force its chord labels
+    // to collide, and a sparse one won't waste row space.
+    const measureWidths = system.measures.map((measure) => {
+      const { voices } = buildMeasureVoices(measure, timeSignature, semitones, preferFlats, chordSystem, showBass);
+      const minWidth = new Formatter().joinVoices(voices).preCalculateMinTotalWidth(voices);
+      // Lyric syllables aren't VexFlow modifiers, so preCalculateMinTotalWidth
+      // doesn't know about them — approximate the extra room a long syllable
+      // (e.g. "trav'ling", "where we") needs beyond its note's own slot.
+      const lyricPadding = measure.melody.reduce((sum, n) => {
+        const extraChars = Math.max(0, (n.lyric?.length ?? 0) - 3);
+        return sum + extraChars * 6;
+      }, 0);
+      return Math.max(MIN_MEASURE_WIDTH, minWidth + MEASURE_PADDING + lyricPadding);
+    });
 
+    // Leave a right-hand margin so wide chord annotations near the end of a
+    // row have room to spill without hitting the edge.
+    const contentWidth = Math.max(MIN_MEASURE_WIDTH + FIRST_MEASURE_EXTRA, width - 30);
+    const rows = packRows(measureWidths, contentWidth);
+
+    // Render with a generous placeholder height, then shrink to the real
+    // measured height once every row's actual vertical extent is known.
     const renderer = new Renderer(container, Renderer.Backends.SVG);
-    renderer.resize(width, totalHeight);
+    renderer.resize(width, rows.length * 200 + 40);
     const context = renderer.getContext();
 
-    rows.forEach((rowMeasureIdxs, rowIdx) => {
+    let currentY = TOP_PADDING;
+
+    rows.forEach((rowMeasureIdxs) => {
       let x = STAVE_X;
-      const staveY = rowIdx * ROW_HEIGHT + ROW_HEADER;
+      const staveY = currentY + ROW_HEADER;
+      let rowBottom = staveY + STAFF_BOTTOM;
+      const rowMelodyNotes: { notes: StaveNote[]; measure: LeadSheetMeasure }[] = [];
 
       rowMeasureIdxs.forEach((measureIdx, posInRow) => {
         const measure = system.measures[measureIdx];
         const isFirstInRow = posInRow === 0;
-        const measureWidth = MEASURE_WIDTH + (isFirstInRow ? FIRST_MEASURE_EXTRA : 0);
+        const measureWidth = measureWidths[measureIdx] + (isFirstInRow ? FIRST_MEASURE_EXTRA : 0);
         const stave = new Stave(x, staveY, measureWidth);
 
         if (isFirstInRow) {
           stave.addClef('treble').addTimeSignature(timeSignature);
-          if (tempo && rowIdx === 0) {
-            stave.setTempo({ duration: 'q', bpm: tempo.bpm, name: tempo.marking }, -18);
-          }
         }
         stave.setContext(context).draw();
 
-        const melodyNotes = measure.melody.map((n) => toStaveNote(n, semitones, preferFlats, Stem.UP));
+        const { melodyNotes, voices } = buildMeasureVoices(
+          measure,
+          timeSignature,
+          semitones,
+          preferFlats,
+          chordSystem,
+          showBass,
+        );
         melodyNotes.forEach((note) => note.setStyle({ fillStyle: melodyColor, strokeStyle: melodyColor }));
-
-        measure.melody.forEach((n, idx) => {
-          if (!n.chord) return;
-          const text = convertChord(n.chord, semitones, chordSystem, preferFlats);
-          const annotation = new Annotation(text);
-          annotation.setFont('Arial', 12, 'bold');
-          annotation.setVerticalJustification(Annotation.VerticalJustify.TOP);
-          melodyNotes[idx].addModifier(annotation);
-        });
-
-        const beats = timeSignature.split('/').map(Number);
-        const melodyVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
-        melodyVoice.setStrict(false);
-        melodyVoice.addTickables(melodyNotes);
-
-        const voices = [melodyVoice];
-        if (showBass && measure.bass.length > 0) {
-          const bassNotes = measure.bass.map((n) => toStaveNote(n, semitones, preferFlats, Stem.DOWN));
-          bassNotes.forEach((note) => note.setStyle({ fillStyle: bassColor, strokeStyle: bassColor }));
-          const bassVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
-          bassVoice.setStrict(false);
-          bassVoice.addTickables(bassNotes);
-          voices.push(bassVoice);
+        if (voices.length > 1) {
+          voices[1].getTickables().forEach((note) => (note as StaveNote).setStyle({ fillStyle: bassColor, strokeStyle: bassColor }));
         }
 
-        const formatWidth = stave.getNoteEndX() - stave.getNoteStartX() - 10;
+        const formatWidth = stave.getNoteEndX() - stave.getNoteStartX() - 8;
         new Formatter().joinVoices(voices).format(voices, formatWidth);
         voices.forEach((voice) => voice.draw(context, stave));
 
-        // Lyrics under the melody notes.
-        const svg = container.querySelector('svg');
+        // Measure how far this measure's content actually extends downward
+        // (bass notes/ledger lines can go well past the staff), so the
+        // lyric line below never collides with it.
+        voices.forEach((voice) => {
+          const bb = voice.getBoundingBox();
+          if (bb) rowBottom = Math.max(rowBottom, bb.getY() + bb.getH());
+        });
+
+        rowMelodyNotes.push({ notes: melodyNotes, measure });
+        x += measureWidth + MEASURE_GAP;
+      });
+
+      const lyricY = rowBottom + LYRIC_GAP;
+      const svg = container.querySelector('svg');
+      rowMelodyNotes.forEach(({ notes, measure }) => {
         measure.melody.forEach((n, idx) => {
           if (!n.lyric || !svg) return;
-          const noteX = melodyNotes[idx].getAbsoluteX();
+          const noteX = notes[idx].getAbsoluteX();
           const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           text.setAttribute('x', String(noteX));
-          text.setAttribute('y', String(staveY + 65));
-          text.setAttribute('font-size', '10.5');
+          text.setAttribute('y', String(lyricY));
+          text.setAttribute('font-size', '9.5');
           text.setAttribute('class', 'melody-lyric');
           text.textContent = n.lyric;
           svg.appendChild(text);
         });
-
-        x += measureWidth + MEASURE_GAP;
       });
+
+      currentY = lyricY + LYRIC_HEIGHT;
     });
-  }, [system, timeSignature, semitones, preferFlats, chordSystem, showBass, tempo, width, themeTick]);
+
+    renderer.resize(width, currentY + 8);
+  }, [system, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
 
   return (
     <div className="lead-sheet-system">

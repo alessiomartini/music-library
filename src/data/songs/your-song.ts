@@ -36,8 +36,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'fun', chord: 'Dm7' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -46,14 +46,14 @@ export const yourSong: Song = {
             { pitch: 'd/4', duration: 'q', lyric: 'this' },
             { pitch: 'c/4', duration: 'h', lyric: 'feel-ing', chord: 'C/E' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
             { pitch: 'a/4', duration: 'q', lyric: 'in', chord: 'F' },
             { pitch: 'f/4', duration: 'hd', lyric: 'side' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -65,8 +65,8 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'who' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -77,7 +77,7 @@ export const yourSong: Song = {
             { pitch: 'e/4', duration: '8', lyric: 'ly' },
             { pitch: 'c/4', duration: 'qd', lyric: 'hide' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
@@ -89,8 +89,8 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ey' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
@@ -101,9 +101,9 @@ export const yourSong: Song = {
             { pitch: 'd/4', duration: 'q', lyric: 'did', chord: 'Am7' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'q' },
-            { pitch: 'b/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'q' },
+            { pitch: 'c/4', duration: 'q' },
+            { pitch: 'b/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'q' },
           ],
         },
         {
@@ -116,8 +116,8 @@ export const yourSong: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'where we' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'e/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
           ],
         },
         {
@@ -127,8 +127,8 @@ export const yourSong: Song = {
             { pitch: 'c/4', duration: 'h', lyric: 'live', chord: 'F' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
       ],
@@ -146,8 +146,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'tor, but' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -158,8 +158,8 @@ export const yourSong: Song = {
             { pitch: 'c/4', duration: 'q', lyric: 'no' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
@@ -172,8 +172,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'po' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -183,8 +183,8 @@ export const yourSong: Song = {
             { pitch: 'd/4', duration: 'h', lyric: 'show' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'q' },
-            { pitch: 'a/3', duration: 'hd' },
+            { pitch: 'd/4', duration: 'q' },
+            { pitch: 'a/4', duration: 'hd' },
           ],
         },
         {
@@ -197,8 +197,8 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'but' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
@@ -209,9 +209,9 @@ export const yourSong: Song = {
             { pitch: 'c/4', duration: 'q', lyric: 'I' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'q' },
-            { pitch: 'c/3', duration: 'q' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'q' },
+            { pitch: 'c/4', duration: 'q' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -219,7 +219,7 @@ export const yourSong: Song = {
             { pitch: 'd/4', duration: 'q', lyric: 'can' },
             { pitch: 'c/4', duration: 'hd', lyric: 'do', chord: 'Am7' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
@@ -231,8 +231,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'and this' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'e/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
           ],
         },
         {
@@ -242,8 +242,8 @@ export const yourSong: Song = {
             { pitch: 'c/4', duration: 'h', lyric: 'you', chord: 'F' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
       ],
@@ -263,8 +263,8 @@ export const yourSong: Song = {
             { pitch: 'e/4', duration: '8', lyric: 'dy' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'hd' },
-            { pitch: 'e/3', duration: 'q' },
+            { pitch: 'f/4', duration: 'hd' },
+            { pitch: 'e/4', duration: 'q' },
           ],
         },
         {
@@ -275,8 +275,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'h', lyric: 'song' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'q' },
-            { pitch: 'd/3', duration: 'hd' },
+            { pitch: 'e/4', duration: 'q' },
+            { pitch: 'd/4', duration: 'hd' },
           ],
         },
         {
@@ -290,8 +290,8 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'but', chord: 'C/E' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'hd' },
-            { pitch: 'e/3', duration: 'q' },
+            { pitch: 'f/4', duration: 'hd' },
+            { pitch: 'e/4', duration: 'q' },
           ],
         },
         {
@@ -302,8 +302,8 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'done', chord: 'Dm7' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'hd' },
-            { pitch: 'd/3', duration: 'q' },
+            { pitch: 'e/4', duration: 'hd' },
+            { pitch: 'd/4', duration: 'q' },
           ],
         },
         {
@@ -313,7 +313,7 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'you' },
             { pitch: 'g/4', duration: 'q', lyric: "don't" },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -322,7 +322,7 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'hope' },
             { pitch: 'f/4', duration: 'q', lyric: 'you' },
           ],
-          bass: [{ pitch: 'g/3', duration: 'w' }],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
@@ -331,8 +331,8 @@ export const yourSong: Song = {
             { pitch: 'e/4', duration: 'q', lyric: '', chord: 'A7' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'hd' },
-            { pitch: 'a/3', duration: 'q' },
+            { pitch: 'e/4', duration: 'hd' },
+            { pitch: 'a/4', duration: 'q' },
           ],
         },
         {
@@ -346,8 +346,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: '8', lyric: 'how', chord: 'C' },
           ],
           bass: [
-            { pitch: 'd/3', duration: 'hd' },
-            { pitch: 'f/3', duration: 'q' },
+            { pitch: 'd/4', duration: 'hd' },
+            { pitch: 'f/4', duration: 'q' },
           ],
         },
         {
@@ -359,8 +359,8 @@ export const yourSong: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'is' },
           ],
           bass: [
-            { pitch: 'b/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
@@ -372,13 +372,13 @@ export const yourSong: Song = {
             { pitch: 'c/4', duration: 'q', lyric: 'world', chord: 'F' },
           ],
           bass: [
-            { pitch: 'f#/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'f#/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
           melody: [{ pitch: 'c/4', duration: 'w', rest: true, chord: 'C' }],
-          bass: [{ pitch: 'c/3', duration: 'w' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
         },
       ],
     },

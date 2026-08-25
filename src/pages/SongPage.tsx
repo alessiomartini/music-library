@@ -103,7 +103,6 @@ export function SongPage() {
               preferFlats={preferFlats}
               chordSystem={globalPrefs.system}
               showBass={globalPrefs.showBass}
-              tempo={i === 0 ? { bpm: song.tempoBpm, marking: song.tempoMarking } : undefined}
             />
           ))}
         </div>

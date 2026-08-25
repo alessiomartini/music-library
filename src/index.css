@@ -251,15 +251,11 @@ select, textarea, input {
   flex-wrap: wrap;
   gap: 24px;
   align-items: center;
-  padding: 14px 16px;
-  margin-bottom: 20px;
+  padding: 10px 16px;
+  margin-bottom: 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--bg-alt);
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  backdrop-filter: blur(6px);
 }
 
 .control-group {
@@ -318,7 +314,7 @@ select, textarea, input {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 28px 0 10px;
+  margin: 16px 0 8px;
 }
 
 .lead-sheet-header h2 {
@@ -366,7 +362,7 @@ select, textarea, input {
 }
 
 .lead-sheet-system {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--bg);
