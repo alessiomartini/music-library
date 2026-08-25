@@ -12,16 +12,33 @@ interface Props {
   showBass: boolean;
 }
 
+// The staff/notation is rendered at STAFF_SCALE and shrunk to fit via the
+// SVG viewBox, while chord and lyric text sizes are set in "virtual" units
+// (their real size / STAFF_SCALE) so their FINAL rendered size stays put
+// (or grows) regardless of how small the notation itself gets.
+const STAFF_SCALE = 0.6;
+const CHORD_FONT_FINAL = 11;
+const LYRIC_FONT_FINAL = 12;
+const CHORD_FONT = CHORD_FONT_FINAL / STAFF_SCALE;
+const LYRIC_FONT = LYRIC_FONT_FINAL / STAFF_SCALE;
+
 const MIN_MEASURE_WIDTH = 60;
 const MEASURE_PADDING = 22;
 const FIRST_MEASURE_EXTRA = 46;
 const MEASURE_GAP = 10;
 const STAVE_X = 6;
-const ROW_HEADER = 26; // room above the staff for chord symbols
+const ROW_HEADER = 30; // room above the staff for chord symbols
 const STAFF_BOTTOM = 40; // staff top to its bottom line, at default line spacing
-const LYRIC_GAP = 12; // gap between the lowest content (staff or bass) and the lyric baseline
-const LYRIC_HEIGHT = 14; // space reserved below the lyric baseline before the next row
+// Lyric text is compensated back up to LYRIC_FONT_FINAL real pixels regardless
+// of STAFF_SCALE, so the virtual-unit gap/height around it must grow as the
+// staff shrinks to still reserve enough *real* pixel room for the glyphs.
+const LYRIC_GAP = 22; // gap between the lowest content (staff or bass) and the lyric baseline
+const LYRIC_HEIGHT = 26; // space reserved below the lyric baseline before the next row
 const TOP_PADDING = 8;
+// Rough average glyph width for the lyric font, in virtual units — lyric
+// syllables aren't VexFlow modifiers, so their width has to be estimated
+// by hand when sizing a measure.
+const LYRIC_CHAR_WIDTH = LYRIC_FONT * 0.56;
 
 function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, stemDirection: number) {
   if (n.rest) {
@@ -65,7 +82,7 @@ function buildMeasureVoices(
     if (!n.chord) return;
     const text = convertChord(n.chord, semitones, chordSystem, preferFlats);
     const annotation = new Annotation(text);
-    annotation.setFont('Arial', 11, 'bold');
+    annotation.setFont('Arial', CHORD_FONT, 'bold');
     annotation.setVerticalJustification(Annotation.VerticalJustify.TOP);
     melodyNotes[idx].addModifier(annotation);
   });
@@ -155,15 +172,15 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
       // doesn't know about them — approximate the extra room a long syllable
       // (e.g. "trav'ling", "where we") needs beyond its note's own slot.
       const lyricPadding = measure.melody.reduce((sum, n) => {
-        const extraChars = Math.max(0, (n.lyric?.length ?? 0) - 3);
-        return sum + extraChars * 6;
+        const extraChars = n.lyric?.length ?? 0;
+        return sum + extraChars * LYRIC_CHAR_WIDTH;
       }, 0);
       return Math.max(MIN_MEASURE_WIDTH, minWidth + MEASURE_PADDING + lyricPadding);
     });
 
     // Leave a right-hand margin so wide chord annotations near the end of a
     // row have room to spill without hitting the edge.
-    const contentWidth = Math.max(MIN_MEASURE_WIDTH + FIRST_MEASURE_EXTRA, width - 30);
+    const contentWidth = Math.max(MIN_MEASURE_WIDTH + FIRST_MEASURE_EXTRA, width / STAFF_SCALE - 30);
     const rows = packRows(measureWidths, contentWidth);
 
     // Render with a generous placeholder height, then shrink to the real
@@ -171,6 +188,7 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     const renderer = new Renderer(container, Renderer.Backends.SVG);
     renderer.resize(width, rows.length * 200 + 40);
     const context = renderer.getContext();
+    context.scale(STAFF_SCALE, STAFF_SCALE);
 
     let currentY = TOP_PADDING;
 
@@ -229,7 +247,9 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
           const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           text.setAttribute('x', String(noteX));
           text.setAttribute('y', String(lyricY));
-          text.setAttribute('font-size', '9.5');
+          text.setAttribute('font-size', String(LYRIC_FONT));
+          text.setAttribute('font-family', 'Arial, sans-serif');
+          text.setAttribute('font-weight', '600');
           text.setAttribute('class', 'melody-lyric');
           text.textContent = n.lyric;
           svg.appendChild(text);
@@ -239,7 +259,7 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
       currentY = lyricY + LYRIC_HEIGHT;
     });
 
-    renderer.resize(width, currentY + 8);
+    renderer.resize(width, (currentY + 8) * STAFF_SCALE);
   }, [system, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
 
   return (

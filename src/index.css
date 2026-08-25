@@ -384,7 +384,7 @@ select, textarea, input {
 }
 
 .lead-sheet-canvas :is(.melody-lyric) {
-  fill: var(--text);
+  fill: var(--text-h);
 }
 
 .lead-sheet-canvas svg path:not(.vf-stavenote *, .vf-annotation *),
