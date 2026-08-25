@@ -368,12 +368,6 @@ select, textarea, input {
   background: var(--bg);
 }
 
-.lead-sheet-system-label {
-  font-size: 12px;
-  color: var(--text);
-  padding: 8px 12px 0;
-}
-
 .lead-sheet-canvas-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -387,9 +381,15 @@ select, textarea, input {
   fill: var(--text-h);
 }
 
+.lead-sheet-canvas :is(.lead-sheet-section-label) {
+  fill: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .lead-sheet-canvas svg path:not(.vf-stavenote *, .vf-annotation *),
 .lead-sheet-canvas svg rect:not(.vf-stavenote *, .vf-annotation *),
-.lead-sheet-canvas svg text:not(.melody-lyric, .vf-stavenote *, .vf-annotation *) {
+.lead-sheet-canvas svg text:not(.melody-lyric, .lead-sheet-section-label, .vf-stavenote *, .vf-annotation *) {
   fill: var(--text-h);
   stroke: var(--text-h);
 }

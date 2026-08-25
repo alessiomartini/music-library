@@ -94,17 +94,14 @@ export function SongPage() {
               </button>
             </div>
           </div>
-          {song.leadSheet.map((system, i) => (
-            <LeadSheetStaff
-              key={i}
-              system={system}
-              timeSignature={song.timeSignature}
-              semitones={songPrefs.semitones}
-              preferFlats={preferFlats}
-              chordSystem={globalPrefs.system}
-              showBass={globalPrefs.showBass}
-            />
-          ))}
+          <LeadSheetStaff
+            systems={song.leadSheet}
+            timeSignature={song.timeSignature}
+            semitones={songPrefs.semitones}
+            preferFlats={preferFlats}
+            chordSystem={globalPrefs.system}
+            showBass={globalPrefs.showBass}
+          />
         </div>
       )}
 

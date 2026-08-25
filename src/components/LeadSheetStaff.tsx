@@ -4,7 +4,7 @@ import type { LeadSheetMeasure, LeadSheetNote, LeadSheetSystem } from '../lib/ty
 import { convertChord, transposePitch, type ChordSystem } from '../lib/theory';
 
 interface Props {
-  system: LeadSheetSystem;
+  systems: LeadSheetSystem[];
   timeSignature: string;
   semitones: number;
   preferFlats: boolean;
@@ -19,8 +19,10 @@ interface Props {
 const STAFF_SCALE = 0.6;
 const CHORD_FONT_FINAL = 11;
 const LYRIC_FONT_FINAL = 12;
+const SECTION_LABEL_FONT_FINAL = 12;
 const CHORD_FONT = CHORD_FONT_FINAL / STAFF_SCALE;
 const LYRIC_FONT = LYRIC_FONT_FINAL / STAFF_SCALE;
+const SECTION_LABEL_FONT = SECTION_LABEL_FONT_FINAL / STAFF_SCALE;
 
 const MIN_MEASURE_WIDTH = 60;
 const MEASURE_PADDING = 22;
@@ -35,6 +37,10 @@ const STAFF_BOTTOM = 40; // staff top to its bottom line, at default line spacin
 const LYRIC_GAP = 22; // gap between the lowest content (staff or bass) and the lyric baseline
 const LYRIC_HEIGHT = 26; // space reserved below the lyric baseline before the next row
 const TOP_PADDING = 8;
+// Extra room above a row that starts a new section, for its inline label
+// (e.g. "Chorus") — sections flow continuously on one staff, just breaking
+// to a new row and getting a small marker instead of a separate box.
+const SECTION_LABEL_HEIGHT = 26;
 // Rough average glyph width for the lyric font, in virtual units — lyric
 // syllables aren't VexFlow modifiers, so their width has to be estimated
 // by hand when sizing a measure.
@@ -105,15 +111,18 @@ function buildMeasureVoices(
 
 /** Greedily pack measures into rows that fit within `availWidth`, using
  * each measure's own natural content width (dense measures get more room,
- * sparse ones less, so labels never have to collide to fit a fixed slot). */
-function packRows(measureWidths: number[], availWidth: number): number[][] {
+ * sparse ones less, so labels never have to collide to fit a fixed slot).
+ * `breakBefore[i]` forces measure i to start a fresh row (used at section
+ * boundaries so a section's label always sits at the start of a row). */
+function packRows(measureWidths: number[], breakBefore: boolean[], availWidth: number): number[][] {
   const rows: number[][] = [];
   let current: number[] = [];
   let currentWidth = STAVE_X;
 
   for (let i = 0; i < measureWidths.length; i++) {
     const w = measureWidths[i] + (current.length === 0 ? FIRST_MEASURE_EXTRA : 0);
-    if (current.length > 0 && currentWidth + w + MEASURE_GAP > availWidth) {
+    const mustBreak = current.length > 0 && breakBefore[i];
+    if (current.length > 0 && (mustBreak || currentWidth + w + MEASURE_GAP > availWidth)) {
       rows.push(current);
       current = [];
       currentWidth = STAVE_X;
@@ -126,7 +135,7 @@ function packRows(measureWidths: number[], availWidth: number): number[][] {
   return rows;
 }
 
-export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, chordSystem, showBass }: Props) {
+export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats, chordSystem, showBass }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
@@ -162,10 +171,20 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     const melodyColor = computed.getPropertyValue('--melody-color').trim() || '#08060d';
     const bassColor = computed.getPropertyValue('--bass-color').trim() || '#b45309';
 
+    // Sections flow continuously on one staff rather than as separate boxes:
+    // flatten every section's measures into one list, remembering which
+    // measure starts a new section so it can get an inline label and a
+    // forced row break instead of its own header/container.
+    const flatMeasures = systems.flatMap((sys) =>
+      sys.measures.map((measure, j) => ({ measure, sectionLabel: j === 0 ? sys.label : undefined })),
+    );
+    const measures = flatMeasures.map((f) => f.measure);
+    const breakBefore = flatMeasures.map((f) => f.sectionLabel !== undefined);
+
     // Each measure gets exactly the width its own notes/chords/lyrics need,
     // instead of a fixed slot — a busy measure won't force its chord labels
     // to collide, and a sparse one won't waste row space.
-    const measureWidths = system.measures.map((measure) => {
+    const measureWidths = measures.map((measure) => {
       const { voices } = buildMeasureVoices(measure, timeSignature, semitones, preferFlats, chordSystem, showBass);
       const minWidth = new Formatter().joinVoices(voices).preCalculateMinTotalWidth(voices);
       // Lyric syllables aren't VexFlow modifiers, so preCalculateMinTotalWidth
@@ -181,7 +200,7 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     // Leave a right-hand margin so wide chord annotations near the end of a
     // row have room to spill without hitting the edge.
     const contentWidth = Math.max(MIN_MEASURE_WIDTH + FIRST_MEASURE_EXTRA, width / STAFF_SCALE - 30);
-    const rows = packRows(measureWidths, contentWidth);
+    const rows = packRows(measureWidths, breakBefore, contentWidth);
 
     // Render with a generous placeholder height, then shrink to the real
     // measured height once every row's actual vertical extent is known.
@@ -192,14 +211,29 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
 
     let currentY = TOP_PADDING;
 
+    const svg = container.querySelector('svg');
+
     rows.forEach((rowMeasureIdxs) => {
+      const sectionLabel = flatMeasures[rowMeasureIdxs[0]].sectionLabel;
       let x = STAVE_X;
-      const staveY = currentY + ROW_HEADER;
+      const staveY = currentY + (sectionLabel ? SECTION_LABEL_HEIGHT : 0) + ROW_HEADER;
       let rowBottom = staveY + STAFF_BOTTOM;
       const rowMelodyNotes: { notes: StaveNote[]; measure: LeadSheetMeasure }[] = [];
 
+      if (sectionLabel && svg) {
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', String(STAVE_X));
+        label.setAttribute('y', String(currentY + SECTION_LABEL_HEIGHT - 6));
+        label.setAttribute('font-size', String(SECTION_LABEL_FONT));
+        label.setAttribute('font-family', 'Arial, sans-serif');
+        label.setAttribute('font-weight', '700');
+        label.setAttribute('class', 'lead-sheet-section-label');
+        label.textContent = sectionLabel;
+        svg.appendChild(label);
+      }
+
       rowMeasureIdxs.forEach((measureIdx, posInRow) => {
-        const measure = system.measures[measureIdx];
+        const measure = measures[measureIdx];
         const isFirstInRow = posInRow === 0;
         const measureWidth = measureWidths[measureIdx] + (isFirstInRow ? FIRST_MEASURE_EXTRA : 0);
         const stave = new Stave(x, staveY, measureWidth);
@@ -239,7 +273,6 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
       });
 
       const lyricY = rowBottom + LYRIC_GAP;
-      const svg = container.querySelector('svg');
       rowMelodyNotes.forEach(({ notes, measure }) => {
         measure.melody.forEach((n, idx) => {
           if (!n.lyric || !svg) return;
@@ -260,11 +293,10 @@ export function LeadSheetStaff({ system, timeSignature, semitones, preferFlats, 
     });
 
     renderer.resize(width, (currentY + 8) * STAFF_SCALE);
-  }, [system, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
+  }, [systems, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
 
   return (
     <div className="lead-sheet-system">
-      <div className="lead-sheet-system-label">{system.label}</div>
       <div ref={wrapperRef} className="lead-sheet-canvas-wrapper">
         <div ref={canvasRef} className="lead-sheet-canvas" />
       </div>
