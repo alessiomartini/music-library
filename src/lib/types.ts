@@ -20,12 +20,6 @@ export interface LeadSheetSystem {
   measures: LeadSheetMeasure[];
 }
 
-export interface SongSection {
-  label: string; // "Verse 1", "Chorus", ...
-  /** Lines in ChordPro-ish syntax: "[C]Some [G]lyrics here" */
-  lines: string[];
-}
-
 export interface SongLinks {
   spotify?: string;
   youtube?: string;
@@ -42,9 +36,7 @@ export interface Song {
   timeSignature: string;
   tempoBpm: number;
   tempoMarking?: string; // e.g. "Moderately"
-  /** Full lyrics + chords, in ChordPro-ish text form. */
-  sections: SongSection[];
-  /** Engraved lead-sheet excerpt: melody + chord symbols + bass line. */
+  /** Engraved lead sheet: melody + chord symbols + bass line, by section. */
   leadSheet?: LeadSheetSystem[];
   links: SongLinks;
   /** Background/trivia shown in a "History & trivia" section. */

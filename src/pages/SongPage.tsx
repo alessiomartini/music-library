@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { getSongBySlug } from '../data/songs';
-import { ChordLine } from '../components/ChordLine';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
 import { LeadSheetStaff } from '../components/LeadSheetStaff';
@@ -109,24 +108,6 @@ export function SongPage() {
           ))}
         </div>
       )}
-
-      <div className="song-body">
-        <h2>Full lyrics &amp; chords</h2>
-        {song.sections.map((section, i) => (
-          <div className="song-section" key={i}>
-            <h3>{section.label}</h3>
-            {section.lines.map((line, j) => (
-              <ChordLine
-                key={j}
-                line={line}
-                semitones={songPrefs.semitones}
-                system={globalPrefs.system}
-                preferFlats={preferFlats}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
 
       {song.history && (
         <div className="song-history">

@@ -20,34 +20,6 @@ export const something: Song = {
   notes:
     'The engraved lead sheet is a best-effort draft transcription of the whole song, from memory ' +
     '(verify by ear before relying on it, especially away from the opening phrase); tempo is an approximate indication.',
-  sections: [
-    {
-      label: 'Verse 1',
-      lines: [
-        '[C]Something in the [Cmaj7]way she [C7]moves [F]',
-        '[D7]Attracts me [D7/F#]like no [G]other [Gaug]lover',
-        '[C]Something in the [Cmaj7]way she [C7]woos [F]me',
-        "[D7]I don't want to [D7/F#]leave her [G]now [Gaug]",
-        '[C]You know I be[Cmaj7]lieve and [C7]how [F] [F6]',
-      ],
-    },
-    {
-      label: 'Bridge',
-      lines: [
-        "[A]Somewhere in her [D]smile she knows [Bm]that I don't [E7]need no other lover",
-        '[A]Something in her [D]style that shows me [Am7] [D7]',
-      ],
-    },
-    {
-      label: 'Verse 2',
-      lines: [
-        "[C]You're asking [Cmaj7]me will my [C7]love [F]grow",
-        "[D7]I don't [D7/F#]know, I don't [G]know [Gaug]",
-        '[C]You stick a[Cmaj7]round now it [C7]may show [F]',
-        '[D7]I don’t [D7/F#]know, I don’t [G]know [Gaug]',
-      ],
-    },
-  ],
   leadSheet: [
     {
       label: 'Verse 1',

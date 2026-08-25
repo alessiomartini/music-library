@@ -23,30 +23,6 @@ export const blackbird: Song = {
     'shows chords only (rests), since it has no vocal line. The engraved lead sheet is a best-effort draft ' +
     'transcription of the whole song, from memory (verify by ear before relying on it, especially away from ' +
     'the opening phrase); tempo is an approximate indication.',
-  sections: [
-    {
-      label: 'Verse 1',
-      lines: [
-        '[G]Blackbird singing in the [Am7]dead of [G/B]night',
-        '[C]Take these broken [G/B]wings and [A7sus4]learn to [G/B]fly [G]',
-        '[G]All your life, you [Am7]were only [G/B]waiting',
-        '[C]For this [G/B]moment to a[A7sus4]rise [G/B] [G]',
-      ],
-    },
-    {
-      label: 'Verse 2',
-      lines: [
-        '[G]Blackbird singing in the [Am7]dead of [G/B]night',
-        '[C]Take these sunken [G/B]eyes and [A7sus4]learn to [G/B]see [G]',
-        '[G]All your life, you [Am7]were only [G/B]waiting',
-        '[C]For this [G/B]moment to be [A7sus4]free [G/B] [G]',
-      ],
-    },
-    {
-      label: 'Bridge (instrumental)',
-      lines: ['[Am]  [G/B]  [C]  [D]  [G] [Bm] [C] [D]'],
-    },
-  ],
   leadSheet: [
     {
       label: 'Verse 1',

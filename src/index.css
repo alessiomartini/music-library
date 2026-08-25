@@ -367,7 +367,6 @@ select, textarea, input {
 
 .lead-sheet-system {
   margin-bottom: 16px;
-  overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--bg);
@@ -377,6 +376,11 @@ select, textarea, input {
   font-size: 12px;
   color: var(--text);
   padding: 8px 12px 0;
+}
+
+.lead-sheet-canvas-wrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 .lead-sheet-canvas svg {
@@ -397,43 +401,6 @@ select, textarea, input {
 .lead-sheet-canvas svg .vf-annotation {
   fill: var(--chord);
   stroke: var(--chord);
-}
-
-/* --- Chords + lyrics --- */
-
-.song-section {
-  margin-bottom: 8px;
-}
-
-.lyric-line {
-  margin-top: 0.5em;
-  line-height: 1.3;
-  white-space: pre-wrap;
-  font-family: var(--mono);
-  font-size: 15px;
-}
-
-.lyric-line-empty {
-  margin-top: 0.3em;
-}
-
-.word {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  vertical-align: bottom;
-}
-
-.chord {
-  color: var(--chord);
-  font-weight: 700;
-  white-space: nowrap;
-  line-height: 1.3;
-  padding-right: 0.5em;
-}
-
-.lyric-text {
-  color: var(--text-h);
 }
 
 /* --- Key preference --- */

@@ -22,26 +22,6 @@ export const amaraTerraMia: Song = {
     'Transcribed from memory: lyrics, chords and melody are a best-effort draft to be checked against the ' +
     'original score, especially away from the opening phrase; tempo is an approximate indication. Lyrics are ' +
     'kept in the original Italian.',
-  sections: [
-    {
-      label: 'Verse 1',
-      lines: [
-        '[Am]Amara terra [Dm]mia, amara e [E7]bella',
-        '[Am]cosa ti [Dm]resta o [E7]terra delle [Am]tue promesse',
-        '[C]lasciato hai il [G]mare e [Am]vai chissà [Dm]dove',
-        '[E7]cercando il [Am]pane, il [Dm]pane della [E7]sopravvi[Am]venza',
-      ],
-    },
-    {
-      label: 'Verse 2',
-      lines: [
-        '[Am]Amara terra [Dm]mia, amara e [E7]sola',
-        '[Am]e cosa [Dm]tieni in [E7]serbo, o mia [Am]terra amara',
-        '[C]per chi ti [G]lascia e [Am]cerca la for[Dm]tuna',
-        '[E7]lontano dal tuo [Am]sole e dal tuo [Dm]mare, [E7]terra a[Am]mara',
-      ],
-    },
-  ],
   leadSheet: [
     {
       label: 'Verse 1',
