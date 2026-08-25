@@ -204,10 +204,13 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
 
     // Render with a generous placeholder height, then shrink to the real
     // measured height once every row's actual vertical extent is known.
+    // Note: VexFlow's scale() multiplies into whatever scale is already
+    // stored, and resize() reapplies that stored scale — so calling scale()
+    // now and resizing again later would compound (0.6 * 0.6 = 0.36). Scale
+    // is applied exactly once, after the final resize below, instead.
     const renderer = new Renderer(container, Renderer.Backends.SVG);
     renderer.resize(width, rows.length * 200 + 40);
     const context = renderer.getContext();
-    context.scale(STAFF_SCALE, STAFF_SCALE);
 
     let currentY = TOP_PADDING;
 
@@ -293,6 +296,7 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
     });
 
     renderer.resize(width, (currentY + 8) * STAFF_SCALE);
+    context.scale(STAFF_SCALE, STAFF_SCALE);
   }, [systems, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
 
   return (
