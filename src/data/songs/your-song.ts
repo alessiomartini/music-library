@@ -9,7 +9,7 @@ export const yourSong: Song = {
   capo: 3,
   soundingKey: 'Eb',
   timeSignature: '4/4',
-  tempoBpm: 80,
+  tempoBpm: 68,
   tempoMarking: 'Moderately',
   links: {
     spotify: 'https://open.spotify.com/search/Your%20Song%20Elton%20John',
