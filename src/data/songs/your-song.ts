@@ -282,71 +282,71 @@ export const yourSong: Song = {
       measures: [
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 'And', chord: 'F' },
+            { pitch: 'f/4', duration: '8', lyric: 'And', chord: 'G' },
             { pitch: 'e/4', duration: '8', lyric: 'you' },
             { pitch: 'f/4', duration: '8', lyric: 'can' },
             { pitch: 'g/4', duration: '8', lyric: 'tell' },
             { pitch: 'a/4', duration: '8', lyric: 'ev' },
             { pitch: 'g/4', duration: '8', lyric: 'ry' },
-            { pitch: 'f/4', duration: '8', lyric: 'bo', chord: 'C/E' },
+            { pitch: 'f/4', duration: '8', lyric: 'bo', chord: 'Am' },
             { pitch: 'e/4', duration: '8', lyric: 'dy' },
           ],
           bass: [
-            { pitch: 'f/4', duration: 'hd' },
-            { pitch: 'e/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 'this' },
+            { pitch: 'f/4', duration: '8', lyric: 'this', chord: 'Dm7' },
             { pitch: 'g/4', duration: '8', lyric: 'is' },
-            { pitch: 'a/4', duration: 'q', lyric: 'your', chord: 'Dm7' },
-            { pitch: 'g/4', duration: 'h', lyric: 'song' },
+            { pitch: 'a/4', duration: 'q', lyric: 'your' },
+            { pitch: 'g/4', duration: 'h', lyric: 'song', chord: 'F' },
           ],
           bass: [
-            { pitch: 'e/4', duration: 'q' },
-            { pitch: 'd/4', duration: 'hd' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 'It', chord: 'F' },
+            { pitch: 'f/4', duration: '8', lyric: 'It', chord: 'G/B' },
             { pitch: 'e/4', duration: '8', lyric: 'may' },
             { pitch: 'f/4', duration: '8', lyric: 'be' },
             { pitch: 'g/4', duration: '8', lyric: 'quite' },
             { pitch: 'a/4', duration: '8', lyric: 'sim' },
             { pitch: 'g/4', duration: '8', lyric: 'ple' },
-            { pitch: 'f/4', duration: 'q', lyric: 'but', chord: 'C/E' },
+            { pitch: 'f/4', duration: 'q', lyric: 'but', chord: 'Am' },
           ],
           bass: [
-            { pitch: 'f/4', duration: 'hd' },
-            { pitch: 'e/4', duration: 'q' },
+            { pitch: 'b/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'e/4', duration: '8', lyric: 'now' },
+            { pitch: 'e/4', duration: '8', lyric: 'now', chord: 'Dm7' },
             { pitch: 'f/4', duration: '8', lyric: 'that' },
             { pitch: 'g/4', duration: 'q', lyric: "it's" },
-            { pitch: 'f/4', duration: 'h', lyric: 'done', chord: 'Dm7' },
+            { pitch: 'f/4', duration: 'h', lyric: 'done', chord: 'F' },
           ],
           bass: [
-            { pitch: 'e/4', duration: 'hd' },
-            { pitch: 'd/4', duration: 'q' },
+            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: 'q', lyric: 'I', chord: 'F' },
+            { pitch: 'f/4', duration: 'q', lyric: 'I', chord: 'Am' },
             { pitch: 'e/4', duration: 'q', lyric: 'hope' },
             { pitch: 'f/4', duration: 'q', lyric: 'you' },
             { pitch: 'g/4', duration: 'q', lyric: "don't" },
           ],
-          bass: [{ pitch: 'f/4', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
-            { pitch: 'g/4', duration: 'q', lyric: 'mind,', chord: 'G' },
+            { pitch: 'g/4', duration: 'q', lyric: 'mind,', chord: 'Am/G' },
             { pitch: 'a/4', duration: 'q', lyric: 'I' },
             { pitch: 'g/4', duration: 'q', lyric: 'hope' },
             { pitch: 'f/4', duration: 'q', lyric: 'you' },
@@ -356,53 +356,51 @@ export const yourSong: Song = {
         {
           melody: [
             { pitch: 'e/4', duration: 'q', lyric: "don't" },
-            { pitch: 'd/4', duration: 'h', lyric: 'mind', chord: 'Em7' },
-            { pitch: 'e/4', duration: 'q', chord: 'A7' },
+            { pitch: 'd/4', duration: 'h', lyric: 'mind' },
+            { pitch: 'e/4', duration: 'q' },
           ],
-          bass: [
-            { pitch: 'e/4', duration: 'hd' },
-            { pitch: 'a/4', duration: 'q' },
-          ],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
-            { pitch: 'd/4', duration: '8', lyric: 'That', chord: 'Dm7' },
+            { pitch: 'd/4', duration: '8', lyric: 'That', chord: 'Am/F#' },
             { pitch: 'd/4', duration: '8', lyric: 'I' },
             { pitch: 'e/4', duration: '8', lyric: 'put' },
             { pitch: 'f/4', duration: '8', lyric: 'down' },
             { pitch: 'e/4', duration: '8', lyric: 'in' },
-            { pitch: 'f/4', duration: 'q', lyric: 'words', chord: 'F' },
+            { pitch: 'f/4', duration: 'q', lyric: 'words', chord: 'F6' },
             { pitch: 'g/4', duration: '8', lyric: 'how', chord: 'C' },
           ],
           bass: [
-            { pitch: 'd/4', duration: 'hd' },
+            { pitch: 'f#/4', duration: 'h' },
             { pitch: 'f/4', duration: 'q' },
+            { pitch: 'c/4', duration: 'q' },
           ],
         },
         {
           melody: [
-            { pitch: 'g/4', duration: '8', lyric: 'won', chord: 'G/B' },
+            { pitch: 'g/4', duration: '8', lyric: 'won' },
             { pitch: 'f/4', duration: '8', lyric: 'der' },
             { pitch: 'e/4', duration: 'q', lyric: 'ful' },
-            { pitch: 'f/4', duration: 'q', lyric: 'life', chord: 'Am7' },
+            { pitch: 'f/4', duration: 'q', lyric: 'life', chord: 'F6' },
             { pitch: 'g/4', duration: 'q', lyric: 'is' },
           ],
           bass: [
-            { pitch: 'b/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: 'q', lyric: 'while', chord: 'D7sus4/F#' },
+            { pitch: 'f/4', duration: 'q', lyric: 'while', chord: 'F' },
             { pitch: 'e/4', duration: 'q', lyric: "you're" },
-            { pitch: 'd/4', duration: '8', lyric: 'in', chord: 'Bb/F' },
-            { pitch: 'd/4', duration: '8', lyric: 'the' },
-            { pitch: 'c/4', duration: 'q', lyric: 'world', chord: 'F' },
+            { pitch: 'd/4', duration: '8', lyric: 'in', chord: 'G' },
+            { pitch: 'd/4', duration: '8', lyric: 'the', chord: 'Gsus4' },
+            { pitch: 'c/4', duration: 'q', lyric: 'world', chord: 'G' },
           ],
           bass: [
-            { pitch: 'f#/4', duration: 'h' },
             { pitch: 'f/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
