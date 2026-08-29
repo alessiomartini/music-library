@@ -37,6 +37,22 @@ export function SongPage() {
         {song.composer ? ` · written by ${song.composer}` : ''}
       </p>
 
+      {(song.capo || song.tuning) && (
+        <p className="song-setup">
+          {song.capo ? (
+            <span className="song-setup-item">
+              <strong>Capo {song.capo}</strong>
+              {song.soundingKey ? ` — chords written in ${song.originalKey}, sounds in ${song.soundingKey}` : ''}
+            </span>
+          ) : null}
+          {song.tuning ? (
+            <span className="song-setup-item">
+              <strong>Tuning</strong> {song.tuning}
+            </span>
+          ) : null}
+        </p>
+      )}
+
       <div className="song-facts">
         <span>
           <strong>Key</strong> {displayedKey}
@@ -75,7 +91,6 @@ export function SongPage() {
         onSemitonesChange={(n) => setSongPrefs({ ...songPrefs, semitones: n })}
         system={globalPrefs.system}
         onSystemChange={(s) => setGlobalPrefs({ ...globalPrefs, system: s })}
-        capo={song.capo}
       />
 
       {song.leadSheet && song.leadSheet.length > 0 && (

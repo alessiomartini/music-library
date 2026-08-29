@@ -36,7 +36,7 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'in' },
             { pitch: 'b/4', duration: 'q', lyric: 'the' },
           ],
-          bass: [{ pitch: 'g/3', duration: 'w' }],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
@@ -44,8 +44,8 @@ export const blackbird: Song = {
             { pitch: 'g/4', duration: 'hd', lyric: 'of night', chord: 'G/B' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -57,8 +57,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'wings', chord: 'G/B' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'hd' },
-            { pitch: 'b/3', duration: 'q' },
+            { pitch: 'c/4', duration: 'hd' },
+            { pitch: 'b/4', duration: 'q' },
           ],
         },
         {
@@ -70,9 +70,9 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', rest: true, chord: 'G' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'g/3', duration: 'q' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'q' },
           ],
         },
         {
@@ -82,7 +82,7 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'life,' },
             { pitch: 'b/4', duration: 'q', lyric: 'you' },
           ],
-          bass: [{ pitch: 'g/3', duration: 'w' }],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
@@ -93,8 +93,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'ing' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -106,8 +106,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'to' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -118,9 +118,9 @@ export const blackbird: Song = {
             { pitch: 'g/4', duration: 'qd', rest: true, chord: 'G' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'g/3', duration: 'q' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'q' },
           ],
         },
       ],
@@ -137,7 +137,7 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'in' },
             { pitch: 'b/4', duration: 'q', lyric: 'the' },
           ],
-          bass: [{ pitch: 'g/3', duration: 'w' }],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
@@ -145,8 +145,8 @@ export const blackbird: Song = {
             { pitch: 'g/4', duration: 'hd', lyric: 'of night', chord: 'G/B' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -158,8 +158,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'eyes', chord: 'G/B' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'hd' },
-            { pitch: 'b/3', duration: 'q' },
+            { pitch: 'c/4', duration: 'hd' },
+            { pitch: 'b/4', duration: 'q' },
           ],
         },
         {
@@ -171,9 +171,9 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', rest: true, chord: 'G' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'g/3', duration: 'q' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'q' },
           ],
         },
         {
@@ -183,7 +183,7 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'life,' },
             { pitch: 'b/4', duration: 'q', lyric: 'you' },
           ],
-          bass: [{ pitch: 'g/3', duration: 'w' }],
+          bass: [{ pitch: 'g/4', duration: 'w' }],
         },
         {
           melody: [
@@ -194,8 +194,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'ing' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -207,8 +207,8 @@ export const blackbird: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'to' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -219,9 +219,9 @@ export const blackbird: Song = {
             { pitch: 'g/4', duration: 'q', rest: true, chord: 'G' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'g/3', duration: 'q' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'q' },
           ],
         },
       ],
@@ -237,10 +237,10 @@ export const blackbird: Song = {
             { pitch: 'b/4', duration: 'q', rest: true, chord: 'D' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'q' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'c/3', duration: 'q' },
-            { pitch: 'd/3', duration: 'q' },
+            { pitch: 'a/4', duration: 'q' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'c/4', duration: 'q' },
+            { pitch: 'd/4', duration: 'q' },
           ],
         },
         {
@@ -251,10 +251,10 @@ export const blackbird: Song = {
             { pitch: 'b/4', duration: 'q', rest: true, chord: 'D' },
           ],
           bass: [
-            { pitch: 'g/3', duration: 'q' },
-            { pitch: 'b/3', duration: 'q' },
-            { pitch: 'c/3', duration: 'q' },
-            { pitch: 'd/3', duration: 'q' },
+            { pitch: 'g/4', duration: 'q' },
+            { pitch: 'b/4', duration: 'q' },
+            { pitch: 'c/4', duration: 'q' },
+            { pitch: 'd/4', duration: 'q' },
           ],
         },
       ],

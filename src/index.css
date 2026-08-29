@@ -200,6 +200,25 @@ select, textarea, input {
   color: var(--text);
 }
 
+.song-setup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0 0 12px;
+  padding: 9px 13px;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  background: var(--accent-bg);
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.song-setup-item strong {
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
 .song-facts {
   display: flex;
   flex-wrap: wrap;
@@ -276,12 +295,6 @@ select, textarea, input {
   text-align: center;
   font-weight: 600;
   color: var(--text-h);
-}
-
-.capo-hint {
-  font-weight: 400;
-  font-size: 12px;
-  color: var(--text);
 }
 
 .reset-btn {

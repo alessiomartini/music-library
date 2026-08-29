@@ -6,10 +6,9 @@ interface Props {
   onSemitonesChange: (n: number) => void;
   system: ChordSystem;
   onSystemChange: (s: ChordSystem) => void;
-  capo?: number;
 }
 
-export function TransposeControls({ originalKey, semitones, onSemitonesChange, system, onSystemChange, capo }: Props) {
+export function TransposeControls({ originalKey, semitones, onSemitonesChange, system, onSystemChange }: Props) {
   const preferFlats = shouldPreferFlats(originalKey);
   const displayedKey = transposeKeyLabel(originalKey, semitones, system, preferFlats);
 
@@ -20,10 +19,7 @@ export function TransposeControls({ originalKey, semitones, onSemitonesChange, s
         <button type="button" onClick={() => onSemitonesChange(semitones - 1)} aria-label="Transpose down">
           −
         </button>
-        <span className="current-key">
-          {displayedKey}
-          {capo ? <span className="capo-hint"> (capo {capo})</span> : null}
-        </span>
+        <span className="current-key">{displayedKey}</span>
         <button type="button" onClick={() => onSemitonesChange(semitones + 1)} aria-label="Transpose up">
           +
         </button>

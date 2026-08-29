@@ -33,7 +33,7 @@ export const yesterday: Song = {
             { pitch: 'c/4', duration: 'q', lyric: 'all' },
             { pitch: 'c/4', duration: 'q', lyric: 'my' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -41,7 +41,7 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'bles' },
             { pitch: 'f/4', duration: 'h', lyric: 'seemed' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -51,8 +51,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'way', chord: 'Dm' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -63,8 +63,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'as' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'bb/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'bb/4', duration: 'h' },
           ],
         },
         {
@@ -73,14 +73,14 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: '8', lyric: "they're" },
             { pitch: 'g/4', duration: 'hd', lyric: 'here', chord: 'F' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
             { pitch: 'f/4', duration: 'q', lyric: 'to' },
             { pitch: 'e/4', duration: 'hd', lyric: 'stay', chord: 'C7' },
           ],
-          bass: [{ pitch: 'c/3', duration: 'w' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
         },
         {
           melody: [
@@ -91,8 +91,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'in' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'g/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
@@ -101,7 +101,7 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ter' },
             { pitch: 'e/4', duration: 'h', lyric: 'day' },
           ],
-          bass: [{ pitch: 'c/3', duration: 'w' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
         },
       ],
     },
@@ -116,7 +116,7 @@ export const yesterday: Song = {
             { pitch: 'c/4', duration: 'q', lyric: "I'm" },
             { pitch: 'c/4', duration: 'q', lyric: 'not' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -125,7 +125,7 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'man' },
             { pitch: 'g/4', duration: 'q', lyric: 'I' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -134,8 +134,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'be', chord: 'Dm' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -146,8 +146,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'hang' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'bb/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'bb/4', duration: 'h' },
           ],
         },
         {
@@ -158,8 +158,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'me', chord: 'C7' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'c/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
           ],
         },
         {
@@ -170,7 +170,7 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'day' },
             { pitch: 'f/4', duration: 'q', lyric: 'came' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -179,8 +179,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'ly' },
           ],
           bass: [
-            { pitch: 'g/3', duration: 'h' },
-            { pitch: 'c/3', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
           ],
         },
       ],
@@ -195,7 +195,7 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'had' },
             { pitch: 'e/4', duration: 'q', lyric: 'to' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -205,8 +205,8 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'know,' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'b/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
           ],
         },
         {
@@ -217,8 +217,8 @@ export const yesterday: Song = {
             { pitch: 'g/4', duration: 'h', lyric: 'say', chord: 'E7' },
           ],
           bass: [
-            { pitch: 'b/3', duration: 'h' },
-            { pitch: 'e/3', duration: 'h' },
+            { pitch: 'b/4', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
           ],
         },
         {
@@ -230,8 +230,8 @@ export const yesterday: Song = {
             { pitch: 'd/4', duration: 'q', lyric: 'wrong,' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -242,8 +242,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'for' },
           ],
           bass: [
-            { pitch: 'g/3', duration: 'h' },
-            { pitch: 'c/3', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
           ],
         },
         {
@@ -252,7 +252,7 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'ter' },
             { pitch: 'd/4', duration: 'h', lyric: 'day' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
       ],
     },
@@ -267,7 +267,7 @@ export const yesterday: Song = {
             { pitch: 'c/4', duration: 'q', lyric: 'love' },
             { pitch: 'c/4', duration: 'q', lyric: 'was' },
           ],
-          bass: [{ pitch: 'f/3', duration: 'w' }],
+          bass: [{ pitch: 'f/4', duration: 'w' }],
         },
         {
           melody: [
@@ -276,7 +276,7 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'eas' },
             { pitch: 'g/4', duration: 'q', lyric: 'y' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -285,8 +285,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'h', lyric: 'play', chord: 'Dm' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -297,8 +297,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'a' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'bb/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'bb/4', duration: 'h' },
           ],
         },
         {
@@ -310,8 +310,8 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'way', chord: 'C7' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'c/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
           ],
         },
         {
@@ -323,8 +323,8 @@ export const yesterday: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'in' },
           ],
           bass: [
-            { pitch: 'f/3', duration: 'h' },
-            { pitch: 'g/3', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
@@ -334,8 +334,8 @@ export const yesterday: Song = {
             { pitch: 'e/4', duration: 'h', lyric: 'day', chord: 'F' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'f/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
       ],

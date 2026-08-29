@@ -32,7 +32,13 @@ export interface Song {
   composer?: string;
   /** Home key, English spelling, e.g. "G", "Eb", "Dm". */
   originalKey: string;
+  /** Capo fret the written chords assume, if any. */
   capo?: number;
+  /** Non-standard guitar tuning, e.g. "Drop D" or "D A D G A D". */
+  tuning?: string;
+  /** Key the recording actually sounds in, when the capo makes it differ
+   * from the written key (e.g. written C + capo 3 sounds in Eb). */
+  soundingKey?: string;
   timeSignature: string;
   tempoBpm: number;
   tempoMarking?: string; // e.g. "Moderately"

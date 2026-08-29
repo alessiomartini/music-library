@@ -7,6 +7,7 @@ export const yourSong: Song = {
   composer: 'Elton John / Bernie Taupin',
   originalKey: 'C',
   capo: 3,
+  soundingKey: 'Eb',
   timeSignature: '4/4',
   tempoBpm: 80,
   tempoMarking: 'Moderately',
@@ -19,8 +20,7 @@ export const yourSong: Song = {
     'shortly after. Released in 1970, it became his breakthrough single and launched his career — despite its ' +
     "reputation as a classic love song, John has said it's really about the love between friends.",
   notes:
-    'Chords shown "as played" with a capo on the 3rd fret (sounds in Eb). ' +
-    'The engraved lead sheet is a best-effort draft transcription of the whole song, from memory ' +
+    'The engraved lead sheet is a best-effort draft transcription of the whole song ' +
     '(verify by ear before relying on it, especially away from the opening phrase); tempo is an approximate indication.',
   leadSheet: [
     {
@@ -328,7 +328,7 @@ export const yourSong: Song = {
           melody: [
             { pitch: 'e/4', duration: 'q', lyric: "don't" },
             { pitch: 'd/4', duration: 'h', lyric: 'mind', chord: 'Em7' },
-            { pitch: 'e/4', duration: 'q', lyric: '', chord: 'A7' },
+            { pitch: 'e/4', duration: 'q', chord: 'A7' },
           ],
           bass: [
             { pitch: 'e/4', duration: 'hd' },

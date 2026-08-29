@@ -34,14 +34,14 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
             { pitch: 'e/4', duration: 'q', lyric: 'ra' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
             { pitch: 'a/4', duration: 'q', lyric: 'mi-', chord: 'Dm' },
             { pitch: 'e/4', duration: 'hd', lyric: 'a' },
           ],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -52,13 +52,13 @@ export const amaraTerraMia: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'bel' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'e/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
           ],
         },
         {
           melody: [{ pitch: 'a/4', duration: 'w', lyric: 'la' }],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -69,8 +69,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ta' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -81,7 +81,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'del' },
             { pitch: 'e/4', duration: 'q', lyric: 'le' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -90,7 +90,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: '8', lyric: 'mes' },
             { pitch: 'e/4', duration: 'h', lyric: 'se' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
@@ -102,8 +102,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'ma', chord: 'G' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'g/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
@@ -115,8 +115,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'sà' },
           ],
           bass: [
-            { pitch: 'g/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
@@ -124,7 +124,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'do', chord: 'Dm' },
             { pitch: 'd/4', duration: 'hd', lyric: 've' },
           ],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -136,8 +136,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'ne,' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
@@ -148,7 +148,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'del' },
             { pitch: 'd/4', duration: 'q', lyric: 'la' },
           ],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -159,8 +159,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'za' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
       ],
@@ -176,14 +176,14 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
             { pitch: 'e/4', duration: 'q', lyric: 'ra' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
             { pitch: 'a/4', duration: 'q', lyric: 'mi-', chord: 'Dm' },
             { pitch: 'e/4', duration: 'hd', lyric: 'a,' },
           ],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -194,13 +194,13 @@ export const amaraTerraMia: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'so' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'e/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
           ],
         },
         {
           melody: [{ pitch: 'a/4', duration: 'w', lyric: 'la' }],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -211,8 +211,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'ni' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
@@ -223,7 +223,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: 'q', lyric: 'o' },
             { pitch: 'e/4', duration: 'q', lyric: 'mia' },
           ],
-          bass: [{ pitch: 'e/3', duration: 'w' }],
+          bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
@@ -232,7 +232,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'f/4', duration: '8', lyric: 'a' },
             { pitch: 'e/4', duration: 'h', lyric: 'ma' },
           ],
-          bass: [{ pitch: 'a/3', duration: 'w' }],
+          bass: [{ pitch: 'a/4', duration: 'w' }],
         },
         {
           melody: [
@@ -244,8 +244,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'e' },
           ],
           bass: [
-            { pitch: 'c/3', duration: 'h' },
-            { pitch: 'g/3', duration: 'h' },
+            { pitch: 'c/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
@@ -257,13 +257,13 @@ export const amaraTerraMia: Song = {
             { pitch: 'd/4', duration: 'q', lyric: 'tu' },
           ],
           bass: [
-            { pitch: 'a/3', duration: 'h' },
-            { pitch: 'd/3', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'd/4', duration: 'h' },
           ],
         },
         {
           melody: [{ pitch: 'd/4', duration: 'w', lyric: 'na' }],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -275,8 +275,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'g/4', duration: 'q', lyric: 'so' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
         {
@@ -287,7 +287,7 @@ export const amaraTerraMia: Song = {
             { pitch: 'e/4', duration: 'q', lyric: 'tuo', chord: 'Dm' },
             { pitch: 'd/4', duration: 'q', lyric: 'ma' },
           ],
-          bass: [{ pitch: 'd/3', duration: 'w' }],
+          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
@@ -298,8 +298,8 @@ export const amaraTerraMia: Song = {
             { pitch: 'a/4', duration: 'q', lyric: 'ma' },
           ],
           bass: [
-            { pitch: 'e/3', duration: 'h' },
-            { pitch: 'a/3', duration: 'h' },
+            { pitch: 'e/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
           ],
         },
       ],
