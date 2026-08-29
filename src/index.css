@@ -339,42 +339,61 @@ select, textarea, input {
   color: var(--text);
 }
 
-.lead-sheet-system {
-  margin-bottom: 8px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
+.chart-system {
+  margin-bottom: 18px;
 }
 
-.lead-sheet-canvas-wrapper {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.lead-sheet-canvas svg {
-  display: block;
-}
-
-.lead-sheet-canvas :is(.melody-lyric) {
-  fill: var(--text-h);
-}
-
-.lead-sheet-canvas :is(.lead-sheet-section-label) {
-  fill: var(--text);
+.chart-section-label {
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--text);
+  margin: 0 0 6px;
 }
 
-.lead-sheet-canvas svg path:not(.vf-stavenote *, .vf-annotation *),
-.lead-sheet-canvas svg rect:not(.vf-stavenote *, .vf-annotation *),
-.lead-sheet-canvas svg text:not(.melody-lyric, .lead-sheet-section-label, .vf-stavenote *, .vf-annotation *) {
-  fill: var(--text-h);
-  stroke: var(--text-h);
+/* Measures wrap like text, so the chart only ever scrolls vertically. */
+.chart-measures {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 
-.lead-sheet-canvas svg .vf-annotation {
-  fill: var(--chord);
-  stroke: var(--chord);
+/* The bar line: one before every measure, and a closing one at the end. */
+.chart-measure {
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2px 10px;
+  border-left: 2px solid var(--text-h);
+}
+
+.chart-measure:last-child {
+  border-right: 2px solid var(--text-h);
+}
+
+/* One column per syllable, widened in proportion to how long it is held. */
+.chart-cell {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  min-width: 0;
+  padding-right: 6px;
+  white-space: nowrap;
+}
+
+.chart-chord {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--chord);
+}
+
+.chart-lyric {
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--text-h);
 }
 
 /* --- Key preference --- */
