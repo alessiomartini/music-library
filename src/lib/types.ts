@@ -23,6 +23,11 @@ export interface LeadSheetSystem {
 export interface SongLinks {
   spotify?: string;
   youtube?: string;
+  /** Where to consult the published sheet music this transcription was
+   * checked against. A link to the publisher/retailer page, not a copy of
+   * the sheet itself — the notation is under copyright and can't be
+   * redistributed here. */
+  sheetMusic?: string;
 }
 
 export interface Song {

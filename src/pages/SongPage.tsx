@@ -136,7 +136,20 @@ export function SongPage() {
         onApply={(semitones) => setSongPrefs({ ...songPrefs, semitones })}
       />
 
-      {song.notes && <p className="song-source-notes">{song.notes}</p>}
+      {song.notes && (
+        <p className="song-source-notes">
+          {song.notes}
+          {song.links.sheetMusic && (
+            <>
+              {' '}
+              <a href={song.links.sheetMusic} target="_blank" rel="noreferrer noopener">
+                Check it against the published sheet music
+              </a>
+              .
+            </>
+          )}
+        </p>
+      )}
     </div>
   );
 }
