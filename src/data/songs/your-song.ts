@@ -24,6 +24,31 @@ export const yourSong: Song = {
     '(verify by ear before relying on it, especially away from the opening phrase); tempo is an approximate indication.',
   leadSheet: [
     {
+      // Instrumental: the chords sit over a held C in the bass, which is what
+      // the slash chords spell out. Shown as chord-over-rest (the same way
+      // Blackbird's instrumental bridge is notated) rather than guessing at
+      // the piano figure's exact rhythm.
+      label: 'Intro',
+      measures: [
+        {
+          melody: [{ pitch: 'c/4', duration: 'w', rest: true, chord: 'C' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
+        },
+        {
+          melody: [{ pitch: 'c/4', duration: 'w', rest: true, chord: 'F/C' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
+        },
+        {
+          melody: [{ pitch: 'c/4', duration: 'w', rest: true, chord: 'G/C' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
+        },
+        {
+          melody: [{ pitch: 'c/4', duration: 'w', rest: true, chord: 'F/C' }],
+          bass: [{ pitch: 'c/4', duration: 'w' }],
+        },
+      ],
+    },
+    {
       label: 'Verse 1',
       measures: [
         {
@@ -33,51 +58,57 @@ export const yourSong: Song = {
             { pitch: 'f/4', duration: '8', lyric: 'lit' },
             { pitch: 'g/4', duration: '8', lyric: 'tle' },
             { pitch: 'a/4', duration: 'q', lyric: 'bit' },
-            { pitch: 'g/4', duration: 'q', lyric: 'fun', chord: 'Dm7' },
+            { pitch: 'g/4', duration: 'q', lyric: 'fun', chord: 'Fmaj7' },
           ],
           bass: [
             { pitch: 'c/4', duration: 'h' },
-            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
           ],
         },
         {
           melody: [
             { pitch: 'e/4', duration: 'q', lyric: 'ny,' },
-            { pitch: 'd/4', duration: 'q', lyric: 'this' },
-            { pitch: 'c/4', duration: 'h', lyric: 'feel-ing', chord: 'C/E' },
+            { pitch: 'd/4', duration: 'q', lyric: 'this', chord: 'G' },
+            { pitch: 'c/4', duration: 'h', lyric: 'feel-ing' },
+          ],
+          bass: [
+            { pitch: 'f/4', duration: 'q' },
+            { pitch: 'g/4', duration: 'hd' },
+          ],
+        },
+        {
+          melody: [
+            { pitch: 'a/4', duration: 'q', lyric: 'in', chord: 'Em' },
+            { pitch: 'f/4', duration: 'hd', lyric: 'side' },
           ],
           bass: [{ pitch: 'e/4', duration: 'w' }],
         },
         {
           melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'in', chord: 'F' },
-            { pitch: 'f/4', duration: 'hd', lyric: 'side' },
-          ],
-          bass: [{ pitch: 'f/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'e/4', duration: '8', lyric: "I'm", chord: 'C' },
+            { pitch: 'e/4', duration: '8', lyric: "I'm", chord: 'Am' },
             { pitch: 'd/4', duration: '8', lyric: 'not' },
             { pitch: 'e/4', duration: '8', lyric: 'one' },
             { pitch: 'f/4', duration: '8', lyric: 'of' },
-            { pitch: 'g/4', duration: 'q', lyric: 'those', chord: 'Dm7' },
+            { pitch: 'g/4', duration: 'q', lyric: 'those', chord: 'Am/G' },
             { pitch: 'f/4', duration: 'q', lyric: 'who' },
           ],
           bass: [
-            { pitch: 'c/4', duration: 'h' },
-            { pitch: 'd/4', duration: 'h' },
+            { pitch: 'a/4', duration: 'h' },
+            { pitch: 'g/4', duration: 'h' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: 'q', lyric: 'can', chord: 'Am7' },
+            { pitch: 'f/4', duration: 'q', lyric: 'can', chord: 'Am/F#' },
             { pitch: 'e/4', duration: '8', lyric: 'eas' },
             { pitch: 'd/4', duration: '8', lyric: 'i' },
-            { pitch: 'e/4', duration: '8', lyric: 'ly' },
+            { pitch: 'e/4', duration: '8', lyric: 'ly', chord: 'F' },
             { pitch: 'c/4', duration: 'qd', lyric: 'hide' },
           ],
-          bass: [{ pitch: 'a/4', duration: 'w' }],
+          bass: [
+            { pitch: 'f#/4', duration: 'h' },
+            { pitch: 'f/4', duration: 'h' },
+          ],
         },
         {
           melody: [
