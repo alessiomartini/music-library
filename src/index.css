@@ -335,43 +335,8 @@ select, textarea, input {
 }
 
 .lead-sheet-legend {
-  display: flex;
-  align-items: center;
-  gap: 14px;
   font-size: 12px;
   color: var(--text);
-}
-
-.legend-swatch {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.legend-swatch::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--swatch-color);
-}
-
-.legend-swatch.melody {
-  --swatch-color: var(--melody-color);
-}
-
-.legend-swatch.bass {
-  --swatch-color: var(--bass-color);
-}
-
-.bass-toggle {
-  font-size: 13px;
-}
-
-.bass-toggle.active {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  color: var(--accent);
 }
 
 .lead-sheet-system {

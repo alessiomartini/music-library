@@ -20,8 +20,10 @@ export const yourSong: Song = {
     'shortly after. Released in 1970, it became his breakthrough single and launched his career — despite its ' +
     "reputation as a classic love song, John has said it's really about the love between friends.",
   notes:
-    'The engraved lead sheet is a best-effort draft transcription of the whole song ' +
-    '(verify by ear before relying on it, especially away from the opening phrase); tempo is an approximate indication.',
+    'The lead sheet shows chords and lyrics over the rhythm of the vocal line — bar layout, ' +
+    'note values and rests — but no melody pitches: the chords were checked against a published ' +
+    'edition, the melodic contour was not, so it is left out rather than shown wrongly. ' +
+    'Tempo is an approximate indication.',
   leadSheet: [
     {
       // Instrumental: the chords sit over a held C in the bass, which is what

@@ -5,7 +5,6 @@ import { KeyPreference } from '../components/KeyPreference';
 import { LeadSheetStaff } from '../components/LeadSheetStaff';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
-import { computeVocalRange } from '../lib/leadsheet';
 
 export function SongPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -23,7 +22,6 @@ export function SongPage() {
   }
 
   const preferFlats = shouldPreferFlats(song.originalKey);
-  const vocalRange = computeVocalRange(song.leadSheet, songPrefs.semitones, preferFlats);
   const displayedKey = transposeKeyLabel(song.originalKey, songPrefs.semitones, globalPrefs.system, preferFlats);
 
   return (
@@ -63,11 +61,6 @@ export function SongPage() {
         <span>
           <strong>Tempo</strong> {song.tempoMarking ? `${song.tempoMarking}, ` : ''}♩ = {song.tempoBpm}
         </span>
-        {vocalRange && (
-          <span>
-            <strong>Vocal range</strong> {vocalRange.low}–{vocalRange.high}
-          </span>
-        )}
       </div>
 
       {(song.links.spotify || song.links.youtube) && (
@@ -97,17 +90,7 @@ export function SongPage() {
         <div className="lead-sheet">
           <div className="lead-sheet-header">
             <h2>Lead sheet</h2>
-            <div className="lead-sheet-legend">
-              <span className="legend-swatch melody">Melody</span>
-              <span className="legend-swatch bass">Bass &amp; embellishments</span>
-              <button
-                type="button"
-                className={`bass-toggle ${globalPrefs.showBass ? 'active' : ''}`}
-                onClick={() => setGlobalPrefs({ ...globalPrefs, showBass: !globalPrefs.showBass })}
-              >
-                {globalPrefs.showBass ? 'Hide' : 'Show'} bass &amp; embellishments
-              </button>
-            </div>
+            <span className="lead-sheet-legend">Chords and lyrics over the rhythm — no melody pitches</span>
           </div>
           <LeadSheetStaff
             systems={song.leadSheet}
@@ -115,7 +98,6 @@ export function SongPage() {
             semitones={songPrefs.semitones}
             preferFlats={preferFlats}
             chordSystem={globalPrefs.system}
-            showBass={globalPrefs.showBass}
           />
         </div>
       )}

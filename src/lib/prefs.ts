@@ -15,10 +15,9 @@ export function useSongPrefs(slug: string) {
 
 export interface GlobalPrefs {
   system: ChordSystem;
-  showBass: boolean;
 }
 
-const DEFAULT_GLOBAL_PREFS: GlobalPrefs = { system: 'it', showBass: true };
+const DEFAULT_GLOBAL_PREFS: GlobalPrefs = { system: 'it' };
 
 export function useGlobalPrefs() {
   return useLocalStorage<GlobalPrefs>('global-prefs', DEFAULT_GLOBAL_PREFS);

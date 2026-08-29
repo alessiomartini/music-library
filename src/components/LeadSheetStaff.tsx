@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Renderer, Stave, StaveNote, Voice, Formatter, Accidental, Dot, Annotation, Stem } from 'vexflow';
+import { Renderer, Stave, StaveNote, Voice, Formatter, Dot, Annotation, Stem } from 'vexflow';
 import type { LeadSheetMeasure, LeadSheetNote, LeadSheetSystem } from '../lib/types';
-import { convertChord, transposePitch, type ChordSystem } from '../lib/theory';
+import { convertChord, type ChordSystem } from '../lib/theory';
 
 interface Props {
   systems: LeadSheetSystem[];
@@ -9,7 +9,6 @@ interface Props {
   semitones: number;
   preferFlats: boolean;
   chordSystem: ChordSystem;
-  showBass: boolean;
 }
 
 // The staff/notation is rendered at STAFF_SCALE and shrunk to fit via the
@@ -46,21 +45,23 @@ const SECTION_LABEL_HEIGHT = 26;
 // by hand when sizing a measure.
 const LYRIC_CHAR_WIDTH = LYRIC_FONT * 0.56;
 
-function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, stemDirection: number) {
+// Rhythm notation: every note sits on the middle line rather than at a
+// pitch. The bar layout, note values, beaming and rests are what this sheet
+// vouches for — where the chords change and how the words sit against the
+// beat — so the melodic contour is left out instead of asserting pitches
+// the transcription can't stand behind.
+const RHYTHM_LINE = 'b/4';
+
+function toStaveNote(n: LeadSheetNote) {
   if (n.rest) {
-    return new StaveNote({ keys: ['b/4'], duration: n.duration.replace('d', '') + 'r' });
+    return new StaveNote({ keys: [RHYTHM_LINE], duration: n.duration.replace('d', '') + 'r' });
   }
-  const pitch = transposePitch(n.pitch, semitones, preferFlats);
-  const accidental = pitch.split('/')[0].slice(1);
   const note = new StaveNote({
-    keys: [pitch],
+    keys: [RHYTHM_LINE],
     duration: n.duration.replace('d', ''),
-    stemDirection,
+    stemDirection: Stem.UP,
     autoStem: false,
   });
-  if (accidental === '#' || accidental === 'b' || accidental === 'n') {
-    note.addModifier(new Accidental(accidental));
-  }
   if (n.duration.endsWith('d')) {
     Dot.buildAndAttach([note], { all: true });
   }
@@ -69,7 +70,6 @@ function toStaveNote(n: LeadSheetNote, semitones: number, preferFlats: boolean, 
 
 interface MeasureVoices {
   melodyNotes: StaveNote[];
-  bassNotes: StaveNote[];
   voices: Voice[];
 }
 
@@ -79,11 +79,10 @@ function buildMeasureVoices(
   semitones: number,
   preferFlats: boolean,
   chordSystem: ChordSystem,
-  showBass: boolean,
 ): MeasureVoices {
   const beats = timeSignature.split('/').map(Number);
 
-  const melodyNotes = measure.melody.map((n) => toStaveNote(n, semitones, preferFlats, Stem.UP));
+  const melodyNotes = measure.melody.map(toStaveNote);
   measure.melody.forEach((n, idx) => {
     if (!n.chord) return;
     const text = convertChord(n.chord, semitones, chordSystem, preferFlats);
@@ -96,17 +95,7 @@ function buildMeasureVoices(
   melodyVoice.setStrict(false);
   melodyVoice.addTickables(melodyNotes);
 
-  const voices = [melodyVoice];
-  let bassNotes: StaveNote[] = [];
-  if (showBass && measure.bass.length > 0) {
-    bassNotes = measure.bass.map((n) => toStaveNote(n, semitones, preferFlats, Stem.DOWN));
-    const bassVoice = new Voice({ numBeats: beats[0], beatValue: beats[1] });
-    bassVoice.setStrict(false);
-    bassVoice.addTickables(bassNotes);
-    voices.push(bassVoice);
-  }
-
-  return { melodyNotes, bassNotes, voices };
+  return { melodyNotes, voices: [melodyVoice] };
 }
 
 /** Greedily pack measures into rows that fit within `availWidth`, using
@@ -135,7 +124,7 @@ function packRows(measureWidths: number[], breakBefore: boolean[], availWidth: n
   return rows;
 }
 
-export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats, chordSystem, showBass }: Props) {
+export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats, chordSystem }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
@@ -169,7 +158,6 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
     // on some mobile browsers, so bake in the actual computed color instead.
     const computed = getComputedStyle(container);
     const melodyColor = computed.getPropertyValue('--melody-color').trim() || '#08060d';
-    const bassColor = computed.getPropertyValue('--bass-color').trim() || '#b45309';
 
     // Sections flow continuously on one staff rather than as separate boxes:
     // flatten every section's measures into one list, remembering which
@@ -185,7 +173,7 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
     // instead of a fixed slot — a busy measure won't force its chord labels
     // to collide, and a sparse one won't waste row space.
     const measureWidths = measures.map((measure) => {
-      const { voices } = buildMeasureVoices(measure, timeSignature, semitones, preferFlats, chordSystem, showBass);
+      const { voices } = buildMeasureVoices(measure, timeSignature, semitones, preferFlats, chordSystem);
       const minWidth = new Formatter().joinVoices(voices).preCalculateMinTotalWidth(voices);
       // Lyric syllables aren't VexFlow modifiers, so preCalculateMinTotalWidth
       // doesn't know about them — approximate the extra room a long syllable
@@ -252,20 +240,15 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
           semitones,
           preferFlats,
           chordSystem,
-          showBass,
         );
         melodyNotes.forEach((note) => note.setStyle({ fillStyle: melodyColor, strokeStyle: melodyColor }));
-        if (voices.length > 1) {
-          voices[1].getTickables().forEach((note) => (note as StaveNote).setStyle({ fillStyle: bassColor, strokeStyle: bassColor }));
-        }
 
         const formatWidth = stave.getNoteEndX() - stave.getNoteStartX() - 8;
         new Formatter().joinVoices(voices).format(voices, formatWidth);
         voices.forEach((voice) => voice.draw(context, stave));
 
-        // Measure how far this measure's content actually extends downward
-        // (bass notes/ledger lines can go well past the staff), so the
-        // lyric line below never collides with it.
+        // Measure how far this measure's content actually extends downward,
+        // so the lyric line below never collides with it.
         voices.forEach((voice) => {
           const bb = voice.getBoundingBox();
           if (bb) rowBottom = Math.max(rowBottom, bb.getY() + bb.getH());
@@ -297,7 +280,7 @@ export function LeadSheetStaff({ systems, timeSignature, semitones, preferFlats,
 
     renderer.resize(width, (currentY + 8) * STAFF_SCALE);
     context.scale(STAFF_SCALE, STAFF_SCALE);
-  }, [systems, timeSignature, semitones, preferFlats, chordSystem, showBass, width, themeTick]);
+  }, [systems, timeSignature, semitones, preferFlats, chordSystem, width, themeTick]);
 
   return (
     <div className="lead-sheet-system">
