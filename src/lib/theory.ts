@@ -127,20 +127,23 @@ function italianizeQuality(quality: string): string {
   return quality;
 }
 
+// parseChord() normalizes every root to its sharp spelling, so a chord has
+// to be run through transposeChord() to get spelled back out according to
+// preferFlats — including at zero semitones, or a flat key would render as
+// its sharp equivalent (Eb as D#, Bb/F as A#/F).
+
 /** Convenience: transpose + reformat a raw chord string in one step. */
 export function convertChord(raw: string, semitones: number, system: ChordSystem, preferFlats: boolean): string {
   const parsed = parseChord(raw);
   if (!parsed) return raw;
-  const transposed = semitones !== 0 ? transposeChord(parsed, semitones, preferFlats) : parsed;
-  return formatChord(transposed, system);
+  return formatChord(transposeChord(parsed, semitones, preferFlats), system);
 }
 
 /** Transpose a key label (e.g. "Am", "Eb") and format it in a system. */
 export function transposeKeyLabel(key: string, semitones: number, system: ChordSystem, preferFlats: boolean): string {
   const parsed = parseChord(key);
   if (!parsed) return key;
-  const t = semitones !== 0 ? transposeChord(parsed, semitones, preferFlats) : parsed;
-  return formatChord(t, system);
+  return formatChord(transposeChord(parsed, semitones, preferFlats), system);
 }
 
 /** Shortest semitone distance (in [-6, 5]) to go from one key to another. */

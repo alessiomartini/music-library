@@ -23,6 +23,12 @@ export function SongPage() {
 
   const preferFlats = shouldPreferFlats(song.originalKey);
   const displayedKey = transposeKeyLabel(song.originalKey, songPrefs.semitones, globalPrefs.system, preferFlats);
+  // A capo raises what sounds, so the shapes you finger sit that many
+  // semitones *below* the key on the page. Derived rather than stored, so it
+  // stays right when the chart is transposed.
+  const capoShapeKey = song.capo
+    ? transposeKeyLabel(song.originalKey, songPrefs.semitones - song.capo, globalPrefs.system, preferFlats)
+    : null;
 
   return (
     <div className="page song-page">
@@ -39,8 +45,8 @@ export function SongPage() {
         <p className="song-setup">
           {song.capo ? (
             <span className="song-setup-item">
-              <strong>Capo {song.capo}</strong>
-              {song.soundingKey ? ` — chords written in ${song.originalKey}, sounds in ${song.soundingKey}` : ''}
+              <strong>Capo {song.capo} if you want it</strong> — fingers the song in {capoShapeKey}; the
+              chart below stays in {displayedKey}
             </span>
           ) : null}
           {song.tuning ? (
