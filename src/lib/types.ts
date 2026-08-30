@@ -1,18 +1,20 @@
+/** One event in the sung line. Carries no pitch: the charts give chords,
+ * words and where they fall in the bar, and deliberately say nothing about
+ * the melody itself. */
 export interface LeadSheetNote {
-  /** VexFlow pitch, e.g. "c#/4". Ignored when `rest` is set. */
-  pitch: string;
-  /** VexFlow duration, e.g. "q", "8", "h", "qd" (dotted quarter). */
+  /** Duration code: "q", "8", "h", "w", "qd" (dotted quarter), "16". Sets
+   * how much horizontal room the syllable gets within its bar. */
   duration: string;
   rest?: boolean;
-  /** Syllable/word sung on this note, shown under the staff. */
+  /** Syllable/word sung here. */
   lyric?: string;
-  /** Chord symbol (English notation) that starts sounding on this note. */
+  /** Chord symbol (English notation) that starts sounding here. */
   chord?: string;
 }
 
 export interface LeadSheetMeasure {
+  /** The sung line for one bar, in order. */
   melody: LeadSheetNote[];
-  bass: LeadSheetNote[];
 }
 
 export interface LeadSheetSystem {

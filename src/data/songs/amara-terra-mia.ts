@@ -19,148 +19,119 @@ export const amaraTerraMia: Song = {
     "postwar decades, a subject close to Modugno's own roots. Its folk-rooted, plaintive tone contrasts with " +
     'the upbeat pop for which he is more widely remembered.',
   notes:
-    'Transcribed from memory: lyrics, chords and melody are a best-effort draft to be checked against the ' +
-    'original score, especially away from the opening phrase; tempo is an approximate indication. Lyrics are ' +
-    'kept in the original Italian.',
+    'Chords and lyrics only, divided into bars; within a bar, syllables are spaced roughly in ' +
+    'proportion to how long they are held. These chords were written from memory and have not been ' +
+    'checked against a published edition — verify them by ear before relying on them. The melody is ' +
+    'left out for the same reason. Lyrics are kept in the original Italian. Tempo is an approximate ' +
+    'indication.',
   leadSheet: [
     {
       label: 'Verse 1',
       measures: [
         {
           melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'A-', chord: 'Am' },
-            { pitch: 'a/4', duration: '8', lyric: 'ma-' },
-            { pitch: 'g/4', duration: '8', lyric: 'ra' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
-            { pitch: 'e/4', duration: 'q', lyric: 'ra' },
-          ],
-          bass: [{ pitch: 'a/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'mi-', chord: 'Dm' },
-            { pitch: 'e/4', duration: 'hd', lyric: 'a' },
-          ],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: '8', lyric: 'a' },
-            { pitch: 'g/4', duration: '8', lyric: 'ma' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ra' },
-            { pitch: 'e/4', duration: 'q', lyric: 'e', chord: 'E7' },
-            { pitch: 'e/4', duration: 'q', lyric: 'bel' },
-          ],
-          bass: [
-            { pitch: 'a/4', duration: 'h' },
-            { pitch: 'e/4', duration: 'h' },
-          ],
-        },
-        {
-          melody: [{ pitch: 'a/4', duration: 'w', lyric: 'la' }],
-          bass: [{ pitch: 'e/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: '8', lyric: 'co', chord: 'Am' },
-            { pitch: 'g/4', duration: '8', lyric: 'sa' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ti' },
-            { pitch: 'e/4', duration: 'q', lyric: 'res', chord: 'Dm' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ta' },
-          ],
-          bass: [
-            { pitch: 'a/4', duration: 'h' },
-            { pitch: 'd/4', duration: 'h' },
+            { duration: 'q', lyric: 'A-', chord: 'Am' },
+            { duration: '8', lyric: 'ma-' },
+            { duration: '8', lyric: 'ra' },
+            { duration: 'q', lyric: 'ter-' },
+            { duration: 'q', lyric: 'ra' },
           ],
         },
         {
           melody: [
-            { pitch: 'g/4', duration: '8', lyric: 'o' },
-            { pitch: 'a/4', duration: '8', lyric: 'ter', chord: 'E7' },
-            { pitch: 'g/4', duration: 'q', lyric: 'ra' },
-            { pitch: 'f/4', duration: 'q', lyric: 'del' },
-            { pitch: 'e/4', duration: 'q', lyric: 'le' },
-          ],
-          bass: [{ pitch: 'e/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'tue', chord: 'Am' },
-            { pitch: 'g/4', duration: '8', lyric: 'pro' },
-            { pitch: 'f/4', duration: '8', lyric: 'mes' },
-            { pitch: 'e/4', duration: 'h', lyric: 'se' },
-          ],
-          bass: [{ pitch: 'a/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'c/5', duration: '8', lyric: 'la', chord: 'C' },
-            { pitch: 'b/4', duration: '8', lyric: 'scia' },
-            { pitch: 'a/4', duration: '8', lyric: 'to' },
-            { pitch: 'g/4', duration: '8', lyric: 'hai' },
-            { pitch: 'f/4', duration: 'q', lyric: 'il' },
-            { pitch: 'g/4', duration: 'q', lyric: 'ma', chord: 'G' },
-          ],
-          bass: [
-            { pitch: 'c/4', duration: 'h' },
-            { pitch: 'g/4', duration: 'h' },
+            { duration: 'q', lyric: 'mi-', chord: 'Dm' },
+            { duration: 'hd', lyric: 'a' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 're' },
-            { pitch: 'e/4', duration: '8', lyric: 'e' },
-            { pitch: 'a/4', duration: 'q', lyric: 'vai', chord: 'Am' },
-            { pitch: 'g/4', duration: 'q', lyric: 'chis' },
-            { pitch: 'f/4', duration: 'q', lyric: 'sà' },
+            { duration: '8', lyric: 'a' },
+            { duration: '8', lyric: 'ma' },
+            { duration: 'q', lyric: 'ra' },
+            { duration: 'q', lyric: 'e', chord: 'E7' },
+            { duration: 'q', lyric: 'bel' },
           ],
-          bass: [
-            { pitch: 'g/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+        },
+        {
+          melody: [{ duration: 'w', lyric: 'la' }],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'co', chord: 'Am' },
+            { duration: '8', lyric: 'sa' },
+            { duration: 'q', lyric: 'ti' },
+            { duration: 'q', lyric: 'res', chord: 'Dm' },
+            { duration: 'q', lyric: 'ta' },
           ],
         },
         {
           melody: [
-            { pitch: 'e/4', duration: 'q', lyric: 'do', chord: 'Dm' },
-            { pitch: 'd/4', duration: 'hd', lyric: 've' },
-          ],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'e/4', duration: '8', lyric: 'cer', chord: 'E7' },
-            { pitch: 'f/4', duration: '8', lyric: 'can' },
-            { pitch: 'g/4', duration: '8', lyric: 'do' },
-            { pitch: 'f/4', duration: '8', lyric: 'il' },
-            { pitch: 'a/4', duration: 'q', lyric: 'pa', chord: 'Am' },
-            { pitch: 'g/4', duration: 'q', lyric: 'ne,' },
-          ],
-          bass: [
-            { pitch: 'e/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+            { duration: '8', lyric: 'o' },
+            { duration: '8', lyric: 'ter', chord: 'E7' },
+            { duration: 'q', lyric: 'ra' },
+            { duration: 'q', lyric: 'del' },
+            { duration: 'q', lyric: 'le' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 'il' },
-            { pitch: 'e/4', duration: '8', lyric: 'pa', chord: 'Dm' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ne' },
-            { pitch: 'e/4', duration: 'q', lyric: 'del' },
-            { pitch: 'd/4', duration: 'q', lyric: 'la' },
+            { duration: 'q', lyric: 'tue', chord: 'Am' },
+            { duration: '8', lyric: 'pro' },
+            { duration: '8', lyric: 'mes' },
+            { duration: 'h', lyric: 'se' },
           ],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
-            { pitch: 'e/4', duration: '8', lyric: 'so', chord: 'E7' },
-            { pitch: 'f/4', duration: '8', lyric: 'prav' },
-            { pitch: 'g/4', duration: 'q', lyric: 'vi' },
-            { pitch: 'a/4', duration: 'q', lyric: 'ven', chord: 'Am' },
-            { pitch: 'a/4', duration: 'q', lyric: 'za' },
+            { duration: '8', lyric: 'la', chord: 'C' },
+            { duration: '8', lyric: 'scia' },
+            { duration: '8', lyric: 'to' },
+            { duration: '8', lyric: 'hai' },
+            { duration: 'q', lyric: 'il' },
+            { duration: 'q', lyric: 'ma', chord: 'G' },
           ],
-          bass: [
-            { pitch: 'e/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 're' },
+            { duration: '8', lyric: 'e' },
+            { duration: 'q', lyric: 'vai', chord: 'Am' },
+            { duration: 'q', lyric: 'chis' },
+            { duration: 'q', lyric: 'sà' },
+          ],
+        },
+        {
+          melody: [
+            { duration: 'q', lyric: 'do', chord: 'Dm' },
+            { duration: 'hd', lyric: 've' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'cer', chord: 'E7' },
+            { duration: '8', lyric: 'can' },
+            { duration: '8', lyric: 'do' },
+            { duration: '8', lyric: 'il' },
+            { duration: 'q', lyric: 'pa', chord: 'Am' },
+            { duration: 'q', lyric: 'ne,' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'il' },
+            { duration: '8', lyric: 'pa', chord: 'Dm' },
+            { duration: 'q', lyric: 'ne' },
+            { duration: 'q', lyric: 'del' },
+            { duration: 'q', lyric: 'la' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'so', chord: 'E7' },
+            { duration: '8', lyric: 'prav' },
+            { duration: 'q', lyric: 'vi' },
+            { duration: 'q', lyric: 'ven', chord: 'Am' },
+            { duration: 'q', lyric: 'za' },
           ],
         },
       ],
@@ -170,136 +141,105 @@ export const amaraTerraMia: Song = {
       measures: [
         {
           melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'A-', chord: 'Am' },
-            { pitch: 'a/4', duration: '8', lyric: 'ma-' },
-            { pitch: 'g/4', duration: '8', lyric: 'ra' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ter-' },
-            { pitch: 'e/4', duration: 'q', lyric: 'ra' },
-          ],
-          bass: [{ pitch: 'a/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'mi-', chord: 'Dm' },
-            { pitch: 'e/4', duration: 'hd', lyric: 'a,' },
-          ],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: '8', lyric: 'a' },
-            { pitch: 'g/4', duration: '8', lyric: 'ma' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ra' },
-            { pitch: 'e/4', duration: 'q', lyric: 'e', chord: 'E7' },
-            { pitch: 'e/4', duration: 'q', lyric: 'so' },
-          ],
-          bass: [
-            { pitch: 'a/4', duration: 'h' },
-            { pitch: 'e/4', duration: 'h' },
-          ],
-        },
-        {
-          melody: [{ pitch: 'a/4', duration: 'w', lyric: 'la' }],
-          bass: [{ pitch: 'e/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'e', chord: 'Am' },
-            { pitch: 'g/4', duration: '8', lyric: 'co' },
-            { pitch: 'f/4', duration: '8', lyric: 'sa' },
-            { pitch: 'e/4', duration: 'q', lyric: 'tie', chord: 'Dm' },
-            { pitch: 'f/4', duration: 'q', lyric: 'ni' },
-          ],
-          bass: [
-            { pitch: 'a/4', duration: 'h' },
-            { pitch: 'd/4', duration: 'h' },
+            { duration: 'q', lyric: 'A-', chord: 'Am' },
+            { duration: '8', lyric: 'ma-' },
+            { duration: '8', lyric: 'ra' },
+            { duration: 'q', lyric: 'ter-' },
+            { duration: 'q', lyric: 'ra' },
           ],
         },
         {
           melody: [
-            { pitch: 'g/4', duration: '8', lyric: 'in' },
-            { pitch: 'a/4', duration: '8', lyric: 'ser', chord: 'E7' },
-            { pitch: 'g/4', duration: 'q', lyric: 'bo,' },
-            { pitch: 'f/4', duration: 'q', lyric: 'o' },
-            { pitch: 'e/4', duration: 'q', lyric: 'mia' },
-          ],
-          bass: [{ pitch: 'e/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'a/4', duration: 'q', lyric: 'ter', chord: 'Am' },
-            { pitch: 'g/4', duration: '8', lyric: 'ra' },
-            { pitch: 'f/4', duration: '8', lyric: 'a' },
-            { pitch: 'e/4', duration: 'h', lyric: 'ma' },
-          ],
-          bass: [{ pitch: 'a/4', duration: 'w' }],
-        },
-        {
-          melody: [
-            { pitch: 'c/5', duration: '8', lyric: 'per', chord: 'C' },
-            { pitch: 'b/4', duration: '8', lyric: 'chi' },
-            { pitch: 'a/4', duration: '8', lyric: 'ti' },
-            { pitch: 'g/4', duration: '8', lyric: 'las' },
-            { pitch: 'f/4', duration: 'q', lyric: 'cia', chord: 'G' },
-            { pitch: 'g/4', duration: 'q', lyric: 'e' },
-          ],
-          bass: [
-            { pitch: 'c/4', duration: 'h' },
-            { pitch: 'g/4', duration: 'h' },
+            { duration: 'q', lyric: 'mi-', chord: 'Dm' },
+            { duration: 'hd', lyric: 'a,' },
           ],
         },
         {
           melody: [
-            { pitch: 'a/4', duration: '8', lyric: 'cer', chord: 'Am' },
-            { pitch: 'g/4', duration: '8', lyric: 'ca' },
-            { pitch: 'f/4', duration: 'q', lyric: 'la' },
-            { pitch: 'e/4', duration: 'q', lyric: 'for', chord: 'Dm' },
-            { pitch: 'd/4', duration: 'q', lyric: 'tu' },
-          ],
-          bass: [
-            { pitch: 'a/4', duration: 'h' },
-            { pitch: 'd/4', duration: 'h' },
+            { duration: '8', lyric: 'a' },
+            { duration: '8', lyric: 'ma' },
+            { duration: 'q', lyric: 'ra' },
+            { duration: 'q', lyric: 'e', chord: 'E7' },
+            { duration: 'q', lyric: 'so' },
           ],
         },
         {
-          melody: [{ pitch: 'd/4', duration: 'w', lyric: 'na' }],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
+          melody: [{ duration: 'w', lyric: 'la' }],
         },
         {
           melody: [
-            { pitch: 'e/4', duration: '8', lyric: 'lon', chord: 'E7' },
-            { pitch: 'f/4', duration: '8', lyric: 'ta' },
-            { pitch: 'g/4', duration: '8', lyric: 'no' },
-            { pitch: 'f/4', duration: '8', lyric: 'dal' },
-            { pitch: 'a/4', duration: 'q', lyric: 'tuo', chord: 'Am' },
-            { pitch: 'g/4', duration: 'q', lyric: 'so' },
-          ],
-          bass: [
-            { pitch: 'e/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+            { duration: 'q', lyric: 'e', chord: 'Am' },
+            { duration: '8', lyric: 'co' },
+            { duration: '8', lyric: 'sa' },
+            { duration: 'q', lyric: 'tie', chord: 'Dm' },
+            { duration: 'q', lyric: 'ni' },
           ],
         },
         {
           melody: [
-            { pitch: 'f/4', duration: '8', lyric: 'le' },
-            { pitch: 'e/4', duration: '8', lyric: 'e' },
-            { pitch: 'f/4', duration: 'q', lyric: 'dal' },
-            { pitch: 'e/4', duration: 'q', lyric: 'tuo', chord: 'Dm' },
-            { pitch: 'd/4', duration: 'q', lyric: 'ma' },
+            { duration: '8', lyric: 'in' },
+            { duration: '8', lyric: 'ser', chord: 'E7' },
+            { duration: 'q', lyric: 'bo,' },
+            { duration: 'q', lyric: 'o' },
+            { duration: 'q', lyric: 'mia' },
           ],
-          bass: [{ pitch: 'd/4', duration: 'w' }],
         },
         {
           melody: [
-            { pitch: 'e/4', duration: '8', lyric: 're,', chord: 'E7' },
-            { pitch: 'f/4', duration: '8', lyric: 'ter' },
-            { pitch: 'g/4', duration: 'q', lyric: 'ra' },
-            { pitch: 'a/4', duration: 'q', lyric: 'a', chord: 'Am' },
-            { pitch: 'a/4', duration: 'q', lyric: 'ma' },
+            { duration: 'q', lyric: 'ter', chord: 'Am' },
+            { duration: '8', lyric: 'ra' },
+            { duration: '8', lyric: 'a' },
+            { duration: 'h', lyric: 'ma' },
           ],
-          bass: [
-            { pitch: 'e/4', duration: 'h' },
-            { pitch: 'a/4', duration: 'h' },
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'per', chord: 'C' },
+            { duration: '8', lyric: 'chi' },
+            { duration: '8', lyric: 'ti' },
+            { duration: '8', lyric: 'las' },
+            { duration: 'q', lyric: 'cia', chord: 'G' },
+            { duration: 'q', lyric: 'e' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'cer', chord: 'Am' },
+            { duration: '8', lyric: 'ca' },
+            { duration: 'q', lyric: 'la' },
+            { duration: 'q', lyric: 'for', chord: 'Dm' },
+            { duration: 'q', lyric: 'tu' },
+          ],
+        },
+        {
+          melody: [{ duration: 'w', lyric: 'na' }],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'lon', chord: 'E7' },
+            { duration: '8', lyric: 'ta' },
+            { duration: '8', lyric: 'no' },
+            { duration: '8', lyric: 'dal' },
+            { duration: 'q', lyric: 'tuo', chord: 'Am' },
+            { duration: 'q', lyric: 'so' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 'le' },
+            { duration: '8', lyric: 'e' },
+            { duration: 'q', lyric: 'dal' },
+            { duration: 'q', lyric: 'tuo', chord: 'Dm' },
+            { duration: 'q', lyric: 'ma' },
+          ],
+        },
+        {
+          melody: [
+            { duration: '8', lyric: 're,', chord: 'E7' },
+            { duration: '8', lyric: 'ter' },
+            { duration: 'q', lyric: 'ra' },
+            { duration: 'q', lyric: 'a', chord: 'Am' },
+            { duration: 'q', lyric: 'ma' },
           ],
         },
       ],

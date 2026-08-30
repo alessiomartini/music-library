@@ -1,26 +1,16 @@
 /**
- * Structural validator for the engraved lead sheets.
+ * Structural validator for the chord charts.
  *
- * Catches the kinds of mistakes that are invisible in the data but obvious on
- * the staff: measures that don't add up to a full bar, pitches VexFlow can't
- * render, chord symbols the transposer can't parse, melody notes outside a
- * singable range, and bass notes low enough to collide with the lyric line.
+ * Catches the mistakes that are invisible in the data but obvious once a bar
+ * is laid out: measures that don't add up, duration codes nothing can space,
+ * chord symbols the transposer can't parse, and stray lyric fields.
  *
  * Run with:  npm run validate
  */
 import { songs } from '../src/data/songs';
 import { convertChord } from '../src/lib/theory';
-import type { LeadSheetNote, Song } from '../src/lib/types';
 
 const BEAT_VALUE: Record<string, number> = { w: 4, h: 2, q: 1, '8': 0.5, '16': 0.25, '32': 0.125 };
-const PITCH_RE = /^[a-g](#|b|n)?\/[0-9]$/;
-const STEPS = ['c', 'd', 'e', 'f', 'g', 'a', 'b'];
-
-/** Absolute diatonic position, for range comparisons. */
-function diatonic(pitch: string): number {
-  const [name, octave] = pitch.split('/');
-  return Number(octave) * 7 + STEPS.indexOf(name[0]);
-}
 
 function beats(duration: string): number | null {
   const dotted = duration.endsWith('d');
@@ -40,73 +30,9 @@ function report(song: string, where: string, message: string) {
   problems.push({ song, where, message });
 }
 
-// A singable melody range, and the depth past which a bass note grows enough
-// ledger lines to crowd the lyric line beneath the staff.
-const MELODY_LOW = diatonic('a/3');
-const MELODY_HIGH = diatonic('c/6');
-const BASS_LOW = diatonic('c/4');
-
-function checkVoice(
-  song: Song,
-  where: string,
-  voice: 'melody' | 'bass',
-  notes: LeadSheetNote[],
-  expectedBeats: number,
-) {
-  if (notes.length === 0) {
-    if (voice === 'melody') report(song.title, where, 'melody is empty');
-    return;
-  }
-
-  let total = 0;
-  for (const [i, n] of notes.entries()) {
-    const b = beats(n.duration);
-    if (b === null) {
-      report(song.title, where, `${voice}[${i}]: unknown duration "${n.duration}"`);
-      continue;
-    }
-    total += b;
-
-    if (!n.rest) {
-      if (!PITCH_RE.test(n.pitch)) {
-        report(song.title, where, `${voice}[${i}]: malformed pitch "${n.pitch}"`);
-      } else {
-        const d = diatonic(n.pitch);
-        if (voice === 'melody' && (d < MELODY_LOW || d > MELODY_HIGH)) {
-          report(song.title, where, `${voice}[${i}]: pitch ${n.pitch} outside a singable range`);
-        }
-        if (voice === 'bass' && d < BASS_LOW) {
-          report(song.title, where, `${voice}[${i}]: pitch ${n.pitch} sits too low under the staff`);
-        }
-      }
-    }
-
-    if (n.lyric !== undefined && n.lyric.trim() === '') {
-      report(song.title, where, `${voice}[${i}]: empty lyric string (drop the field instead)`);
-    }
-    if (voice === 'bass' && n.lyric) {
-      report(song.title, where, `${voice}[${i}]: lyric on a bass note is never rendered`);
-    }
-    if (n.rest && n.lyric) {
-      report(song.title, where, `${voice}[${i}]: lyric on a rest is never sung`);
-    }
-
-    if (n.chord) {
-      const converted = convertChord(n.chord, 0, 'en', false);
-      if (!converted || converted === n.chord.slice(0, 0)) {
-        report(song.title, where, `${voice}[${i}]: chord "${n.chord}" did not convert`);
-      }
-    }
-  }
-
-  if (Math.abs(total - expectedBeats) > 1e-9) {
-    report(song.title, where, `${voice} adds up to ${total} beats, expected ${expectedBeats}`);
-  }
-}
-
 for (const song of songs) {
   if (!song.leadSheet?.length) {
-    report(song.title, '-', 'no lead sheet');
+    report(song.title, '-', 'no chart');
     continue;
   }
 
@@ -116,15 +42,39 @@ for (const song of songs) {
   for (const system of song.leadSheet) {
     system.measures.forEach((measure, i) => {
       const where = `${system.label} m${i + 1}`;
-      checkVoice(song, where, 'melody', measure.melody, expectedBeats);
-      if (measure.bass.length > 0) {
-        checkVoice(song, where, 'bass', measure.bass, expectedBeats);
+
+      if (measure.melody.length === 0) {
+        report(song.title, where, 'bar is empty');
+        return;
+      }
+
+      let total = 0;
+      for (const [j, n] of measure.melody.entries()) {
+        const b = beats(n.duration);
+        if (b === null) {
+          report(song.title, where, `[${j}]: unknown duration "${n.duration}"`);
+          continue;
+        }
+        total += b;
+
+        if (n.lyric !== undefined && n.lyric.trim() === '') {
+          report(song.title, where, `[${j}]: empty lyric string (drop the field instead)`);
+        }
+        if (n.rest && n.lyric) {
+          report(song.title, where, `[${j}]: lyric on a rest is never sung`);
+        }
+        if (n.chord && convertChord(n.chord, 0, 'en', false) === n.chord.slice(0, 0)) {
+          report(song.title, where, `[${j}]: chord "${n.chord}" did not convert`);
+        }
+      }
+
+      if (Math.abs(total - expectedBeats) > 1e-9) {
+        report(song.title, where, `adds up to ${total} beats, expected ${expectedBeats}`);
       }
     });
   }
 }
 
-// Summary
 const bySong = new Map<string, Problem[]>();
 for (const p of problems) {
   if (!bySong.has(p.song)) bySong.set(p.song, []);
@@ -140,7 +90,7 @@ for (const song of songs) {
       0,
     ) ?? 0;
   const status = found.length === 0 ? 'OK  ' : 'FAIL';
-  console.log(`${status} ${song.title}  (${measures} measures, ${lyrics} lyric syllables)`);
+  console.log(`${status} ${song.title}  (${measures} bars, ${lyrics} lyric syllables)`);
   for (const p of found) console.log(`       ${p.where}: ${p.message}`);
 }
 
