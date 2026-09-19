@@ -431,9 +431,12 @@ vocal melody + lyrics      harmony
              application Score
 ```
 
-The previously obtained MusicXML may remain in the offline repository as an
-optional comparison or inspection source. It does not drive the standard
-workflow and is not required for the first published asset.
+The `Your Song` reference workflow is explicitly restarted from the recording
+itself. The previously obtained MusicXML is not the source of truth for the
+new reference score and must not drive its transcription, curation, or golden
+asset. It may remain in the separate offline repository only as an optional
+comparison, inspection, or historical reference artifact. The new reference
+asset must be derived from the audio-first workflow above.
 
 ### Web application
 
@@ -1391,6 +1394,8 @@ The following decisions remain unresolved:
 24. How should accompaniment be represented when harmony is ambiguous?
 25. Should an instrumental stem always be separated into additional
    sub-stems, or only when the reference score needs them?
+26. How should audio-derived scores be validated against the recording and
+   curated musical expectations?
 
 The following are resolved architectural decisions, not open questions:
 
@@ -1443,48 +1448,59 @@ boundary.
 
 ### Phase 3
 
-Establish the audio-first offline workflow for source recordings, including
-source separation and inspectable provenance/intermediate artifacts.
+Prepare the audio-first offline workflow for source recordings, including
+inspectable provenance and intermediate artifacts.
 
 ### Phase 4
 
-Transcribe and curate the reference vocal melody, timing, rests, and lyrics
-from separated audio, with human verification.
+Separate the reference recording into a vocal stem and accompaniment or
+instrumental stem(s), using a tool and strategy that remain open questions.
 
 ### Phase 5
+
+Transcribe and curate the reference vocal melody, timing, and musically
+meaningful rests from the separated vocal audio, with human verification.
+
+### Phase 6
+
+Recognize and align lyrics to the verified vocal notes as a separate curated
+step. Automatic lyric recognition is not assumed to solve sung-lyric
+alignment.
+
+### Phase 7
 
 Extract and curate independent harmony from accompaniment material, including
 root, semantic quality, optional slash bass, timing, and human correction.
 
-### Phase 6
+### Phase 8
 
 Create and validate the first golden normalized JSON asset for the voice,
 lyrics, harmony, and meter scope.
 
-### Phase 7
+### Phase 9
 
 Integrate the first normalized asset into the web application and render the
 initial voice-centered score view.
 
-### Phase 8
+### Phase 10
 
 Implement score transposition for vocal melody, harmony roots, slash bass,
 and displayed key.
 
-### Phase 9
+### Phase 11
 
 Build vocal analysis, including range and duration-weighted pitch
 distribution.
 
-### Phase 10
+### Phase 12
 
 Build the local user vocal profile.
 
-### Phase 11
+### Phase 13
 
 Build automatic key recommendation with explainable UI output.
 
-### Phase 12
+### Phase 14
 
 Migrate remaining songs incrementally, extend the offline workflow as needed,
 and remove the legacy score representation only after all required songs and
