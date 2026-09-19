@@ -334,8 +334,24 @@ All musical parts and harmony events must live on one shared musical timeline:
 This common timeline is a decided architectural requirement. It is necessary
 for simultaneous parts, harmony alignment, transposition, rendering, vocal
 analysis, future playback or alignment, and measure and rhythmic validation.
-The exact time units and encoding remain design questions, but the existence
-of the shared timeline is not an open question.
+The Step 1.0 timeline decisions are:
+
+- time is measured in integer ticks;
+- one quarter note equals 960 ticks (`PPQ = 960`);
+- every event has an absolute `start` position and a positive integer
+  `duration` in ticks;
+- events in different parts or in the harmony layer are simultaneous when
+  their absolute positions overlap, without requiring them to share array
+  indexes;
+- measures have explicit absolute start positions and durations derived from
+  the score's time-signature metadata;
+- a pickup measure is represented by its shorter explicit duration and an
+  absolute start at tick zero; it is not padded with synthetic silence.
+
+All parts and harmony events therefore use the same integer coordinate system.
+Measure-relative positions may be derived for notation, but are not an
+alternative storage coordinate. Floating-point seconds are not part of the
+symbolic score model.
 
 ## 4. Proposed Future Architecture
 
@@ -585,6 +601,12 @@ The exact JSON schema is still a design task, and the exact offline conversion
 workflow is still a design/implementation task. MusicXML files should not
 normally be committed as published score assets in the frontend repository.
 
+The normalized score uses the same integer-tick representation at rest in JSON
+and at runtime. JSON may use compact scalar fields for tick positions and
+durations, but it must not encode symbolic time as floating-point seconds.
+The exact property names and asset envelope remain an implementation concern
+for the next phase; the timing semantics are fixed by this document.
+
 ## 6. Internal TypeScript Model
 
 The future application should introduce a normalized internal score model.
@@ -592,23 +614,25 @@ This is a design proposal, not an implementation of `src/lib/types.ts`.
 
 ### Proposed concepts
 
-`Score` would likely contain:
+`Score` contains:
 
 - original key;
-- time signature and measure structure;
+- a fixed ticks-per-quarter-note value of 960;
+- explicit time-signature metadata and a measure list;
 - tempo;
 - parts;
 - an independent timed harmony layer;
 - metadata;
 - possibly source and editorial information.
 
-`ScorePart` would likely contain:
+`ScorePart` contains:
 
 - stable `id`;
 - display `name`;
 - semantic `role`;
 - ordered timed events;
-- visibility or display metadata where appropriate.
+- optional non-semantic display metadata only where needed by the renderer
+  adapter.
 
 Potential semantic roles include:
 
@@ -638,18 +662,55 @@ Score
 ```
 
 All parts and harmony events use the shared musical timeline described above.
-The exact internal representation of time is still to be designed.
+The first implementation treats each `ScorePart` as an ordered monophonic
+event stream: events in one part must have positive durations and must not
+overlap. Simultaneous events are supported across parts and between a part and
+harmony. Polyphonic lanes within one part are deferred rather than encoded
+implicitly.
 
-`ScoreNote` would likely contain:
+The event model has two discriminated variants:
 
-- pitch;
-- duration;
-- rest state;
-- `lyrics[]`, when applicable to a part that carries lyrics, particularly the
-  voice;
-- tie information;
-- timing position or offset;
-- notation information required by the application.
+- a pitched note event with an integer `pitch` and optional `lyrics[]`;
+- a rest event with no pitch or lyrics.
+
+Both variants carry an absolute `start` tick and positive integer `duration`.
+Zero-duration events are not allowed. An event may span a measure boundary;
+measure boundaries do not split its musical meaning.
+
+Pitch is represented as a sounding concert-pitch MIDI-style integer: MIDI note
+number 60 is middle C (C4). This is an internal numeric pitch identity, not a
+requirement to use MIDI files or MusicXML pitch fields at runtime. It supports
+ordering, chromatic transposition, vocal analysis, and deterministic
+comparison. Renderer adapters derive a notated name and octave from the
+integer plus score/key spelling policy. The first model does not represent
+instrument-specific transposition; all pitches are sounding pitches.
+
+Notation-level ties are represented explicitly on note events with a tie
+continuation identity and start/stop role. A single event with a long duration
+is preferred for one sustained semantic note. Tied events are used only when
+notation or a measure/voice boundary requires segmentation; adjacent segments
+in a tie chain must have the same pitch and contiguous time. A tie may cross a
+measure boundary. A rest cannot participate in a tie.
+
+`lyrics[]` is allowed only on pitched events in a vocal part. Each lyric
+element carries the already-resolved semantic fields `verse`, optional `text`,
+syllabic state, melisma state, and optional elision; presentation fields such
+as font, placement, and line spacing remain renderer concerns.
+
+### Minimum notation scope for the first score implementation
+
+The first score model supports pitched notes, rests, integer-tick durations,
+explicit measures, one score-level time signature, one initial clef per
+part where rendering needs it, one score-level key signature, one constant
+tempo, dotted rhythms represented by their exact tick duration, and explicit
+notation ties.
+
+The first implementation defers tuplets, repeats and jumps, mid-score
+time-signature changes, tempo changes, grace notes, fermatas, beam-group
+preservation, and other advanced MusicXML presentation details. These are not
+implicitly supported merely because MusicXML can represent them. Quantization
+from source material remains an offline curation concern and must produce
+valid integer ticks.
 
 Songs should also have a separate media association, conceptually along these
 lines:
@@ -678,19 +739,22 @@ The frontend should decide whether and how to embed each item, with a normal
 external-link fallback when embedding is unsupported. This media system is
 planned and is not part of the current `Song` type or application.
 
-`HarmonyEvent` would likely contain:
+`HarmonyEvent` contains:
 
-- time position;
-- duration or end position, if needed;
-- root;
+- absolute start position;
+- positive duration;
+- normalized chromatic root;
 - chord quality;
 - optional slash-bass note;
 - any notation-specific interpretation.
 
 `HarmonyEvent` belongs to the independent `Score.harmony[]` layer, not to
-`Score.parts[]`. The exact names, units, and timing representation remain
-subject to design work. The key architectural principle is that musical
-semantics must be explicit. A future score should not force a structure such as:
+`Score.parts[]`. Its root and optional slash bass are normalized pitch-class
+integers in the range 0-11 and transpose modulo twelve; its quality is a
+normalized quality value compatible with the existing `ParsedChord` quality
+strings. English and Italian names are display formatting choices. The key
+architectural principle is that musical semantics must be explicit. A future
+score should not force a structure such as:
 
 ```ts
 note.chord = 'Dm7';
@@ -707,6 +771,24 @@ The internal model must remain compatible with the current chord features:
 - sharps and flats must be preserved or deterministically respelled;
 - slash chords must remain supported;
 - transposition must operate on pitches and harmony consistently.
+
+### Song, score, media, and local-preference boundaries
+
+The future domain boundaries are explicit:
+
+- `Song` owns stable song metadata, editorial metadata, external links, and
+  the association to its score and media; it does not own user-local state.
+- `Score` owns independently analyzable and transposable musical content:
+  parts, timed note/rest events, measures, and independent harmony.
+- `Media` owns the selected original recording and cover references, each with
+  one external URL and provider information as defined elsewhere in this
+  document.
+- User-local preferences such as transposition, notation choice, vocal
+  profile, and feedback notes remain outside `Song`, persisted through the
+  browser-local preference/storage boundary.
+
+The score must be usable by transposition and analysis without rendering and
+must not depend on React, DOM nodes, iframe markup, or other UI details.
 
 ## 7. Rendering Strategy
 
@@ -1137,9 +1219,12 @@ The reference song is a validation or golden asset for the new architecture,
 not authorization to mass-convert all existing songs before the model,
 rendering, transposition, and analysis have been checked.
 
-**OPEN QUESTION:** Should the migration use an explicit legacy adapter for
-the current `LeadSheetSystem` model, or should all existing songs be converted
-before the new score renderer is introduced?
+The migration will use an explicit legacy adapter / parallel representation
+while the new score model is introduced. The adapter is a compatibility
+boundary for the existing `LeadSheetSystem` data and current chart; it is not
+permission to infer pitches or silently convert incomplete legacy charts.
+Existing songs remain on the legacy representation until each song is
+explicitly migrated and validated.
 
 **OPEN QUESTION:** Should old charts remain displayable indefinitely as a
 fallback, or should the legacy format have a defined removal milestone?
@@ -1212,32 +1297,28 @@ The following decisions remain unresolved:
 1. What exact JSON schema should be used for the normalized score?
 2. How should colors and styles of parts be represented?
 3. How much of OpenSheetMusicDisplay should be exposed or customized?
-4. How should rhythmic quantization be handled?
-5. How should tuplets, dotted rhythms, ties, pickup measures, repeats, and
-   other advanced notation be handled?
-6. Should the first user vocal profile contain only a full range, or full plus
+4. How should rhythmic quantization be handled in the offline curation
+   workflow before values are converted to the fixed tick grid?
+5. Should the first user vocal profile contain only a full range, or full plus
    comfortable range?
-7. What exact cost function should be used for key recommendation?
-8. Should instrumental parts be rendered by default or be optional?
-9. How should existing songs be migrated?
-10. Should the offline transcription project be a separate repository?
-11. Should the normalized score preserve all MusicXML notation details, or only
+6. What exact cost function should be used for key recommendation?
+7. Should instrumental parts be rendered by default or be optional?
+8. Should the offline transcription project be a separate repository?
+9. Should the normalized score preserve all MusicXML notation details, or only
    the subset required by the application's supported views?
-12. Should analysis use sounding pitch, notated pitch, or an explicit
-   transposition/instrument model for non-concert-pitch instruments?
-13. How should editorial corrections and source provenance be stored?
-14. Which providers should be supported for embedded playback in the first
+10. How should editorial corrections and source provenance be stored?
+11. Which providers should be supported for embedded playback in the first
    implementation?
-15. How should unsupported or non-embeddable URLs fall back to normal external
+12. How should unsupported or non-embeddable URLs fall back to normal external
    links?
-16. Should the original recording always be shown as an embedded player, or
+13. Should the original recording always be shown as an embedded player, or
    only when the provider supports embedding?
-17. Should cover ordering be manually specified?
-18. Should covers have optional semantic tags such as acoustic, live, or
+14. Should cover ordering be manually specified?
+15. Should covers have optional semantic tags such as acoustic, live, or
    instrumental?
-19. Should embeds be lazy-loaded, click-to-load, or always visible when
+16. Should embeds be lazy-loaded, click-to-load, or always visible when
    technically possible?
-20. Should `platform` be explicitly stored, or inferred from the URL during
+17. Should `platform` be explicitly stored, or inferred from the URL during
    parsing?
 
 The following are resolved architectural decisions, not open questions:
@@ -1249,6 +1330,19 @@ The following are resolved architectural decisions, not open questions:
   consumes JSON and does not require runtime MusicXML parsing.
 - Harmony is an independent timed layer, not a `ScorePart`, and all parts and
   harmony events share one musical timeline.
+- The shared timeline uses integer ticks at 960 ticks per quarter note, with
+  absolute event positions, positive durations, explicit measures, and
+  pickup measures represented by their actual shorter duration.
+- Score events are pitched-note or rest variants; zero-duration events are
+  invalid, and the first implementation uses non-overlapping monophonic
+  streams within each part.
+- Pitches are sounding concert-pitch MIDI-style integers; ties are explicit
+  notation relationships and may cross measure boundaries.
+- The first notation scope supports notes, rests, dotted durations, explicit
+  measures, initial clefs, a score-level key signature, a constant tempo, and
+  ties; advanced notation listed above is deferred.
+- A temporary legacy adapter keeps the existing `LeadSheetSystem` and chart
+  usable while songs are migrated explicitly in later phases.
 - The normalized lyric model supports lyric attachment to vocal notes,
   syllabification, melismas, multiple lyric lines, multiple lyric elements per
   note, and elisions.
