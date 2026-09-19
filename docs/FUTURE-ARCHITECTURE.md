@@ -750,11 +750,12 @@ planned and is not part of the current `Song` type or application.
 
 `HarmonyEvent` belongs to the independent `Score.harmony[]` layer, not to
 `Score.parts[]`. Its root and optional slash bass are normalized pitch-class
-integers in the range 0-11 and transpose modulo twelve; its quality is a
-normalized quality value compatible with the existing `ParsedChord` quality
-strings. English and Italian names are display formatting choices. The key
-architectural principle is that musical semantics must be explicit. A future
-score should not force a structure such as:
+integers in the range 0-11 and transpose modulo twelve; its quality is an
+explicit semantic value such as `major`, `minor`, or `dominant7`. A theory or
+renderer adapter may map that value to the existing chord-symbol quality
+strings for display. English and Italian names are display formatting choices.
+The key architectural principle is that musical semantics must be explicit. A
+future score should not force a structure such as:
 
 ```ts
 note.chord = 'Dm7';

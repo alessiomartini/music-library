@@ -27,7 +27,7 @@ function createScore(overrides: Partial<Score> = {}): Score {
     measures: [{ start: 0, duration: SCORE_PPQ * 4 }],
     tempo: { bpm: 96 },
     parts: [{ id: 'voice', name: 'Voice', role: 'voice', events: voiceEvents }],
-    harmony: [{ start: 0, duration: SCORE_PPQ * 2, root: 0, quality: '' }],
+    harmony: [{ start: 0, duration: SCORE_PPQ * 2, root: 0, quality: 'major' }],
     ...overrides,
   };
 }
@@ -116,8 +116,8 @@ describe('symbolic score model', () => {
     const score = createScore({
       parts: [{ id: 'voice', name: 'Voice', role: 'voice', events: voiceEvents }],
       harmony: [
-        { start: 240, duration: 240, root: 7, quality: '7' },
-        { start: 480, duration: 960, root: 9, quality: 'm', slashBass: 4 },
+        { start: 240, duration: 240, root: 7, quality: 'dominant7' },
+        { start: 480, duration: 960, root: 9, quality: 'minor', slashBass: 4 },
       ],
     });
 
@@ -127,65 +127,92 @@ describe('symbolic score model', () => {
   });
 
   it('accepts supported chord qualities and rejects display-specific or unknown qualities', () => {
-  expect(isValidScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'm7b5' }] }))).toBe(true);
-  expect(isValidScore(createScore({ harmony: [{ start: 0, duration: 480, root: 9, quality: '7sus4' }] }))).toBe(true);
-  expect(
-    validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'minor' as never }] })),
-  ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
-  expect(
-    validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'Cmin' as never }] })),
-  ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
+    const supportedQualities = [
+      'major',
+      'minor',
+      'dominant7',
+      'sus4',
+      'dominant7sus4',
+      'major6',
+      'major7',
+      'minor7',
+      'halfDiminished7',
+      'augmented',
+    ] as const;
+    supportedQualities.forEach((quality) => {
+      expect(isValidScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality }] }))).toBe(true);
+    });
+    expect(
+      validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'm7b5' as never }] })),
+    ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
+    expect(
+      validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: '' as never }] })),
+    ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
   });
 
   it('requires ordered non-overlapping harmony events', () => {
-  const sequential = createScore({
-    harmony: [
-      { start: 0, duration: 480, root: 0, quality: '' },
-      { start: 480, duration: 480, root: 7, quality: '7' },
-    ],
-  });
-  expect(isValidScore(sequential)).toBe(true);
+    const sequential = createScore({
+      harmony: [
+        { start: 0, duration: 480, root: 0, quality: 'major' },
+        { start: 480, duration: 480, root: 7, quality: 'dominant7' },
+      ],
+    });
+    expect(isValidScore(sequential)).toBe(true);
 
-  const overlapping = createScore({
-    harmony: [
-      { start: 0, duration: 600, root: 0, quality: '' },
-      { start: 480, duration: 480, root: 7, quality: '7' },
-    ],
-  });
-  expect(validateScore(overlapping).some((issue) => issue.message.includes('must not overlap'))).toBe(true);
+    const overlapping = createScore({
+      harmony: [
+        { start: 0, duration: 600, root: 0, quality: 'major' },
+        { start: 480, duration: 480, root: 7, quality: 'dominant7' },
+      ],
+    });
+    expect(validateScore(overlapping).some((issue) => issue.message.includes('must not overlap'))).toBe(true);
   });
 
   it('validates full measure durations while allowing a shorter pickup first measure', () => {
-  const threeFour = createScore({
-    timeSignature: { numerator: 3, denominator: 4 },
-    measures: [
-      { start: 0, duration: SCORE_PPQ * 3 },
-      { start: SCORE_PPQ * 3, duration: SCORE_PPQ * 3 },
-    ],
-  });
-  expect(isValidScore(threeFour)).toBe(true);
+    const threeFour = createScore({
+      timeSignature: { numerator: 3, denominator: 4 },
+      measures: [
+        { start: 0, duration: SCORE_PPQ * 3 },
+        { start: SCORE_PPQ * 3, duration: SCORE_PPQ * 3 },
+      ],
+    });
+    expect(isValidScore(threeFour)).toBe(true);
 
-  const sixEight = createScore({
-    timeSignature: { numerator: 6, denominator: 8 },
-    measures: [{ start: 0, duration: SCORE_PPQ * 3 }],
-  });
-  expect(isValidScore(sixEight)).toBe(true);
+    const sixEight = createScore({
+      timeSignature: { numerator: 6, denominator: 8 },
+      measures: [{ start: 0, duration: SCORE_PPQ * 3 }],
+    });
+    expect(isValidScore(sixEight)).toBe(true);
 
-  const pickup = createScore({
-    measures: [
-      { start: 0, duration: SCORE_PPQ },
-      { start: SCORE_PPQ, duration: SCORE_PPQ * 4 },
-    ],
-  });
-  expect(isValidScore(pickup)).toBe(true);
+    const pickup = createScore({
+      measures: [
+        { start: 0, duration: SCORE_PPQ },
+        { start: SCORE_PPQ, duration: SCORE_PPQ * 4 },
+      ],
+    });
+    expect(isValidScore(pickup)).toBe(true);
 
-  const invalidNormalMeasure = createScore({
-    measures: [
-      { start: 0, duration: SCORE_PPQ * 4 },
-      { start: SCORE_PPQ * 4, duration: SCORE_PPQ * 2 },
-    ],
+    const invalidNormalMeasure = createScore({
+      measures: [
+        { start: 0, duration: SCORE_PPQ * 4 },
+        { start: SCORE_PPQ * 4, duration: SCORE_PPQ * 2 },
+      ],
+    });
+    expect(validateScore(invalidNormalMeasure).some((issue) => issue.path === 'measures[1].duration')).toBe(true);
+
+    const gap = createScore({
+      measures: [
+        { start: 0, duration: SCORE_PPQ * 4 },
+        { start: SCORE_PPQ * 5, duration: SCORE_PPQ * 4 },
+      ],
+    });
+    expect(validateScore(gap).some((issue) => issue.path === 'measures[1].start')).toBe(true);
   });
-  expect(validateScore(invalidNormalMeasure).some((issue) => issue.path === 'measures[1].duration')).toBe(true);
+
+  it('requires at least one measure', () => {
+    const score = createScore({ measures: [] });
+
+    expect(validateScore(score)).toContainEqual(expect.objectContaining({ path: 'measures' }));
   });
 
   it('supports multiple lyrics on one note', () => {

@@ -65,8 +65,18 @@ export interface ScoreTempo {
   bpm: number;
 }
 
-/** Normalized quality tokens; the empty token represents a major triad. */
-export type ChordQuality = '' | 'm' | '7' | 'sus4' | '7sus4' | '6' | 'maj7' | 'm7' | 'm7b5' | 'aug';
+/** Semantic chord qualities; display-specific suffixes belong to theory/presentation code. */
+export type ChordQuality =
+  | 'major'
+  | 'minor'
+  | 'dominant7'
+  | 'sus4'
+  | 'dominant7sus4'
+  | 'major6'
+  | 'major7'
+  | 'minor7'
+  | 'halfDiminished7'
+  | 'augmented';
 
 export interface HarmonyEvent extends TimedEvent {
   root: PitchClass;
@@ -102,8 +112,9 @@ export function isValidPitchClass(value: unknown): value is PitchClass {
 }
 
 export function isValidChordQuality(value: unknown): value is ChordQuality {
-  return value === '' || value === 'm' || value === '7' || value === 'sus4' || value === '7sus4' || value === '6' ||
-    value === 'maj7' || value === 'm7' || value === 'm7b5' || value === 'aug';
+  return value === 'major' || value === 'minor' || value === 'dominant7' || value === 'sus4' ||
+    value === 'dominant7sus4' || value === 'major6' || value === 'major7' || value === 'minor7' ||
+    value === 'halfDiminished7' || value === 'augmented';
 }
 
 export function validateScore(score: unknown): ScoreValidationIssue[] {
@@ -182,6 +193,10 @@ function validateMeasures(value: unknown, timeSignature: unknown, issues: ScoreV
     issue(issues, 'measures', 'must be an array');
     return;
   }
+  if (value.length === 0) {
+    issue(issues, 'measures', 'must contain at least one measure');
+    return;
+  }
   let previousEnd = 0;
   const expectedDuration = isRecord(timeSignature) ? measureDuration(timeSignature) : null;
   value.forEach((measure, index) => {
@@ -195,16 +210,12 @@ function validateMeasures(value: unknown, timeSignature: unknown, issues: ScoreV
       if (index === 0 && measure.start !== 0) {
         issue(issues, `${path}.start`, 'the first measure must start at zero');
       }
-      if (measure.start < previousEnd) {
-        issue(issues, path, 'measures must not overlap');
+      if (index > 0 && measure.start !== previousEnd) {
+        issue(issues, `${path}.start`, 'measures must be contiguous');
       }
       if (expectedDuration !== null) {
         const isPickup = index === 0 && measure.duration < expectedDuration;
-        if (isPickup) {
-          if (measure.duration >= expectedDuration) {
-            issue(issues, `${path}.duration`, 'a pickup measure must be shorter than a full measure');
-          }
-        } else if (measure.duration !== expectedDuration) {
+        if (!isPickup && measure.duration !== expectedDuration) {
           issue(issues, `${path}.duration`, `must be ${expectedDuration} ticks for the score time signature`);
         }
       }
