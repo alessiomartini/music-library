@@ -27,7 +27,7 @@ function createScore(overrides: Partial<Score> = {}): Score {
     measures: [{ start: 0, duration: SCORE_PPQ * 4 }],
     tempo: { bpm: 96 },
     parts: [{ id: 'voice', name: 'Voice', role: 'voice', events: voiceEvents }],
-    harmony: [{ start: 0, duration: SCORE_PPQ * 2, root: 0, quality: 'maj' }],
+    harmony: [{ start: 0, duration: SCORE_PPQ * 2, root: 0, quality: '' }],
     ...overrides,
   };
 }
@@ -126,6 +126,68 @@ describe('symbolic score model', () => {
     expect(score.harmony[1].start).toBe(480);
   });
 
+  it('accepts supported chord qualities and rejects display-specific or unknown qualities', () => {
+  expect(isValidScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'm7b5' }] }))).toBe(true);
+  expect(isValidScore(createScore({ harmony: [{ start: 0, duration: 480, root: 9, quality: '7sus4' }] }))).toBe(true);
+  expect(
+    validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'minor' as never }] })),
+  ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
+  expect(
+    validateScore(createScore({ harmony: [{ start: 0, duration: 480, root: 0, quality: 'Cmin' as never }] })),
+  ).toContainEqual(expect.objectContaining({ path: 'harmony[0].quality' }));
+  });
+
+  it('requires ordered non-overlapping harmony events', () => {
+  const sequential = createScore({
+    harmony: [
+      { start: 0, duration: 480, root: 0, quality: '' },
+      { start: 480, duration: 480, root: 7, quality: '7' },
+    ],
+  });
+  expect(isValidScore(sequential)).toBe(true);
+
+  const overlapping = createScore({
+    harmony: [
+      { start: 0, duration: 600, root: 0, quality: '' },
+      { start: 480, duration: 480, root: 7, quality: '7' },
+    ],
+  });
+  expect(validateScore(overlapping).some((issue) => issue.message.includes('must not overlap'))).toBe(true);
+  });
+
+  it('validates full measure durations while allowing a shorter pickup first measure', () => {
+  const threeFour = createScore({
+    timeSignature: { numerator: 3, denominator: 4 },
+    measures: [
+      { start: 0, duration: SCORE_PPQ * 3 },
+      { start: SCORE_PPQ * 3, duration: SCORE_PPQ * 3 },
+    ],
+  });
+  expect(isValidScore(threeFour)).toBe(true);
+
+  const sixEight = createScore({
+    timeSignature: { numerator: 6, denominator: 8 },
+    measures: [{ start: 0, duration: SCORE_PPQ * 3 }],
+  });
+  expect(isValidScore(sixEight)).toBe(true);
+
+  const pickup = createScore({
+    measures: [
+      { start: 0, duration: SCORE_PPQ },
+      { start: SCORE_PPQ, duration: SCORE_PPQ * 4 },
+    ],
+  });
+  expect(isValidScore(pickup)).toBe(true);
+
+  const invalidNormalMeasure = createScore({
+    measures: [
+      { start: 0, duration: SCORE_PPQ * 4 },
+      { start: SCORE_PPQ * 4, duration: SCORE_PPQ * 2 },
+    ],
+  });
+  expect(validateScore(invalidNormalMeasure).some((issue) => issue.path === 'measures[1].duration')).toBe(true);
+  });
+
   it('supports multiple lyrics on one note', () => {
     const score = createScore({
       parts: [
@@ -150,6 +212,32 @@ describe('symbolic score model', () => {
     });
 
     expect(isValidScore(score)).toBe(true);
+  });
+
+  it('allows lyric continuation without text but rejects meaningless lyric objects', () => {
+    const continuation = createScore({
+      parts: [
+        {
+          id: 'voice',
+          name: 'Voice',
+          role: 'voice',
+          events: [{ kind: 'note', start: 0, duration: 480, pitch: 60, lyrics: [{ verse: '1', melisma: 'continue' }] }],
+        },
+      ],
+    });
+    expect(isValidScore(continuation)).toBe(true);
+
+    const meaningless = createScore({
+      parts: [
+        {
+          id: 'voice',
+          name: 'Voice',
+          role: 'voice',
+          events: [{ kind: 'note', start: 0, duration: 480, pitch: 60, lyrics: [{ verse: '1' }] }],
+        },
+      ],
+    });
+    expect(validateScore(meaningless).some((issue) => issue.message.includes('text or a melisma'))).toBe(true);
   });
 
   it('validates tie chains across event and measure boundaries', () => {

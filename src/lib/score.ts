@@ -65,9 +65,12 @@ export interface ScoreTempo {
   bpm: number;
 }
 
+/** Normalized quality tokens; the empty token represents a major triad. */
+export type ChordQuality = '' | 'm' | '7' | 'sus4' | '7sus4' | '6' | 'maj7' | 'm7' | 'm7b5' | 'aug';
+
 export interface HarmonyEvent extends TimedEvent {
   root: PitchClass;
-  quality: string;
+  quality: ChordQuality;
   slashBass?: PitchClass;
 }
 
@@ -98,6 +101,11 @@ export function isValidPitchClass(value: unknown): value is PitchClass {
   return isInteger(value) && value >= 0 && value <= 11;
 }
 
+export function isValidChordQuality(value: unknown): value is ChordQuality {
+  return value === '' || value === 'm' || value === '7' || value === 'sus4' || value === '7sus4' || value === '6' ||
+    value === 'maj7' || value === 'm7' || value === 'm7b5' || value === 'aug';
+}
+
 export function validateScore(score: unknown): ScoreValidationIssue[] {
   const issues: ScoreValidationIssue[] = [];
   if (!isRecord(score)) {
@@ -112,7 +120,7 @@ export function validateScore(score: unknown): ScoreValidationIssue[] {
   }
 
   validateTimeSignature(score.timeSignature, issues);
-  validateMeasures(score.measures, issues);
+  validateMeasures(score.measures, score.timeSignature, issues);
   validateTempo(score.tempo, issues);
 
   if (!Array.isArray(score.parts)) {
@@ -127,8 +135,18 @@ export function validateScore(score: unknown): ScoreValidationIssue[] {
   if (!Array.isArray(score.harmony)) {
     issue(issues, 'harmony', 'must be an array');
   } else {
+    let previousEvent: HarmonyEvent | undefined;
     score.harmony.forEach((event, index) => {
       validateHarmony(event, `harmony[${index}]`, issues);
+      if (isHarmonyEvent(event)) {
+        if (previousEvent && event.start < previousEvent.start) {
+          issue(issues, `harmony[${index}]`, 'events must be ordered by start');
+        }
+        if (previousEvent && event.start < eventEnd(previousEvent)) {
+          issue(issues, `harmony[${index}]`, 'harmony events must not overlap');
+        }
+        previousEvent = event;
+      }
     });
   }
 
@@ -159,12 +177,13 @@ function validateTimeSignature(value: unknown, issues: ScoreValidationIssue[]) {
   }
 }
 
-function validateMeasures(value: unknown, issues: ScoreValidationIssue[]) {
+function validateMeasures(value: unknown, timeSignature: unknown, issues: ScoreValidationIssue[]) {
   if (!Array.isArray(value)) {
     issue(issues, 'measures', 'must be an array');
     return;
   }
   let previousEnd = 0;
+  const expectedDuration = isRecord(timeSignature) ? measureDuration(timeSignature) : null;
   value.forEach((measure, index) => {
     const path = `measures[${index}]`;
     if (!isRecord(measure)) {
@@ -178,6 +197,16 @@ function validateMeasures(value: unknown, issues: ScoreValidationIssue[]) {
       }
       if (measure.start < previousEnd) {
         issue(issues, path, 'measures must not overlap');
+      }
+      if (expectedDuration !== null) {
+        const isPickup = index === 0 && measure.duration < expectedDuration;
+        if (isPickup) {
+          if (measure.duration >= expectedDuration) {
+            issue(issues, `${path}.duration`, 'a pickup measure must be shorter than a full measure');
+          }
+        } else if (measure.duration !== expectedDuration) {
+          issue(issues, `${path}.duration`, `must be ${expectedDuration} ticks for the score time signature`);
+        }
       }
       previousEnd = eventEnd({ start: measure.start, duration: measure.duration });
     }
@@ -279,8 +308,8 @@ function validateHarmony(value: unknown, path: string, issues: ScoreValidationIs
   if (!isValidPitchClass(value.root)) {
     issue(issues, `${path}.root`, 'must be an integer pitch class from 0 to 11');
   }
-  if (typeof value.quality !== 'string' || value.quality.trim() === '') {
-    issue(issues, `${path}.quality`, 'must be a non-empty string');
+  if (!isValidChordQuality(value.quality)) {
+    issue(issues, `${path}.quality`, 'must be a supported normalized chord quality');
   }
   if (value.slashBass !== undefined && !isValidPitchClass(value.slashBass)) {
     issue(issues, `${path}.slashBass`, 'must be an integer pitch class from 0 to 11');
@@ -312,6 +341,11 @@ function validateLyrics(value: unknown, path: string, issues: ScoreValidationIss
     }
     if (lyric.elision !== undefined && typeof lyric.elision !== 'string') {
       issue(issues, `${lyricPath}.elision`, 'must be a string when present');
+    }
+    const hasText = typeof lyric.text === 'string' && lyric.text.trim() !== '';
+    const hasMelisma = lyric.melisma === 'start' || lyric.melisma === 'continue' || lyric.melisma === 'stop';
+    if (!hasText && !hasMelisma) {
+      issue(issues, lyricPath, 'must contain text or a melisma continuation marker');
     }
   });
 }
@@ -385,6 +419,11 @@ function isScoreEvent(value: unknown): value is ScoreEvent {
   return isRecord(value) && (value.kind === 'note' || value.kind === 'rest');
 }
 
+function isHarmonyEvent(value: unknown): value is HarmonyEvent {
+  return isRecord(value) && isValidStart(value.start) && isPositiveInteger(value.duration) &&
+    isValidPitchClass(value.root) && isValidChordQuality(value.quality);
+}
+
 function isScoreNoteEvent(value: unknown): value is ScoreNoteEvent {
   return isRecord(value) && value.kind === 'note' && typeof value.tie === 'object' && value.tie !== null;
 }
@@ -403,6 +442,16 @@ function isInteger(value: unknown): value is number {
 
 function isPowerOfTwo(value: unknown): value is number {
   return isPositiveInteger(value) && (value & (value - 1)) === 0;
+}
+
+function measureDuration(timeSignature: Record<string, unknown>): number | null {
+  if (!isPositiveInteger(timeSignature.numerator) ||
+      !isPositiveInteger(timeSignature.denominator) ||
+      !isPowerOfTwo(timeSignature.denominator)) {
+    return null;
+  }
+  const duration = timeSignature.numerator * SCORE_PPQ * 4 / timeSignature.denominator;
+  return Number.isInteger(duration) ? duration : null;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
