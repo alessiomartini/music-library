@@ -122,6 +122,12 @@ interface LeadSheetNote {
 }
 ```
 
+The `Song` type contains song metadata, external links, and the current
+legacy lead-sheet payload. Browser-local preferences are separate from the
+song domain model: `src/lib/prefs.ts` defines the preference values and
+`src/lib/storage.ts` persists them through `localStorage`. Preferences are not
+fields of `Song`.
+
 Despite the names used in some comments and documentation, the current
 `LeadSheetNote` does **not** store pitch. It stores a duration code, optional
 rest flag, optional lyric text, and an optional chord symbol. The current
@@ -213,8 +219,7 @@ The current `LeadSheetChart` is **not a real notation renderer**. It does not
 draw a staff, notes, rests, clefs, key signatures, or actual pitched melody.
 There is no `vexflow` dependency in `package.json`, and the current component
 does not consume MusicXML or a notation document. The README describes an
-engraved/VexFlow lead sheet, but that description does not match the current
-implementation: the implementation is an HTML/CSS chord-and-lyric chart.
+HTML/CSS chord-and-lyric chart, which matches the current implementation.
 
 ### Current validation
 
@@ -311,7 +316,26 @@ Harmony should therefore be an independent timed layer. A note may coincide
 with a harmony event, but it should not own the harmony event as a property.
 This gives the future model enough information to represent voice, bass,
 instrumental material, and harmony independently while keeping them aligned on
-the same musical timeline.
+the same musical timeline. Harmony is an independent timed layer aligned to the
+same musical timeline as the score parts.
+
+All musical parts and harmony events must live on one shared musical timeline:
+
+```text
+                    shared musical timeline
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+           Voice          Bass       Instruments
+             │             │             │
+             └──────────── Harmony ──────┘
+```
+
+This common timeline is a decided architectural requirement. It is necessary
+for simultaneous parts, harmony alignment, transposition, rendering, vocal
+analysis, future playback or alignment, and measure and rhythmic validation.
+The exact time units and encoding remain design questions, but the existence
+of the shared timeline is not an open question.
 
 ## 4. Proposed Future Architecture
 
@@ -321,30 +345,41 @@ static web application.
 ### Offline transcription / curation pipeline
 
 ```text
-MP3 or MIDI
-  -> source separation when needed
-  -> audio-to-MIDI transcription
-  -> quantization / musical interpretation
-  -> harmony analysis
-  -> MusicXML generation
-  -> validation
-  -> human correction / curation
-  -> final score asset
+MIDI / MP3
+    ↓
+offline transcription / curation
+    ↓
+MusicXML
+    ↓
+normalization / conversion
+    ↓
+JSON score asset
+    ↓
+human verification / validation
+    ↓
+commit JSON to web repository
 ```
 
 The exact steps depend on whether MIDI is already available. The output of
-this process should be a curated symbolic score asset, not an assumption that
-an automatic transcription is perfect.
+this process should be a curated normalized JSON score asset, not an
+assumption that an automatic transcription is perfect. MusicXML is an
+intermediate/local working artifact and should normally remain in the separate
+offline project.
 
 ### Web application
 
 ```text
-MusicXML / score asset
-  -> parser / normalization
-  -> internal TypeScript score model
-  -> transposition
-  -> analysis
-  -> rendering
+JSON score asset
+    ↓
+load / parse
+    ↓
+internal score model
+    ↓
+transposition
+    ↓
+analysis
+    ↓
+rendering
 ```
 
 The web application should remain fully static. Heavy audio transcription,
@@ -353,12 +388,87 @@ browser. Python tooling for those tasks should live in a separate project,
 repository, or clearly separated tooling environment and should not become
 part of the browser bundle.
 
-The frontend should consume prepared score assets and perform lightweight
-parsing, normalization, analysis, transposition, and display work.
+The frontend should consume normalized JSON score assets and perform
+lightweight loading, parsing, analysis, transposition, and display work. The
+browser should not need a MusicXML parser merely to display a published song.
+
+The web repository contains the React application, TypeScript source,
+normalized JSON score assets, song metadata, media URL/provider metadata,
+validation code, and UI. The separate offline transcription/curation project
+contains Python code, audio, MIDI, MusicXML working files, transcription
+models/tools, intermediate artifacts, correction workflow, and conversion from
+MusicXML to application JSON. Large models, audio files, generated
+intermediate files, and local working MusicXML should not normally be placed
+in the frontend repository.
+
+### Selected recordings and covers
+
+Each song should be able to reference media independently of its musical
+score. The planned model associates each song with exactly one selected
+original/reference recording and zero or more selected covers. These references
+exist so that the user can easily access a recording of the original song and
+interesting interpretations curated by the project author.
+
+The structural rule is:
+
+```text
+Song
+└── media
+    ├── original: one media item
+    └── covers: array of media items
+```
+
+Each media item represents one recording and contains exactly one external URL.
+The original may contain a title and/or description when useful. Each cover
+should identify its artist and may also contain a title, description, or note.
+The original does not need a separate artist field because its artist is
+already available from `Song.artist`; when a `MediaItem` represents a cover,
+artist information is required.
+Every item also contains normalized provider/platform information when that
+information is needed to determine how it can be embedded. A cover may, for
+example, be described as an acoustic cover, live version, piano arrangement,
+vocal cover, or unusual interpretation; these are editorial examples, not
+mandatory semantic fields.
+
+The original recording is a single selected reference recording. The data model
+must not contain multiple original recordings unless a future design explicitly
+changes this requirement. A cover must not contain separate Spotify, YouTube,
+Instagram, or other platform links for the same recording.
+
+When a provider supports embedding, the preferred experience is to play or
+watch the original recording or cover inside the website. The application
+should determine how to render an item from its normalized provider/type. The
+model should contain URL and provider information, not raw iframe HTML; the
+frontend is responsible for deciding whether and how to embed it. If a
+provider cannot be embedded, the UI should gracefully fall back to a normal
+external link rather than breaking the page.
+
+Potential embedded providers may include YouTube, Instagram, and other future
+providers with suitable embedding mechanisms. This is not a final provider
+list. Spotify is explicitly out of scope for embedded playback and must not be
+part of the embedded-player system. It may be represented as a plain optional
+external link in a future version, but it is not necessary for the original or
+cover model.
+
+Embedded external players should ideally be loaded only when useful or
+requested rather than eagerly loading many third-party embeds on every
+SongPage. This is especially important when a song has multiple covers. The
+final implementation should avoid many simultaneously loaded third-party
+players when a lighter interaction pattern is practical.
 
 ## 5. Music Representation and File Format
 
-MusicXML is the proposed persistent interchange and score format.
+The web repository's canonical stored score format is normalized JSON.
+MusicXML is the preferred offline interchange, editing, and curation format.
+The distinction is intentional:
+
+```text
+MusicXML
+= rich local authoring/interchange format
+
+JSON
+= normalized application data format
+```
 
 MusicXML is attractive for this project because it can represent:
 
@@ -374,11 +484,10 @@ MusicXML is attractive for this project because it can represent:
 - ties and related notation;
 - data compatible with established music-notation tools.
 
-MIDI should primarily be treated as an intermediate representation rather than
-necessarily the final storage format consumed by the web app. MIDI is useful
-for transcription and playback-oriented workflows, but it does not by itself
-carry all of the notation and editorial meaning needed for a curated lead
-sheet.
+MIDI should primarily be treated as an intermediate representation. It is
+useful for transcription and playback-oriented workflows, but it does not by
+itself carry all of the notation and editorial meaning needed for a curated
+lead sheet.
 
 The intended conceptual pipeline is:
 
@@ -386,15 +495,95 @@ The intended conceptual pipeline is:
 MIDI
   -> interpreted / quantized musical structure
   -> MusicXML
-  -> human correction
-  -> final published score
+  -> human correction / curation
+  -> normalized JSON
+  -> human verification / validation
+  -> final published score asset
 ```
 
-MusicXML should not necessarily become the object model used directly
-throughout React. It is an interchange and persistence format. The frontend
-should likely normalize it into a smaller, stable TypeScript model so that
-transposition, analysis, UI state, and rendering adapters do not depend on
-every detail of the MusicXML document structure.
+The normalized JSON should represent the subset required by the application:
+pitches, durations and timing, measures, parts, lyrics, harmony, key, meter,
+tempo, notation information required by the renderer, and metadata required
+for correct analysis and transposition. It does not need to reproduce every
+possible MusicXML feature. Information loss during MusicXML-to-JSON conversion
+is acceptable only when the discarded information is outside the supported
+application score model.
+
+Lyrics in the normalized JSON must preserve musical meaning rather than use a
+single `lyric?: string` field as the conceptual target. A future vocal note
+should instead support `lyrics?: Lyric[]`, allowing zero, one, or multiple
+lyric elements on the same note. Here, `verse` means the identifier of the
+lyric line, verse, or vocal text line; it does not mean the actual textual
+content of that verse. The actual lyric text is stored in `text`. This allows
+multiple lyric lines to coexist on the same musical note. Each lyric may also
+contain syllabification, melisma/word-extension relationships, and elision
+information. A conceptual model is:
+
+```ts
+interface Lyric {
+  verse: string;
+  text?: string;
+  syllabic?: 'single' | 'begin' | 'middle' | 'end';
+  melisma?: 'start' | 'continue' | 'stop';
+  elision?: string;
+}
+```
+
+These exact names and fields are not finalized, but the semantic capabilities
+are decided requirements. The model must represent ordinary one-syllable
+lyrics, words divided across notes, words spanning notes, multiple verses or
+lyric lines, multiple lyric elements on one note, and lyric elisions.
+
+Conceptual examples include:
+
+```text
+Ordinary lyric:
+C4 -> "You"
+D4 -> "are"
+E4 -> "..."
+
+Word spanning several notes / melisma:
+C4 -> "love" + melisma:start
+D4 -> melisma:continue
+E4 -> melisma:stop
+
+Word divided across notes:
+C4 -> "some" + syllabic:begin
+D4 -> "thing" + syllabic:end
+
+Multiple verses:
+note:
+    verse 1 -> "Yesterday"
+    verse 2 -> "Something"
+```
+
+Multiple lyric elements on one note are allowed for elisions and other cases
+where more than one syllable is associated with a note. These lyrics remain
+associated with vocal notes on the shared musical timeline; they are not
+independent timeline events.
+
+This model is inspired by the relevant MusicXML semantics: `syllabic` values
+such as `single`, `begin`, `middle`, and `end`; multiple lyric elements for
+different lyric lines; `extend` for word extensions or melismas; and `elision`
+for multiple syllables associated with one note. The concepts are normalized
+into the application's simpler JSON model:
+
+```text
+MusicXML
+    ↓
+semantic normalization
+    ↓
+JSON lyrics model
+```
+
+The JSON does not need to preserve every MusicXML presentation or formatting
+attribute. It must preserve lyric-to-note association, verse or lyric-line
+identity, syllable boundaries, melisma relationships, same-note
+multiple-lyric relationships, and enough information for correct rendering.
+
+The exact JSON schema is still a design task, and the exact offline conversion
+workflow is still a design/implementation task. MusicXML files should not
+normally be committed as published score assets in the frontend repository.
 
 ## 6. Internal TypeScript Model
 
@@ -409,7 +598,7 @@ This is a design proposal, not an implementation of `src/lib/types.ts`.
 - time signature and measure structure;
 - tempo;
 - parts;
-- harmony events;
+- an independent timed harmony layer;
 - metadata;
 - possibly source and editorial information.
 
@@ -426,17 +615,68 @@ Potential semantic roles include:
 - `voice`;
 - `bass`;
 - `instrument`;
-- `harmony`.
+- other instrumental material.
+
+Harmony is not a `ScorePart`, is not a sequence of notes, and does not have to
+correspond one-to-one with any particular part or melody note. A harmony event
+may start between two melody notes, last across several melody notes, change
+while a melody note is held, or exist during an instrumental passage. The
+conceptual structure is:
+
+```text
+Score
+├── parts[]
+│   ├── Voice
+│   ├── Bass
+│   ├── Instrument
+│   └── ...
+│
+└── harmony[]
+    ├── HarmonyEvent
+    ├── HarmonyEvent
+    └── ...
+```
+
+All parts and harmony events use the shared musical timeline described above.
+The exact internal representation of time is still to be designed.
 
 `ScoreNote` would likely contain:
 
 - pitch;
 - duration;
 - rest state;
-- lyric, when applicable;
+- `lyrics[]`, when applicable to a part that carries lyrics, particularly the
+  voice;
 - tie information;
 - timing position or offset;
-- any information needed to preserve notation meaning.
+- notation information required by the application.
+
+Songs should also have a separate media association, conceptually along these
+lines:
+
+```ts
+interface MediaItem {
+  platform: MediaPlatform;
+  url: string;
+  title?: string;
+  artist?: string;
+  description?: string;
+}
+
+interface SongMedia {
+  original: MediaItem;
+  covers: MediaItem[];
+}
+```
+
+These exact TypeScript names and fields are not finalized. The important
+constraints are that `original` is one media item, `covers` is an array that
+may contain zero, one, or many items, and every `MediaItem` has exactly one
+external URL. Provider information should be normalized rather than inferred
+repeatedly from arbitrary UI code. The model must not store raw iframe HTML.
+The frontend should decide whether and how to embed each item, with a normal
+external-link fallback when embedding is unsupported. This media system is
+planned and is not part of the current `Song` type or application.
 
 `HarmonyEvent` would likely contain:
 
@@ -447,9 +687,10 @@ Potential semantic roles include:
 - optional slash-bass note;
 - any notation-specific interpretation.
 
-The exact names, units, and timing representation remain subject to design
-work. The key architectural principle is that musical semantics must be
-explicit. A future score should not force a structure such as:
+`HarmonyEvent` belongs to the independent `Score.harmony[]` layer, not to
+`Score.parts[]`. The exact names, units, and timing representation remain
+subject to design work. The key architectural principle is that musical
+semantics must be explicit. A future score should not force a structure such as:
 
 ```ts
 note.chord = 'Dm7';
@@ -470,16 +711,33 @@ The internal model must remain compatible with the current chord features:
 ## 7. Rendering Strategy
 
 The proposed replacement for the current HTML/CSS pseudo-score is a real
-MusicXML notation renderer. The current candidate direction is an
-OpenSheetMusicDisplay / VexFlow-based solution.
+notation renderer consuming the normalized application score model. The current
+candidate direction is an OpenSheetMusicDisplay / VexFlow-based solution.
 
 This direction is attractive because it offers:
 
-- MusicXML input;
 - real staff notation;
 - browser support;
 - compatibility with TypeScript and React integration;
 - potential styling or selection of individual parts and notes.
+
+The intended architecture is:
+
+```text
+JSON
+ ↓
+normalized Score
+ ↓
+renderer adapter
+ ↓
+OpenSheetMusicDisplay / VexFlow or another suitable renderer
+```
+
+The normalized score may be converted to MusicXML in memory for an OSMD
+adapter if that becomes technically convenient. This is an implementation
+detail, not a requirement that MusicXML files exist in the deployed
+application. The application's source-of-truth score data is normalized JSON;
+the rendering library is an implementation detail.
 
 The renderer should be treated as an adapter around the normalized score
 model, not as the owner of the application's musical semantics. The
@@ -525,6 +783,10 @@ Possible future UI capabilities include:
 These are future possibilities, not current requirements or current
 features. The first implementation should avoid adding UI state before the
 underlying part semantics are reliable.
+
+Harmony remains a separate timed annotation layer in the score viewer. It may
+be rendered alongside parts on the shared timeline, but it must not be modeled
+as another musical part.
 
 ## 9. Transposition
 
@@ -676,6 +938,8 @@ song metadata
   -> vocal-range histogram
   -> recommended key
   -> user vocal profile
+  -> original recording
+  -> covers
   -> history / notes / links
 ```
 
@@ -687,6 +951,28 @@ their range, the song's vocal distribution, and the proposed transposition.
 Secondary parts may be visible in the score viewer but should not obscure the
 voice analysis. The UI should make clear whether a chart is a simplified view
 or a more complete score.
+
+The original recording should be clearly distinguished from covers. A possible
+future presentation is:
+
+```text
+Original recording
+[embedded player]
+
+Covers
+
+Artist A - Acoustic cover
+[embedded player]
+
+Artist B - Live version
+[embedded player]
+
+Artist C - Piano arrangement
+[embedded player]
+```
+
+This is only a UI concept; the visual layout is not finalized. Players should
+be embedded when supported and should otherwise provide a normal external link.
 
 ## 14. Offline Audio-to-Score Pipeline
 
@@ -705,8 +991,9 @@ MIDI
   -> quantize / clean
   -> derive or verify harmony
   -> MusicXML
-  -> manual correction
-  -> validation
+  -> manual correction / curation
+  -> normalized JSON
+  -> human verification / validation
 ```
 
 Track identity should be treated as input that may require human inspection.
@@ -727,8 +1014,9 @@ MP3
   -> alignment
   -> harmony analysis
   -> MusicXML
-  -> manual correction
-  -> validation
+  -> manual correction / curation
+  -> normalized JSON
+  -> human verification / validation
 ```
 
 The key insight is that source separation should happen **before vocal
@@ -736,9 +1024,11 @@ transcription** when the goal is to recover a lead melody from a full mixed
 recording. The isolated vocal signal is still imperfect, but transcription
 quality can be materially different from transcribing a complete mix.
 
-The offline project should output durable, inspectable artifacts and should
-make it possible to repeat or improve the workflow without adding its runtime
-dependencies to the browser application.
+The offline project should output durable, inspectable intermediate and final
+artifacts and should make it possible to repeat or improve the workflow
+without adding its runtime dependencies to the browser application. MusicXML
+may live in a local `working/` area; normalized JSON is the final artifact
+transferred to and committed in the web project.
 
 ## 15. Candidate Open-Source Tools for the Offline Pipeline
 
@@ -812,7 +1102,7 @@ representation. Potential checks include:
 - lyrics attached to appropriate vocal notes;
 - consistency between key/time-signature metadata and score content;
 - transposition-safe representation;
-- valid or supported MusicXML structures.
+- valid or supported normalized JSON score structures.
 
 Validation should run both on curated assets and, where practical, on
 normalized data generated during the build. It should produce actionable
@@ -824,18 +1114,17 @@ These checks are future design goals. They are not present in
 
 ## 18. Backward Compatibility / Migration Strategy
 
-Migration does not have to be a big-bang rewrite. A staged approach is
-possible:
+Migration does not have to be a big-bang rewrite. The preferred staged
+approach is:
 
-1. Introduce a new score representation without changing every existing song.
-2. Convert one song into the new representation as a reference asset.
-3. Add parsing, normalization, and validation for the new representation.
-4. Support old and new representations temporarily if that reduces migration
-   risk.
-5. Replace the renderer after enough data has been migrated and verified.
-6. Convert existing songs one by one, preserving their metadata and editorial
-   notes.
-7. Remove the legacy representation only after all required songs and UI paths
+1. Define the new normalized JSON/`Score` model.
+2. Create one high-quality reference song.
+3. Validate its JSON.
+4. Render it.
+5. Test transposition.
+6. Test vocal analysis.
+7. Only then migrate the remaining songs incrementally.
+8. Remove the legacy representation only after all required songs and UI paths
    use the new model.
 
 Supporting both representations temporarily may increase code complexity and
@@ -843,6 +1132,10 @@ requires an explicit compatibility boundary. A direct conversion may be
 simpler but makes it harder to isolate errors and compare old and new output.
 Existing song data should not be silently rewritten while implementing
 unrelated features.
+
+The reference song is a validation or golden asset for the new architecture,
+not authorization to mass-convert all existing songs before the model,
+rendering, transposition, and analysis have been checked.
 
 **OPEN QUESTION:** Should the migration use an explicit legacy adapter for
 the current `LeadSheetSystem` model, or should all existing songs be converted
@@ -868,8 +1161,10 @@ src/
 │   └── ...
 ├── data/
 │   └── songs/
-│       ├── ...
-│       └── <song assets>
+│       ├── index.ts
+│       ├── your-song.json
+│       ├── yesterday.json
+│       └── ...
 ├── lib/
 │   ├── theory.ts
 │   ├── score.ts
@@ -881,50 +1176,82 @@ src/
 └── ...
 ```
 
-Possible song assets could include MusicXML files, normalized JSON generated
-from MusicXML, metadata, or a combination. The exact asset boundary depends on
-the answers to the open questions below.
+The web repository should contain normalized JSON score assets, plus song
+metadata and media URL/provider metadata. The exact path and Vite/static-asset
+arrangement may change; `.json` does not have to live exactly in
+`src/data/songs/`. MusicXML is a local offline source/interchange artifact and
+should not normally be committed to the web repository.
 
 An offline project might have a separate structure such as:
 
 ```text
 offline-score-tools/
-├── scripts/
-├── pipeline/
+├── input/
+├── working/
+│   ├── midi/
+│   ├── audio/
+│   └── musicxml/
+├── output/
+│   └── json/
 ├── corrections/
+├── pipeline/
 ├── generated/
 └── README.md
 ```
 
-This is also only a conceptual proposal. It should not be introduced into the
-frontend repository without deciding whether it belongs in this repository or
-in a separate repository.
+This is also only a conceptual proposal. MusicXML can live in `working/` or
+another local working area, while final JSON assets are transferred or
+committed to the web project. Large ML models, audio files, generated
+intermediate files, and local working MusicXML should not be placed in the
+frontend repository without a specific reason.
 
 ## 20. Open Questions
 
 The following decisions remain unresolved:
 
-1. Is MusicXML the final stored asset format, or should a normalized JSON
-   representation also be committed?
-2. Should the application parse MusicXML at runtime, or should MusicXML be
-   converted into a smaller static JSON asset during build time?
-3. How should colors and styles of parts be represented?
-4. How much of OpenSheetMusicDisplay should be exposed or customized?
-5. How should harmony be represented internally?
-6. How should rhythmic quantization be handled?
-7. How should tuplets, dotted rhythms, ties, pickup measures, repeats, and
+1. What exact JSON schema should be used for the normalized score?
+2. How should colors and styles of parts be represented?
+3. How much of OpenSheetMusicDisplay should be exposed or customized?
+4. How should rhythmic quantization be handled?
+5. How should tuplets, dotted rhythms, ties, pickup measures, repeats, and
    other advanced notation be handled?
-8. Should the first user vocal profile contain only a full range, or full plus
+6. Should the first user vocal profile contain only a full range, or full plus
    comfortable range?
-9. What exact cost function should be used for key recommendation?
-10. Should instrumental parts be rendered by default or be optional?
-11. How should existing songs be migrated?
-12. Should the offline transcription project be a separate repository?
-13. Should the normalized score preserve all MusicXML notation details, or only
+7. What exact cost function should be used for key recommendation?
+8. Should instrumental parts be rendered by default or be optional?
+9. How should existing songs be migrated?
+10. Should the offline transcription project be a separate repository?
+11. Should the normalized score preserve all MusicXML notation details, or only
    the subset required by the application's supported views?
-14. Should analysis use sounding pitch, notated pitch, or an explicit
+12. Should analysis use sounding pitch, notated pitch, or an explicit
    transposition/instrument model for non-concert-pitch instruments?
-15. How should editorial corrections and source provenance be stored?
+13. How should editorial corrections and source provenance be stored?
+14. Which providers should be supported for embedded playback in the first
+   implementation?
+15. How should unsupported or non-embeddable URLs fall back to normal external
+   links?
+16. Should the original recording always be shown as an embedded player, or
+   only when the provider supports embedding?
+17. Should cover ordering be manually specified?
+18. Should covers have optional semantic tags such as acoustic, live, or
+   instrumental?
+19. Should embeds be lazy-loaded, click-to-load, or always visible when
+   technically possible?
+20. Should `platform` be explicitly stored, or inferred from the URL during
+   parsing?
+
+The following are resolved architectural decisions, not open questions:
+
+- JSON is the format committed to the frontend repository.
+- MusicXML is a local/offline source, interchange, editing, and curation
+  format.
+- The offline workflow converts MusicXML to normalized JSON; the web app
+  consumes JSON and does not require runtime MusicXML parsing.
+- Harmony is an independent timed layer, not a `ScorePart`, and all parts and
+  harmony events share one musical timeline.
+- The normalized lyric model supports lyric attachment to vocal notes,
+  syllabification, melismas, multiple lyric lines, multiple lyric elements per
+  note, and elisions.
 
 These questions should be resolved explicitly in future design work. Future
 sessions must not silently turn one of these alternatives into an assumed
@@ -937,44 +1264,60 @@ part of creating this document.
 
 ### Phase 1
 
-Design and finalize the symbolic score representation, including timing,
-parts, harmony, lyrics, pitch spelling, and supported notation scope.
+Finalize the symbolic score model, including the shared timeline, parts,
+independent harmony, timing, lyric attachment and syllabification, melismas,
+multiple lyric lines where supported, pitch spelling, and supported notation
+scope.
 
 ### Phase 2
 
-Introduce MusicXML support and test the parser/normalizer with one carefully
-curated song.
+Create the normalized JSON score representation and its loader/normalization
+boundary.
 
 ### Phase 3
 
-Introduce proper score rendering and compare it with the curated source
-MusicXML.
+Integrate and test real score rendering from the JSON-derived score model.
 
 ### Phase 4
+
+Migrate one complete song as the reference/golden song and validate its JSON
+representation, loading, rendering, and musical content.
+
+### Phase 5
 
 Implement full-score transposition for voice, bass, instrumental parts, and
 harmony.
 
-### Phase 5
-
-Migrate existing songs incrementally and validate each migrated asset.
-
 ### Phase 6
+
+Implement the separate original-recording and covers media system.
+
+### Phase 7
+
+Migrate the remaining songs incrementally and validate each migrated asset.
+
+### Phase 8
 
 Build vocal analysis, including range and duration-weighted pitch
 distribution.
 
-### Phase 7
+### Phase 9
 
 Build the local user vocal profile.
 
-### Phase 8
+### Phase 10
 
 Build automatic key recommendation with explainable UI output.
 
-### Phase 9
+### Phase 11
 
-Build and iterate on the offline transcription and curation pipeline.
+Build and iterate on the offline transcription and curation pipeline against
+the already-defined JSON target.
+
+### Phase 12
+
+Remove the legacy score representation after all required songs and UI paths
+use the validated new model.
 
 ## Rules for Future AI Sessions
 
@@ -1005,4 +1348,4 @@ Build and iterate on the offline transcription and curation pipeline.
 
 STATUS: DESIGN / NOT YET IMPLEMENTED
 
-Date of creation: 2026-09-18
+Last updated: 2026-09-19
