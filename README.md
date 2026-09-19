@@ -80,9 +80,11 @@ The future offline workflow is conceptually:
 
 ```text
 offline:
-MIDI / MP3
-  -> transcription / curation
-  -> MusicXML
+recording
+  -> source separation
+  -> vocal melody / lyric alignment
+  -> harmony analysis
+  -> human curation
   -> normalized JSON
 
 web:
@@ -91,9 +93,12 @@ JSON
   -> rendering / transposition / analysis
 ```
 
-MusicXML is planned as a local/offline authoring and interchange format, not
-the runtime or published score format for the web application. These are
-planned features, not current implementation. See
+Audio-first transcription is the standard planned path. MIDI may be used as
+an intermediate by a particular offline tool, but it is not required.
+MusicXML remains an optional local/offline source, authoring, inspection, and
+interchange format; it is not the required starting point, runtime format, or
+published score format for the web application. These are planned features,
+not current implementation. See
 [Future Architecture](docs/FUTURE-ARCHITECTURE.md) for the detailed design and
 roadmap.
 

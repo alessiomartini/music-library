@@ -85,7 +85,10 @@ src/
 │   ├── prefs.ts
 │   ├── storage.ts
 │   ├── theory.ts
-│   └── types.ts
+│   ├── types.ts
+│   ├── score.ts
+│   ├── scoreLoader.ts
+│   └── ...
 └── pages/
     ├── Home.tsx
     └── SongPage.tsx
@@ -254,7 +257,8 @@ important limitations:
   written from memory or needing verification;
 - timing is represented by string duration codes rather than a richer rhythmic
   model;
-- there is no MusicXML parser or score asset pipeline;
+- there is no MusicXML parser, published normalized score asset, or integrated
+  score viewer;
 - the current preferences support a manually selected preferred key, not an
   automatic vocal recommendation;
 - the current application does not perform audio transcription or machine
@@ -358,29 +362,78 @@ symbolic score model.
 The intended future architecture separates offline music preparation from the
 static web application.
 
-### Offline transcription / curation pipeline
+### Audio-first offline transcription / curation pipeline
+
+The standard path begins with a recording, not with an assumption that a
+complete MusicXML file is available:
 
 ```text
-MIDI / MP3
+audio recording
     ↓
-offline transcription / curation
+offline source separation
     ↓
-MusicXML
-    ↓
-normalization / conversion
-    ↓
-JSON score asset
-    ↓
-human verification / validation
-    ↓
-commit JSON to web repository
+┌────────────────────────┬────────────────────────┐
+│ vocal stem              │ accompaniment stem(s)  │
+│ ↓                       │ ↓                      │
+│ melody transcription    │ harmony analysis       │
+│ pitch, rhythm, rests    │ timed HarmonyEvent[]    │
+│ lyrics / alignment      │                        │
+└───────────────┬────────┴────────────────────────┘
+                ↓
+        human curation and validation
+                ↓
+        normalized symbolic score
+                ↓
+        normalized JSON asset
+                ↓
+        web application
 ```
 
-The exact steps depend on whether MIDI is already available. The output of
-this process should be a curated normalized JSON score asset, not an
-assumption that an automatic transcription is perfect. MusicXML is an
-intermediate/local working artifact and should normally remain in the separate
-offline project.
+Source separation may produce an isolated or improved vocal stem, an
+accompaniment/instrumental stem, and optionally useful additional stems such
+as bass. The exact separation strategy and tools remain implementation
+choices. Automatic vocal transcription, lyric recognition/alignment, and
+harmony analysis are expected to be imperfect and require human correction.
+
+MIDI may be used as an intermediate when useful for a particular tool:
+
+```text
+audio → MIDI → further processing
+```
+
+or a tool may produce symbolic musical information directly:
+
+```text
+audio → symbolic transcription → further processing
+```
+
+Neither route is an architectural requirement. The requirement is
+audio-to-symbolic musical information followed by curation. The output should
+be a curated normalized JSON score asset, not an assumption that automatic
+transcription is authoritative.
+
+For `Your Song`, the intended reference workflow is:
+
+```text
+Your Song recording
+    ↓
+source separation
+    ↓
+vocal stem + accompaniment
+    ↓
+vocal melody + lyrics      harmony
+    └──────────────┬──────────┘
+                   ↓
+             human curation
+                   ↓
+             normalized JSON
+                   ↓
+             application Score
+```
+
+The previously obtained MusicXML may remain in the offline repository as an
+optional comparison or inspection source. It does not drive the standard
+workflow and is not required for the first published asset.
 
 ### Web application
 
@@ -410,12 +463,17 @@ browser should not need a MusicXML parser merely to display a published song.
 
 The web repository contains the React application, TypeScript source,
 normalized JSON score assets, song metadata, media URL/provider metadata,
-validation code, and UI. The separate offline transcription/curation project
-contains Python code, audio, MIDI, MusicXML working files, transcription
-models/tools, intermediate artifacts, correction workflow, and conversion from
-MusicXML to application JSON. Large models, audio files, generated
-intermediate files, and local working MusicXML should not normally be placed
-in the frontend repository.
+validation code, rendering, transposition, and future vocal-analysis and
+recommendation logic. It should not contain raw audio, large models,
+transcription working files, generated intermediate audio, or local MusicXML
+working files.
+
+The separate offline repository contains source recordings and provenance,
+source separation, vocal transcription and lyric-alignment workflows, harmony
+analysis, optional MIDI or MusicXML intermediates, manual corrections,
+validation/preparation tools, and conversion to normalized JSON. Large models,
+audio files, and generated intermediates remain offline and should only be
+committed when explicitly justified.
 
 ### Selected recordings and covers
 
@@ -475,18 +533,23 @@ players when a lighter interaction pattern is practical.
 ## 5. Music Representation and File Format
 
 The web repository's canonical stored score format is normalized JSON.
-MusicXML is the preferred offline interchange, editing, and curation format.
+Audio recordings are the primary offline source for new curation. MusicXML is
+an optional offline source, authoring, inspection, and interchange format.
 The distinction is intentional:
 
 ```text
+recording
+= primary source for offline transcription and analysis
+
 MusicXML
-= rich local authoring/interchange format
+= optional rich authoring/inspection/interchange format
 
 JSON
 = normalized application data format
 ```
 
-MusicXML is attractive for this project because it can represent:
+When a reliable file is available, MusicXML is useful because it can
+represent:
 
 - real pitches;
 - durations;
@@ -500,30 +563,19 @@ MusicXML is attractive for this project because it can represent:
 - ties and related notation;
 - data compatible with established music-notation tools.
 
-MIDI should primarily be treated as an intermediate representation. It is
-useful for transcription and playback-oriented workflows, but it does not by
-itself carry all of the notation and editorial meaning needed for a curated
-lead sheet.
-
-The intended conceptual pipeline is:
-
-```text
-MIDI
-  -> interpreted / quantized musical structure
-  -> MusicXML
-  -> human correction / curation
-  -> normalized JSON
-  -> human verification / validation
-  -> final published score asset
-```
+MIDI may be useful as an intermediate representation for a particular
+transcription tool or song, but it is not required. It does not by itself
+carry all of the notation and editorial meaning needed for a curated lead
+sheet, and the offline workflow may also produce symbolic information without
+MIDI.
 
 The normalized JSON should represent the subset required by the application:
 pitches, durations and timing, measures, parts, lyrics, harmony, key, meter,
 tempo, notation information required by the renderer, and metadata required
 for correct analysis and transposition. It does not need to reproduce every
-possible MusicXML feature. Information loss during MusicXML-to-JSON conversion
-is acceptable only when the discarded information is outside the supported
-application score model.
+possible source feature. Information loss during offline curation is
+acceptable only when the discarded information is outside the supported
+application score model and the curation decision is recorded.
 
 Lyrics in the normalized JSON must preserve musical meaning rather than use a
 single `lyric?: string` field as the conceptual target. A future vocal note
@@ -597,15 +649,18 @@ attribute. It must preserve lyric-to-note association, verse or lyric-line
 identity, syllable boundaries, melisma relationships, same-note
 multiple-lyric relationships, and enough information for correct rendering.
 
-The exact JSON schema is still a design task, and the exact offline conversion
-workflow is still a design/implementation task. MusicXML files should not
-normally be committed as published score assets in the frontend repository.
+The first versioned JSON envelope and its loader boundary are implemented as
+domain infrastructure, but no real song JSON asset is currently published or
+loaded by the application. The broader offline transcription workflow remains
+a design/implementation task. MusicXML files should not normally be committed
+as published score assets in the frontend repository.
 
 The normalized score uses the same integer-tick representation at rest in JSON
 and at runtime. JSON may use compact scalar fields for tick positions and
 durations, but it must not encode symbolic time as floating-point seconds.
-The exact property names and asset envelope remain an implementation concern
-for the next phase; the timing semantics are fixed by this document.
+The property names and asset envelope are defined by the first loader boundary
+below; future schema versions may evolve them explicitly. The timing semantics
+are fixed by this document.
 
 The first JSON asset envelope is versioned and has this shape:
 
@@ -820,8 +875,14 @@ must not depend on React, DOM nodes, iframe markup, or other UI details.
 ## 7. Rendering Strategy
 
 The proposed replacement for the current HTML/CSS pseudo-score is a real
-notation renderer consuming the normalized application score model. The current
-candidate direction is an OpenSheetMusicDisplay / VexFlow-based solution.
+lead-sheet renderer consuming the normalized application score model. The
+first user-facing score viewer should intentionally center on the vocal
+melody, lyrics, harmony, and meter. Piano notation, full accompaniment,
+cello/string parts, arbitrary instrumental parts, and full orchestration are
+future extensions rather than dependencies of the first viewer.
+
+The current candidate direction for a later notation renderer is an
+OpenSheetMusicDisplay / VexFlow-based solution.
 
 This direction is attractive because it offers:
 
@@ -853,8 +914,8 @@ model, not as the owner of the application's musical semantics. The
 application should be able to transpose and analyze a score without depending
 on DOM-specific rendering details.
 
-The desired visual distinction is between the voice and instrumental material.
-For example:
+The first viewer should make the voice and independent harmony clear. Later
+views may distinguish instrumental material. For example:
 
 - the voice should be the visually dominant or default part;
 - bass and instrumental material may use distinct visual treatments;
@@ -1085,81 +1146,50 @@ be embedded when supported and should otherwise provide a normal external link.
 
 ## 14. Offline Audio-to-Score Pipeline
 
-The planned Python-based offline tooling is intended to provide a practical
-semi-automatic workflow for producing curated score data. It is not intended
-to guarantee perfect automatic transcription.
+The planned offline tooling should provide a practical semi-automatic
+audio-first workflow for producing curated score data. It is not intended to
+guarantee perfect automatic transcription.
 
-### 14.1 MIDI available
+Source separation may produce an improved vocal stem, accompaniment stem(s),
+and optionally additional useful stems such as bass. The vocal path should
+recover melody pitch, rhythm, rests where musically meaningful, lyrics, and
+lyric alignment. The accompaniment path should recover independent timed
+harmony events, including root, semantic quality, optional slash bass, and
+duration. Both paths require human curation.
 
-The preferred pipeline is:
-
-```text
-MIDI
-  -> inspect tracks
-  -> identify voice / bass / instrumental material
-  -> quantize / clean
-  -> derive or verify harmony
-  -> MusicXML
-  -> manual correction / curation
-  -> normalized JSON
-  -> human verification / validation
-```
-
-Track identity should be treated as input that may require human inspection.
-The pipeline must not assume that a MIDI track order reliably identifies the
-voice or bass.
-
-### 14.2 MIDI unavailable
-
-When MIDI is unavailable, the proposed pipeline is:
+MIDI is optional. A particular tool may use:
 
 ```text
-MP3
-  -> source separation
-  -> isolated vocals
-  -> isolated bass / accompaniment where useful
-  -> audio-to-MIDI transcription
-  -> quantization / cleanup
-  -> alignment
-  -> harmony analysis
-  -> MusicXML
-  -> manual correction / curation
-  -> normalized JSON
-  -> human verification / validation
+audio -> MIDI -> further processing
 ```
 
-The key insight is that source separation should happen **before vocal
-transcription** when the goal is to recover a lead melody from a full mixed
-recording. The isolated vocal signal is still imperfect, but transcription
-quality can be materially different from transcribing a complete mix.
+or:
+
+```text
+audio -> symbolic transcription -> further processing
+```
+
+Neither route is required by the architecture. MusicXML may be used as an
+optional authoring or inspection artifact, or as a source when a reliable
+complete file happens to exist. It is not the canonical offline starting
+point.
 
 The offline project should output durable, inspectable intermediate and final
-artifacts and should make it possible to repeat or improve the workflow
-without adding its runtime dependencies to the browser application. MusicXML
-may live in a local `working/` area; normalized JSON is the final artifact
-transferred to and committed in the web project.
+artifacts without adding its runtime dependencies to the browser application.
+The final normalized JSON is transferred to and committed in the web project.
 
-## 15. Candidate Open-Source Tools for the Offline Pipeline
+## 15. Tooling choices remain open
 
-These are candidate tools, not permanently selected dependencies:
+Specific source-separation, vocal-transcription, lyric-recognition, alignment,
+and harmony-analysis tools are implementation choices. Candidate tools may be
+evaluated experimentally, but no tool is selected by this architecture.
 
-- **Demucs**: candidate source-separation tool for producing vocal, bass, and
-  accompaniment stems from a mixed recording.
-- **Basic Pitch**: candidate audio-to-MIDI transcription tool, particularly
-  useful as a starting point for melodic material.
-- **MT3 or similar systems**: candidate multi-track or multi-instrument
-  transcription systems where more than one line is required.
-- **music21**: candidate Python library for symbolic music manipulation,
-  inspection, and MIDI/MusicXML conversion.
+Automatic systems may miss notes, misidentify octaves, produce incorrect
+rhythms, confuse instruments, misrecognize lyrics, or produce unsuitable
+harmony. Their output requires inspection, correction, and validation.
 
-Automatic transcription quality is expected to be imperfect. These tools may
-miss notes, misidentify octaves, produce incorrect rhythms, confuse
-instruments, or produce unsuitable harmony. They must therefore be treated as
-pipeline components whose output requires inspection, correction, and
-validation, not as authoritative score generators.
-
-No tool listed here should be added to the current frontend dependency graph
-merely because it appears in this design document.
+No offline tool or model should be added to the frontend dependency graph
+merely because it is evaluated in the separate repository.
 
 ## 16. Human Curation Is Part of the Workflow
 
@@ -1347,14 +1377,30 @@ The following decisions remain unresolved:
    technically possible?
 17. Should `platform` be explicitly stored, or inferred from the URL during
    parsing?
+18. Which source-separation tool or strategy gives sufficiently reliable
+   vocal and accompaniment stems?
+19. Which vocal transcription workflow gives sufficiently reliable melody
+   pitches, rhythms, and rests?
+20. How should lyrics be recognized and aligned to sung notes, given that
+   speech-to-text alone does not solve sung-lyric alignment?
+21. When is MIDI useful as an intermediate for a particular song, and when is
+   direct symbolic transcription preferable?
+22. How should harmony recognition be performed and corrected when chord
+   quality or slash bass is ambiguous?
+23. How much manual correction is required before a score is publishable?
+24. How should accompaniment be represented when harmony is ambiguous?
+25. Should an instrumental stem always be separated into additional
+   sub-stems, or only when the reference score needs them?
 
 The following are resolved architectural decisions, not open questions:
 
 - JSON is the format committed to the frontend repository.
-- MusicXML is a local/offline source, interchange, editing, and curation
-  format.
-- The offline workflow converts MusicXML to normalized JSON; the web app
-  consumes JSON and does not require runtime MusicXML parsing.
+- Audio recordings are the primary offline source for new score curation.
+- MusicXML is an optional offline source, authoring, inspection, and
+  interchange format; it is not a required starting point.
+- The audio-first offline workflow produces curated symbolic information and
+  normalized JSON; the web app consumes JSON and does not require runtime
+  MusicXML parsing.
 - Harmony is an independent timed layer, not a `ScorePart`, and all parts and
   harmony events share one musical timeline.
 - The shared timeline uses integer ticks at 960 ticks per quarter note, with
@@ -1397,48 +1443,56 @@ boundary.
 
 ### Phase 3
 
-Integrate and test real score rendering from the JSON-derived score model.
+Establish the audio-first offline workflow for source recordings, including
+source separation and inspectable provenance/intermediate artifacts.
 
 ### Phase 4
 
-Migrate one complete song as the reference/golden song and validate its JSON
-representation, loading, rendering, and musical content.
+Transcribe and curate the reference vocal melody, timing, rests, and lyrics
+from separated audio, with human verification.
 
 ### Phase 5
 
-Implement full-score transposition for voice, bass, instrumental parts, and
-harmony.
+Extract and curate independent harmony from accompaniment material, including
+root, semantic quality, optional slash bass, timing, and human correction.
 
 ### Phase 6
 
-Implement the separate original-recording and covers media system.
+Create and validate the first golden normalized JSON asset for the voice,
+lyrics, harmony, and meter scope.
 
 ### Phase 7
 
-Migrate the remaining songs incrementally and validate each migrated asset.
+Integrate the first normalized asset into the web application and render the
+initial voice-centered score view.
 
 ### Phase 8
+
+Implement score transposition for vocal melody, harmony roots, slash bass,
+and displayed key.
+
+### Phase 9
 
 Build vocal analysis, including range and duration-weighted pitch
 distribution.
 
-### Phase 9
+### Phase 10
 
 Build the local user vocal profile.
 
-### Phase 10
+### Phase 11
 
 Build automatic key recommendation with explainable UI output.
 
-### Phase 11
-
-Build and iterate on the offline transcription and curation pipeline against
-the already-defined JSON target.
-
 ### Phase 12
 
-Remove the legacy score representation after all required songs and UI paths
-use the validated new model.
+Migrate remaining songs incrementally, extend the offline workflow as needed,
+and remove the legacy score representation only after all required songs and
+UI paths use the validated model.
+
+The original-recording and covers media system remains a separate planned
+feature and may be implemented alongside these phases without becoming part
+of the symbolic-score ingestion path.
 
 ## Rules for Future AI Sessions
 

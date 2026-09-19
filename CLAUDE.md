@@ -33,7 +33,7 @@ foundation
 → one-song vertical slice
 → three-song validation
 → all-song migration
-→ offline transcription pipeline
+→ audio-first offline transcription pipeline
 ```
 
 Keep changes focused, use small commits or checkpoints where appropriate, and
@@ -46,7 +46,9 @@ Preserve these established decisions:
 
 - The web application remains static.
 - Normalized JSON is the published score format in the web repository.
-- MusicXML is a local/offline authoring, interchange, and curation format.
+- Audio recordings are the primary offline source for new score curation.
+- MusicXML is an optional offline source, authoring, inspection, and
+  interchange format.
 - The runtime application uses a normalized TypeScript `Score` model.
 - Harmony is an independent timed layer, never a `ScorePart`.
 - All score parts and harmony events share one musical timeline.
