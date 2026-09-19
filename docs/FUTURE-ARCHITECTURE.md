@@ -607,6 +607,32 @@ durations, but it must not encode symbolic time as floating-point seconds.
 The exact property names and asset envelope remain an implementation concern
 for the next phase; the timing semantics are fixed by this document.
 
+The first JSON asset envelope is versioned and has this shape:
+
+```json
+{
+  "schemaVersion": 1,
+  "score": {
+    "ppq": 960,
+    "originalKey": "C",
+    "timeSignature": { "numerator": 4, "denominator": 4 },
+    "measures": [{ "start": 0, "duration": 3840 }],
+    "tempo": { "bpm": 96 },
+    "parts": [],
+    "harmony": []
+  }
+}
+```
+
+The `score` object uses the normalized domain fields already defined above:
+absolute integer-tick timing, note/rest event discriminants, normalized
+sounding pitch, attached lyrics and ties, and semantic harmony qualities such
+as `major` or `dominant7`. `schemaVersion: 1` is the only supported version
+for the first loader; unsupported versions must be rejected rather than
+silently reinterpreted. The loader validates the external envelope first,
+then runs the domain validator and returns an independent normalized `Score`
+value. It does not fetch assets, render them, or parse MusicXML.
+
 ## 6. Internal TypeScript Model
 
 The future application should introduce a normalized internal score model.
