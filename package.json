@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "test": "vitest run",
     "validate": "esbuild scripts/validate-leadsheets.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate.mjs --log-level=error && node node_modules/.cache/validate.mjs"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "esbuild": "^0.28.2",
     "oxlint": "^1.79.0",
     "typescript": "~6.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^5.0.1"
   }
 }
