@@ -1448,6 +1448,12 @@ The following decisions remain unresolved:
 28. Should the stem player support simultaneous level-mixing between vocal
    and instrumental stems, or only an exclusive full/vocals-only/
    instrumental-only toggle in the first version?
+29. Should dropping a new recording into the offline repository's `input/`
+   folder automatically trigger the pipeline (e.g. a filesystem watcher or a
+   single `run_pipeline.py <slug>` wrapper invoking the existing per-step
+   scripts in order), instead of running each pipeline script by hand? This
+   would still stop before publication — human curation (§16) and validation
+   (§17) remain required steps, not something automation should skip.
 
 The following are resolved architectural decisions, not open questions:
 
