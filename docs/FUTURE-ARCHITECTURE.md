@@ -516,6 +516,68 @@ SongPage. This is especially important when a song has multiple covers. The
 final implementation should avoid many simultaneously loaded third-party
 players when a lighter interaction pattern is practical.
 
+### In-app stem playback (vocals-only / instrumental-only)
+
+**Added 2026-09-20.** In addition to external original/cover links, the web
+application should be able to play a song's own recording directly, with the
+listener able to exclude the vocal stem (instrumental/karaoke playback) or
+exclude the instrumental stems (vocals-only/acapella playback).
+
+This is a natural extension of work the offline pipeline already does: step 1
+of the audio-first pipeline (`01_separate*.py`) runs Demucs source separation
+and produces a vocal stem and an accompaniment stem for every transcribed
+song (`working/<slug>/vocals.wav`, `working/<slug>/accompaniment.wav` in
+`music-library-offline`). Today those stems are intermediate files consumed
+only by later pipeline steps (melody transcription, harmony extraction) and
+are never published. This feature reuses that same separation output as a
+first-class published asset instead of a throwaway intermediate.
+
+The structural rule mirrors the media model above: playback is a property of
+a song's published *audio*, independent of its `Score`:
+
+```text
+Song
+└── stemAudio (optional)
+    ├── full: one audio URL (the original mix, for a normal "play" control)
+    ├── vocals: one audio URL (isolated vocal stem)
+    └── instrumental: one audio URL (isolated accompaniment stem)
+```
+
+A song without transcribed stems (i.e. one that hasn't been through the
+offline pipeline yet) simply has no `stemAudio`, the same way it can have no
+`score` — the UI should degrade to "no audio available" rather than assuming
+every song has playback.
+
+Open design points, deliberately not decided here:
+
+- **Where published audio is hosted.** The web app is static (see §2) and
+  full-length stem audio is large — committing multiple WAV/compressed audio
+  files per song to the frontend repository the way score JSON is committed
+  is likely the wrong tradeoff. Candidates include a compressed format
+  (e.g. Opus/AAC) served from a CDN, object storage, or a platform build
+  artifact step outside the React bundle. This must be decided before
+  implementation, not defaulted to "commit WAV files to the repo".
+- **Player UX.** The likely control is a single transport (play/pause/seek)
+  with a toggle or mixer between "full", "vocals only", and "instrumental
+  only", rather than three independent players — switching stems mid-playback
+  should keep the playhead position. Simultaneous isolated-stem playback
+  (e.g. blending vocal level against instrumental level) is a possible later
+  refinement, not a first-version requirement.
+- **Relationship to the original/cover media model above.** Stem playback is
+  for the song's *own* transcribed recording (the one the score was derived
+  from), not for arbitrary covers — a cover is an external link/embed, not a
+  set of separated stems, unless a future design explicitly extends the
+  offline pipeline to separate cover recordings too.
+- **Audio quality/artifacts.** Demucs separation is not perfect (bleed
+  between stems, occasional artifacts); this is an inherent limitation of
+  source separation, not a defect to "fix" — the UI should not present
+  separated stems as a pristine acapella/instrumental release.
+
+This feature depends only on audio already separated during transcription; it
+does not require the score, melody, or harmony extraction steps to run again,
+so it could in principle ship before every song has a full score, as long as
+the song has been through source separation.
+
 ## 5. Music Representation and File Format
 
 The web repository's canonical stored score format is normalized JSON.
@@ -1380,6 +1442,12 @@ The following decisions remain unresolved:
    sub-stems, or only when the reference score needs them?
 26. How should audio-derived scores be validated against the recording and
    curated musical expectations?
+27. Where should published stem audio (full mix, vocals-only, instrumental-
+   only) be hosted, given the web app is static and full-length audio is too
+   large to commit to the frontend repository the way score JSON is?
+28. Should the stem player support simultaneous level-mixing between vocal
+   and instrumental stems, or only an exclusive full/vocals-only/
+   instrumental-only toggle in the first version?
 
 The following are resolved architectural decisions, not open questions:
 

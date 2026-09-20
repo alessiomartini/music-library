@@ -163,5 +163,6 @@ score fails the run and the exit code.
 
 See [Future Architecture](docs/FUTURE-ARCHITECTURE.md) for the full design:
 vocal-range analysis, automatic key recommendation, original-recording/cover
-media, and the rest of the symbolic-score roadmap beyond what's implemented
-today.
+media, in-app stem playback (play a song with vocals or instrumentals
+excluded, reusing the offline pipeline's existing Demucs separation), and the
+rest of the symbolic-score roadmap beyond what's implemented today.
