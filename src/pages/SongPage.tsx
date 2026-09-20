@@ -1,16 +1,33 @@
 import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
 import { LeadSheetChart } from '../components/LeadSheetChart';
+import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
+import { loadSongScore, hasScore } from '../lib/songLoader';
+import type { Score } from '../lib/score';
 
 export function SongPage() {
   const { slug } = useParams<{ slug: string }>();
   const song = slug ? getSongBySlug(slug) : undefined;
   const [globalPrefs, setGlobalPrefs] = useGlobalPrefs();
   const [songPrefs, setSongPrefs] = useSongPrefs(slug ?? 'unknown');
+  const [score, setScore] = useState<Score | null>(null);
+  const [scoreLoading, setScoreLoading] = useState(false);
+
+  // Load score if available
+  useEffect(() => {
+    if (song && hasScore(song)) {
+      setScoreLoading(true);
+      loadSongScore(song).then((loadedScore) => {
+        setScore(loadedScore);
+        setScoreLoading(false);
+      });
+    }
+  }, [song]);
 
   if (!song) {
     return (
@@ -92,7 +109,22 @@ export function SongPage() {
         onSystemChange={(s) => setGlobalPrefs({ ...globalPrefs, system: s })}
       />
 
-      {song.leadSheet && song.leadSheet.length > 0 && (
+      {score && (
+        <div className="score-viewer-container">
+          <div className="lead-sheet-header">
+            <h2>Score</h2>
+            <span className="lead-sheet-legend">Full notation with melody, lyrics, and harmony</span>
+          </div>
+          <ScoreViewer
+            score={score}
+            semitones={songPrefs.semitones}
+            preferFlats={preferFlats}
+            chordSystem={globalPrefs.system === 'it' ? 'italian' : 'english'}
+          />
+        </div>
+      )}
+
+      {song.leadSheet && song.leadSheet.length > 0 && !score && (
         <div className="lead-sheet">
           <div className="lead-sheet-header">
             <h2>Lead sheet</h2>
@@ -105,6 +137,10 @@ export function SongPage() {
             chordSystem={globalPrefs.system}
           />
         </div>
+      )}
+
+      {scoreLoading && !score && (
+        <div className="score-viewer-loading">Loading score…</div>
       )}
 
       {song.history && (

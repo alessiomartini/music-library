@@ -31,7 +31,12 @@ function report(song: string, where: string, message: string) {
 }
 
 for (const song of songs) {
+  // Skip songs that use the new Score format (they have score instead of leadSheet)
   if (!song.leadSheet?.length) {
+    if (song.score) {
+      // Song has a Score - skip legacy validation
+      continue;
+    }
     report(song.title, '-', 'no chart');
     continue;
   }

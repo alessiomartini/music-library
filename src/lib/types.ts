@@ -1,3 +1,5 @@
+import type { Score } from './score';
+
 /** One event in the sung line. Carries no pitch: the charts give chords,
  * words and where they fall in the bar, and deliberately say nothing about
  * the melody itself. */
@@ -50,6 +52,10 @@ export interface Song {
   tempoMarking?: string; // e.g. "Moderately"
   /** Engraved lead sheet: melody + chord symbols + bass line, by section. */
   leadSheet?: LeadSheetSystem[];
+  /** Normalized symbolic score (new format). Mutually exclusive with leadSheet. */
+  score?: Score;
+  /** Path to JSON score file (alternative to inline score). */
+  scorePath?: string;
   links: SongLinks;
   /** Background/trivia shown in a "History & trivia" section. */
   history?: string;

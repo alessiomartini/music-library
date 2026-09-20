@@ -12,9 +12,11 @@
     "validate": "esbuild scripts/validate-leadsheets.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate.mjs --log-level=error && node node_modules/.cache/validate.mjs"
   },
   "dependencies": {
+    "@types/vexflow": "^3.0.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
+    "react-router-dom": "^7.18.2",
+    "vexflow": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
