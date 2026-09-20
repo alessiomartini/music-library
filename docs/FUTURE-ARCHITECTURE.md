@@ -1437,14 +1437,17 @@ The following decisions remain unresolved:
    to run lyric alignment and harmony extraction against the audio; how a
    curated MIDI feeds into the automatic workflow is still open.
 20. How should lyrics be recognized and aligned to sung notes, given that
-   speech-to-text alone does not solve sung-lyric alignment? **Narrowed
-   2026-09-21:** the current per-verse sequential heuristic
-   (`align_lyrics.py`) is not sufficient. The direction is forced alignment
-   — audio plus the already-known lyric text (already present in the song
-   config) fed to a forced aligner (e.g. Montreal Forced Aligner, aeneas, or
-   WhisperX's wav2vec2-CTC alignment) to recover real per-word/per-syllable
-   timestamps, replacing the blind sequential assignment. Which specific
-   tool, and how its word timestamps map onto note events, remain open.
+   speech-to-text alone does not solve sung-lyric alignment? **Resolved
+   2026-09-21:** `align_lyrics.py` now runs torchaudio's `MMS_FA`
+   (multilingual Wav2Vec2 CTC forced alignment) over the vocal stem against
+   the known, romanized (`uroman`) lyric text, recovering real per-syllable
+   onset/offset timestamps directly from the audio — replacing the old
+   sequential/per-verse-boundary-guessing heuristic entirely. Each output
+   event's timing comes from the aligner; `transcribe_vocals.py`'s Basic
+   Pitch notes are only consulted for pitch at that time. Still open: this
+   doesn't attempt true melisma detection (one syllable spanning several
+   *different* pitches) — a syllable still gets one pitch, sampled at its
+   aligned midpoint.
 21. When is MIDI useful as an intermediate for a particular song, and when is
    direct symbolic transcription preferable?
 22. How should harmony recognition be performed and corrected when chord
