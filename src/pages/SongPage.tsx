@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
-import { LeadSheetChart } from '../components/LeadSheetChart';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
@@ -124,23 +123,15 @@ export function SongPage() {
         </div>
       )}
 
-      {song.leadSheet && song.leadSheet.length > 0 && !score && (
-        <div className="lead-sheet">
-          <div className="lead-sheet-header">
-            <h2>Lead sheet</h2>
-            <span className="lead-sheet-legend">Chords and lyrics, one bar between each pair of lines</span>
-          </div>
-          <LeadSheetChart
-            systems={song.leadSheet}
-            semitones={songPrefs.semitones}
-            preferFlats={preferFlats}
-            chordSystem={globalPrefs.system}
-          />
-        </div>
-      )}
-
       {scoreLoading && !score && (
         <div className="score-viewer-loading">Loading score…</div>
+      )}
+
+      {!score && !scoreLoading && (
+        <p className="score-unavailable">
+          No score published for this song yet — it hasn't been through the audio-first transcription
+          workflow.
+        </p>
       )}
 
       {song.history && (

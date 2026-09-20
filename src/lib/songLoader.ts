@@ -8,12 +8,16 @@ export interface LoadedSongData {
 }
 
 /**
- * Load a song's score from a JSON file.
- * Returns the parsed and validated Score, or null if not found/error.
+ * Load a song's score, either already inline on the song or fetched from
+ * its scorePath JSON file. Returns the validated Score, or null if neither
+ * is present or loading fails.
  */
 export async function loadSongScore(song: Song): Promise<Score | null> {
-  // Check if song has a scorePath property (for JSON files)
-  const scorePath = (song as any).scorePath as string | undefined;
+  if (song.score) {
+    return song.score;
+  }
+
+  const scorePath = song.scorePath;
 
   if (!scorePath) {
     return null;
@@ -37,5 +41,5 @@ export async function loadSongScore(song: Song): Promise<Score | null> {
  * Check if a song has a score available (either inline or via path).
  */
 export function hasScore(song: Song): boolean {
-  return !!(song as any).score || !!(song as any).scorePath;
+  return !!song.score || !!song.scorePath;
 }

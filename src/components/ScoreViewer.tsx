@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Score, ScorePart, ScoreNoteEvent } from '../lib/score';
+import type { Score, ScoreEvent, ScoreMeasure, ScorePart } from '../lib/score';
 import { transposeScore } from '../lib/transpose';
+import { keyName, type ChordSystem as TheoryChordSystem } from '../lib/theory';
 
-// VexFlow types - we'll import dynamically
+// VexFlow types - we'll import dynamically. VexFlow 5's ESM build exports
+// classes (Renderer, Stave, Voice, ...) directly on the module namespace —
+// there is no nested `.Flow` object like in older VexFlow versions.
 let Vex: any = null;
 
 async function loadVexFlow() {
   if (Vex) return Vex;
-  const mod = await import('vexflow');
-  Vex = mod.default ?? mod;
+  Vex = await import('vexflow');
   return Vex;
 }
 
@@ -17,12 +19,6 @@ interface ScoreViewerProps {
   semitones?: number;
   preferFlats?: boolean;
   chordSystem?: 'english' | 'italian';
-}
-
-function pitchClassToNoteName(pc: number, preferFlats: boolean): string {
-  const sharps = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  const flats = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-  return preferFlats ? flats[pc] : sharps[pc];
 }
 
 function chordQualityToSuffix(quality: string): string {
@@ -74,6 +70,18 @@ function getClefForPart(part: ScorePart): 'treble' | 'bass' | 'alto' {
   }
 }
 
+function harmonyChordSymbol(
+  h: { root: number; quality: string; slashBass?: number },
+  system: TheoryChordSystem,
+  preferFlats: boolean,
+): string {
+  let symbol = `${keyName(h.root, system, preferFlats)}${chordQualityToSuffix(h.quality)}`;
+  if (h.slashBass !== undefined) {
+    symbol += `/${keyName(h.slashBass, system, preferFlats)}`;
+  }
+  return symbol;
+}
+
 export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSystem = 'english' }: ScoreViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState(false);
@@ -92,188 +100,121 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
 
         // Transpose score if needed
         const transposedScore = semitones !== 0 ? transposeScore(score, semitones) : score;
+        const theorySystem: TheoryChordSystem = chordSystem === 'italian' ? 'it' : 'en';
 
         // Clear container
         container.innerHTML = '';
 
         // VexFlow setup
-        const VF = Vex.Flow;
+        const VF = Vex;
+        const ts = transposedScore.timeSignature;
+        const measures = transposedScore.measures;
+        const numMeasures = measures.length;
 
-        // Calculate layout dimensions
-        const numMeasures = transposedScore.measures.length;
-        const measuresPerLine = Math.max(4, Math.min(8, Math.floor(window.innerWidth / 200)));
+        // One Voice per (part, measure): a VexFlow Voice's tick budget is
+        // exactly one measure's worth of beats, so this is the only grouping
+        // that keeps the tick math (and therefore the formatter) correct.
+        // Cramming a whole line's events into one Voice — the previous
+        // approach — silently produced invalid tick totals and crashed.
+        const measureWidth = 190;
+        const totalWidth = Math.min(900, container.clientWidth || 900);
+        const measuresPerLine = Math.max(1, Math.min(4, Math.floor((totalWidth - 40) / measureWidth)));
         const numLines = Math.ceil(numMeasures / measuresPerLine);
-        const width = Math.min(800, container.clientWidth || 800);
+        const partHeight = 100;
+        const chordRowHeight = 30;
+        const linePadding = 40;
+        const lineHeight = transposedScore.parts.length * partHeight + chordRowHeight + linePadding;
 
         const renderer = new VF.Renderer(container, VF.Renderer.Backends.SVG);
-        renderer.resize(width, numLines * 140 + 60);
+        renderer.resize(totalWidth, numLines * lineHeight + 20);
         const context = renderer.getContext();
         context.setFont('Arial', 10);
 
-        const voiceMap = new Map<string, any>();
+        function eventsForMeasure(part: ScorePart, measure: ScoreMeasure): ScoreEvent[] {
+          return part.events
+            .filter((e) => e.start >= measure.start && e.start < measure.start + measure.duration)
+            .sort((a, b) => a.start - b.start);
+        }
 
-        let y = 40;
-        const staveHeight = 100;
-        const stavePadding = 20;
-
-        // Group measures by line
+        let y = 10 + chordRowHeight;
         for (let line = 0; line < numLines; line++) {
           const startMeasure = line * measuresPerLine;
           const endMeasure = Math.min(startMeasure + measuresPerLine, numMeasures);
-          void endMeasure;
 
-          // Create staves for each part on this line
-          let currentY = y;
-
-          for (const part of transposedScore.parts) {
+          let partY = y;
+          for (const [partIndex, part] of transposedScore.parts.entries()) {
             const clef = getClefForPart(part);
+            let x = 20;
 
-            const stave = new VF.Stave(40, currentY, width - 80, {
-              clef: clef,
-              auto_beam: true,
-            });
-
-            // Add time signature to first stave of first line
-            if (line === 0 && part === transposedScore.parts[0]) {
-              stave.addTimeSignature(`${transposedScore.timeSignature.numerator}/${transposedScore.timeSignature.denominator}`);
-              // Add key signature
-              const keySpec = transposedScore.originalKey;
-              stave.addKeySignature(keySpec.replace('m', ''));
-            }
-
-            stave.setContext(context).draw();
-            currentY += staveHeight + stavePadding;
-
-            // Create voice for this part on this line
-            const voice = new VF.Voice({
-              num_beats: transposedScore.timeSignature.numerator,
-              beat_value: transposedScore.timeSignature.denominator,
-              resolution: VF.RESOLUTION,
-            });
-            voice.setStrict(false);
-            voiceMap.set(`${part.id}-${line}`, { voice, stave, part });
-          }
-
-          y = currentY + 40; // Space for chord symbols above
-        }
-
-        // Process each part's events and assign to voices
-        for (const part of transposedScore.parts) {
-          const partEvents = part.events.filter((e): e is ScoreNoteEvent => e.kind === 'note');
-
-          // Group events by measure
-          const eventsByMeasure = new Map<number, ScoreNoteEvent[]>();
-          for (const event of partEvents) {
-            // Find which measure this event belongs to
-            let measureIndex = 0;
-            for (let i = 0; i < transposedScore.measures.length; i++) {
-              const m = transposedScore.measures[i];
-              if (event.start >= m.start && event.start < m.start + m.duration) {
-                measureIndex = i;
-                break;
+            for (let m = startMeasure; m < endMeasure; m++) {
+              const measure = measures[m];
+              const stave = new VF.Stave(x, partY, measureWidth);
+              if (m === startMeasure) stave.addClef(clef);
+              if (line === 0 && m === 0 && partIndex === 0) {
+                stave.addTimeSignature(`${ts.numerator}/${ts.denominator}`);
+                stave.addKeySignature(transposedScore.originalKey.replace('m', ''));
               }
-            }
-            if (!eventsByMeasure.has(measureIndex)) {
-              eventsByMeasure.set(measureIndex, []);
-            }
-            eventsByMeasure.get(measureIndex)!.push(event);
-          }
+              stave.setContext(context).draw();
 
-          // Add events to voices
-          for (const [measureIndex, events] of eventsByMeasure) {
-            const line = Math.floor(measureIndex / measuresPerLine);
-            const voiceData = voiceMap.get(`${part.id}-${line}`);
-            if (!voiceData) continue;
+              const voice = new VF.Voice({ num_beats: ts.numerator, beat_value: ts.denominator });
+              voice.setStrict(false);
 
-            const { voice } = voiceData;
-
-            for (const event of events) {
-              const { note: noteName, octave } = midiToVexFlowNote(event.pitch);
-              const duration = ticksToVexFlowDuration(event.duration, score.ppq);
-
-              const vfNote = new VF.StaveNote({
-                keys: [`${noteName}/${octave}`],
-                duration: duration,
-                clef: getClefForPart(part),
-              });
-
-              // Add lyrics if present
-              if (event.lyrics && event.lyrics.length > 0) {
-                const lyric = event.lyrics[0];
-                if (lyric.text) {
-                  // Position lyric below note
-                  const modifier = new VF.Annotation(lyric.text)
-                    .setFont('Arial', 10)
-                    .setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-                  vfNote.addModifier(modifier, 0);
+              const measureEvents = eventsForMeasure(part, measure);
+              if (measureEvents.length === 0) {
+                voice.addTickable(new VF.GhostNote({ duration: 'w' }));
+              } else {
+                for (const event of measureEvents) {
+                  const duration = ticksToVexFlowDuration(event.duration, score.ppq);
+                  if (event.kind === 'rest') {
+                    voice.addTickable(new VF.StaveNote({ keys: ['b/4'], duration: `${duration}r`, clef }));
+                    continue;
+                  }
+                  const { note: noteName, octave } = midiToVexFlowNote(event.pitch);
+                  const vfNote = new VF.StaveNote({ keys: [`${noteName}/${octave}`], duration, clef });
+                  const lyric = event.lyrics?.[0];
+                  if (lyric?.text) {
+                    vfNote.addModifier(
+                      new VF.Annotation(lyric.text)
+                        .setFont('Arial', 10)
+                        .setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM),
+                      0,
+                    );
+                  }
+                  voice.addTickable(vfNote);
                 }
               }
 
-              // Add tie if present
-              if (event.tie) {
-                // Tie handling would go here
+              new VF.Formatter().joinVoices([voice]).format([voice], measureWidth - 20);
+              voice.draw(context, stave);
+
+              // Chord symbols above the top part only. Positioned
+              // proportionally within the measure rather than through
+              // VexFlow's tickable system: harmony segment lengths rarely
+              // land on a standard notated duration, and forcing them into
+              // the Voice's tick budget is what caused the previous crash.
+              if (partIndex === 0) {
+                const harmonyHere = transposedScore.harmony.filter(
+                  (h) => h.start < measure.start + measure.duration && h.start + h.duration > measure.start,
+                );
+                if (harmonyHere.length > 0) {
+                  const contentStart = stave.getNoteStartX();
+                  const contentWidth = stave.getNoteEndX() - contentStart;
+                  context.save();
+                  context.setFont('Arial', 12, 'bold');
+                  for (const h of harmonyHere) {
+                    const relStart = Math.max(0, h.start - measure.start);
+                    const chordX = contentStart + (relStart / measure.duration) * contentWidth;
+                    context.fillText(harmonyChordSymbol(h, theorySystem, preferFlats), chordX, stave.getYForTopText(1));
+                  }
+                  context.restore();
+                }
               }
 
-              voice.addTickable(vfNote);
+              x += measureWidth;
             }
+            partY += partHeight;
           }
-        }
-
-        // Add harmony/chord symbols
-        // Create a separate voice for chord symbols on the first part's staves
-        for (let line = 0; line < numLines; line++) {
-          const firstPart = transposedScore.parts[0];
-          const voiceData = voiceMap.get(`${firstPart.id}-${line}`);
-          if (!voiceData) continue;
-
-          const { stave: _stave } = voiceData;
-          const startMeasure = line * measuresPerLine;
-          const endMeasure = Math.min(startMeasure + measuresPerLine, transposedScore.measures.length);
-          void _stave;
-
-          // Add chord symbols above the stave
-          for (const harmonyEvent of transposedScore.harmony) {
-            const measureIndex = transposedScore.measures.findIndex(m =>
-              harmonyEvent.start >= m.start && harmonyEvent.start < m.start + m.duration
-            );
-            if (measureIndex < startMeasure || measureIndex >= endMeasure) continue;
-
-            const rootName = pitchClassToNoteName(harmonyEvent.root, preferFlats);
-            const qualitySuffix = chordQualityToSuffix(harmonyEvent.quality);
-            let chordSymbol = `${rootName}${qualitySuffix}`;
-            if (harmonyEvent.slashBass !== undefined) {
-              const bassName = pitchClassToNoteName(harmonyEvent.slashBass, preferFlats);
-              chordSymbol += `/${bassName}`;
-            }
-
-            // Position chord symbol above the measure
-            // We'll add it as an annotation to a hidden note at the beginning of the measure
-
-            const annotation = new VF.Annotation(chordSymbol)
-              .setFont('Arial', 12, 'bold')
-              .setVerticalJustification(VF.Annotation.VerticalJustify.TOP)
-              .setMarginTop(-30);
-
-            // Create a hidden note to attach the annotation
-            const hiddenNote = new VF.StaveNote({
-              keys: ['B/4'],
-              duration: 'w',
-              clef: 'treble',
-            });
-            hiddenNote.addModifier(annotation, 0);
-            hiddenNote.setStyle({ fillStyle: 'transparent', strokeStyle: 'transparent' });
-            voiceData.voice.addTickable(hiddenNote);
-          }
-        }
-
-        // Format and draw all voices
-        const formatter = new VF.Formatter();
-        const allVoices = Array.from(voiceMap.values()).map(v => v.voice);
-        formatter.joinVoices(allVoices);
-        formatter.format(allVoices, width - 100);
-
-        for (const { voice, stave } of voiceMap.values()) {
-          voice.draw(context, stave);
+          y = partY + linePadding;
         }
 
         setRendered(true);
@@ -300,8 +241,12 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
   }
 
   return (
-    <div className="score-viewer" ref={containerRef} style={{ overflowX: 'auto' }}>
+    <div className="score-viewer" style={{ overflowX: 'auto' }}>
       {!rendered && <div className="score-viewer-loading">Loading score…</div>}
+      {/* VexFlow draws directly into this node's DOM; it must never also be a
+          React-rendered-children container, or React's reconciliation and
+          VexFlow's direct innerHTML writes fight over the same nodes. */}
+      <div ref={containerRef} />
     </div>
   );
 }

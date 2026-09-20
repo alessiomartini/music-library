@@ -1,20 +1,31 @@
 # Song Library
 
-`music-library` is a static personal song library with a chord-and-lyrics-oriented
-lead-sheet-style representation. It provides song metadata, chord symbols,
-lyrics, meter, tempo, transposition controls, and browser-local notes and
-preferences.
+`music-library` is a static personal song library. Song metadata (title,
+artist, key, capo/tuning, meter, tempo, links, history) is always present;
+the musical content itself is either a normalized **Score** (real pitched
+melody, lyrics, and an independent harmony layer, rendered as staff notation)
+or, for songs not yet transcribed, absent — there is no chord/lyric-only
+chart fallback.
 
 ## Current Features
 
 - Song metadata including title, artist, composer, key, capo/tuning, meter,
   tempo, history, and notes where provided.
-- Chord symbols and lyric text arranged by section and measure.
-- An HTML/CSS `LeadSheetChart` that spaces chart entries according to duration
-  codes.
-- Italian or English chord notation.
-- Chromatic transposition of chord symbols and the displayed key, including
-  slash-bass chord notation.
+- A normalized symbolic `Score` (see `src/lib/score.ts`): pitched melody
+  events, lyrics with syllabification, and an independent timed harmony
+  layer, all on a shared integer-tick timeline (960 ticks per quarter note).
+- `ScoreViewer` (`src/components/ScoreViewer.tsx`) renders a `Score` as real
+  staff notation with VexFlow: clef, key/time signature, noteheads, lyrics
+  under the voice line, and chord symbols positioned proportionally above
+  each measure from the harmony layer. It lays out one VexFlow `Voice` per
+  (part, measure) — a VexFlow `Voice`'s tick budget is exactly one measure,
+  so this is the layout that keeps VexFlow's internal tick math valid;
+  cramming a whole line of measures into one `Voice` previously crashed the
+  renderer.
+- Italian or English chord notation, applied to both the score's harmony
+  layer and the displayed key.
+- Chromatic transposition of the score (melody pitches, harmony roots and
+  slash-bass, displayed key) via `src/lib/transpose.ts`.
 - A manually selected preferred singing key with an optional note.
 - External Spotify, YouTube, and sheet-music links where present in a song's
   data.
@@ -23,40 +34,83 @@ preferences.
 
 ## Current Limitations
 
-The current lead-sheet representation stores mainly duration codes, rests,
-lyrics, and chord symbols. `LeadSheetNote` does not contain real melody pitch,
-and the application does not currently represent independent bass or
-instrumental parts.
+Only **Your Song** and **E cerca 'e me capi** currently have a published
+`Score` — they were transcribed through the audio-first offline pipeline (see
+below). **Yesterday**, **Blackbird**, **Something**, and **Amara terra mia**
+have song metadata only; their page shows a "no score published yet" message
+and no chart. There is intentionally no legacy chord/lyric-only chart to fall
+back to — migrating the rest of the songs means transcribing them through the
+same offline pipeline, not reviving the old format.
 
-`LeadSheetChart` is an HTML/CSS chart, not a true engraved staff notation
-renderer. The project does not currently use VexFlow or MusicXML in the
-application. It does not provide automatic vocal-range analysis, pitch
-distribution analysis, automatic key recommendation, or embedded recording and
-cover players.
+The published scores are machine-transcribed (source separation + automatic
+melody/harmony extraction) and not checked against a published edition;
+treat pitches and chords as a close but unverified transcription.
 
-The current musical data is partly preliminary. Some charts are explicitly
-written from memory, melodies are deliberately omitted, tempos are approximate,
-and data may be incomplete or require verification against a published source
-or by ear. The current representation is not intended to claim a complete,
-verified transcription.
+`ScoreViewer`'s layout is functional but not typeset: multi-line pieces
+divide measures evenly per line rather than balancing them, chord symbols are
+placed by proportional x-position rather than true rhythmic alignment, and
+there's no beaming/tie rendering yet (`ScoreNoteEvent.tie` is not drawn).
+There is no automatic vocal-range analysis, pitch-distribution analysis,
+automatic key recommendation, or embedded recording/cover players yet — see
+[Future Architecture](docs/FUTURE-ARCHITECTURE.md).
 
 ## Song Data
 
-Songs are currently defined as TypeScript constants in:
+Songs are TypeScript constants in:
 
 ```text
 src/data/songs/
 ```
 
-The current collection is assembled in:
+collected by `src/data/songs/index.ts`. A song's fixed metadata (title,
+artist, links, history, ...) lives in a `.ts` file; a song with a published
+score has its normalized JSON asset (e.g. `your-song.json`) imported and
+validated through `loadScoreJson` (`src/lib/scoreLoader.ts`) at module load
+time, which the `.ts` file's `score` field is then set to. An invalid score
+asset logs an error and is treated as absent rather than crashing the app —
+see `src/data/songs/index.ts`'s `tryLoadScoreJson`.
+
+To add a song with a score, produce its normalized JSON in the
+`music-library-offline` pipeline (below), copy it into `src/data/songs/`, and
+wire it into `index.ts` the way `your-song.json` and `e-cerca-e-me-capi.json`
+are. To add a song without a score yet, just add its metadata `.ts` file with
+no `score` field — it will show the "no score published yet" state until
+transcribed.
+
+## Score Data Source: `music-library-offline`
+
+Song scores are **not** authored by hand in this repository. They come from
+a separate, sibling repository, `music-library-offline`, which holds source
+recordings and an audio-first transcription pipeline:
 
 ```text
-src/data/songs/index.ts
+recording -> source separation (Demucs) -> vocal melody transcription
+          -> lyric alignment -> harmony extraction (librosa chroma + beat
+          tracking) -> MusicXML assembly (music21) -> normalized JSON
 ```
 
-To add a song, create a TypeScript data file following the existing `Song`
-structure, export the song, and add it to the `songs` array in
-`src/data/songs/index.ts`. The current repository contains five songs.
+Its `pipeline/` scripts are numbered per step (`01_separate*.py` ...
+`06b_musicxml_to_json*.py`); each song currently has its own copy of the
+pipeline scripts rather than a single parameterized pipeline — a known
+duplication, not yet worth the refactor for two songs. `output/json/*.json`
+in that repo is the transfer point: copy those files into this repo's
+`src/data/songs/` verbatim (they're already in the versioned Score JSON
+envelope this repo's `loadScoreJson` expects).
+
+**Harmony tick-tiling fix (2026-09-20):** the harmony extractor used to round
+each chord event's `start` and `duration` independently from real (variable)
+beat timing. Two independent roundings of dependent quantities can each land
+on either side of `.5`, which produced stray one-tick gaps/overlaps between
+consecutive chords and failed `validateScore`'s overlap check on both
+published songs. Fixed by deriving `duration = nextEvent.start - event.start`
+from the already-rounded starts instead, both in the raw chroma-based
+extractor (`04_extract_harmony*.py`) and in the MusicXML round-trip
+(`06b_musicxml_to_json*.py`, which had the same independent-rounding pattern
+a second time) — this guarantees exact tiling by construction rather than by
+retrying rounding heuristics. The same commit also stopped serializing
+`null` for absent optional fields (`tie`, `melisma`, `elision`, `lyrics`,
+`slashBass`); the JSON schema treats "optional" as "key absent", not
+`null`, and the null values were failing schema validation.
 
 ## Persistence
 
@@ -66,41 +120,17 @@ per-song transposition and preferred-key notes, and site-improvement notes.
 This data is local to one browser profile and is not synchronized between
 devices or users.
 
-## Future Architecture
+## Deployment
 
-The project is planned to evolve from the current chord-and-lyrics chart into
-a symbolic lead-sheet/score system. Planned directions include normalized JSON
-score assets, real pitched melody notes, multiple musical parts, an independent
-timed harmony layer on a shared musical timeline, proper score rendering,
-complete-score transposition, vocal-range and pitch-distribution analysis,
-user-specific vocal-range-based key recommendation, and one selected original
-recording plus multiple selected covers with embedded media where supported.
-
-The future offline workflow is conceptually:
-
-```text
-offline:
-recording
-  -> source separation
-  -> vocal melody / lyric alignment
-  -> harmony analysis
-  -> human curation
-  -> normalized JSON
-
-web:
-JSON
-  -> application Score
-  -> rendering / transposition / analysis
-```
-
-Audio-first transcription is the standard planned path. MIDI may be used as
-an intermediate by a particular offline tool, but it is not required.
-MusicXML remains an optional local/offline source, authoring, inspection, and
-interchange format; it is not the required starting point, runtime format, or
-published score format for the web application. These are planned features,
-not current implementation. See
-[Future Architecture](docs/FUTURE-ARCHITECTURE.md) for the detailed design and
-roadmap.
+GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys to GitHub
+Pages on every push to `main`. The `github-pages` environment on GitHub has a
+**custom deployment branch policy** (Settings → Environments →
+`github-pages`) that must explicitly list a branch before it's allowed to
+deploy — this is separate from anything in this repository's files. As of
+2026-09-20 that policy allows `main`. If deploys start silently failing at
+the `deploy` job (build succeeds, deploy is rejected with "Branch ... is not
+allowed to deploy to github-pages due to environment protection rules"),
+check that policy first before assuming a code or workflow problem.
 
 ## Development
 
@@ -121,3 +151,17 @@ npm run build
 npm run lint
 npm run validate
 ```
+
+`npm run validate` (`scripts/validate-scores.ts`) structurally validates
+every song's `Score` (via `validateScore` in `src/lib/score.ts`): timing,
+overlap, pitch range, lyric, tie, and harmony checks. A song with no score
+yet is reported `PEND`, not `FAIL` — that's an expected, temporary state
+during incremental migration, not a data defect. Only a present-but-malformed
+score fails the run and the exit code.
+
+## Future Architecture
+
+See [Future Architecture](docs/FUTURE-ARCHITECTURE.md) for the full design:
+vocal-range analysis, automatic key recommendation, original-recording/cover
+media, and the rest of the symbolic-score roadmap beyond what's implemented
+today.

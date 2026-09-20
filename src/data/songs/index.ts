@@ -1,16 +1,35 @@
+import type { Score } from '../../lib/score';
 import type { Song } from '../../lib/types';
+import { loadScoreJson, ScoreJsonValidationError } from '../../lib/scoreLoader';
 import { yourSong } from './your-song';
 import { yesterday } from './yesterday';
 import { blackbird } from './blackbird';
 import { something } from './something';
 import { amaraTerraMia } from './amara-terra-mia';
-import yourSongScore from './your-song.json';
-import eCercaScore from './e-cerca-e-me-capi.json';
+import yourSongScoreJson from './your-song.json';
+import eCercaScoreJson from './e-cerca-e-me-capi.json';
+
+// Score JSON assets are curated offline data, not application code: a
+// malformed one (e.g. mid-curation) must not crash every page. Fall back to
+// no score rather than throwing, and surface the problem in the console so
+// it gets fixed at the source.
+function tryLoadScoreJson(title: string, json: unknown): Score | undefined {
+  try {
+    return loadScoreJson(json);
+  } catch (error) {
+    if (error instanceof ScoreJsonValidationError) {
+      console.error(`Invalid score JSON for "${title}":\n${error.message}`);
+    } else {
+      throw error;
+    }
+    return undefined;
+  }
+}
 
 export const songs: Song[] = [
   {
     ...yourSong,
-    score: yourSongScore as any,
+    score: tryLoadScoreJson('Your Song', yourSongScoreJson),
   },
   {
     slug: 'e-cerca-e-me-capi',
@@ -27,7 +46,7 @@ export const songs: Song[] = [
       youtube: 'https://www.youtube.com/watch?v=gBfnI31x8Mw',
     },
     history: "E cerca 'e me capi is one of Pino Daniele's most beloved songs, blending Neapolitan tradition with blues and jazz influences.",
-    score: eCercaScore as any,
+    score: tryLoadScoreJson("E cerca 'e me capi", eCercaScoreJson),
   },
   yesterday,
   blackbird,

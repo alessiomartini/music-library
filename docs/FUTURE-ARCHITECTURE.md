@@ -61,7 +61,12 @@ action.
 
 ### Current directory structure
 
-The relevant current structure is:
+**This section was rewritten on 2026-09-20: the legacy `LeadSheetChart` /
+`LeadSheetSystem` chord-and-lyric chart described in earlier revisions of
+this document has been removed entirely. `Score`/`ScoreViewer` (VexFlow
+staff notation) is now the only chart representation — see the top-level
+[README](../README.md) for the current, authoritative state.** The relevant
+current structure is:
 
 ```text
 src/
@@ -71,30 +76,34 @@ src/
 ├── components/
 │   ├── FeedbackBox.tsx
 │   ├── KeyPreference.tsx
-│   ├── LeadSheetChart.tsx
+│   ├── ScoreViewer.tsx
 │   └── TransposeControls.tsx
 ├── data/
 │   └── songs/
 │       ├── amara-terra-mia.ts
 │       ├── blackbird.ts
+│       ├── e-cerca-e-me-capi.json
 │       ├── index.ts
 │       ├── something.ts
 │       ├── yesterday.ts
+│       ├── your-song.json
 │       └── your-song.ts
 ├── lib/
 │   ├── prefs.ts
 │   ├── storage.ts
 │   ├── theory.ts
+│   ├── transpose.ts
 │   ├── types.ts
 │   ├── score.ts
 │   ├── scoreLoader.ts
+│   ├── songLoader.ts
 │   └── ...
 └── pages/
     ├── Home.tsx
     └── SongPage.tsx
 
 scripts/
-└── validate-leadsheets.ts
+└── validate-scores.ts
 ```
 
 ### Current data model
@@ -102,53 +111,29 @@ scripts/
 `src/lib/types.ts` defines the current `Song` type. It contains metadata such
 as `slug`, `title`, `artist`, optional `composer`, `originalKey`, optional
 `capo` and `tuning`, `timeSignature`, `tempoBpm`, optional `tempoMarking`,
-external links, optional history, and optional notes.
+external links, optional history, and optional notes. It optionally contains
+`score?: Score` — the normalized symbolic score defined in `src/lib/score.ts`
+(§6 below is the design this type now implements: pitched notes, lyrics,
+ties, and an independent harmony layer on the shared tick timeline). There is
+no other chart field: a song with no `score` has no chart at all.
 
-It optionally contains `leadSheet: LeadSheetSystem[]`. The current nested
-types are:
+The song data currently contains six songs, only two of which have a
+published score:
 
-```ts
-interface LeadSheetSystem {
-  label: string;
-  measures: LeadSheetMeasure[];
-}
-
-interface LeadSheetMeasure {
-  melody: LeadSheetNote[];
-}
-
-interface LeadSheetNote {
-  duration: string;
-  rest?: boolean;
-  lyric?: string;
-  chord?: string;
-}
-```
-
-The `Song` type contains song metadata, external links, and the current
-legacy lead-sheet payload. Browser-local preferences are separate from the
-song domain model: `src/lib/prefs.ts` defines the preference values and
-`src/lib/storage.ts` persists them through `localStorage`. Preferences are not
-fields of `Song`.
-
-Despite the names used in some comments and documentation, the current
-`LeadSheetNote` does **not** store pitch. It stores a duration code, optional
-rest flag, optional lyric text, and an optional chord symbol. The current
-`LeadSheetMeasure.melody` is therefore a sequence of timed text/rest events,
-not a sequence of pitched musical notes. There is no current `bass` field and
-no current representation of an independent instrumental line.
-
-The song data currently contains five songs:
-
-- `Your Song` by Elton John;
-- `Yesterday` by The Beatles;
-- `Blackbird` by The Beatles;
-- `Something` by The Beatles;
-- `Amara terra mia` by Domenico Modugno.
+- `Your Song` by Elton John — has a score (`your-song.json`);
+- `E cerca 'e me capi` by Pino Daniele — has a score
+  (`e-cerca-e-me-capi.json`);
+- `Yesterday` by The Beatles — metadata only, no score yet;
+- `Blackbird` by The Beatles — metadata only, no score yet;
+- `Something` by The Beatles — metadata only, no score yet;
+- `Amara terra mia` by Domenico Modugno — metadata only, no score yet.
 
 Their data is stored as TypeScript constants in `src/data/songs/` and collected
 by `src/data/songs/index.ts`. A new song currently requires a new data file and
-an explicit addition to the `songs` array.
+an explicit addition to the `songs` array. A song's score JSON is produced by
+the `music-library-offline` sibling repository's pipeline (see the README's
+"Score Data Source" section) and copied in verbatim; it is not hand-authored
+in this repository.
 
 ### Current theory utilities
 
@@ -182,7 +167,8 @@ renderer do not use them to represent or render actual melody pitches.
   and external links;
 - reads per-song and global preferences;
 - supports semitone transposition and Italian/English chord display;
-- renders `LeadSheetChart` when a lead sheet exists;
+- loads and renders `ScoreViewer` when the song has a `score`, otherwise shows
+  a "no score published yet" message;
 - renders `KeyPreference` for a locally saved preferred singing key.
 
 `TransposeControls.tsx` changes the per-song semitone offset and the global
@@ -213,35 +199,32 @@ are not synchronized to a server.
 
 ### Current rendering
 
-`src/components/LeadSheetChart.tsx` renders sections, measures, and cells as
-HTML elements. It uses flex growth derived from duration codes to give longer
-events more horizontal space. It displays converted chord text above lyric
-text.
-
-The current `LeadSheetChart` is **not a real notation renderer**. It does not
-draw a staff, notes, rests, clefs, key signatures, or actual pitched melody.
-There is no `vexflow` dependency in `package.json`, and the current component
-does not consume MusicXML or a notation document. The README describes an
-HTML/CSS chord-and-lyric chart, which matches the current implementation.
+`src/components/ScoreViewer.tsx` is a real staff-notation renderer, built on
+`vexflow` (a real dependency in `package.json`). It lays out one VexFlow
+`Voice` per `(part, measure)` and one `Stave` per measure — a VexFlow `Voice`
+tracks exactly one measure's tick budget, and grouping several measures'
+events into one `Voice` (the component's first version) made VexFlow's
+internal tick/resolution math produce `NaN` and crash. Chord symbols from the
+harmony layer are drawn as plain text at a proportional x-position within
+each measure's stave, rather than through VexFlow's tickable system — an
+arbitrary harmony-segment duration rarely lands on a standard notated
+duration, so forcing it into a `Voice`'s tick budget reintroduces the same
+class of crash. This means chord placement is visually proportional, not
+tied to precise rhythmic notation. Lyrics are drawn as note annotations
+below the voice part. Ties (`ScoreNoteEvent.tie`) are not yet drawn.
 
 ### Current validation
 
-`npm run validate` bundles and runs `scripts/validate-leadsheets.ts`. The
-validator currently checks:
-
-- that each song has a lead sheet;
-- that a measure is not empty;
-- that duration codes are recognized;
-- that measure durations add up to the expected number of beats from the
-  time signature;
-- that lyric fields are not empty strings;
-- that a rest does not also contain lyric text;
-- that chord strings can be processed by the current chord conversion helper.
-
-The validator reports results per song and exits with a failure code if any
-problem is found. It does not validate pitches, staff notation, part
-relationships, ties, MusicXML, or independent musical lines because those
-concepts are not in the current data model.
+`npm run validate` bundles and runs `scripts/validate-scores.ts`. For each
+song with a `score`, it runs `validateScore` (`src/lib/score.ts`), which
+checks: timing/ordering and non-overlap of events within a part and within
+the harmony layer, valid pitches, valid ties, valid lyrics (verse, syllabic,
+melisma, elision), valid harmony (root, quality, slash bass), and consistent
+measures against the time signature. A song with no `score` is reported
+`PEND`, not a failure — expected during incremental migration. The validator
+does not currently re-check the legacy chord/lyric-chart rules described in
+earlier revisions of this document, because that representation no longer
+exists.
 
 ### Current limitations
 
@@ -653,10 +636,11 @@ identity, syllable boundaries, melisma relationships, same-note
 multiple-lyric relationships, and enough information for correct rendering.
 
 The first versioned JSON envelope and its loader boundary are implemented as
-domain infrastructure, but no real song JSON asset is currently published or
-loaded by the application. The broader offline transcription workflow remains
-a design/implementation task. MusicXML files should not normally be committed
-as published score assets in the frontend repository.
+domain infrastructure. As of 2026-09-20, two songs (Your Song, E cerca 'e me
+capi) have a real published score JSON asset produced by the
+`music-library-offline` audio-first pipeline and loaded/rendered by the
+application; the other four songs have none yet. MusicXML files should not
+normally be committed as published score assets in the frontend repository.
 
 The normalized score uses the same integer-tick representation at rest in JSON
 and at runtime. JSON may use compact scalar fields for tick positions and
@@ -1537,6 +1521,11 @@ of the symbolic-score ingestion path.
 - Do not implement a feature solely because it is described as planned here;
   confirm scope before changing the application.
 
-STATUS: DESIGN / NOT YET IMPLEMENTED
+STATUS: PARTIALLY IMPLEMENTED — Phases 1-9 done for 2 of 6 songs (score model,
+JSON envelope/loader, and a working ScoreViewer are live; Phases 10-14 —
+transposition is done, vocal analysis / key recommendation / remaining-song
+migration are not). Sections 2 and 17 above describe the current
+implementation; the rest of this document remains design intent. See the
+top-level README for the authoritative current-state summary.
 
-Last updated: 2026-09-19
+Last updated: 2026-09-20

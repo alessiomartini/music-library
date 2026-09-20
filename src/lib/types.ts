@@ -1,29 +1,5 @@
 import type { Score } from './score';
 
-/** One event in the sung line. Carries no pitch: the charts give chords,
- * words and where they fall in the bar, and deliberately say nothing about
- * the melody itself. */
-export interface LeadSheetNote {
-  /** Duration code: "q", "8", "h", "w", "qd" (dotted quarter), "16". Sets
-   * how much horizontal room the syllable gets within its bar. */
-  duration: string;
-  rest?: boolean;
-  /** Syllable/word sung here. */
-  lyric?: string;
-  /** Chord symbol (English notation) that starts sounding here. */
-  chord?: string;
-}
-
-export interface LeadSheetMeasure {
-  /** The sung line for one bar, in order. */
-  melody: LeadSheetNote[];
-}
-
-export interface LeadSheetSystem {
-  label: string; // "Verse 1", "Chorus", ...
-  measures: LeadSheetMeasure[];
-}
-
 export interface SongLinks {
   spotify?: string;
   youtube?: string;
@@ -50,9 +26,8 @@ export interface Song {
   timeSignature: string;
   tempoBpm: number;
   tempoMarking?: string; // e.g. "Moderately"
-  /** Engraved lead sheet: melody + chord symbols + bass line, by section. */
-  leadSheet?: LeadSheetSystem[];
-  /** Normalized symbolic score (new format). Mutually exclusive with leadSheet. */
+  /** Normalized symbolic score: melody, lyrics and harmony. Absent until the
+   * song has been transcribed through the audio-first pipeline. */
   score?: Score;
   /** Path to JSON score file (alternative to inline score). */
   scorePath?: string;

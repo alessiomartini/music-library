@@ -315,11 +315,7 @@ select, textarea, input {
   border-radius: 0;
 }
 
-/* --- Lead sheet --- */
-
-.lead-sheet {
-  margin-bottom: 8px;
-}
+/* --- Score section header (shared by the score viewer) --- */
 
 .lead-sheet-header {
   display: flex;
@@ -339,61 +335,13 @@ select, textarea, input {
   color: var(--text);
 }
 
-.chart-system {
-  margin-bottom: 18px;
-}
-
-.chart-section-label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text);
-  margin: 0 0 6px;
-}
-
-/* Measures wrap like text, so the chart only ever scrolls vertically. */
-.chart-measures {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 10px;
-}
-
-/* The bar line: one before every measure, and a closing one at the end. */
-.chart-measure {
-  display: flex;
-  align-items: stretch;
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: 2px 10px;
-  border-left: 2px solid var(--text-h);
-}
-
-.chart-measure:last-child {
-  border-right: 2px solid var(--text-h);
-}
-
-/* One column per syllable, widened in proportion to how long it is held. */
-.chart-cell {
-  display: flex;
-  flex-direction: column;
-  flex-basis: auto;
-  min-width: 0;
-  padding-right: 6px;
-  white-space: nowrap;
-}
-
-.chart-chord {
+.score-unavailable {
+  margin: 16px 0 8px;
+  padding: 14px 16px;
+  border: 1px dashed var(--text-h);
+  border-radius: 8px;
   font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--chord);
-}
-
-.chart-lyric {
-  font-size: 15px;
-  line-height: 1.35;
-  color: var(--text-h);
+  color: var(--text);
 }
 
 /* --- Key preference --- */
