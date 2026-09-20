@@ -85,32 +85,38 @@ recordings and an audio-first transcription pipeline:
 
 ```text
 recording -> source separation (Demucs) -> vocal melody transcription
-          -> lyric alignment -> harmony extraction (librosa chroma + beat
-          tracking) -> MusicXML assembly (music21) -> normalized JSON
+          -> lyric alignment -> harmony extraction (lv-chordia, ML chord
+          recognition) -> MusicXML assembly (music21) -> normalized JSON
 ```
 
-Its `pipeline/` scripts are numbered per step (`01_separate*.py` ...
-`06b_musicxml_to_json*.py`); each song currently has its own copy of the
-pipeline scripts rather than a single parameterized pipeline — a known
-duplication, not yet worth the refactor for two songs. `output/json/*.json`
-in that repo is the transfer point: copy those files into this repo's
-`src/data/songs/` verbatim (they're already in the versioned Score JSON
-envelope this repo's `loadScoreJson` expects).
+Its `pipeline/` is one generic, slug-parameterized script per step
+(`separate.py`, `transcribe_vocals.py`, `align_lyrics.py`,
+`extract_harmony.py`, `assemble_musicxml.py`, `musicxml_to_json.py`) driven
+by a small per-song config at `songs/<slug>.json` — not a per-song copy of
+the scripts. `output/json/*.json` in that repo is the transfer point: copy
+those files into this repo's `src/data/songs/` verbatim (they're already in
+the versioned Score JSON envelope this repo's `loadScoreJson` expects).
 
-**Harmony tick-tiling fix (2026-09-20):** the harmony extractor used to round
-each chord event's `start` and `duration` independently from real (variable)
-beat timing. Two independent roundings of dependent quantities can each land
-on either side of `.5`, which produced stray one-tick gaps/overlaps between
-consecutive chords and failed `validateScore`'s overlap check on both
-published songs. Fixed by deriving `duration = nextEvent.start - event.start`
-from the already-rounded starts instead, both in the raw chroma-based
-extractor (`04_extract_harmony*.py`) and in the MusicXML round-trip
-(`06b_musicxml_to_json*.py`, which had the same independent-rounding pattern
-a second time) — this guarantees exact tiling by construction rather than by
-retrying rounding heuristics. The same commit also stopped serializing
-`null` for absent optional fields (`tie`, `melisma`, `elision`, `lyrics`,
-`slashBass`); the JSON schema treats "optional" as "key absent", not
-`null`, and the null values were failing schema validation.
+**Harmony extraction switched to lv-chordia (2026-09-20):** an ML chord
+recognition model (openmirlab/lv-chordia, MIT-licensed, ISMIR 2019
+ensemble+HMM model, weights bundled with the package) replaced a hand-rolled
+librosa chroma-template-per-beat matcher, which had no temporal smoothing
+and produced noisier chord boundaries.
+
+**Harmony tick-tiling fix (2026-09-20, applies regardless of extractor):**
+the harmony extractor and the MusicXML-to-JSON converter both used to round
+each chord event's `start` and `duration` independently from real timing.
+Two independent roundings of dependent quantities can each land on either
+side of `.5`, which produced stray one-tick gaps/overlaps between
+consecutive chords and failed `validateScore`'s overlap check. Fixed by
+deriving `duration = nextEvent.start - event.start` from the already-rounded
+starts instead, in both `extract_harmony.py` and the MusicXML round-trip in
+`musicxml_to_json.py` (which had the same independent-rounding pattern a
+second time) — this guarantees exact tiling by construction rather than by
+retrying rounding heuristics. The same work also stopped serializing `null`
+for absent optional fields (`tie`, `melisma`, `elision`, `lyrics`,
+`slashBass`); the JSON schema treats "optional" as "key absent", not `null`,
+and the null values were failing schema validation.
 
 ## Persistence
 
