@@ -1429,13 +1429,32 @@ The following decisions remain unresolved:
 18. Which source-separation tool or strategy gives sufficiently reliable
    vocal and accompaniment stems?
 19. Which vocal transcription workflow gives sufficiently reliable melody
-   pitches, rhythms, and rests?
+   pitches, rhythms, and rests? **Narrowed 2026-09-21:** the workflow must be
+   fully automatic (Basic Pitch, the same tool already used for the
+   accompaniment) — no manually curated MusicXML reference as an alternate
+   melody source. A curated MIDI may still be supplied as an input to guide
+   or correct the automatic transcription, but it does not remove the need
+   to run lyric alignment and harmony extraction against the audio; how a
+   curated MIDI feeds into the automatic workflow is still open.
 20. How should lyrics be recognized and aligned to sung notes, given that
-   speech-to-text alone does not solve sung-lyric alignment?
+   speech-to-text alone does not solve sung-lyric alignment? **Narrowed
+   2026-09-21:** the current per-verse sequential heuristic
+   (`align_lyrics.py`) is not sufficient. The direction is forced alignment
+   — audio plus the already-known lyric text (already present in the song
+   config) fed to a forced aligner (e.g. Montreal Forced Aligner, aeneas, or
+   WhisperX's wav2vec2-CTC alignment) to recover real per-word/per-syllable
+   timestamps, replacing the blind sequential assignment. Which specific
+   tool, and how its word timestamps map onto note events, remain open.
 21. When is MIDI useful as an intermediate for a particular song, and when is
    direct symbolic transcription preferable?
 22. How should harmony recognition be performed and corrected when chord
-   quality or slash bass is ambiguous?
+   quality or slash bass is ambiguous? **Narrowed 2026-09-21:** in addition
+   to human correction, the automatically transcribed instrumental part
+   (`transcribe_instrumental.py`, independent of `extract_harmony.py`) should
+   be used to cross-check the extracted chord symbols — the instrumental
+   note-set within a chord's time span should largely agree with its root
+   and quality. The exact cross-check method (which mismatches to flag,
+   automatic correction vs. a curation-review signal) is still open.
 23. How much manual correction is required before a score is publishable?
 24. How should accompaniment be represented when harmony is ambiguous?
 25. Should an instrumental stem always be separated into additional
