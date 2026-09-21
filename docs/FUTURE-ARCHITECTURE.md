@@ -195,7 +195,9 @@ unavailable or unreadable.
 - feedback notes under `feedback-notes`.
 
 These values are local to one browser profile. They are not song metadata and
-are not synchronized to a server.
+are not synchronized to a server. Migrating feedback notes off `localStorage`
+onto a Cloudflare D1 backend is a planned, not-yet-started change — see
+§22.
 
 ### Current rendering
 
@@ -1476,6 +1478,11 @@ The following decisions remain unresolved:
    scripts in order), instead of running each pipeline script by hand? This
    would still stop before publication — human curation (§16) and validation
    (§17) remain required steps, not something automation should skip.
+30. Section 22 (feedback-notes migration to Cloudflare D1): should the write
+   endpoint be append-only, or full CRUD (add a `done`/delete route mirroring
+   `ear-training/worker`)? And should music-library get its own dedicated D1
+   database, or share one D1 database across all of Alessio's sites (via a
+   `site` column)?
 
 The following are resolved architectural decisions, not open questions:
 
@@ -1590,6 +1597,136 @@ The original-recording and covers media system remains a separate planned
 feature and may be implemented alongside these phases without becoming part
 of the symbolic-score ingestion path.
 
+## 22. Feedback Notes: Future Migration to Cloudflare D1
+
+**Status: planned, not started.** This section documents a migration plan
+only — do not implement it as part of an unrelated chunk, and do not treat
+the current `localStorage` mechanism as already replaced.
+
+### Current mechanism (what this replaces)
+
+`src/components/FeedbackBox.tsx`, mounted globally from `App.tsx`, is a
+self-contained note-taking widget: a toggleable panel with a textarea and a
+list of notes, each with `done`/delete controls. It reads and writes its
+state through `useFeedbackNotes()` (`src/lib/prefs.ts`), which is
+`useLocalStorage<FeedbackNote[]>('feedback-notes', [])` (`src/lib/storage.ts`).
+Everything — add, toggle-done, delete — is a synchronous state update that
+`useLocalStorage`'s `useEffect` persists to `localStorage` under the
+`feedback-notes` key. Nothing leaves the browser: notes exist only on the
+device that wrote them, and Alessio can't read them without opening that
+browser's dev tools.
+
+### Why migrate, and the pattern to follow
+
+Three other sites of Alessio's already solve this the same way — a
+Cloudflare Worker in front of a D1 database, deployed independently of the
+static site:
+
+- `ear-training/worker/` (`src/index.js` + `schema.sql`) — full CRUD
+  (`POST`/`GET`/`PATCH`/`DELETE` on `/notes`), single bearer token
+  (`NOTES_TOKEN`) required for **every** method, including POST.
+- `geopolitics-atlas/worker/` (`src/index.js` + `schema.sql`) — POST-only,
+  no auth at all on write; there is deliberately no GET endpoint, notes are
+  read straight out of D1 via `wrangler d1 execute` / the dashboard.
+- `eating-amsterdam/backend/src/worker.js` (`postFeedback` / `getFeedback`,
+  table `feedback`) — the closest match to what's wanted here: `POST
+  /api/feedback` writes with no authentication (just per-client rate
+  limiting), `GET /api/feedback` requires
+  `Authorization: Bearer <ADMIN_TOKEN>` and 401s otherwise.
+
+For music-library's feedback notes, the **`eating-amsterdam` shape is the
+one to follow**: unauthenticated POST to write (site visitors, including
+Alessio himself while using the deployed site, should be able to leave a
+note without pasting a token first), token-gated GET to read (the notes may
+contain casual remarks Alessio doesn't want world-readable). CORS should be
+restricted to the deployed site's origin(s), the same way
+`geopolitics-atlas/worker/src/index.js`'s `ALLOWED_ORIGINS` allow-list does.
+
+### What changes in `FeedbackBox.tsx`
+
+- `addNote()` currently does a synchronous `setNotes([note, ...notes])`.
+  It becomes: optimistically add the note to local state (so the UI still
+  feels instant), then `fetch(WORKER_URL + '/notes', { method: 'POST', body:
+  JSON.stringify({ id: note.id, text: note.text, createdAt: note.createdAt
+  }) })` in the background. On failure, mark the note (e.g. a `synced:
+  boolean` field, or a small "not saved yet" badge) rather than silently
+  losing it.
+- `toggleDone` / `remove` need the same treatment if the backend is to be
+  the source of truth for those actions too — or, simpler for a first cut,
+  the backend could be append-only (matching `eating-amsterdam`'s
+  `postFeedback`, which has no update/delete route) and `done`/delete stay
+  purely local UI state, with only note *creation* synced server-side. This
+  is an **OPEN QUESTION**: append-only-on-server vs. full CRUD depends on
+  whether Alessio wants to manage the list from the server side too (like
+  `ear-training`'s worker) or only ever collect incoming notes (like
+  `geopolitics-atlas`'s).
+- A local cache remains useful either way: keep writing to
+  `useLocalStorage`/`feedback-notes` as an offline fallback and optimistic
+  buffer, but it stops being the record of truth once the Worker call
+  succeeds — the D1 row is. This mirrors `eating-amsterdam`'s
+  `clientId`-based dedup approach for offline-friendly retries.
+- New failure/loading UI: a submitting state on the "Add" button, and a
+  visible error state if the POST fails (e.g. offline), so notes aren't
+  silently dropped.
+
+### Suggested schema
+
+Following the `id`-as-primary-key idempotency trick from
+`ear-training/worker/schema.sql` (the client generates the id via
+`crypto.randomUUID()` already, in `addNote()`), so retries after a network
+error don't create duplicate rows:
+
+```sql
+CREATE TABLE IF NOT EXISTS notes (
+  id         TEXT PRIMARY KEY,
+  text       TEXT NOT NULL,
+  created_at INTEGER NOT NULL,   -- ms, client clock (FeedbackNote.createdAt)
+  page       TEXT,               -- which route the note was left from, if tracked
+  device     TEXT                -- free-form label, e.g. user agent hint
+);
+```
+
+`FeedbackNote.done` is left out of the table in the append-only design
+above; if full CRUD is chosen instead (per the open question), add a `done
+INTEGER NOT NULL DEFAULT 0` column and a `PATCH`/`DELETE` route, following
+`ear-training/worker/src/index.js`.
+
+### Open question: dedicated D1 vs. one shared D1 across all sites
+
+Not decided. Two options, both viable:
+
+- **Dedicated D1 per site (current pattern for `ear-training`,
+  `geopolitics-atlas`, and `eating-amsterdam`)**: music-library gets its own
+  D1 database and its own Worker. Simplest schema (no `site` column needed),
+  and an outage or bug in this Worker can't affect any other site's
+  feedback collection. Costs one more D1 database + Worker to provision and
+  deploy per site.
+- **One shared D1 across all of Alessio's sites**: a single `notes` table
+  with a `site` column (`notes(id, site, page, text, created_at, ...)`),
+  one Worker fronting all sites' feedback. Less infrastructure to stand up
+  per new site. **Trade-off**: a bug or bad migration in the shared
+  Worker/schema breaks note collection for every site at once, not just
+  music-library; and CORS/`ALLOWED_ORIGINS` would need to list every site's
+  origin in one place instead of being scoped per-repo.
+
+Whichever is chosen, this is an infrastructure decision that applies across
+Alessio's sites, not something to decide unilaterally inside a
+music-library implementation chunk — confirm with Alessio first.
+
+### Explicitly out of scope until this chunk is requested
+
+- No code in `FeedbackBox.tsx` or `src/lib/storage.ts` should be changed
+  based on this section alone.
+- Existing notes already sitting in users' `localStorage` are not
+  recoverable by the server in either the dedicated or shared-D1 case —
+  they never left the browser that wrote them, and neither design retrieves
+  them retroactively. They just keep working locally, and future notes
+  start flowing to D1 once this chunk ships.
+- Rate limiting / abuse mitigation on the write endpoint (see
+  `eating-amsterdam/backend/src/worker.js`'s `overRateLimit`) is part of
+  this chunk, not an afterthought — an unauthenticated public POST endpoint
+  needs it from day one.
+
 ## Rules for Future AI Sessions
 
 - Read `README.md` and this document before making architectural changes.
@@ -1624,4 +1761,4 @@ migration are not). Sections 2 and 17 above describe the current
 implementation; the rest of this document remains design intent. See the
 top-level README for the authoritative current-state summary.
 
-Last updated: 2026-09-20
+Last updated: 2026-09-21
