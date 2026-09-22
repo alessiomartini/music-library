@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { Score, ScoreEvent, ScoreMeasure, ScorePart } from '../lib/score';
+import type { Score, ScoreEvent, ScoreLyric, ScoreMeasure, ScorePart } from '../lib/score';
 import { transposeScore } from '../lib/transpose';
 import { keyName, type ChordSystem as TheoryChordSystem } from '../lib/theory';
 
@@ -124,13 +124,32 @@ function computeSustainedNotes(part: ScorePart): Set<ScoreEvent> {
   let sawLyric = false;
   for (const event of sorted) {
     if (event.kind !== 'note') continue;
-    if (event.lyrics?.[0]?.text) {
+    if (event.lyrics?.some((l) => l.text)) {
       sawLyric = true;
     } else if (sawLyric) {
       sustained.add(event);
     }
   }
   return sustained;
+}
+
+// A note can carry more than one syllable (the karaoke source's lyric ticks
+// are hand-timed against the recording, not quantized to the transcribed
+// note grid — see extract_midi_lyrics.py's docstring): joins them instead
+// of only showing the first and silently losing the rest. A 'middle'/'end'
+// syllable continues directly from the entry before it (no separator, same
+// word); a 'begin'/'single' one starts a new word (separated by a space).
+function joinNoteLyrics(lyrics: ScoreLyric[]): string {
+  let result = '';
+  for (const l of lyrics) {
+    if (!l.text) continue;
+    if (!result || l.syllabic === 'middle' || l.syllabic === 'end') {
+      result += l.text;
+    } else {
+      result += ' ' + l.text;
+    }
+  }
+  return result;
 }
 
 // Word-internal syllables (syllabic 'begin'/'middle') get noticeably less
@@ -150,10 +169,11 @@ function eventSlotWidth(event: ScoreEvent, ppq: number, sustained: Set<ScoreEven
   const quarterNotes = event.duration / ppq;
   const base = Math.max(MIN_EVENT_WIDTH, 20 + Math.sqrt(quarterNotes) * 26);
   if (event.kind === 'rest') return base;
-  const syllable = event.lyrics?.[0];
-  const lyricText = syllable?.text ?? (sustained.has(event) ? SUSTAIN_MARK : undefined);
+  const lyrics = event.lyrics;
+  const lyricText = lyrics?.length ? joinNoteLyrics(lyrics) : sustained.has(event) ? SUSTAIN_MARK : undefined;
   if (!lyricText) return base;
-  const wordInternal = syllable?.syllabic === 'begin' || syllable?.syllabic === 'middle';
+  const lastSyllabic = lyrics?.[lyrics.length - 1]?.syllabic;
+  const wordInternal = lastSyllabic === 'begin' || lastSyllabic === 'middle';
   const padding = wordInternal ? LYRIC_PADDING_WORD_INTERNAL : LYRIC_PADDING_WORD_FINAL;
   const lyricWidth = measureTextWidth(lyricText, '10px Arial') + padding;
   return Math.max(base, lyricWidth);
@@ -243,7 +263,18 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
           );
         }
 
-        const sustainedByPart = new Map(transposedScore.parts.map((part) => [part, computeSustainedNotes(part)]));
+        // Only meaningful for a MIDI-first score: audio-first transcription
+        // (forced alignment over Basic Pitch's automatic melody) has no such
+        // note-level "this note held the last syllable" signal, so an
+        // unlabeled note there is routine ML transcription granularity, not
+        // a held syllable — marking it "_" would flood the real song with
+        // noise instead of fixing a gap (checked against a real published
+        // song, "E cerca 'e me capi": most of the line turned into
+        // underscores).
+        const sustainedByPart =
+          transposedScore.lyricSyncMethod === 'midi-native'
+            ? new Map(transposedScore.parts.map((part) => [part, computeSustainedNotes(part)]))
+            : new Map(transposedScore.parts.map((part) => [part, new Set<ScoreEvent>()]));
 
         // Each measure gets exactly as much width as its densest part needs
         // (notes + any lyrics under them), instead of a fixed width — this is
@@ -338,7 +369,11 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                   }
                   const { note: noteName, octave } = midiToVexFlowNote(event.pitch);
                   const vfNote = new VF.StaveNote({ keys: [`${noteName}/${octave}`], duration, clef });
-                  const lyricText = event.lyrics?.[0]?.text ?? (sustained.has(event) ? SUSTAIN_MARK : undefined);
+                  const lyricText = event.lyrics?.length
+                    ? joinNoteLyrics(event.lyrics)
+                    : sustained.has(event)
+                      ? SUSTAIN_MARK
+                      : undefined;
                   if (lyricText) {
                     vfNote.addModifier(
                       new VF.Annotation(lyricText)

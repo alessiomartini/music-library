@@ -84,6 +84,8 @@ export interface HarmonyEvent extends TimedEvent {
   slashBass?: PitchClass;
 }
 
+export type LyricSyncMethod = 'midi-native' | 'derived';
+
 export interface Score {
   ppq: typeof SCORE_PPQ;
   originalKey: string;
@@ -92,6 +94,13 @@ export interface Score {
   tempo: ScoreTempo;
   parts: ScorePart[];
   harmony: HarmonyEvent[];
+  // How closely lyric timing tracks real per-syllable timestamps: 'midi-native'
+  // for a MIDI-first score (parsed directly from a karaoke MIDI's own lyric
+  // events, see docs/FUTURE-ARCHITECTURE.md), 'derived' or absent for the
+  // audio-first path (forced alignment). Gates ScoreViewer's held-syllable
+  // ("_") marks, which rely on MIDI-first's note-level lyric granularity and
+  // read as noise on audio-first's coarser transcription.
+  lyricSyncMethod?: LyricSyncMethod;
 }
 
 export interface ScoreValidationIssue {

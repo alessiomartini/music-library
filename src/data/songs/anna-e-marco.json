@@ -495,22 +495,22 @@
               {
                 "verse": "line1",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line1",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line1",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line1",
                 "text": "me",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -523,12 +523,12 @@
               {
                 "verse": "line1",
                 "text": "so",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line1",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -541,7 +541,7 @@
               {
                 "verse": "line1",
                 "text": "tan",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -554,7 +554,7 @@
               {
                 "verse": "line1",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -578,7 +578,7 @@
               {
                 "verse": "line2",
                 "text": "per",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -591,7 +591,7 @@
               {
                 "verse": "line2",
                 "text": "ma",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -604,12 +604,12 @@
               {
                 "verse": "line2",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line2",
                 "text": "sa",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -639,7 +639,7 @@
               {
                 "verse": "line3",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -652,12 +652,12 @@
               {
                 "verse": "line3",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line3",
                 "text": "bel",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -670,7 +670,7 @@
               {
                 "verse": "line3",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -683,12 +683,12 @@
               {
                 "verse": "line3",
                 "text": "sguar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line3",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -707,12 +707,12 @@
               {
                 "verse": "line4",
                 "text": "sguar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line4",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line4",
@@ -722,7 +722,7 @@
               {
                 "verse": "line4",
                 "text": "o",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -740,12 +740,12 @@
               {
                 "verse": "line5",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line6",
                 "text": "qual",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -758,12 +758,12 @@
               {
                 "verse": "line6",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line6",
                 "text": "sa.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -806,7 +806,7 @@
               {
                 "verse": "line7",
                 "text": "chiu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -819,7 +819,7 @@
               {
                 "verse": "line7",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -837,7 +837,7 @@
               {
                 "verse": "line7",
                 "text": "oc",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -850,7 +850,7 @@
               {
                 "verse": "line7",
                 "text": "chi",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -907,12 +907,12 @@
               {
                 "verse": "line8",
                 "text": "stel",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line8",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -938,7 +938,7 @@
               {
                 "verse": "line9",
                 "text": "pe",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -951,12 +951,12 @@
               {
                 "verse": "line9",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line9",
                 "text": "fe",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -975,7 +975,7 @@
               {
                 "verse": "line9",
                 "text": "ria",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -993,7 +993,7 @@
               {
                 "verse": "line10",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1006,7 +1006,7 @@
               {
                 "verse": "line10",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1037,7 +1037,7 @@
               {
                 "verse": "line10",
                 "text": "a",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1050,12 +1050,12 @@
               {
                 "verse": "line10",
                 "text": "mi",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line10",
                 "text": "che",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1068,7 +1068,7 @@
               {
                 "verse": "line11",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1081,7 +1081,7 @@
               {
                 "verse": "line11",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1107,7 +1107,7 @@
               {
                 "verse": "line12",
                 "text": "vor",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1120,7 +1120,7 @@
               {
                 "verse": "line12",
                 "text": "reb",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -1133,12 +1133,12 @@
               {
                 "verse": "line12",
                 "text": "be",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line12",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1151,7 +1151,7 @@
               {
                 "verse": "line12",
                 "text": "dar",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1164,12 +1164,12 @@
               {
                 "verse": "line12",
                 "text": "vi",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line12",
                 "text": "a.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1187,7 +1187,7 @@
               {
                 "verse": "line13",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1200,7 +1200,7 @@
               {
                 "verse": "line13",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1213,7 +1213,7 @@
               {
                 "verse": "line13",
                 "text": "gros",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1226,7 +1226,7 @@
               {
                 "verse": "line13",
                 "text": "se",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1239,7 +1239,7 @@
               {
                 "verse": "line13",
                 "text": "scar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1252,7 +1252,7 @@
               {
                 "verse": "line13",
                 "text": "pe",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line13",
@@ -1270,7 +1270,7 @@
               {
                 "verse": "line14",
                 "text": "po",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1283,7 +1283,7 @@
               {
                 "verse": "line14",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1296,12 +1296,12 @@
               {
                 "verse": "line14",
                 "text": "car",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line14",
                 "text": "ne",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1319,12 +1319,12 @@
               {
                 "verse": "line15",
                 "text": "cuo",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line15",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line15",
@@ -1342,7 +1342,7 @@
               {
                 "verse": "line15",
                 "text": "al",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1355,7 +1355,7 @@
               {
                 "verse": "line15",
                 "text": "lar",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -1368,7 +1368,7 @@
               {
                 "verse": "line15",
                 "text": "me",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1422,7 +1422,7 @@
               {
                 "verse": "line16",
                 "text": "ma",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1435,7 +1435,7 @@
               {
                 "verse": "line16",
                 "text": "dre",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line16",
@@ -1445,7 +1445,7 @@
               {
                 "verse": "line16",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1458,7 +1458,7 @@
               {
                 "verse": "line16",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1471,7 +1471,7 @@
               {
                 "verse": "line17",
                 "text": "so",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1484,12 +1484,12 @@
               {
                 "verse": "line17",
                 "text": "rel",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line17",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1514,22 +1514,22 @@
               {
                 "verse": "line17",
                 "text": "po",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line17",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line17",
                 "text": "vi",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line17",
                 "text": "ta",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1548,7 +1548,7 @@
               {
                 "verse": "line18",
                 "text": "sem",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1561,7 +1561,7 @@
               {
                 "verse": "line18",
                 "text": "pre",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1574,12 +1574,12 @@
               {
                 "verse": "line18",
                 "text": "quel",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line18",
                 "text": "la.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1610,7 +1610,7 @@
               {
                 "verse": "line19",
                 "text": "chiu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1623,7 +1623,7 @@
               {
                 "verse": "line19",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1641,7 +1641,7 @@
               {
                 "verse": "line19",
                 "text": "oc",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1654,7 +1654,7 @@
               {
                 "verse": "line19",
                 "text": "chi",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1711,7 +1711,7 @@
               {
                 "verse": "line20",
                 "text": "po",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1743,12 +1743,12 @@
               {
                 "verse": "line21",
                 "text": "pe",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line21",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -1761,7 +1761,7 @@
               {
                 "verse": "line21",
                 "text": "fe",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -1774,12 +1774,12 @@
               {
                 "verse": "line21",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line21",
                 "text": "a",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1797,7 +1797,7 @@
               {
                 "verse": "line21",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1810,7 +1810,7 @@
               {
                 "verse": "line21",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1836,7 +1836,7 @@
               {
                 "verse": "line22",
                 "text": "bran",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1849,7 +1849,7 @@
               {
                 "verse": "line22",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1862,7 +1862,7 @@
               {
                 "verse": "line22",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1875,7 +1875,7 @@
               {
                 "verse": "line22",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1893,7 +1893,7 @@
               {
                 "verse": "line23",
                 "text": "vor",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1906,17 +1906,17 @@
               {
                 "verse": "line23",
                 "text": "reb",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line23",
                 "text": "be",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line23",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -1929,7 +1929,7 @@
               {
                 "verse": "line23",
                 "text": "dar",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1942,12 +1942,12 @@
               {
                 "verse": "line23",
                 "text": "vi",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line23",
                 "text": "a.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -1991,7 +1991,7 @@
               {
                 "verse": "line24",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2004,7 +2004,7 @@
               {
                 "verse": "line24",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line24",
@@ -2014,7 +2014,7 @@
               {
                 "verse": "line24",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2027,7 +2027,7 @@
               {
                 "verse": "line24",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2045,7 +2045,7 @@
               {
                 "verse": "line25",
                 "text": "pal",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2058,7 +2058,7 @@
               {
                 "verse": "line25",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line25",
@@ -2089,7 +2089,7 @@
               {
                 "verse": "line26",
                 "text": "cie",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2102,7 +2102,7 @@
               {
                 "verse": "line26",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line26",
@@ -2125,7 +2125,7 @@
               {
                 "verse": "line26",
                 "text": "bi",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2138,12 +2138,12 @@
               {
                 "verse": "line26",
                 "text": "liar",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line26",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2167,7 +2167,7 @@
               {
                 "verse": "line27",
                 "text": "quan",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2180,12 +2180,12 @@
               {
                 "verse": "line27",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line27",
                 "text": "stel",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2204,7 +2204,7 @@
               {
                 "verse": "line27",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2241,7 +2241,7 @@
               {
                 "verse": "line28",
                 "text": "so",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2254,7 +2254,7 @@
               {
                 "verse": "line28",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line28",
@@ -2282,7 +2282,7 @@
               {
                 "verse": "line29",
                 "text": "mi",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2295,12 +2295,12 @@
               {
                 "verse": "line29",
                 "text": "liar",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line29",
                 "text": "do.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2318,7 +2318,7 @@
               {
                 "verse": "line30",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2331,7 +2331,7 @@
               {
                 "verse": "line30",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2344,7 +2344,7 @@
               {
                 "verse": "line30",
                 "text": "den",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2357,7 +2357,7 @@
               {
                 "verse": "line30",
                 "text": "tro",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line30",
@@ -2411,7 +2411,7 @@
               {
                 "verse": "line31",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2424,7 +2424,7 @@
               {
                 "verse": "line31",
                 "text": "sa",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2437,7 +2437,7 @@
               {
                 "verse": "line31",
                 "text": "fa",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2450,7 +2450,7 @@
               {
                 "verse": "line31",
                 "text": "ra'",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2489,7 +2489,7 @@
               {
                 "verse": "line32",
                 "text": "qual",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2507,7 +2507,7 @@
               {
                 "verse": "line32",
                 "text": "cu",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -2520,7 +2520,7 @@
               {
                 "verse": "line32",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2546,7 +2546,7 @@
               {
                 "verse": "line33",
                 "text": "tro",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2559,12 +2559,12 @@
               {
                 "verse": "line33",
                 "text": "va",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line33",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2577,7 +2577,7 @@
               {
                 "verse": "line33",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2590,12 +2590,12 @@
               {
                 "verse": "line33",
                 "text": "mo",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line33",
                 "text": "to",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2618,7 +2618,7 @@
               {
                 "verse": "line34",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2631,12 +2631,12 @@
               {
                 "verse": "line34",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line34",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line34",
@@ -2654,7 +2654,7 @@
               {
                 "verse": "line35",
                 "text": "cit",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2667,7 +2667,7 @@
               {
                 "verse": "line35",
                 "text": "ta'.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2709,7 +2709,7 @@
               {
                 "verse": "line36",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2722,17 +2722,17 @@
               {
                 "verse": "line36",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line36",
                 "text": "bel",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line36",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2745,12 +2745,12 @@
               {
                 "verse": "line36",
                 "text": "sguar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line36",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line37",
@@ -2760,12 +2760,12 @@
               {
                 "verse": "line37",
                 "text": "per",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line37",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line37",
@@ -2775,12 +2775,12 @@
               {
                 "verse": "line37",
                 "text": "bal",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line37",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2793,7 +2793,7 @@
               {
                 "verse": "line38",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2806,7 +2806,7 @@
               {
                 "verse": "line38",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2837,7 +2837,7 @@
               {
                 "verse": "line38",
                 "text": "bal",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2850,22 +2850,22 @@
               {
                 "verse": "line38",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line38",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line39",
                 "text": "sem",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line39",
                 "text": "bra",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line39",
@@ -2883,7 +2883,7 @@
               {
                 "verse": "line39",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2896,12 +2896,12 @@
               {
                 "verse": "line39",
                 "text": "val",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line39",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -2945,7 +2945,7 @@
               {
                 "verse": "line40",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2958,12 +2958,12 @@
               {
                 "verse": "line40",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line40",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line41",
@@ -2978,7 +2978,7 @@
               {
                 "verse": "line41",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -2991,7 +2991,7 @@
               {
                 "verse": "line41",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3004,7 +3004,7 @@
               {
                 "verse": "line41",
                 "text": "schi",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3017,12 +3017,12 @@
               {
                 "verse": "line41",
                 "text": "fo",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line42",
                 "text": "po",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3035,7 +3035,7 @@
               {
                 "verse": "line42",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3048,12 +3048,12 @@
               {
                 "verse": "line42",
                 "text": "gen",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line42",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3076,12 +3076,12 @@
               {
                 "verse": "line43",
                 "text": "guar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line43",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3099,7 +3099,7 @@
               {
                 "verse": "line43",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3112,7 +3112,7 @@
               {
                 "verse": "line43",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3125,12 +3125,12 @@
               {
                 "verse": "line44",
                 "text": "chec",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line44",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3166,12 +3166,12 @@
               {
                 "verse": "line45",
                 "text": "ti",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line45",
                 "text": "fo.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3202,7 +3202,7 @@
               {
                 "verse": "line45",
                 "text": "dim",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3215,7 +3215,7 @@
               {
                 "verse": "line45",
                 "text": "mi",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3246,7 +3246,7 @@
               {
                 "verse": "line46",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3264,7 +3264,7 @@
               {
                 "verse": "line46",
                 "text": "ve",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3282,7 +3282,7 @@
               {
                 "verse": "line46",
                 "text": "sa",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3300,7 +3300,7 @@
               {
                 "verse": "line46",
                 "text": "ra'",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3336,7 +3336,7 @@
               {
                 "verse": "line47",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3349,7 +3349,7 @@
               {
                 "verse": "line47",
                 "text": "v'e'",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3375,7 +3375,7 @@
               {
                 "verse": "line47",
                 "text": "stra",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3388,7 +3388,7 @@
               {
                 "verse": "line47",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line48",
@@ -3403,12 +3403,12 @@
               {
                 "verse": "line48",
                 "text": "stel",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line48",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3444,7 +3444,7 @@
               {
                 "verse": "line49",
                 "text": "men",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3457,7 +3457,7 @@
               {
                 "verse": "line49",
                 "text": "tre",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3470,7 +3470,7 @@
               {
                 "verse": "line49",
                 "text": "par",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3483,12 +3483,12 @@
               {
                 "verse": "line49",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line49",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3514,7 +3514,7 @@
               {
                 "verse": "line50",
                 "text": "guar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3527,7 +3527,7 @@
               {
                 "verse": "line50",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -3540,7 +3540,7 @@
               {
                 "verse": "line50",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line50",
@@ -3571,12 +3571,12 @@
               {
                 "verse": "line51",
                 "text": "scam",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line51",
                 "text": "bia",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -3589,7 +3589,7 @@
               {
                 "verse": "line51",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3607,12 +3607,12 @@
               {
                 "verse": "line51",
                 "text": "pel",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line51",
                 "text": "le.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3630,7 +3630,7 @@
               {
                 "verse": "line52",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3654,12 +3654,12 @@
               {
                 "verse": "line52",
                 "text": "min",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line52",
                 "text": "cia",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -3672,7 +3672,7 @@
               {
                 "verse": "line52",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line52",
@@ -3690,17 +3690,17 @@
               {
                 "verse": "line53",
                 "text": "vo",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line53",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line53",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3737,7 +3737,7 @@
               {
                 "verse": "line53",
                 "text": "sal",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3750,7 +3750,7 @@
               {
                 "verse": "line53",
                 "text": "ti",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3763,7 +3763,7 @@
               {
                 "verse": "line54",
                 "text": "so",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3776,7 +3776,7 @@
               {
                 "verse": "line54",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3789,7 +3789,7 @@
               {
                 "verse": "line54",
                 "text": "fuo",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3802,7 +3802,7 @@
               {
                 "verse": "line54",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3828,7 +3828,7 @@
               {
                 "verse": "line55",
                 "text": "lo",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3841,12 +3841,12 @@
               {
                 "verse": "line55",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line55",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3883,12 +3883,12 @@
               {
                 "verse": "line55",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line55",
                 "text": "n'a",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -3901,7 +3901,7 @@
               {
                 "verse": "line55",
                 "text": "ria",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -3927,7 +3927,7 @@
               {
                 "verse": "line57",
                 "text": "com",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -3940,22 +3940,22 @@
               {
                 "verse": "line57",
                 "text": "me",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line57",
                 "text": "dia",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line57",
                 "text": "a",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line57",
                 "text": "me",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -3974,17 +3974,17 @@
               {
                 "verse": "line57",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line57",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line57",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line58",
@@ -4002,7 +4002,7 @@
               {
                 "verse": "line58",
                 "text": "fi",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4015,17 +4015,17 @@
               {
                 "verse": "line58",
                 "text": "nen",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line58",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line58",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4038,7 +4038,7 @@
               {
                 "verse": "line58",
                 "text": "che",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4051,12 +4051,12 @@
               {
                 "verse": "line59",
                 "text": "que",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line59",
                 "text": "sta",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4069,7 +4069,7 @@
               {
                 "verse": "line59",
                 "text": "set",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4082,17 +4082,17 @@
               {
                 "verse": "line59",
                 "text": "ti",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line59",
                 "text": "ma",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line59",
                 "text": "na.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4123,7 +4123,7 @@
               {
                 "verse": "line60",
                 "text": "l'A",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4136,7 +4136,7 @@
               {
                 "verse": "line60",
                 "text": "me",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -4149,7 +4149,7 @@
               {
                 "verse": "line60",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -4162,7 +4162,7 @@
               {
                 "verse": "line60",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line60",
@@ -4180,7 +4180,7 @@
               {
                 "verse": "line61",
                 "text": "lon",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4193,12 +4193,12 @@
               {
                 "verse": "line61",
                 "text": "ta",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line61",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4216,7 +4216,7 @@
               {
                 "verse": "line61",
                 "text": "dal",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4229,7 +4229,7 @@
               {
                 "verse": "line61",
                 "text": "l'al",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -4242,7 +4242,7 @@
               {
                 "verse": "line61",
                 "text": "tra",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4255,7 +4255,7 @@
               {
                 "verse": "line62",
                 "text": "par",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4268,7 +4268,7 @@
               {
                 "verse": "line62",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4281,7 +4281,7 @@
               {
                 "verse": "line62",
                 "text": "del",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4294,7 +4294,7 @@
               {
                 "verse": "line62",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4307,12 +4307,12 @@
               {
                 "verse": "line62",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line62",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4356,12 +4356,12 @@
               {
                 "verse": "line63",
                 "text": "guar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line63",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line63",
@@ -4371,7 +4371,7 @@
               {
                 "verse": "line64",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4384,7 +4384,7 @@
               {
                 "verse": "line64",
                 "text": "che",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4402,7 +4402,7 @@
               {
                 "verse": "line64",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4415,7 +4415,7 @@
               {
                 "verse": "line64",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line64",
@@ -4425,7 +4425,7 @@
               {
                 "verse": "line65",
                 "text": "ve",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4438,12 +4438,12 @@
               {
                 "verse": "line65",
                 "text": "der",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line65",
                 "text": "la",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4456,12 +4456,12 @@
               {
                 "verse": "line65",
                 "text": "met",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line65",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4474,12 +4474,12 @@
               {
                 "verse": "line66",
                 "text": "qua",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line66",
                 "text": "si",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4492,7 +4492,7 @@
               {
                 "verse": "line66",
                 "text": "pa",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4505,12 +4505,12 @@
               {
                 "verse": "line66",
                 "text": "u",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line66",
                 "text": "ra.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4552,7 +4552,7 @@
               {
                 "verse": "line67",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4571,7 +4571,7 @@
               {
                 "verse": "line67",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line67",
@@ -4589,12 +4589,12 @@
               {
                 "verse": "line68",
                 "text": "si",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line68",
                 "text": "len",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -4613,12 +4613,12 @@
               {
                 "verse": "line68",
                 "text": "zio",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line68",
                 "text": "o",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4631,7 +4631,7 @@
               {
                 "verse": "line68",
                 "text": "ra",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line69",
@@ -4641,7 +4641,7 @@
               {
                 "verse": "line69",
                 "text": "av",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4654,7 +4654,7 @@
               {
                 "verse": "line69",
                 "text": "vi",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -4667,12 +4667,12 @@
               {
                 "verse": "line69",
                 "text": "ci",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line69",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4714,7 +4714,7 @@
               {
                 "verse": "line70",
                 "text": "muc",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4733,7 +4733,7 @@
               {
                 "verse": "line70",
                 "text": "chio",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4751,7 +4751,7 @@
               {
                 "verse": "line71",
                 "text": "stel",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4770,7 +4770,7 @@
               {
                 "verse": "line71",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4783,7 +4783,7 @@
               {
                 "verse": "line71",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4802,7 +4802,7 @@
               {
                 "verse": "line71",
                 "text": "de",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line71",
@@ -4812,12 +4812,12 @@
               {
                 "verse": "line72",
                 "text": "stra",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line72",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4835,7 +4835,7 @@
               {
                 "verse": "line72",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4848,7 +4848,7 @@
               {
                 "verse": "line72",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4874,7 +4874,7 @@
               {
                 "verse": "line73",
                 "text": "cam",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4887,12 +4887,12 @@
               {
                 "verse": "line73",
                 "text": "mi",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line73",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4905,7 +4905,7 @@
               {
                 "verse": "line73",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4918,7 +4918,7 @@
               {
                 "verse": "line73",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4950,12 +4950,12 @@
               {
                 "verse": "line74",
                 "text": "cit",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line74",
                 "text": "ta'",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -4986,7 +4986,7 @@
               {
                 "verse": "line74",
                 "text": "pas",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -4999,7 +4999,7 @@
               {
                 "verse": "line74",
                 "text": "sa",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line74",
@@ -5017,12 +5017,12 @@
               {
                 "verse": "line75",
                 "text": "ca",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line75",
                 "text": "ne",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5048,7 +5048,7 @@
               {
                 "verse": "line75",
                 "text": "sen",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5061,7 +5061,7 @@
               {
                 "verse": "line75",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5074,7 +5074,7 @@
               {
                 "verse": "line76",
                 "text": "qual",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5087,12 +5087,12 @@
               {
                 "verse": "line76",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line76",
                 "text": "sa",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5110,7 +5110,7 @@
               {
                 "verse": "line77",
                 "text": "guar",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5123,22 +5123,22 @@
               {
                 "verse": "line77",
                 "text": "da",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line77",
                 "text": "ab",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line77",
                 "text": "ba",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line77",
                 "text": "ia",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line77",
@@ -5203,22 +5203,22 @@
               {
                 "verse": "line79",
                 "text": "An",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line79",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line79",
                 "text": "a",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line79",
                 "text": "vreb",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -5231,12 +5231,12 @@
               {
                 "verse": "line79",
                 "text": "be",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line80",
                 "text": "vo",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5249,12 +5249,12 @@
               {
                 "verse": "line80",
                 "text": "lu",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line80",
                 "text": "to",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5267,7 +5267,7 @@
               {
                 "verse": "line80",
                 "text": "mo",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5280,12 +5280,12 @@
               {
                 "verse": "line80",
                 "text": "ri",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line80",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5303,22 +5303,22 @@
               {
                 "verse": "line81",
                 "text": "Mar",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line81",
                 "text": "co",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line82",
                 "text": "vo",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line82",
                 "text": "le",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -5331,12 +5331,12 @@
               {
                 "verse": "line82",
                 "text": "va",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line82",
                 "text": "an",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5349,12 +5349,12 @@
               {
                 "verse": "line82",
                 "text": "dar",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line82",
                 "text": "se",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -5367,7 +5367,7 @@
               {
                 "verse": "line82",
                 "text": "ne",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5380,17 +5380,17 @@
               {
                 "verse": "line83",
                 "text": "lon",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line83",
                 "text": "ta",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line83",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5414,12 +5414,12 @@
               {
                 "verse": "line83",
                 "text": "cu",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line83",
                 "text": "no",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5450,7 +5450,7 @@
               {
                 "verse": "line84",
                 "text": "vi",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5469,7 +5469,7 @@
               {
                 "verse": "line84",
                 "text": "sti",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5482,17 +5482,17 @@
               {
                 "verse": "line84",
                 "text": "tor",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line84",
                 "text": "na",
-                "syllabic": "single"
+                "syllabic": "middle"
               },
               {
                 "verse": "line84",
                 "text": "re",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           },
@@ -5505,7 +5505,7 @@
               {
                 "verse": "line85",
                 "text": "te",
-                "syllabic": "single"
+                "syllabic": "begin"
               }
             ]
           },
@@ -5518,7 +5518,7 @@
               {
                 "verse": "line85",
                 "text": "nen",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -5531,7 +5531,7 @@
               {
                 "verse": "line85",
                 "text": "do",
-                "syllabic": "single"
+                "syllabic": "middle"
               }
             ]
           },
@@ -5544,7 +5544,7 @@
               {
                 "verse": "line85",
                 "text": "si",
-                "syllabic": "single"
+                "syllabic": "end"
               },
               {
                 "verse": "line85",
@@ -5562,12 +5562,12 @@
               {
                 "verse": "line85",
                 "text": "ma",
-                "syllabic": "single"
+                "syllabic": "begin"
               },
               {
                 "verse": "line85",
                 "text": "no.",
-                "syllabic": "single"
+                "syllabic": "end"
               }
             ]
           }
@@ -5822,6 +5822,7 @@
         "quality": "major",
         "duration": 960
       }
-    ]
+    ],
+    "lyricSyncMethod": "midi-native"
   }
 }
