@@ -37,8 +37,9 @@ foundation
 ```
 
 Keep changes focused, use small commits or checkpoints where appropriate, and
-inspect `git status` and `git diff` before finishing. Do not commit
-automatically unless explicitly requested.
+inspect `git status` and `git diff` before finishing. Commit automatically
+after each chunk is complete and verification has passed — see Git
+workflow below.
 
 ## Architecture rules
 
@@ -149,6 +150,10 @@ git status
 git diff
 ```
 
-Do not commit automatically unless explicitly requested. The goal is a robust,
-incremental migration where mistakes are detected while they are still cheap
-to fix.
+Commit automatically once a chunk is complete and its verification (build,
+lint, validate, relevant tests) has passed — do not wait for the user to ask
+for that specific commit. Still never commit credentials, generated
+artifacts, or changes unrelated to the current chunk (see Files and
+dependencies), and never push, deploy, or merge without an explicit request.
+The goal is a robust, incremental migration where mistakes are detected while
+they are still cheap to fix, with a commit boundary at every verified chunk.
