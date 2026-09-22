@@ -101,7 +101,10 @@ const MEASURE_END_PADDING = 20;
 // Extra room reserved on the first measure of each line for the clef,
 // key signature, and (on the very first line) time signature.
 const LINE_START_EXTRA_WIDTH = 55;
-const CHORD_GAP = 10;
+const CHORD_GAP = 18;
+// A note this short or shorter (in quarter notes) gets beamed to its
+// neighbors instead of an individual flag, matching normal engraving.
+const BEAM_ELIGIBLE_MAX_QUARTER_NOTES = 0.5;
 
 // Minimum horizontal space an event needs so its notehead and (if present)
 // lyric annotation don't collide with its neighbors. Wider for longer
@@ -114,6 +117,44 @@ function eventSlotWidth(event: ScoreEvent, ppq: number): number {
   if (!lyricText) return base;
   const lyricWidth = measureTextWidth(lyricText, '10px Arial') + 12;
   return Math.max(base, lyricWidth);
+}
+
+// Groups consecutive eighth-note-or-shorter events into beam groups the way
+// conventional engraving does: a group never crosses a beat boundary, and a
+// rest (or a longer note) breaks the current group. Returns arrays of
+// VexFlow StaveNotes ready to pass to `new VF.Beam(...)`; groups of a single
+// note are omitted (an isolated short note keeps its own flag).
+function computeBeamGroups(
+  measureEvents: ScoreEvent[],
+  vfNotes: unknown[],
+  measureStart: number,
+  ppq: number,
+  ticksPerBeat: number,
+): unknown[][] {
+  const groups: unknown[][] = [];
+  let current: unknown[] = [];
+  let currentBeat: number | null = null;
+
+  function flush() {
+    if (current.length > 1) groups.push(current);
+    current = [];
+    currentBeat = null;
+  }
+
+  measureEvents.forEach((event, i) => {
+    const quarterNotes = event.duration / ppq;
+    const eligible = event.kind !== 'rest' && quarterNotes <= BEAM_ELIGIBLE_MAX_QUARTER_NOTES;
+    if (!eligible) {
+      flush();
+      return;
+    }
+    const beat = Math.floor((event.start - measureStart) / ticksPerBeat);
+    if (currentBeat !== null && beat !== currentBeat) flush();
+    currentBeat = beat;
+    current.push(vfNotes[i]);
+  });
+  flush();
+  return groups;
 }
 
 export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSystem = 'english' }: ScoreViewerProps) {
@@ -239,13 +280,16 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
               voice.setStrict(false);
 
               const measureEvents = eventsForMeasure(part, measure);
+              const vfNotesInOrder: unknown[] = [];
               if (measureEvents.length === 0) {
                 voice.addTickable(new VF.GhostNote({ duration: 'w' }));
               } else {
                 for (const event of measureEvents) {
                   const duration = ticksToVexFlowDuration(event.duration, score.ppq);
                   if (event.kind === 'rest') {
-                    voice.addTickable(new VF.StaveNote({ keys: ['b/4'], duration: `${duration}r`, clef }));
+                    const vfRest = new VF.StaveNote({ keys: ['b/4'], duration: `${duration}r`, clef });
+                    vfNotesInOrder.push(vfRest);
+                    voice.addTickable(vfRest);
                     continue;
                   }
                   const { note: noteName, octave } = midiToVexFlowNote(event.pitch);
@@ -259,6 +303,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                       0,
                     );
                   }
+                  vfNotesInOrder.push(vfNote);
                   voice.addTickable(vfNote);
                 }
               }
@@ -267,6 +312,14 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                 .joinVoices([voice])
                 .format([voice], stave.getNoteEndX() - stave.getNoteStartX());
               voice.draw(context, stave);
+
+              if (measureEvents.length > 0) {
+                const ticksPerBeat = (score.ppq * 4) / ts.denominator;
+                const beamGroups = computeBeamGroups(measureEvents, vfNotesInOrder, measure.start, score.ppq, ticksPerBeat);
+                for (const group of beamGroups) {
+                  new VF.Beam(group).setContext(context).draw();
+                }
+              }
 
               // Chord symbols above the top part only. Positioned
               // proportionally within the measure rather than through
