@@ -106,16 +106,56 @@ const CHORD_GAP = 18;
 // neighbors instead of an individual flag, matching normal engraving.
 const BEAM_ELIGIBLE_MAX_QUARTER_NOTES = 0.5;
 
+// Placeholder shown under a sung note that carries no syllable of its own
+// — see computeSustainedNotes below. Marks it as held-over singing rather
+// than a gap, without claiming a specific new syllable was there.
+const SUSTAIN_MARK = '_';
+
+// A note between two lyric-bearing notes (in the same part, chronologically)
+// that itself has no lyric is a note the source data couldn't attach a
+// syllable to, but which is still sung — a real hold on the last syllable,
+// not silence (rests are their own event kind). Rendered as SUSTAIN_MARK
+// instead of being left blank, which otherwise reads as a missing syllable.
+// Notes before the first lyric or after the last (an instrumental
+// intro/outro on this part) are left alone.
+function computeSustainedNotes(part: ScorePart): Set<ScoreEvent> {
+  const sustained = new Set<ScoreEvent>();
+  const sorted = [...part.events].sort((a, b) => a.start - b.start);
+  let sawLyric = false;
+  for (const event of sorted) {
+    if (event.kind !== 'note') continue;
+    if (event.lyrics?.[0]?.text) {
+      sawLyric = true;
+    } else if (sawLyric) {
+      sustained.add(event);
+    }
+  }
+  return sustained;
+}
+
+// Word-internal syllables (syllabic 'begin'/'middle') get noticeably less
+// padding than a word-final/standalone one, so consecutive syllables of one
+// word sit visibly closer together than the gap before the next word —
+// tightening notes instead of the previous approach of spreading each
+// syllable out to its own generously-padded slot, which made a word read
+// as unrelated scattered fragments.
+const LYRIC_PADDING_WORD_INTERNAL = 4;
+const LYRIC_PADDING_WORD_FINAL = 12;
+
 // Minimum horizontal space an event needs so its notehead and (if present)
 // lyric annotation don't collide with its neighbors. Wider for longer
 // durations (roughly proportional to sqrt of the note value, as in
 // conventional music engraving) and widened further to fit the lyric text.
-function eventSlotWidth(event: ScoreEvent, ppq: number): number {
+function eventSlotWidth(event: ScoreEvent, ppq: number, sustained: Set<ScoreEvent>): number {
   const quarterNotes = event.duration / ppq;
   const base = Math.max(MIN_EVENT_WIDTH, 20 + Math.sqrt(quarterNotes) * 26);
-  const lyricText = event.kind === 'rest' ? undefined : event.lyrics?.[0]?.text;
+  if (event.kind === 'rest') return base;
+  const syllable = event.lyrics?.[0];
+  const lyricText = syllable?.text ?? (sustained.has(event) ? SUSTAIN_MARK : undefined);
   if (!lyricText) return base;
-  const lyricWidth = measureTextWidth(lyricText, '10px Arial') + 12;
+  const wordInternal = syllable?.syllabic === 'begin' || syllable?.syllabic === 'middle';
+  const padding = wordInternal ? LYRIC_PADDING_WORD_INTERNAL : LYRIC_PADDING_WORD_FINAL;
+  const lyricWidth = measureTextWidth(lyricText, '10px Arial') + padding;
   return Math.max(base, lyricWidth);
 }
 
@@ -203,6 +243,8 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
           );
         }
 
+        const sustainedByPart = new Map(transposedScore.parts.map((part) => [part, computeSustainedNotes(part)]));
+
         // Each measure gets exactly as much width as its densest part needs
         // (notes + any lyrics under them), instead of a fixed width — this is
         // what keeps dense measures and long lyrics from overlapping. Also
@@ -212,10 +254,11 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
           let widest = MEASURE_MIN_WIDTH;
           for (const part of transposedScore.parts) {
             const events = eventsForMeasure(part, measure);
+            const sustained = sustainedByPart.get(part)!;
             const content =
               events.length === 0
                 ? EMPTY_MEASURE_WIDTH
-                : events.reduce((sum, e) => sum + eventSlotWidth(e, score.ppq), 0);
+                : events.reduce((sum, e) => sum + eventSlotWidth(e, score.ppq, sustained), 0);
             widest = Math.max(widest, content + MEASURE_END_PADDING);
           }
           const harmonyWidth = harmonyForMeasure(measure).reduce(
@@ -280,6 +323,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
               voice.setStrict(false);
 
               const measureEvents = eventsForMeasure(part, measure);
+              const sustained = sustainedByPart.get(part)!;
               const vfNotesInOrder: unknown[] = [];
               if (measureEvents.length === 0) {
                 voice.addTickable(new VF.GhostNote({ duration: 'w' }));
@@ -294,10 +338,10 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                   }
                   const { note: noteName, octave } = midiToVexFlowNote(event.pitch);
                   const vfNote = new VF.StaveNote({ keys: [`${noteName}/${octave}`], duration, clef });
-                  const lyric = event.lyrics?.[0];
-                  if (lyric?.text) {
+                  const lyricText = event.lyrics?.[0]?.text ?? (sustained.has(event) ? SUSTAIN_MARK : undefined);
+                  if (lyricText) {
                     vfNote.addModifier(
-                      new VF.Annotation(lyric.text)
+                      new VF.Annotation(lyricText)
                         .setFont('Arial', 10)
                         .setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM),
                       0,
