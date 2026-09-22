@@ -423,6 +423,48 @@ asset. It may remain in the separate offline repository only as an optional
 comparison, inspection, or historical reference artifact. The new reference
 asset must be derived from the audio-first workflow above.
 
+### MIDI-first offline transcription / curation pipeline
+
+**Status (2026-09-22): additive, in progress alongside the audio-first path
+above, not a replacement for it.** Free-tool ML transcription quality on the
+audio-first path was found insufficient. Many songs have high-quality,
+human-made MIDI files available from third-party archives, often
+karaoke-style (`.kar`/Soft Karaoke) with per-syllable lyric events already
+embedded and synced to the notes. When such a file is available for a song,
+this path is preferred over the audio-first one:
+
+```text
+karaoke-style source MIDI (per-syllable lyric events + notes,
+one shared tick timeline, no audio needed)
+    ↓
+┌───────────────────────┬─────────────────────────┐
+│ vocal track            │ accompaniment track(s)   │
+│ ↓                      │ ↓                        │
+│ MuseScore quantization │ symbolic chord matching   │
+│ (no ML transcription)  │ (no ML recognition)       │
+│ lyric events parsed    │                           │
+│ directly from the file │                           │
+└──────────────┬─────────┴─────────────────────────┘
+                ↓
+        human curation and validation
+                ↓
+        normalized symbolic score
+                ↓
+        normalized JSON asset
+                ↓
+        web application
+```
+
+Because the lyric events and the note events already live on the exact same
+tick timeline within one file, there is no cross-modal (audio-to-symbolic)
+alignment problem to solve here — unlike the audio-first path, this is a
+parsing problem, not a recognition one. See Open Questions 19–21 and 31
+below for what remains open about this path (track identification without
+trusting the GM program number, the still-unverified karaoke lyric-text
+convention, and cross-referencing multiple MIDI sources of one song).
+Songs without an available, lyric-bearing MIDI keep using the audio-first
+path unchanged; the two are chosen per song, not globally.
+
 ### Web application
 
 ```text
@@ -1431,27 +1473,72 @@ The following decisions remain unresolved:
 18. Which source-separation tool or strategy gives sufficiently reliable
    vocal and accompaniment stems?
 19. Which vocal transcription workflow gives sufficiently reliable melody
-   pitches, rhythms, and rests? **Narrowed 2026-09-21:** the workflow must be
-   fully automatic (Basic Pitch, the same tool already used for the
-   accompaniment) — no manually curated MusicXML reference as an alternate
-   melody source. A curated MIDI may still be supplied as an input to guide
-   or correct the automatic transcription, but it does not remove the need
-   to run lyric alignment and harmony extraction against the audio; how a
-   curated MIDI feeds into the automatic workflow is still open.
+   pitches, rhythms, and rests? **Narrowed 2026-09-21, extended 2026-09-22:**
+   for the audio-first path, the workflow must be fully automatic (Basic
+   Pitch, the same tool already used for the accompaniment) — no manually
+   curated MusicXML reference as an alternate melody source. A second,
+   preferred-when-available path now also exists (see "MIDI-first offline
+   transcription / curation pipeline" above): when a reliable karaoke-style
+   MIDI is found for a song, its vocal line's notes are used directly (via
+   `midi_first/import_karaoke_midi.py` + MuseScore quantization, no ML
+   transcription), with the audio-first workflow above kept as the fallback
+   for songs without one. **Updated 2026-09-22, against a real file from
+   Alessio's collection:** the addressable unit is the MIDI *channel*, not
+   the track — a real karaoke file turned out to be a single track with
+   voice/instruments/drums distinguished only by channel (confirmed:
+   "Zappatore - M. Merola.kar"), which the original track-indexed design
+   couldn't handle at all. Identifying the vocal channel without trusting
+   the GM program number (karaoke MIDI authors commonly assign the vocal
+   guide line to an unrelated instrument program) is scored as
+   precision+recall (F1) of note-onset coincidence with the file's
+   lyric-event ticks, plus a plausible-vocal-register pitch filter
+   (`midi_track_utils.detect_vocal_channel`) — recall alone let a dense
+   bass channel outscore the real vocal channel on that same real file,
+   since having far more onsets makes some coincidentally land near any
+   given lyric tick. Even fixed, the top few candidate channels can end up
+   close on a full-band arrangement — expect `midiSource.vocalChannel` to
+   often need a manual override, not just as a rare edge case.
 20. How should lyrics be recognized and aligned to sung notes, given that
    speech-to-text alone does not solve sung-lyric alignment? **Resolved
-   2026-09-21:** `align_lyrics.py` now runs torchaudio's `MMS_FA`
-   (multilingual Wav2Vec2 CTC forced alignment) over the vocal stem against
-   the known, romanized (`uroman`) lyric text, recovering real per-syllable
-   onset/offset timestamps directly from the audio — replacing the old
-   sequential/per-verse-boundary-guessing heuristic entirely. Each output
-   event's timing comes from the aligner; `transcribe_vocals.py`'s Basic
-   Pitch notes are only consulted for pitch at that time. Still open: this
-   doesn't attempt true melisma detection (one syllable spanning several
-   *different* pitches) — a syllable still gets one pitch, sampled at its
-   aligned midpoint.
-21. When is MIDI useful as an intermediate for a particular song, and when is
-   direct symbolic transcription preferable?
+   2026-09-21 for the audio-first path:** `align_lyrics.py` runs torchaudio's
+   `MMS_FA` (multilingual Wav2Vec2 CTC forced alignment) over the vocal stem
+   against the known, romanized (`uroman`) lyric text, recovering real
+   per-syllable onset/offset timestamps directly from the audio — replacing
+   the old sequential/per-verse-boundary-guessing heuristic entirely. Each
+   output event's timing comes from the aligner; `transcribe_vocals.py`'s
+   Basic Pitch notes are only consulted for pitch at that time. **Extended
+   2026-09-22 for the MIDI-first path:** no audio-to-symbolic alignment
+   problem exists there at all — a karaoke MIDI's lyric events and note
+   events already share the same tick timeline within one file, so
+   `extract_midi_lyrics.py` only has to parse the embedded text
+   (`midi_track_utils.parse_karaoke_syllables`) and attach it to the
+   sounding note at that exact tick (reusing the shared
+   `note_utils.find_note_index` unmodified). **Checked 2026-09-22 against a
+   real file** ("Zappatore - M. Merola.kar"): the assumed Soft Karaoke text
+   convention (leading `\`/`/` markers, trailing-hyphen syllable
+   continuation) was wrong for it — that file instead closes a word with a
+   *trailing* space and no hyphen at all, sends a bare "\r" as its own event
+   for line breaks, and opens with a "***Song Title***"/"***Artist***"
+   credits block that isn't sung lyrics. The parser
+   (`midi_track_utils.parse_karaoke_syllables`) now handles both
+   conventions; the credits-block filter is still partial (only
+   asterisk-wrapped lines are recognized, not e.g. a bare "by" line). Still
+   open in both paths: true melisma detection (one syllable spanning
+   several *different* pitches) — the audio-first path still gets one pitch
+   per syllable, sampled at its aligned midpoint; no real file surveyed so
+   far has shown an explicit "still holding this syllable" marker distinct
+   from an ordinary word-final syllable, so a MIDI-first held note with no
+   following lyric event simply gets no lyrics attached, same conservative
+   fallback as the audio-first path's untranscribed gaps.
+21. When is MIDI useful for a particular song? **Narrowed 2026-09-22:**
+   MIDI is the *preferred primary* source for a song's voice, instrumental,
+   and harmony content whenever a reliable, lyric-bearing karaoke-style MIDI
+   file is available for it — not merely an optional intermediate within an
+   audio-first tool, as originally framed. The audio-first path remains the
+   fallback for songs without one. Still open: the exact quality bar for
+   "reliable" (how much human correction is acceptable before falling back
+   to audio-first instead), and how the choice of path per song should be
+   recorded/surfaced (see Open Question 10, provenance).
 22. How should harmony recognition be performed and corrected when chord
    quality or slash bass is ambiguous? **Narrowed 2026-09-21:** in addition
    to human correction, the automatically transcribed instrumental part
@@ -1483,16 +1570,33 @@ The following decisions remain unresolved:
    `ear-training/worker`)? And should music-library get its own dedicated D1
    database, or share one D1 database across all of Alessio's sites (via a
    `site` column)?
+31. **Added 2026-09-22.** When multiple MIDI files/versions of the same song
+   are available (different interpretations — piano-only, full band, live,
+   different transcribers), how should they be cross-referenced for a
+   higher-confidence result (e.g. agreement voting on pitch/timing,
+   preferring the version with the most complete/well-formed lyric events)?
+   Deferred — the current MIDI-first pilot uses a single, manually-chosen
+   MIDI file per song (`songs/<slug>.json`'s `midiSource.file`); multiple
+   candidate files for one song are organized side by side in
+   `midi-intake/library/<slug>/` (see the `music-library-offline` repo's
+   `midi-intake/README.md`) but not yet reconciled automatically.
 
 The following are resolved architectural decisions, not open questions:
 
 - JSON is the format committed to the frontend repository.
-- Audio recordings are the primary offline source for new score curation.
+- The offline workflow supports two source-of-truth paths per song, chosen
+  per song based on data availability: MIDI-first (preferred when a
+  reliable karaoke-style MIDI with embedded lyric events is available — see
+  "MIDI-first offline transcription / curation pipeline" above) and
+  audio-first (kept as the fallback otherwise). Neither path is globally
+  mandatory; a recording is not required for a MIDI-first song. *(Revises
+  the prior "audio recordings are the primary offline source" wording,
+  2026-09-22 — Alessio's explicit decision, not silently assumed.)*
 - MusicXML is an optional offline source, authoring, inspection, and
   interchange format; it is not a required starting point.
-- The audio-first offline workflow produces curated symbolic information and
-  normalized JSON; the web app consumes JSON and does not require runtime
-  MusicXML parsing.
+- Both offline workflows — MIDI-first and audio-first — produce curated
+  symbolic information and normalized JSON; the web app consumes JSON and
+  does not require runtime MusicXML or MIDI parsing.
 - Harmony is an independent timed layer, not a `ScorePart`, and all parts and
   harmony events share one musical timeline.
 - The shared timeline uses integer ticks at 960 ticks per quarter note, with
@@ -1761,4 +1865,18 @@ migration are not). Sections 2 and 17 above describe the current
 implementation; the rest of this document remains design intent. See the
 top-level README for the authoritative current-state summary.
 
-Last updated: 2026-09-21
+As of 2026-09-22, a second, MIDI-first offline pipeline
+(`pipeline/midi_first/` in `music-library-offline`: `import_karaoke_midi.py`,
+`extract_midi_lyrics.py`, `extract_midi_harmony.py`, `midi_track_utils.py`,
+`organize_midi_intake.py`) exists alongside the audio-first one
+(`pipeline/audio_first/`), sharing source-agnostic infrastructure kept flat
+at `pipeline/` root — plus a `midi-intake/` tool for organizing downloaded
+source MIDI files. See "MIDI-first offline transcription / curation
+pipeline" above and Open Questions 19–21 and 31. Validated end-to-end
+against a real file from Alessio's collection ("Zappatore - M. Merola.kar")
+through the real MuseScore 4 CLI, which surfaced and fixed several
+real-data issues (Format-0 single-track/multi-channel structure, the actual
+karaoke text convention, vocal-channel detection's density bias) — not yet
+published as a song.
+
+Last updated: 2026-09-22

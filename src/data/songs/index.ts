@@ -6,8 +6,10 @@ import { yesterday } from './yesterday';
 import { blackbird } from './blackbird';
 import { something } from './something';
 import { amaraTerraMia } from './amara-terra-mia';
+import { annaEMarco } from './anna-e-marco';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
+import annaEMarcoScoreJson from './anna-e-marco.json';
 
 // Score JSON assets are curated offline data, not application code: a
 // malformed one (e.g. mid-curation) must not crash every page. Fall back to
@@ -52,6 +54,10 @@ export const songs: Song[] = [
   blackbird,
   something,
   amaraTerraMia,
+  {
+    ...annaEMarco,
+    score: tryLoadScoreJson('Anna e Marco', annaEMarcoScoreJson),
+  },
 ];
 
 export function getSongBySlug(slug: string): Song | undefined {
