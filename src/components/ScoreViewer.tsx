@@ -387,17 +387,33 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                 }
               }
 
+              // Beams must be constructed — not merely drawn — before
+              // Formatter.format()/voice.draw(): VexFlow only suppresses a
+              // beamed note's individual flag once new VF.Beam(...) has run
+              // (its constructor calls note.setBeam(), which is what
+              // shouldDrawFlag() checks), and preFormat()/format() also use
+              // that same flag to size the note. Calling voice.draw() first
+              // draws every flag before any Beam exists to suppress it —
+              // constructing the Beam objects here, ahead of format/draw,
+              // fixes both the leftover flags and their extra width.
+              const beams: any[] = [];
+              if (measureEvents.length > 0) {
+                const ticksPerBeat = (score.ppq * 4) / ts.denominator;
+                const beamGroups = computeBeamGroups(measureEvents, vfNotesInOrder, measure.start, score.ppq, ticksPerBeat);
+                for (const group of beamGroups) {
+                  beams.push(new VF.Beam(group));
+                }
+              }
+
               new VF.Formatter()
                 .joinVoices([voice])
                 .format([voice], stave.getNoteEndX() - stave.getNoteStartX());
               voice.draw(context, stave);
 
-              if (measureEvents.length > 0) {
-                const ticksPerBeat = (score.ppq * 4) / ts.denominator;
-                const beamGroups = computeBeamGroups(measureEvents, vfNotesInOrder, measure.start, score.ppq, ticksPerBeat);
-                for (const group of beamGroups) {
-                  new VF.Beam(group).setContext(context).draw();
-                }
+              // Beam drawing (as opposed to construction, above) must come
+              // after voice.draw(): it needs the notes' final x/y positions.
+              for (const beam of beams) {
+                beam.setContext(context).draw();
               }
 
               // Chord symbols above the top part only. Positioned
