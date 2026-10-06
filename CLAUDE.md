@@ -154,6 +154,6 @@ Commit automatically once a chunk is complete and its verification (build,
 lint, validate, relevant tests) has passed — do not wait for the user to ask
 for that specific commit. Still never commit credentials, generated
 artifacts, or changes unrelated to the current chunk (see Files and
-dependencies), and never push, deploy, or merge without an explicit request.
+dependencies). Push, PR and merge autonomously after each verified chunk.
 The goal is a robust, incremental migration where mistakes are detected while
 they are still cheap to fix, with a commit boundary at every verified chunk.
