@@ -9,6 +9,7 @@ import { amaraTerraMia } from './amara-terra-mia';
 import { annaEMarco } from './anna-e-marco';
 import { savedSongs } from './saved';
 import { chordSiteLinks } from './chordSiteLinks';
+import { spotifyLinks, spotifySongs } from './spotify';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
 import annaEMarcoScoreJson from './anna-e-marco.json';
@@ -61,9 +62,14 @@ const allSongs: Song[] = [
     score: tryLoadScoreJson('Anna e Marco', annaEMarcoScoreJson),
   },
   ...savedSongs,
+  ...spotifySongs,
 ];
 
-export const songs: Song[] = allSongs.map((s) => ({ ...s, links: { ...chordSiteLinks[s.slug], ...s.links } }));
+// A liked Spotify recording replaces a Spotify search link, never a curated track link.
+const spotifyFor = (s: Song) =>
+  spotifyLinks[s.slug] && (!s.links.spotify || s.links.spotify.includes('/search/')) ? { spotify: spotifyLinks[s.slug] } : {};
+
+export const songs: Song[] = allSongs.map((s) => ({ ...s, links: { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) } }));
 
 export function getSongBySlug(slug: string): Song | undefined {
   return songs.find((s) => s.slug === slug);

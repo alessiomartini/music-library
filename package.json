@@ -9,6 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run",
+    "import:spotify": "esbuild scripts/import-spotify.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/import-spotify.mjs --log-level=error && node node_modules/.cache/import-spotify.mjs",
     "validate": "esbuild scripts/validate-scores.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate.mjs --log-level=error && node node_modules/.cache/validate.mjs"
   },
   "dependencies": {
