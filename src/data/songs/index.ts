@@ -8,6 +8,7 @@ import { something } from './something';
 import { amaraTerraMia } from './amara-terra-mia';
 import { annaEMarco } from './anna-e-marco';
 import { savedSongs } from './saved';
+import { chordSiteLinks } from './chordSiteLinks';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
 import annaEMarcoScoreJson from './anna-e-marco.json';
@@ -29,7 +30,7 @@ function tryLoadScoreJson(title: string, json: unknown): Score | undefined {
   }
 }
 
-export const songs: Song[] = [
+const allSongs: Song[] = [
   {
     ...yourSong,
     score: tryLoadScoreJson('Your Song', yourSongScoreJson),
@@ -61,6 +62,8 @@ export const songs: Song[] = [
   },
   ...savedSongs,
 ];
+
+export const songs: Song[] = allSongs.map((s) => ({ ...s, links: { ...chordSiteLinks[s.slug], ...s.links } }));
 
 export function getSongBySlug(slug: string): Song | undefined {
   return songs.find((s) => s.slug === slug);

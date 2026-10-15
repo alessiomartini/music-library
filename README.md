@@ -30,9 +30,9 @@ chart fallback.
 - External Spotify, YouTube, and sheet-music links where present in a song's
   data.
 - Accordi&Spartiti and Ultimate Guitar links on every non-classical song:
-  the direct chords page stored in `links.accordiESpartiti` /
-  `links.ultimateGuitar`, otherwise a site search built from title + artist
-  (`src/lib/chordLinks.ts`).
+  the direct chords page from `src/data/songs/chordSiteLinks.ts` (slug → URL,
+  checked against title and artist; for UG the most-voted "Chords" version),
+  otherwise a site search built from title + artist (`src/lib/chordLinks.ts`).
 - Links to the Instagram posts saved for a song (`links.instagram`).
 - Songs may be "light" entries without key/meter/tempo/score; the page then
   hides the transpose and key-preference controls.
