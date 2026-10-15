@@ -1,17 +1,20 @@
 /**
- * Imports Alessio's Spotify "Liked Songs" as light song entries.
+ * Imports Alessio's Spotify Liked Songs and playlists as light song entries.
  *
- * Input is the Exportify CSV of the Liked Songs list (https://exportify.app).
- * Output is src/data/songs/spotify.ts:
- *   - `spotifyLinks`: direct track links for songs already in the library
- *     (they replace a Spotify search link, never a curated track link);
+ * Input is one or more Exportify CSVs (https://exportify.app); a track in
+ * several of them counts once. Output is src/data/songs/spotify.ts:
+ *   - `spotifyLinks`: the liked recordings of songs already in the library,
+ *     best first (the first replaces a Spotify search link, never a curated
+ *     track link; the rest become `links.spotifyVersions`);
  *   - `spotifySongs`: one light entry per song not in the library yet.
  *
  * Recordings of the same song (remasters, live/acoustic takes, remixes,
- * covers) collapse onto one entry, keyed by cleaned-up title. Hand-curated
- * fixes live in scripts/spotify-overrides.ts.
+ * covers) collapse onto one entry, keyed by cleaned-up title: the best one is
+ * `links.spotify`, the others `links.spotifyVersions`. Local files have no
+ * Spotify link and are skipped. Hand-curated fixes live in
+ * scripts/spotify-overrides.ts.
  *
- * Run with:  npm run import:spotify -- path/to/liked.csv
+ * Run with:  npm run import:spotify -- liked.csv guitar.csv ...
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { songs } from '../src/data/songs';
@@ -75,7 +78,7 @@ function cleanTitle(raw: string, classical: boolean): string {
   let t = raw.replace(/（/g, ' (').replace(/）/g, ')');
   if (classical) return t.replace(/\s+-\s+Remastered.*$/i, '').trim();
   t = t.replace(/\s+[-–]\s+.*$/, '');
-  t = t.replace(/\s*\((feat\.|with |con |prod\.|remix|live|piano version|humming|demo|waltz version|from )[^)]*\)/gi, '');
+  t = t.replace(/\s*\((feat\.|featuring |with |con |prod\.|remix|live|edit|piano version|humming|demo|waltz version|from )[^)]*\)/gi, '');
   t = t.replace(/\s+feat\.\s.*$/i, '');
   return t.replace(/\s+/g, ' ').trim();
 }
@@ -101,19 +104,19 @@ function slugify(s: string): string {
   return norm(s).replace(/ and /g, ' ').replace(/\s+/g, '-');
 }
 
-const csvPath = process.argv[2];
-if (!csvPath) {
-  console.error('usage: npm run import:spotify -- path/to/liked.csv');
+const csvPaths = process.argv.slice(2);
+if (!csvPaths.length) {
+  console.error('usage: npm run import:spotify -- liked.csv [playlist.csv ...]');
   process.exit(1);
 }
-const [header, ...records] = parseCsv(readFileSync(csvPath, 'utf8'));
-const col = (name: string) => {
-  const i = header.indexOf(name);
-  if (i < 0) throw new Error(`CSV has no "${name}" column — is this an Exportify export?`);
-  return i;
-};
-const [cUri, cName, cArtists, cPop, cReleased] =
-  ['Track URI', 'Track Name', 'Artist Name(s)', 'Popularity', 'Album Release Date'].map(col);
+const records: Record<string, string>[] = [];
+for (const path of csvPaths) {
+  const [header, ...rows] = parseCsv(readFileSync(path, 'utf8'));
+  for (const name of ['Track URI', 'Track Name', 'Artist Name(s)', 'Popularity', 'Album Release Date']) {
+    if (!header.includes(name)) throw new Error(`${path} has no "${name}" column — is this an Exportify export?`);
+  }
+  for (const row of rows) records.push(Object.fromEntries(header.map((h, i) => [h, row[i] ?? ''])));
+}
 
 // The library as it stands without a previous run of this import.
 const previousSlugs = new Set(previousImport.map((s) => s.slug));
@@ -126,13 +129,17 @@ for (const s of library) {
 }
 
 const entries = new Map<string, Entry>();
+const seen = new Set<string>();
 let skipped = 0;
+let local = 0;
 for (const r of records) {
-  const uri = r[cUri];
-  if (!uri.startsWith('spotify:track:')) continue;
+  const uri = r['Track URI'];
+  if (seen.has(uri)) continue;
+  seen.add(uri);
+  if (!uri.startsWith('spotify:track:')) { local++; continue; }
   const id = uri.slice('spotify:track:'.length);
-  const rawTitle = r[cName];
-  const artists = splitArtists(r[cArtists]);
+  const rawTitle = r['Track Name'];
+  const artists = splitArtists(r['Artist Name(s)']);
   const o = overrides[id] ?? {};
   if (o.skip) { skipped++; continue; }
   const classical = o.classical ?? classicalComposers.has(artists[0]);
@@ -140,8 +147,8 @@ for (const r of records) {
   const artist = o.artist ?? (classical ? artists[0] : mainArtists(rawTitle, artists).join(', '));
   const track: Track = {
     id, rawTitle, artists, title, artist, classical,
-    popularity: Number(r[cPop]) || 0,
-    released: r[cReleased],
+    popularity: Number(r['Popularity']) || 0,
+    released: r['Album Release Date'],
     curated: Boolean(o.title || o.artist),
   };
 
@@ -160,17 +167,20 @@ for (const r of records) {
   entries.set(key, entry);
 }
 
+const trackUrl = (t: Track) => `https://open.spotify.com/track/${t.id}`;
+const q = (s: string) => JSON.stringify(s);
+
 /**
  * The recording that names a new song and gets linked: a hand-curated one,
- * else the library song's own artist's, else the earliest released (the
+ * else the library song's own artist's, then the earliest released (the
  * original rather than a cover), preferring an undecorated title.
  */
-function bestTrack(e: Entry): Track {
+function rankTracks(e: Entry): Track[] {
   const owner = e.slug ? norm(libraryBySlug.get(e.slug)!.artist) : undefined;
   const rank = (t: Track) => [
     t.curated ? 0 : 1,
     owner !== undefined && t.artists.some((a) => owner.includes(norm(a))) ? 0 : 1,
-    owner !== undefined ? '' : t.released,
+    t.released,
     t.title === t.rawTitle ? 0 : 1,
     -t.popularity,
   ];
@@ -178,26 +188,53 @@ function bestTrack(e: Entry): Track {
     const [x, y] = [rank(a), rank(b)];
     const i = x.findIndex((v, k) => v !== y[k]);
     return i < 0 ? 0 : x[i] < y[i] ? -1 : 1;
-  })[0];
+  });
+}
+const bestTrack = (e: Entry) => rankTracks(e)[0];
+
+/** What sets a recording apart: "Live", "Acoustic", "2009 Remaster"… */
+function versionNote(t: Track): string | undefined {
+  const dash = t.rawTitle.match(/\s[-–]\s(.*)$/)?.[1];
+  const paren = t.rawTitle.match(/\(((?:live|remix|piano version|humming|demo|waltz version)[^)]*)\)/i)?.[1];
+  const note = (dash ?? paren)?.replace(/^feat\..*$/i, '').trim();
+  return note || undefined;
 }
 
-const trackUrl = (t: Track) => `https://open.spotify.com/track/${t.id}`;
-const q = (s: string) => JSON.stringify(s);
+/** Who plays a recording: its performers for a classical piece, else its main artists. */
+const performer = (t: Track) =>
+  t.classical ? t.artists.filter((a) => a !== t.artist).join(', ') || t.artist : mainArtists(t.rawTitle, t.artists).join(', ');
 
-const links: [string, string][] = [];
+const version = (t: Track) => {
+  const note = versionNote(t);
+  return `{ url: ${q(trackUrl(t))}, artist: ${q(performer(t))}${note ? `, note: ${q(note)}` : ''} }`;
+};
+
+/** Ranked recordings, minus ones that would read the same (same performer and note, e.g. a reissue). */
+function distinctVersions(e: Entry): Track[] {
+  const seenLabels = new Set<string>();
+  return rankTracks(e).filter((t) => {
+    const label = `${norm(performer(t))}|${versionNote(t) ?? ''}`;
+    if (seenLabels.has(label)) return false;
+    seenLabels.add(label);
+    return true;
+  });
+}
+
+
+const links: [string, Entry][] = [];
 const newSongs: Entry[] = [];
 const usedSlugs = new Set(library.map((s) => s.slug));
 for (const e of entries.values()) {
   if (e.slug) {
-    links.push([e.slug, trackUrl(bestTrack(e))]);
+    links.push([e.slug, e]);
   } else {
     newSongs.push(e);
   }
 }
-const named = newSongs.map((e) => bestTrack(e)).sort((a, b) => a.title.localeCompare(b.title, 'it'));
+const named = newSongs.map((e) => distinctVersions(e)).sort((a, b) => a[0].title.localeCompare(b[0].title, 'it'));
 
 const songLines: string[] = [];
-for (const t of named) {
+for (const [t, ...others] of named) {
   let slug = slugify(t.title);
   if (!slug || usedSlugs.has(slug)) slug = `${slugify(t.title) || 'song'}-${slugify(t.artist)}`;
   if (usedSlugs.has(slug)) throw new Error(`slug collision: ${slug}`);
@@ -208,20 +245,33 @@ for (const t of named) {
     `    title: ${q(t.title)},`,
     `    artist: ${q(t.artist)},`,
     ...(t.classical ? ['    classical: true,'] : []),
-    `    links: { spotify: ${q(trackUrl(t))} },`,
+    ...(others.length
+      ? [
+        '    links: {',
+        `      spotify: ${q(trackUrl(t))},`,
+        '      spotifyVersions: [',
+        ...others.map((v) => `        ${version(v)},`),
+        '      ],',
+        '    },',
+      ]
+      : [`    links: { spotify: ${q(trackUrl(t))} },`]),
     '  },',
   );
 }
 
 const out = [
-  "import type { Song } from '../../lib/types';",
+  "import type { Song, SpotifyVersion } from '../../lib/types';",
   '',
-  `// Generated by scripts/import-spotify.ts from the Spotify "Liked Songs" export`,
-  `// (${records.length} tracks). Edit scripts/spotify-overrides.ts and re-run instead of editing here.`,
+  `// Generated by scripts/import-spotify.ts from the Spotify Liked Songs and playlist exports`,
+  `// (${seen.size} tracks). Edit scripts/spotify-overrides.ts and re-run instead of editing here.`,
   '',
-  '/** Direct track links for songs that were already in the library. */',
-  'export const spotifyLinks: Record<string, string> = {',
-  ...links.sort(([a], [b]) => a.localeCompare(b)).map(([slug, url]) => `  ${q(slug)}: ${q(url)},`),
+  '/** Liked recordings of songs that were already in the library, best first. */',
+  'export const spotifyLinks: Record<string, SpotifyVersion[]> = {',
+  ...links.sort(([a], [b]) => a.localeCompare(b)).flatMap(([slug, e]) => [
+    `  ${q(slug)}: [`,
+    ...distinctVersions(e).map((t) => `    ${version(t)},`),
+    '  ],',
+  ]),
   '};',
   '',
   '/** Liked songs not otherwise in the library. */',
@@ -231,7 +281,7 @@ const out = [
   '',
 ].join('\n');
 writeFileSync(OUT, out);
-console.log(`${records.length} tracks, ${skipped} skipped → ${links.length} links to existing songs, ${newSongs.length} new songs → ${OUT}`);
+console.log(`${seen.size} tracks (${local} local files), ${skipped} skipped → ${links.length} links to existing songs, ${newSongs.length} new songs → ${OUT}`);
 
 if (process.env.SPOTIFY_IMPORT_REPORT) {
   for (const e of entries.values()) {

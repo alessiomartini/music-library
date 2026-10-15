@@ -97,10 +97,12 @@ export const overrides: Record<string, Override> = {
   '1v9vRBvm5aqDN3M2Y4lHVY': { title: 'Souvenir' },
   '2jCIkSbrPIHGzLTLHztbcS': { title: 'Capricho árabe', artist: 'Francisco Tárrega', classical: true },
   '2Eie2WmbIoujBGuEFBNld5': { title: 'Tango en Skaï' },
+  '0C98fO2u3SCuro95WEqp23': { title: 'Chaconne (Partita No. 2, BWV 1004)' },
 
   // Library songs under another title.
   '4qGfJb2KByjvzrwo8HNibg': { slug: 'garota-de-ipanema' },
   '4tH4bnfPsSWTpzqV0ux4IQ': { slug: 'tutti-quanti-voglion-fare-il-jazz' },
+  '2dAOKHKapOngJv8sMI8GGZ': { slug: 'tutti-quanti-voglion-fare-il-jazz' },
 
   // Different songs that share a title with another liked song.
   '4v7DCN09hgXkKazefkznDQ': { separate: true }, // Lonely — Akon (vs Justin Bieber)
@@ -110,6 +112,14 @@ export const overrides: Record<string, Override> = {
   '6aVjoOuDQV65LxinwWiig4': { separate: true }, // Estate — Erlend Øye
   '2Syd1e3FwLxL8CBiOZNmVe': { separate: true }, // Inverno — Post Nebbia (vs De André)
   '6qB6EMEcAo0l3dVxZSvxpC': { separate: true }, // Desaparecido — Daniele Silvestri (vs Manu Chao)
+  '6FZDfxM3a3UCqtzo5pxSLZ': { separate: true }, // Without Me — Halsey (vs Eminem)
+  '5p7ujcrUXASCNwRaWNHR1C': { separate: true }, // Without Me — Halsey
+  '22vgEDb5hykfaTwLuskFGD': { separate: true }, // Sucker — Jonas Brothers (vs Ellie Dixon)
+  '4hQ6UGyWQIGJmHSo0J88JW': { separate: true }, // Back to You — Selena Gomez (vs Louis Tomlinson)
+
+  // Same song under a different title.
+  '1XyL3J7eTTKnxRZAM3LqIT': { title: "Beggin'" },
+  '4mn2kNTqiGLwaUR8JdhJ1l': { title: 'The House of the Rising Sun' },
 
   // Song credited to its original artist rather than the liked cover.
   '1BqCvJF4uP54B0leMFo8F1': { artist: 'Paolo Conte' },

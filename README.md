@@ -69,17 +69,21 @@ links, `classical` flag) for the pieces in Alessio's Instagram "piano" saved
 collection, curated by hand from the post captions of the 2026-10-15 data
 export (the export zip and the curation script stay outside the repo).
 
-`src/data/songs/spotify.ts` is generated from Alessio's Spotify "Liked Songs"
-(an [Exportify](https://exportify.app) CSV export, kept outside the repo):
+`src/data/songs/spotify.ts` is generated from Alessio's Spotify Liked Songs
+and playlists ([Exportify](https://exportify.app) CSV exports, kept outside
+the repo; pass every CSV each time):
 
 ```bash
-npm run import:spotify -- path/to/liked.csv
+npm run import:spotify -- liked.csv guitar.csv piano.csv ...
 ```
 
-Liked recordings of a song already in the library give it a direct track
-link (`spotifyLinks`, replacing a Spotify search link but never a curated
-track link); every other song becomes a light entry (`spotifySongs`).
-Versions and covers of one song collapse onto a single entry. Hand-curated
+Recordings of a song already in the library give it a direct track link
+(`spotifyLinks`, replacing a Spotify search link but never a curated track
+link); every other song becomes a light entry (`spotifySongs`). Versions and
+covers of one song collapse onto a single entry: the best recording is
+`links.spotify`, the others `links.spotifyVersions`, listed on the song page
+under "Other versions" together with its Instagram posts. Local files have no
+Spotify link and are skipped. Hand-curated
 fixes (classical titles, same-title different songs, credits) are in
 `scripts/spotify-overrides.ts`; re-run the import after editing them.
 

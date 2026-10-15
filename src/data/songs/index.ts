@@ -1,5 +1,5 @@
 import type { Score } from '../../lib/score';
-import type { Song } from '../../lib/types';
+import type { Song, SongLinks } from '../../lib/types';
 import { loadScoreJson, ScoreJsonValidationError } from '../../lib/scoreLoader';
 import { yourSong } from './your-song';
 import { yesterday } from './yesterday';
@@ -65,9 +65,15 @@ const allSongs: Song[] = [
   ...spotifySongs,
 ];
 
-// A liked Spotify recording replaces a Spotify search link, never a curated track link.
-const spotifyFor = (s: Song) =>
-  spotifyLinks[s.slug] && (!s.links.spotify || s.links.spotify.includes('/search/')) ? { spotify: spotifyLinks[s.slug] } : {};
+// The best liked Spotify recording replaces a Spotify search link, never a
+// curated track link; the other recordings are listed as versions.
+function spotifyFor(s: Song): Partial<SongLinks> {
+  const liked = spotifyLinks[s.slug];
+  if (!liked) return {};
+  const spotify = !s.links.spotify || s.links.spotify.includes('/search/') ? liked[0].url : s.links.spotify;
+  const spotifyVersions = liked.filter((v) => v.url !== spotify);
+  return spotifyVersions.length ? { spotify, spotifyVersions } : { spotify };
+}
 
 export const songs: Song[] = allSongs.map((s) => ({ ...s, links: { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) } }));
 

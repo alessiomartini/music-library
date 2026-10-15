@@ -1,7 +1,17 @@
 import type { Score } from './score';
 
+/** One Spotify recording of a song; `artist` is who plays it (performers, for classical pieces). */
+export interface SpotifyVersion {
+  url: string;
+  artist: string;
+  /** What sets it apart, e.g. "Live", "Acoustic", "2009 Remaster". */
+  note?: string;
+}
+
 export interface SongLinks {
   spotify?: string;
+  /** Other Spotify recordings (versions, covers) liked or saved in a playlist. */
+  spotifyVersions?: SpotifyVersion[];
   youtube?: string;
   /** Where to consult the published sheet music this transcription was
    * checked against. A link to the publisher/retailer page, not a copy of
