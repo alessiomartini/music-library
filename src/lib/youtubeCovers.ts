@@ -17,12 +17,12 @@ export interface YoutubeCover {
 const norm = (s: string) =>
   s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/ø/g, 'o').replace(/æ/g, 'ae')
     .replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
-const words = (s: string) => new Set(norm(s).split(' ').filter((w) => w.length > 2));
+const words = (s: string) => new Set(norm(s).split(' ').filter((w) => w.length > 1));
 const slugify = (s: string) => norm(s).replace(/ and /g, ' ').replace(/\s+/g, '-');
 
 /**
- * Attaches YouTube covers to library songs (same title, and same artist when
- * several songs share the title) and creates light entries for the songs the
+ * Attaches YouTube covers to library songs (same title and artist, or an
+ * explicit slug) and creates light entries for the songs the
  * library doesn't have yet.
  */
 export function attachYoutubeCovers(songs: Song[], covers: YoutubeCover[]): { songs: Song[]; added: Song[] } {
@@ -36,10 +36,9 @@ export function attachYoutubeCovers(songs: Song[], covers: YoutubeCover[]): { so
     const link: SpotifyVersion = { url: `https://www.youtube.com/watch?v=${c.id}`, artist: c.by, ...(c.note && { note: c.note }) };
     const sameTitle = byTitle.get(norm(c.song)) ?? [];
     const artist = words(c.artist);
-    const match =
-      (c.slug && bySlug.get(c.slug)) ||
-      sameTitle.find((s) => [...words(s.artist)].some((w) => artist.has(w))) ||
-      (sameTitle.length === 1 ? sameTitle[0] : undefined);
+    // Same title and a shared artist word: a different song may share the title (Hero by Enrique Iglesias
+    // vs Family of the Year), so the artist must agree unless an explicit slug says otherwise.
+    const match = (c.slug && bySlug.get(c.slug)) || sameTitle.find((s) => [...words(s.artist)].some((w) => artist.has(w)));
     let slug = match?.slug;
     if (!slug) {
       const key = `${norm(c.song)}|${norm(c.artist)}`;

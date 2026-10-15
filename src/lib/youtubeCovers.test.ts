@@ -7,7 +7,7 @@ const song = (slug: string, title: string, artist: string): Song => ({ slug, tit
 describe('attachYoutubeCovers', () => {
   const library = [song('creep', 'Creep', 'Radiohead'), song('estate', 'Estate', 'Bruno Martino'), song('estate-jovanotti', 'Estate', 'Jovanotti')];
 
-  it('attaches by title, using the artist only when the title is shared', () => {
+  it('attaches by title and artist', () => {
     const { songs, added } = attachYoutubeCovers(library, [
       { id: 'a', by: 'Allie Sherlock', song: 'Creep', artist: 'Radiohead' },
       { id: 'b', by: 'X', song: 'Estate', artist: 'Jovanotti' },
@@ -22,10 +22,10 @@ describe('attachYoutubeCovers', () => {
     const { added } = attachYoutubeCovers(library, [
       { id: 'a', by: 'A', song: 'Layla', artist: 'Derek and the Dominos' },
       { id: 'b', by: 'B', song: 'Layla', artist: 'Derek and the Dominos' },
-      { id: 'c', by: 'C', song: 'Estate', artist: 'Erlend Øye' },
+      { id: 'c', by: 'C', song: 'Creep', artist: 'Stone Temple Pilots' },
     ]);
-    // Several library songs are called "Estate" and none is by Erlend Øye: a new one.
-    expect(added.map((s) => s.slug)).toEqual(['layla', 'estate-erlend-oye']);
+    // A different song with a library title gets its own entry.
+    expect(added.map((s) => s.slug)).toEqual(['layla', 'creep-stone-temple-pilots']);
     expect(added[0].links.youtubeVersions).toHaveLength(2);
   });
 });

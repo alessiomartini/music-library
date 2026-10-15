@@ -13,7 +13,18 @@ import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
 import { loadSongScore, hasScore } from '../lib/songLoader';
 import type { Score } from '../lib/score';
+import type { SpotifyVersion } from '../lib/types';
 import { accordiESpartitiUrl, ultimateGuitarUrl } from '../lib/chordLinks';
+
+/** Videos by the same performer (and note) under one label: "Allie Sherlock · 2 · 3". */
+function groupVersions(versions: SpotifyVersion[]): [string, SpotifyVersion[]][] {
+  const groups = new Map<string, SpotifyVersion[]>();
+  for (const v of versions) {
+    const label = v.note ? `${v.artist} · ${v.note}` : v.artist;
+    groups.set(label, [...(groups.get(label) ?? []), v]);
+  }
+  return [...groups.entries()];
+}
 
 // Keyed by slug so score/loading state resets when navigating between songs.
 export function SongPage() {
@@ -186,12 +197,20 @@ function SongPageContent({ slug }: { slug?: string }) {
                 </a>
               </li>
             ))}
-            {song.links.youtubeVersions?.map((v) => (
-              <li key={v.url}>
-                <a href={v.url} target="_blank" rel="noreferrer noopener">
-                  <ProviderIcon provider="youtube" /> {v.artist}
-                  {v.note ? ` · ${v.note}` : ''}
+            {groupVersions(song.links.youtubeVersions ?? []).map(([label, videos]) => (
+              <li key={videos[0].url}>
+                <a href={videos[0].url} target="_blank" rel="noreferrer noopener">
+                  <ProviderIcon provider="youtube" /> {label}
                 </a>
+                {videos.length > 1 &&
+                  videos.slice(1).map((v, i) => (
+                    <span key={v.url}>
+                      {' · '}
+                      <a href={v.url} target="_blank" rel="noreferrer noopener" className="more-video">
+                        {i + 2}
+                      </a>
+                    </span>
+                  ))}
               </li>
             ))}
             {song.links.instagram?.map((url, i) => (
