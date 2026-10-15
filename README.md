@@ -64,6 +64,11 @@ automatic key recommendation, or embedded recording/cover players yet — see
 
 ## Song Data
 
+`src/data/songs/saved.ts` holds light entries (title, artist, Instagram post
+links, `classical` flag) for the pieces in Alessio's Instagram "piano" saved
+collection, curated by hand from the post captions of the 2026-10-15 data
+export (the export zip and the curation script stay outside the repo).
+
 Songs are TypeScript constants in:
 
 ```text

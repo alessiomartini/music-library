@@ -10,8 +10,13 @@ import { loadSongScore, hasScore } from '../lib/songLoader';
 import type { Score } from '../lib/score';
 import { accordiESpartitiUrl, ultimateGuitarUrl } from '../lib/chordLinks';
 
+// Keyed by slug so score/loading state resets when navigating between songs.
 export function SongPage() {
   const { slug } = useParams<{ slug: string }>();
+  return <SongPageContent key={slug} slug={slug} />;
+}
+
+function SongPageContent({ slug }: { slug?: string }) {
   const song = slug ? getSongBySlug(slug) : undefined;
   const [globalPrefs, setGlobalPrefs] = useGlobalPrefs();
   const [songPrefs, setSongPrefs] = useSongPrefs(slug ?? 'unknown');
