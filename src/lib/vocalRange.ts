@@ -70,3 +70,25 @@ export function keyShift(shift: number): number {
   return s > 5 ? s - 12 : s;
 }
 
+
+/**
+ * Sung notes measured from a song's recording (music-library-offline,
+ * pipeline/audio_first/vocal_distribution.py), as MIDI numbers.
+ */
+export interface VocalProfile {
+  /** Lowest / highest note sung for at least 1% of the time. */
+  low: number;
+  high: number;
+  /** Where 80% of the singing time sits (10th–90th percentile). */
+  coreLow: number;
+  coreHigh: number;
+  /** Seconds of singing and number of sung notes counted. */
+  seconds: number;
+  notes: number;
+  /** Share of the singing time on each note (MIDI number → share, summing to 1). */
+  histogram: Record<string, number>;
+  /** Share of the sung notes that are each note: how many times it is sung. */
+  countHistogram: Record<string, number>;
+  /** YouTube id of the recording measured. */
+  source: string;
+}
