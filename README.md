@@ -92,6 +92,18 @@ of covers (Spotify versions by other artists + Instagram posts); Instagram
 covers are named after the account that posted them
 (`npm run fetch:instagram-authors`, public oEmbed).
 
+`src/data/songs/youtubeCovers.ts` lists YouTube covers (Paolo Pilo on
+accordoTV, chitarradisagio, Allie Sherlock, Fabio Rodrigues and single
+covers), matched to songs from the video titles by hand and via the Deezer
+search API; a covered song missing from the library becomes a light entry
+(`src/lib/youtubeCovers.ts`). Song pages group a performer's videos.
+
+`src/data/songs/artists.ts` (`npm run fetch:artists`: Wikipedia, Wikidata,
+Wikimedia Commons) gives each artist a photo, chosen closest to the song's
+year, and a Wikidata voice type; with the comfortable range set under
+"My voice" (default Mi2–Sib4), song pages suggest a key that centres the
+singer's typical range in it. No suggestion without a known voice type.
+
 `src/data/songs/keys.ts` holds the key of songs without a curated
 `originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand
 analysis) and Ultimate Guitar (official transcriptions; user chord pages as a
