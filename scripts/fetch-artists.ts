@@ -51,6 +51,10 @@ const MUSIC_OCCUPATIONS = [
   'Q177220', 'Q488111', 'Q639669', 'Q36834', 'Q2252262', 'Q855091', 'Q486748', 'Q130857', 'Q183945',
   'Q753110', 'Q15981151', 'Q158852', 'Q1259917', 'Q1198887', 'Q2865819', 'Q12800682', 'Q584301', 'Q806349',
 ].map((q) => `wd:${q}`).join(' ');
+// Kinds of musical group, listed rather than walked via P279* (which times out).
+const GROUP_TYPES = [
+  'Q215380', 'Q5741069', 'Q2088357', 'Q9212979', 'Q216337', 'Q641066', 'Q281643', 'Q56816954', 'Q105543609', 'Q1752346',
+].map((q) => `wd:${q}`).join(' ');
 const LANGS = ['en', 'it', 'es', 'fr', 'pt', 'de'];
 
 interface Binding { [k: string]: { value: string } | undefined }
@@ -61,7 +65,7 @@ async function sparql(names: string[]): Promise<Binding[]> {
     VALUES ?name { ${values} }
     ?item rdfs:label ?name .
     { ?item wdt:P106 ?occ . VALUES ?occ { ${MUSIC_OCCUPATIONS} } }
-    UNION { ?item wdt:P31/wdt:P279* ?group . VALUES ?group { wd:Q215380 wd:Q2088357 wd:Q5741069 } }
+    UNION { ?item wdt:P31 ?group . VALUES ?group { ${GROUP_TYPES} } }
     ?item wikibase:sitelinks ?links .
     OPTIONAL { ?item wdt:P18 ?img }
     OPTIONAL { ?item wdt:P412 ?voice . ?voice rdfs:label ?voiceLabel . FILTER(LANG(?voiceLabel) = "en") }
@@ -122,7 +126,7 @@ const nameVariants = (artist: string) => [...new Set([artist, artist.split(/, | 
 const artists = [...new Set(songs.map((s) => s.artist))];
 const allNames = [...new Set(artists.flatMap(nameVariants))];
 const best = new Map<string, { qid: string; links: number; img?: string; voice?: string; sex?: string }>();
-const BATCH = 80;
+const BATCH = 40;
 for (let i = 0; i < allNames.length; i += BATCH) {
   for (const b of await sparql(allNames.slice(i, i + BATCH))) {
     const name = b.name!.value;
