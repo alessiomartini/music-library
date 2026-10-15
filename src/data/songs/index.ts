@@ -11,6 +11,8 @@ import { savedSongs } from './saved';
 import { chordSiteLinks } from './chordSiteLinks';
 import { spotifyLinks, spotifySongs } from './spotify';
 import { songKeys } from './keys';
+import { youtubeCovers } from './youtubeCovers';
+import { attachYoutubeCovers } from '../../lib/youtubeCovers';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
 import annaEMarcoScoreJson from './anna-e-marco.json';
@@ -86,19 +88,24 @@ function withLinks(s: Song): Song {
   const liked = spotifyLinks[s.slug];
   const albumImage = s.albumImage ?? (liked?.find((v) => v.url === links.spotify) ?? liked?.[0])?.albumImage;
   const keyEstimate = s.originalKey ? undefined : songKeys[s.slug];
-  return { ...s, links, ...(albumImage && { albumImage }), ...(keyEstimate && { keyEstimate }) };
+  const years = (liked ?? []).map((v) => v.year).filter((y): y is number => !!y);
+  const year = s.year ?? (years.length ? Math.min(...years) : undefined);
+  return { ...s, links, ...(albumImage && { albumImage }), ...(keyEstimate && { keyEstimate }), ...(year && { year }) };
 }
 
 const words = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);
 
-/** Covers of a song: Spotify versions by other artists, and saved Instagram posts. */
+/** Covers of a song: Spotify versions by other artists, YouTube covers and saved Instagram posts. */
 export function coverCount(s: Song): number {
   const own = new Set(words(s.artist));
   const spotifyCovers = (s.links.spotifyVersions ?? []).filter((v) => !words(v.artist).some((w) => own.has(w)));
-  return spotifyCovers.length + (s.links.instagram?.length ?? 0);
+  return spotifyCovers.length + (s.links.youtubeVersions?.length ?? 0) + (s.links.instagram?.length ?? 0);
 }
 
-export const songs: Song[] = allSongs.map(withLinks);
+// YouTube covers attach to their songs; covered songs not in the library become light entries.
+const covered = attachYoutubeCovers(allSongs, youtubeCovers);
+
+export const songs: Song[] = [...covered.songs, ...covered.added].map(withLinks);
 
 export function getSongBySlug(slug: string): Song | undefined {
   return songs.find((s) => s.slug === slug);

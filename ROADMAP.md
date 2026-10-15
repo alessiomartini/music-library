@@ -18,7 +18,12 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Tonalità dal web (Hooktheory, Ultimate Guitar) con tonalità candidate quando incerta
 - [x] Nome dell'autore delle cover Instagram, bollino che conta solo le cover
 
+- [x] Cover YouTube di Paolo Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues (+768 canzoni nuove)
+- [x] Range vocale comodo dell'utente e suggerimento di tonalità dal tipo di voce dell'artista (codice)
+
 ## Da fare
+- [ ] Eseguire in locale `npm run fetch:artists` (foto artisti + tipo di voce): da cloud Wikimedia limita le richieste
+- [ ] Video dedicati a un artista e medley: individuare le canzoni dalle trascrizioni (in locale)
 - [ ] Emoji degli strumenti usati nelle cover
 - [ ] Range vocale dell'artista per trasporre al range comodo dell'utente
 - [ ] Link YouTube diretti (oggi ricerca) — serve accesso di rete a YouTube
@@ -29,4 +34,4 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
 
 ## Log
-- 2026-10-15: import Spotify/Instagram con versioni su una scheda; link Spotify/YouTube per tutte le canzoni, bollino versioni, copertine album; creata la roadmap per Projects Overview; tonalità dal web con candidate, autori delle cover Instagram
+- 2026-10-15: import Spotify/Instagram con versioni su una scheda; link Spotify/YouTube per tutte le canzoni, bollino versioni, copertine album; creata la roadmap per Projects Overview; tonalità dal web con candidate, autori delle cover Instagram; cover YouTube (Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues), range vocale e suggerimento tonalità

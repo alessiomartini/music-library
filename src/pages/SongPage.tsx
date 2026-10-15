@@ -2,14 +2,29 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
 import { instagramAuthors } from '../data/songs/instagramAuthors';
+import { artists } from '../data/songs/artists';
+import { photoForYear } from '../lib/artist';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
+import { KeySuggestion } from '../components/KeySuggestion';
+import { ProviderIcon } from '../components/ProviderIcon';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
 import { loadSongScore, hasScore } from '../lib/songLoader';
 import type { Score } from '../lib/score';
+import type { SpotifyVersion } from '../lib/types';
 import { accordiESpartitiUrl, ultimateGuitarUrl } from '../lib/chordLinks';
+
+/** Videos by the same performer (and note) under one label: "Allie Sherlock · 2 · 3". */
+function groupVersions(versions: SpotifyVersion[]): [string, SpotifyVersion[]][] {
+  const groups = new Map<string, SpotifyVersion[]>();
+  for (const v of versions) {
+    const label = v.note ? `${v.artist} · ${v.note}` : v.artist;
+    groups.set(label, [...(groups.get(label) ?? []), v]);
+  }
+  return [...groups.entries()];
+}
 
 // Keyed by slug so score/loading state resets when navigating between songs.
 export function SongPage() {
@@ -44,6 +59,7 @@ function SongPageContent({ slug }: { slug?: string }) {
     );
   }
 
+  const artistPhoto = photoForYear(artists[song.artist]?.photos ?? [], song.year);
   const originalKey = song.originalKey;
   const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
   const displayedKey = originalKey
@@ -63,6 +79,11 @@ function SongPageContent({ slug }: { slug?: string }) {
       </Link>
       <div className="song-heading">
         {song.albumImage && <img className="album-cover" src={song.albumImage} alt="" width={96} height={96} />}
+        {artistPhoto && (
+          <a href={artistPhoto.page} target="_blank" rel="noreferrer noopener" className="artist-photo-link">
+            <img className="artist-photo" src={artistPhoto.url} alt={song.artist} width={96} height={96} />
+          </a>
+        )}
         <div>
           <h1>{song.title}</h1>
           <p className="song-meta">
@@ -71,6 +92,15 @@ function SongPageContent({ slug }: { slug?: string }) {
           </p>
         </div>
       </div>
+
+      {artistPhoto && (
+        <p className="photo-credit">
+          Photo{artistPhoto.year ? ` (${artistPhoto.year})` : ''}: {artistPhoto.credit} ·{' '}
+          <a href={artistPhoto.page} target="_blank" rel="noreferrer noopener">
+            {artistPhoto.license}, Wikimedia Commons
+          </a>
+        </p>
+      )}
 
       {(song.capo || song.tuning) && (
         <p className="song-setup">
@@ -148,25 +178,46 @@ function SongPageContent({ slug }: { slug?: string }) {
         )}
       </div>
 
-      {(song.links.spotifyVersions?.length || song.links.instagram?.length) ? (
+      <KeySuggestion
+        keys={originalKey ? [originalKey] : song.keyEstimate?.key ? [song.keyEstimate.key] : (song.keyEstimate?.candidates ?? [])}
+        artist={artists[song.artist]}
+        system={globalPrefs.system}
+        onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
+      />
+
+      {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">
           <h2>Other versions</h2>
           <ul>
             {song.links.spotifyVersions?.map((v) => (
               <li key={v.url}>
                 <a href={v.url} target="_blank" rel="noreferrer noopener">
-                  {v.artist}
+                  <ProviderIcon provider="spotify" /> {v.artist}
                   {v.note ? ` · ${v.note}` : ''}
-                </a>{' '}
-                <span className="version-source">Spotify</span>
+                </a>
+              </li>
+            ))}
+            {groupVersions(song.links.youtubeVersions ?? []).map(([label, videos]) => (
+              <li key={videos[0].url}>
+                <a href={videos[0].url} target="_blank" rel="noreferrer noopener">
+                  <ProviderIcon provider="youtube" /> {label}
+                </a>
+                {videos.length > 1 &&
+                  videos.slice(1).map((v, i) => (
+                    <span key={v.url}>
+                      {' · '}
+                      <a href={v.url} target="_blank" rel="noreferrer noopener" className="more-video">
+                        {i + 2}
+                      </a>
+                    </span>
+                  ))}
               </li>
             ))}
             {song.links.instagram?.map((url, i) => (
               <li key={url}>
                 <a href={url} target="_blank" rel="noreferrer noopener">
-                  {instagramAuthors[url] ? `@${instagramAuthors[url]}` : `Post ${i + 1}`}
-                </a>{' '}
-                <span className="version-source">Instagram</span>
+                  <ProviderIcon provider="instagram" /> {instagramAuthors[url] ? `@${instagramAuthors[url]}` : `Post ${i + 1}`}
+                </a>
               </li>
             ))}
           </ul>

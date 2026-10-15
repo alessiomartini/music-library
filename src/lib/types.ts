@@ -9,12 +9,16 @@ export interface SpotifyVersion {
   note?: string;
   /** Cover art of the album the recording is on (Spotify CDN). */
   albumImage?: string;
+  /** Release year of the album the recording is on. */
+  year?: number;
 }
 
 export interface SongLinks {
   spotify?: string;
   /** Other Spotify recordings (versions, covers) liked or saved in a playlist. */
   spotifyVersions?: SpotifyVersion[];
+  /** YouTube covers (artist = who plays it). */
+  youtubeVersions?: SpotifyVersion[];
   youtube?: string;
   /** Where to consult the published sheet music this transcription was
    * checked against. A link to the publisher/retailer page, not a copy of
@@ -52,6 +56,8 @@ export interface Song {
   links: SongLinks;
   /** Cover art of the album of the main Spotify recording. */
   albumImage?: string;
+  /** Year the song came out: earliest release among its Spotify recordings. */
+  year?: number;
   /** Key found on the web (scripts/fetch-keys.ts) for songs without a curated `originalKey`. */
   keyEstimate?: KeyEstimate;
   /** Classical piece: no chord-site links. */

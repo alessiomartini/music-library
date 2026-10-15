@@ -183,6 +183,61 @@ select, textarea, input {
   margin: 0;
 }
 
+.artist-photo {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.artist-photo-link {
+  flex: none;
+}
+
+.photo-credit {
+  margin: -12px 0 16px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.photo-credit a {
+  color: inherit;
+}
+
+.voice-settings {
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.voice-settings summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.voice-settings input {
+  font: inherit;
+  padding: 2px 6px;
+}
+
+.voice-settings input.invalid {
+  outline: 2px solid #d33;
+}
+
+.voice-settings-hint,
+.key-suggestion-basis {
+  display: block;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.key-suggestion {
+  margin: 0 0 18px;
+}
+
+.key-suggestion button {
+  margin-left: 8px;
+}
+
 .album-cover {
   flex: none;
   border-radius: 8px;
@@ -327,10 +382,8 @@ select, textarea, input {
   color: var(--accent);
 }
 
-.song-saved-posts .version-source {
-  font-size: 0.8em;
-  color: var(--text);
-  opacity: 0.7;
+.provider-icon {
+  vertical-align: -3px;
 }
 
 /* --- Transpose controls --- */
