@@ -244,6 +244,44 @@ select, textarea, input {
   color: #ff0000;
 }
 
+
+.link-pill.accordi:hover,
+.link-pill.ug:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.song-search {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-alt);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.song-saved-posts ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.song-saved-posts a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-h);
+}
+
+.song-saved-posts a:hover {
+  color: var(--accent);
+}
+
 /* --- Transpose controls --- */
 
 .transpose-controls {
