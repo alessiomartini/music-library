@@ -29,6 +29,14 @@ chart fallback.
 - A manually selected preferred singing key with an optional note.
 - External Spotify, YouTube, and sheet-music links where present in a song's
   data.
+- Accordi&Spartiti and Ultimate Guitar links on every non-classical song:
+  the direct chords page stored in `links.accordiESpartiti` /
+  `links.ultimateGuitar`, otherwise a site search built from title + artist
+  (`src/lib/chordLinks.ts`).
+- Links to the Instagram posts saved for a song (`links.instagram`).
+- Songs may be "light" entries without key/meter/tempo/score; the page then
+  hides the transpose and key-preference controls.
+- Text search by title or artist on the home page.
 - Browser-local site-improvement notes.
 - Light/dark appearance support through the user's system color preference.
 

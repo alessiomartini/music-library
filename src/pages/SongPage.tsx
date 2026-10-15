@@ -8,6 +8,7 @@ import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
 import { loadSongScore, hasScore } from '../lib/songLoader';
 import type { Score } from '../lib/score';
+import { accordiESpartitiUrl, ultimateGuitarUrl } from '../lib/chordLinks';
 
 export function SongPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -37,13 +38,16 @@ export function SongPage() {
     );
   }
 
-  const preferFlats = shouldPreferFlats(song.originalKey);
-  const displayedKey = transposeKeyLabel(song.originalKey, songPrefs.semitones, globalPrefs.system, preferFlats);
+  const originalKey = song.originalKey;
+  const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
+  const displayedKey = originalKey
+    ? transposeKeyLabel(originalKey, songPrefs.semitones, globalPrefs.system, preferFlats)
+    : null;
   // A capo raises what sounds, so the shapes you finger sit that many
   // semitones *below* the key on the page. Derived rather than stored, so it
   // stays right when the chart is transposed.
-  const capoShapeKey = song.capo
-    ? transposeKeyLabel(song.originalKey, songPrefs.semitones - song.capo, globalPrefs.system, preferFlats)
+  const capoShapeKey = song.capo && originalKey
+    ? transposeKeyLabel(originalKey, songPrefs.semitones - song.capo, globalPrefs.system, preferFlats)
     : null;
 
   return (
@@ -74,39 +78,70 @@ export function SongPage() {
       )}
 
       <div className="song-facts">
-        <span>
-          <strong>Key</strong> {displayedKey}
-        </span>
-        <span>
-          <strong>Meter</strong> {song.timeSignature}
-        </span>
-        <span>
-          <strong>Tempo</strong> {song.tempoMarking ? `${song.tempoMarking}, ` : ''}♩ = {song.tempoBpm}
-        </span>
+        {displayedKey && (
+          <span>
+            <strong>Key</strong> {displayedKey}
+          </span>
+        )}
+        {song.timeSignature && (
+          <span>
+            <strong>Meter</strong> {song.timeSignature}
+          </span>
+        )}
+        {song.tempoBpm && (
+          <span>
+            <strong>Tempo</strong> {song.tempoMarking ? `${song.tempoMarking}, ` : ''}♩ = {song.tempoBpm}
+          </span>
+        )}
       </div>
 
-      {(song.links.spotify || song.links.youtube) && (
-        <div className="song-links">
-          {song.links.spotify && (
-            <a href={song.links.spotify} target="_blank" rel="noreferrer noopener" className="link-pill spotify">
-              Listen on Spotify
+      <div className="song-links">
+        {song.links.spotify && (
+          <a href={song.links.spotify} target="_blank" rel="noreferrer noopener" className="link-pill spotify">
+            Listen on Spotify
+          </a>
+        )}
+        {song.links.youtube && (
+          <a href={song.links.youtube} target="_blank" rel="noreferrer noopener" className="link-pill youtube">
+            Watch on YouTube
+          </a>
+        )}
+        {!song.classical && (
+          <>
+            <a href={accordiESpartitiUrl(song)} target="_blank" rel="noreferrer noopener" className="link-pill accordi">
+              Accordi&amp;Spartiti
             </a>
-          )}
-          {song.links.youtube && (
-            <a href={song.links.youtube} target="_blank" rel="noreferrer noopener" className="link-pill youtube">
-              Watch on YouTube
+            <a href={ultimateGuitarUrl(song)} target="_blank" rel="noreferrer noopener" className="link-pill ug">
+              Ultimate Guitar
             </a>
-          )}
+          </>
+        )}
+      </div>
+
+      {song.links.instagram && song.links.instagram.length > 0 && (
+        <div className="song-saved-posts">
+          <h2>Saved on Instagram</h2>
+          <ul>
+            {song.links.instagram.map((url, i) => (
+              <li key={url}>
+                <a href={url} target="_blank" rel="noreferrer noopener">
+                  Post {i + 1}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
-      <TransposeControls
-        originalKey={song.originalKey}
-        semitones={songPrefs.semitones}
-        onSemitonesChange={(n) => setSongPrefs({ ...songPrefs, semitones: n })}
-        system={globalPrefs.system}
-        onSystemChange={(s) => setGlobalPrefs({ ...globalPrefs, system: s })}
-      />
+      {originalKey && (
+        <TransposeControls
+          originalKey={originalKey}
+          semitones={songPrefs.semitones}
+          onSemitonesChange={(n) => setSongPrefs({ ...songPrefs, semitones: n })}
+          system={globalPrefs.system}
+          onSystemChange={(s) => setGlobalPrefs({ ...globalPrefs, system: s })}
+        />
+      )}
 
       {score && (
         <div className="score-viewer-container">
@@ -141,14 +176,16 @@ export function SongPage() {
         </div>
       )}
 
-      <KeyPreference
-        originalKey={song.originalKey}
-        preferredKey={songPrefs.preferredKey}
-        note={songPrefs.note}
-        system={globalPrefs.system}
-        onSave={(preferredKey, note) => setSongPrefs({ ...songPrefs, preferredKey, note })}
-        onApply={(semitones) => setSongPrefs({ ...songPrefs, semitones })}
-      />
+      {originalKey && (
+        <KeyPreference
+          originalKey={originalKey}
+          preferredKey={songPrefs.preferredKey}
+          note={songPrefs.note}
+          system={globalPrefs.system}
+          onSave={(preferredKey, note) => setSongPrefs({ ...songPrefs, preferredKey, note })}
+          onApply={(semitones) => setSongPrefs({ ...songPrefs, semitones })}
+        />
+      )}
 
       {song.notes && (
         <p className="song-source-notes">

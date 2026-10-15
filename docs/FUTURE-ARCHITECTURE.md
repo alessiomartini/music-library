@@ -507,6 +507,15 @@ committed when explicitly justified.
 
 ### Selected recordings and covers
 
+> Implemented meanwhile (Oct 2026), outside this model: `links.instagram`
+> (posts from Alessio's saved "piano" collection) and chord-site links
+> (`links.accordiESpartiti` / `links.ultimateGuitar`, search fallback). They
+> are plain links, not `media` items; fold them in when `media` lands.
+> Local MIDI archive for future MIDI-first songs:
+> `music-library-offline/midi-intake/library/` (~830 files, mostly
+> Neapolitan) and `E:\Alessio\Music\Songs_WEBSITE_Library\` (gitignored /
+> outside git).
+
 Each song should be able to reference media independently of its musical
 score. The planned model associates each song with exactly one selected
 original/reference recording and zero or more selected covers. These references

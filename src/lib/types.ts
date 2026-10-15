@@ -8,6 +8,11 @@ export interface SongLinks {
    * the sheet itself — the notation is under copyright and can't be
    * redistributed here. */
   sheetMusic?: string;
+  /** Direct chords/lyrics page; without it the page links to a site search. */
+  accordiESpartiti?: string;
+  ultimateGuitar?: string;
+  /** Posts saved in Alessio's Instagram "piano" collection. */
+  instagram?: string[];
 }
 
 export interface Song {
@@ -16,15 +21,15 @@ export interface Song {
   artist: string;
   composer?: string;
   /** Home key, English spelling, e.g. "G", "Eb", "Dm". */
-  originalKey: string;
+  originalKey?: string;
   /** Fret for an *optional* capo that puts the song under easier shapes.
    * The chart is always written in `originalKey`; this is only a suggestion
    * for players who want it, never an assumption that it is in use. */
   capo?: number;
   /** Non-standard guitar tuning, e.g. "Drop D" or "D A D G A D". */
   tuning?: string;
-  timeSignature: string;
-  tempoBpm: number;
+  timeSignature?: string;
+  tempoBpm?: number;
   tempoMarking?: string; // e.g. "Moderately"
   /** Normalized symbolic score: melody, lyrics and harmony. Absent until the
    * song has been transcribed through the audio-first pipeline. */
@@ -32,6 +37,8 @@ export interface Song {
   /** Path to JSON score file (alternative to inline score). */
   scorePath?: string;
   links: SongLinks;
+  /** Classical piece: no chord-site links. */
+  classical?: boolean;
   /** Background/trivia shown in a "History & trivia" section. */
   history?: string;
   notes?: string;
