@@ -88,8 +88,7 @@ cover (`albumImage`, shown on the song page).
 
 Every song links to Spotify and YouTube: its own recording when known,
 otherwise a title + artist search. The home list shows a badge with the number
-of versions (Spotify versions + Instagram posts) of songs that have more than
-one. Hand-curated
+of covers (Spotify versions by other artists + Instagram posts). Hand-curated
 fixes (classical titles, same-title different songs, credits) are in
 `scripts/spotify-overrides.ts`; re-run the import after editing them.
 
