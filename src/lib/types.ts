@@ -6,6 +6,8 @@ export interface SpotifyVersion {
   artist: string;
   /** What sets it apart, e.g. "Live", "Acoustic", "2009 Remaster". */
   note?: string;
+  /** Cover art of the album the recording is on (Spotify CDN). */
+  albumImage?: string;
 }
 
 export interface SongLinks {
@@ -47,6 +49,8 @@ export interface Song {
   /** Path to JSON score file (alternative to inline score). */
   scorePath?: string;
   links: SongLinks;
+  /** Cover art of the album of the main Spotify recording. */
+  albumImage?: string;
   /** Classical piece: no chord-site links. */
   classical?: boolean;
   /** Background/trivia shown in a "History & trivia" section. */

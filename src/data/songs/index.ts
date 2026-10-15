@@ -75,7 +75,24 @@ function spotifyFor(s: Song): Partial<SongLinks> {
   return spotifyVersions.length ? { spotify, spotifyVersions } : { spotify };
 }
 
-export const songs: Song[] = allSongs.map((s) => ({ ...s, links: { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) } }));
+const query = (s: Song) => encodeURIComponent(`${s.title} ${s.artist}`);
+
+/** Every song links to Spotify and YouTube: its own recording when known, else a search. */
+function withLinks(s: Song): Song {
+  const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) };
+  links.spotify ??= `https://open.spotify.com/search/${query(s)}`;
+  links.youtube ??= `https://www.youtube.com/results?search_query=${query(s)}`;
+  const liked = spotifyLinks[s.slug];
+  const albumImage = s.albumImage ?? (liked?.find((v) => v.url === links.spotify) ?? liked?.[0])?.albumImage;
+  return albumImage ? { ...s, links, albumImage } : { ...s, links };
+}
+
+/** Recordings beyond the song's main one: other Spotify versions and saved Instagram posts. */
+export function extraVersions(s: Song): number {
+  return (s.links.spotifyVersions?.length ?? 0) + (s.links.instagram?.length ?? 0);
+}
+
+export const songs: Song[] = allSongs.map(withLinks);
 
 export function getSongBySlug(slug: string): Song | undefined {
   return songs.find((s) => s.slug === slug);
