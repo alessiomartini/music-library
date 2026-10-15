@@ -32,16 +32,19 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function get(url: string, form?: Record<string, string>, pause = 1000): Promise<string | null> {
   const file = `${CACHE}/${createHash('sha1').update(url + JSON.stringify(form ?? {})).digest('hex')}`;
   if (existsSync(file)) return readFileSync(file, 'utf8');
-  for (let attempt = 0; attempt < 5; attempt++) {
-    await sleep(pause * (attempt + 1));
+  // Wikimedia throttles shared IPs hard at times: back off up to ~5 min, for up to ~2 h.
+  for (let attempt = 0; attempt < 30; attempt++) {
+    await sleep(Math.min(pause * 2 ** attempt, 300_000));
     const args = ['-s', '-m', '90', '-A', UA, '-H', 'Accept: application/json', '-w', '\n%{http_code}'];
     for (const [k, v] of Object.entries(form ?? {})) args.push('--data-urlencode', `${k}=${v}`);
     const out = await run('curl', [...args, url], { maxBuffer: 64 << 20 }).then((r) => r.stdout).catch(() => '');
     const status = Number(out.slice(out.lastIndexOf('\n') + 1));
     const body = out.slice(0, out.lastIndexOf('\n'));
     if (status === 200 && body.startsWith('{')) { writeFileSync(file, body); return body; }
+    console.log(`  HTTP ${status || 'error'} for ${url.slice(0, 60)}…, retrying`);
   }
-  return null;
+  // Give up loudly rather than write a partial artists file.
+  throw new Error(`Could not fetch ${url}`);
 }
 
 const MUSIC_OCCUPATIONS = [
