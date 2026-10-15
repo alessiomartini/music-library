@@ -88,7 +88,15 @@ cover (`albumImage`, shown on the song page).
 
 Every song links to Spotify and YouTube: its own recording when known,
 otherwise a title + artist search. The home list shows a badge with the number
-of covers (Spotify versions by other artists + Instagram posts). Hand-curated
+of covers (Spotify versions by other artists + Instagram posts); Instagram
+covers are named after the account that posted them
+(`npm run fetch:instagram-authors`, public oEmbed).
+
+`src/data/songs/keys.ts` holds the key of songs without a curated
+`originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand
+analysis) and Ultimate Guitar (official transcriptions; user chord pages as a
+hint). When the trusted sources agree the song shows "Key", otherwise
+"Possible keys" with each source's answer. Hand-curated
 fixes (classical titles, same-title different songs, credits) are in
 `scripts/spotify-overrides.ts`; re-run the import after editing them.
 

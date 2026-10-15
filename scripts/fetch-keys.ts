@@ -68,10 +68,12 @@ const titleMatches = (candidate: string, title: string) => {
 async function hooktheory(title: string, artist: string): Promise<KeySource | null> {
   const url = `https://www.hooktheory.com/theorytab/view/${slug(mainArtist(artist))}/${slug(title)}`;
   const html = await get(url);
-  const m = html?.match(/>Key ([A-G][#b♯♭]?) (Major|Minor|Dorian|Mixolydian|Phrygian|Lydian|Locrian)</);
-  if (!m) return null;
-  const key = normalizeKey(`${m[1]}${m[2] === 'Minor' ? 'm' : ''}`);
-  return key && (m[2] === 'Major' || m[2] === 'Minor') ? { source: 'Hooktheory', url, key } : null;
+  // The song's own key is the first "Key</span>…<a href=/cheat-sheet/key/e-flat/major>" on the page.
+  const m = html?.match(/>Key<\/span>(?:<[^>]*>){0,4}<a href="\/cheat-sheet\/key\/([a-g])(-sharp|-flat)?\/([a-z]+)"/);
+  if (!m || (m[3] !== 'major' && m[3] !== 'minor')) return null;
+  const accidental = m[2] === '-sharp' ? '#' : m[2] === '-flat' ? 'b' : '';
+  const key = normalizeKey(`${m[1].toUpperCase()}${accidental}${m[3] === 'minor' ? 'm' : ''}`);
+  return key ? { source: 'Hooktheory', url, key } : null;
 }
 
 interface UgResult { song_name: string; artist_name: string; type: string | null; tonality_name: string | null; votes: number | null; tab_url: string }
