@@ -112,6 +112,15 @@ them (no plaques, monuments, sleeves or signatures). Wrong Wikipedia matches
 (namesakes) are fixed by hand in `scripts/artist-overrides.ts`; re-run the
 fetch after editing it (responses are cached in `node_modules/.cache/artists`).
 
+`src/data/songs/history.ts` (`npm run fetch:history`) gives 1243 songs a short
+excerpt (2–4 sentences of the lead) of their Wikipedia article, shown under
+"History & trivia" with the link to the article and the CC BY-SA 4.0 licence.
+The article is found through Wikidata (an item whose performer or composer is
+the song's artist and whose label is the title; Italian article for Italian
+songs, English otherwise) or, failing that, Wikipedia search (title match, the
+lead must name the artist and say it is a song). Redirects to an album and
+pages about albums, films or games are rejected; no article, no entry.
+
 `src/data/songs/keys.ts` holds the key of songs without a curated
 `originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand
 analysis) and Ultimate Guitar (official transcriptions; user chord pages as a

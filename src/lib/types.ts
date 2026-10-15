@@ -32,6 +32,15 @@ export interface SongLinks {
   instagram?: string[];
 }
 
+/** A short excerpt of a song's Wikipedia article (scripts/fetch-history.ts). */
+export interface SongHistory {
+  /** 2–4 sentences from the lead of the article (CC BY-SA 4.0). */
+  text: string;
+  url: string;
+  /** Wikipedia language edition, e.g. "it". */
+  lang: string;
+}
+
 export interface Song {
   slug: string;
   title: string;

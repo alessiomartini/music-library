@@ -272,6 +272,11 @@ select, textarea, input {
   line-height: 1.5;
 }
 
+.song-history .history-source {
+  color: var(--text);
+  font-size: 12px;
+}
+
 .song-source-notes {
   margin-top: 28px;
   padding: 12px 14px;

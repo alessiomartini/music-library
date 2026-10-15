@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
 import { instagramAuthors } from '../data/songs/instagramAuthors';
 import { artists } from '../data/songs/artists';
+import { songHistory } from '../data/songs/history';
 import { photoForYear } from '../lib/artist';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
@@ -59,6 +60,7 @@ function SongPageContent({ slug }: { slug?: string }) {
     );
   }
 
+  const wiki = songHistory[song.slug];
   const artistPhoto = photoForYear(artists[song.artist]?.photos ?? [], song.year);
   const originalKey = song.originalKey;
   const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
@@ -260,10 +262,25 @@ function SongPageContent({ slug }: { slug?: string }) {
         </p>
       )}
 
-      {song.history && (
+      {(song.history || wiki) && (
         <div className="song-history">
           <h2>History &amp; trivia</h2>
-          <p>{song.history}</p>
+          {song.history && <p>{song.history}</p>}
+          {wiki && (
+            <>
+              <p lang={wiki.lang}>{wiki.text}</p>
+              <p className="history-source">
+                From{' '}
+                <a href={wiki.url} target="_blank" rel="noreferrer noopener">
+                  Wikipedia
+                </a>{' '}
+                · text available under{' '}
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer noopener">
+                  CC BY-SA 4.0
+                </a>
+              </p>
+            </>
+          )}
         </div>
       )}
 
