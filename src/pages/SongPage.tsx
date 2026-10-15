@@ -123,20 +123,30 @@ function SongPageContent({ slug }: { slug?: string }) {
         )}
       </div>
 
-      {song.links.instagram && song.links.instagram.length > 0 && (
+      {(song.links.spotifyVersions?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">
-          <h2>Saved on Instagram</h2>
+          <h2>Other versions</h2>
           <ul>
-            {song.links.instagram.map((url, i) => (
+            {song.links.spotifyVersions?.map((v) => (
+              <li key={v.url}>
+                <a href={v.url} target="_blank" rel="noreferrer noopener">
+                  {v.artist}
+                  {v.note ? ` · ${v.note}` : ''}
+                </a>{' '}
+                <span className="version-source">Spotify</span>
+              </li>
+            ))}
+            {song.links.instagram?.map((url, i) => (
               <li key={url}>
                 <a href={url} target="_blank" rel="noreferrer noopener">
                   Post {i + 1}
-                </a>
+                </a>{' '}
+                <span className="version-source">Instagram</span>
               </li>
             ))}
           </ul>
         </div>
-      )}
+      ) : null}
 
       {originalKey && (
         <TransposeControls
