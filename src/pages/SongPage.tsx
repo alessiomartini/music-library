@@ -8,6 +8,8 @@ import { photoForYear } from '../lib/artist';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
 import { KeySuggestion } from '../components/KeySuggestion';
+import { VocalHistogram } from '../components/VocalHistogram';
+import { vocalRanges } from '../data/songs/vocalRanges';
 import { ProviderIcon } from '../components/ProviderIcon';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
@@ -186,6 +188,10 @@ function SongPageContent({ slug }: { slug?: string }) {
         system={globalPrefs.system}
         onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
       />
+
+      {vocalRanges[song.slug] && (
+        <VocalHistogram profile={vocalRanges[song.slug]} semitones={songPrefs.semitones} system={globalPrefs.system} />
+      )}
 
       {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">

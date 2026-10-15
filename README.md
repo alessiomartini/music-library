@@ -121,6 +121,14 @@ songs, English otherwise) or, failing that, Wikipedia search (title match, the
 lead must name the artist and say it is a song). Redirects to an album and
 pages about albums, films or games are rejected; no article, no entry.
 
+`src/data/songs/vocalRanges.ts` (`npm run import:vocal-ranges`, from
+`music-library-offline/output/vocal/`) holds the sung notes measured from a
+song's recording (Demucs vocal stem + pYIN pitch tracking, see that repo). The
+song page shows two histograms over the sung range: share of the singing time
+on each note and share of the sung notes (how many times each is sung), moved
+with the current transposition, with the comfortable range from "My voice"
+shaded. So far measured: Your Song, E cerca 'e me capi, Anna e Marco.
+
 `src/data/songs/keys.ts` holds the key of songs without a curated
 `originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand
 analysis) and Ultimate Guitar (official transcriptions; user chord pages as a
