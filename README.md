@@ -83,7 +83,13 @@ link); every other song becomes a light entry (`spotifySongs`). Versions and
 covers of one song collapse onto a single entry: the best recording is
 `links.spotify`, the others `links.spotifyVersions`, listed on the song page
 under "Other versions" together with its Instagram posts. Local files have no
-Spotify link and are skipped. Hand-curated
+Spotify link and are skipped. The import also keeps each recording's album
+cover (`albumImage`, shown on the song page).
+
+Every song links to Spotify and YouTube: its own recording when known,
+otherwise a title + artist search. The home list shows a badge with the number
+of versions (Spotify versions + Instagram posts) of songs that have more than
+one. Hand-curated
 fixes (classical titles, same-title different songs, credits) are in
 `scripts/spotify-overrides.ts`; re-run the import after editing them.
 

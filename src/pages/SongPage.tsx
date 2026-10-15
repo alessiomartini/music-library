@@ -60,11 +60,16 @@ function SongPageContent({ slug }: { slug?: string }) {
       <Link to="/" className="back-link">
         ← Library
       </Link>
-      <h1>{song.title}</h1>
-      <p className="song-meta">
-        {song.artist}
-        {song.composer ? ` · written by ${song.composer}` : ''}
-      </p>
+      <div className="song-heading">
+        {song.albumImage && <img className="album-cover" src={song.albumImage} alt="" width={96} height={96} />}
+        <div>
+          <h1>{song.title}</h1>
+          <p className="song-meta">
+            {song.artist}
+            {song.composer ? ` · written by ${song.composer}` : ''}
+          </p>
+        </div>
+      </div>
 
       {(song.capo || song.tuning) && (
         <p className="song-setup">

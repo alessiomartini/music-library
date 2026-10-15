@@ -29,6 +29,7 @@ interface Track {
   artists: string[];
   popularity: number;
   released: string;
+  albumImage: string;
   /** This recording's song title and artist, after cleanup and overrides. */
   title: string;
   artist: string;
@@ -133,6 +134,7 @@ const seen = new Set<string>();
 let skipped = 0;
 let local = 0;
 for (const r of records) {
+  r['Album Image URL'] ??= '';
   const uri = r['Track URI'];
   if (seen.has(uri)) continue;
   seen.add(uri);
@@ -149,6 +151,7 @@ for (const r of records) {
     id, rawTitle, artists, title, artist, classical,
     popularity: Number(r['Popularity']) || 0,
     released: r['Album Release Date'],
+    albumImage: r['Album Image URL'],
     curated: Boolean(o.title || o.artist),
   };
 
@@ -206,7 +209,8 @@ const performer = (t: Track) =>
 
 const version = (t: Track) => {
   const note = versionNote(t);
-  return `{ url: ${q(trackUrl(t))}, artist: ${q(performer(t))}${note ? `, note: ${q(note)}` : ''} }`;
+  const image = t.albumImage ? `, albumImage: ${q(t.albumImage)}` : '';
+  return `{ url: ${q(trackUrl(t))}, artist: ${q(performer(t))}${note ? `, note: ${q(note)}` : ''}${image} }`;
 };
 
 /** Ranked recordings, minus ones that would read the same (same performer and note, e.g. a reissue). */
@@ -245,6 +249,7 @@ for (const [t, ...others] of named) {
     `    title: ${q(t.title)},`,
     `    artist: ${q(t.artist)},`,
     ...(t.classical ? ['    classical: true,'] : []),
+    ...(t.albumImage ? [`    albumImage: ${q(t.albumImage)},`] : []),
     ...(others.length
       ? [
         '    links: {',

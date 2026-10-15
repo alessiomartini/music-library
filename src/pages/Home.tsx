@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { songs } from '../data/songs';
+import { extraVersions, songs } from '../data/songs';
 
 export function Home() {
   const [query, setQuery] = useState('');
@@ -25,6 +25,11 @@ export function Home() {
             <Link to={`/songs/${song.slug}`} className="song-list-item">
               <span className="song-title">{song.title}</span>
               <span className="song-artist">{song.artist}</span>
+              {extraVersions(song) > 0 && (
+                <span className="version-badge" title={`${extraVersions(song) + 1} versions`}>
+                  {extraVersions(song) + 1}
+                </span>
+              )}
               {song.originalKey && <span className="song-key">Key: {song.originalKey}</span>}
             </Link>
           </li>

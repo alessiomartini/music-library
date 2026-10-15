@@ -153,6 +153,42 @@ select, textarea, input {
   color: var(--text);
 }
 
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  align-self: center;
+}
+
+.song-heading {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.song-heading h1 {
+  margin: 0 0 4px;
+}
+
+.song-heading .song-meta {
+  margin: 0;
+}
+
+.album-cover {
+  flex: none;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 .song-key {
   margin-left: auto;
   font-size: 13px;
