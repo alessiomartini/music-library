@@ -20,6 +20,9 @@ describe('parseNote', () => {
 describe('artistRange', () => {
   it('uses the voice type only', () => {
     expect(artistRange({ name: 'x', wikidata: 'Q', voiceType: 'baritone', photos: [] })).toMatchObject({ low: 45, high: 65 });
+    expect(artistRange({ name: 'x', wikidata: 'Q', voiceType: 'lyric tenor', photos: [] })).toMatchObject({ low: 48, high: 69 });
+    expect(artistRange({ name: 'x', wikidata: 'Q', voiceType: 'bass-baritone', photos: [] })).toMatchObject({ low: 41, high: 64 });
+    expect(artistRange({ name: 'x', wikidata: 'Q', voiceType: 'falsetto', photos: [] })).toBeNull();
     expect(artistRange({ name: 'x', wikidata: 'Q', sex: 'female', photos: [] })).toBeNull();
     expect(artistRange({ name: 'x', wikidata: 'Q', photos: [] })).toBeNull();
   });

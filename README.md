@@ -105,7 +105,12 @@ viewers' timestamp comments, with the minute in the note ("medley, from 3:20").
 Wikimedia Commons) gives each artist a photo, chosen closest to the song's
 year, and a Wikidata voice type; with the comfortable range set under
 "My voice" (default Mi2–Sib4), song pages suggest a key that centres the
-singer's typical range in it. No suggestion without a known voice type.
+singer's typical range in it. No suggestion without a known voice type
+(variants such as "lyric tenor" count as their base type). Dated Commons photos
+are kept only when taken while the artist was alive or active and named after
+them (no plaques, monuments, sleeves or signatures). Wrong Wikipedia matches
+(namesakes) are fixed by hand in `scripts/artist-overrides.ts`; re-run the
+fetch after editing it (responses are cached in `node_modules/.cache/artists`).
 
 `src/data/songs/keys.ts` holds the key of songs without a curated
 `originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand

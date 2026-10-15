@@ -49,7 +49,9 @@ export interface ArtistRange extends PitchRange {
 /** Approximate vocal range of an artist from their Wikidata voice type; null when it isn't known. */
 export function artistRange(artist: ArtistInfo | undefined): ArtistRange | null {
   const voice = artist?.voiceType?.toLowerCase();
-  const pair = voice ? VOICE_TYPES[voice] : undefined;
+  // "lyric tenor", "light-lyric soprano", "dramatic baritone": fall back on the base type.
+  const base = voice && Object.keys(VOICE_TYPES).find((t) => voice.split(/[\s-]+/).includes(t));
+  const pair = voice ? (VOICE_TYPES[voice] ?? (base ? VOICE_TYPES[base] : undefined)) : undefined;
   if (!pair) return null;
   return { low: parseNote(pair[0])!, high: parseNote(pair[1])!, basis: `voice type: ${voice}` };
 }
