@@ -210,7 +210,8 @@ const performer = (t: Track) =>
 const version = (t: Track) => {
   const note = versionNote(t);
   const image = t.albumImage ? `, albumImage: ${q(t.albumImage)}` : '';
-  return `{ url: ${q(trackUrl(t))}, artist: ${q(performer(t))}${note ? `, note: ${q(note)}` : ''}${image} }`;
+  const year = parseInt(t.released, 10) ? `, year: ${parseInt(t.released, 10)}` : '';
+  return `{ url: ${q(trackUrl(t))}, artist: ${q(performer(t))}${note ? `, note: ${q(note)}` : ''}${year}${image} }`;
 };
 
 /** Ranked recordings, minus ones that would read the same (same performer and note, e.g. a reissue). */
@@ -235,6 +236,12 @@ for (const e of entries.values()) {
     newSongs.push(e);
   }
 }
+/** Earliest release year among a song's recordings: when it came out. */
+function firstYear(tracks: Track[]): number | undefined {
+  const years = tracks.map((t) => parseInt(t.released, 10)).filter((y) => y > 1800);
+  return years.length ? Math.min(...years) : undefined;
+}
+
 const named = newSongs.map((e) => distinctVersions(e)).sort((a, b) => a[0].title.localeCompare(b[0].title, 'it'));
 
 const songLines: string[] = [];
@@ -250,6 +257,7 @@ for (const [t, ...others] of named) {
     `    artist: ${q(t.artist)},`,
     ...(t.classical ? ['    classical: true,'] : []),
     ...(t.albumImage ? [`    albumImage: ${q(t.albumImage)},`] : []),
+    ...(firstYear([t, ...others]) ? [`    year: ${firstYear([t, ...others])},`] : []),
     ...(others.length
       ? [
         '    links: {',

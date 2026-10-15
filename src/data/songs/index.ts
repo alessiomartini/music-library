@@ -86,7 +86,9 @@ function withLinks(s: Song): Song {
   const liked = spotifyLinks[s.slug];
   const albumImage = s.albumImage ?? (liked?.find((v) => v.url === links.spotify) ?? liked?.[0])?.albumImage;
   const keyEstimate = s.originalKey ? undefined : songKeys[s.slug];
-  return { ...s, links, ...(albumImage && { albumImage }), ...(keyEstimate && { keyEstimate }) };
+  const years = (liked ?? []).map((v) => v.year).filter((y): y is number => !!y);
+  const year = s.year ?? (years.length ? Math.min(...years) : undefined);
+  return { ...s, links, ...(albumImage && { albumImage }), ...(keyEstimate && { keyEstimate }), ...(year && { year }) };
 }
 
 const words = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);

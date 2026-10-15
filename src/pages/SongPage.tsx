@@ -2,8 +2,11 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
 import { instagramAuthors } from '../data/songs/instagramAuthors';
+import { artists } from '../data/songs/artists';
+import { photoForYear } from '../lib/artist';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
+import { KeySuggestion } from '../components/KeySuggestion';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
@@ -44,6 +47,7 @@ function SongPageContent({ slug }: { slug?: string }) {
     );
   }
 
+  const artistPhoto = photoForYear(artists[song.artist]?.photos ?? [], song.year);
   const originalKey = song.originalKey;
   const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
   const displayedKey = originalKey
@@ -63,6 +67,11 @@ function SongPageContent({ slug }: { slug?: string }) {
       </Link>
       <div className="song-heading">
         {song.albumImage && <img className="album-cover" src={song.albumImage} alt="" width={96} height={96} />}
+        {artistPhoto && (
+          <a href={artistPhoto.page} target="_blank" rel="noreferrer noopener" className="artist-photo-link">
+            <img className="artist-photo" src={artistPhoto.url} alt={song.artist} width={96} height={96} />
+          </a>
+        )}
         <div>
           <h1>{song.title}</h1>
           <p className="song-meta">
@@ -71,6 +80,15 @@ function SongPageContent({ slug }: { slug?: string }) {
           </p>
         </div>
       </div>
+
+      {artistPhoto && (
+        <p className="photo-credit">
+          Photo{artistPhoto.year ? ` (${artistPhoto.year})` : ''}: {artistPhoto.credit} ·{' '}
+          <a href={artistPhoto.page} target="_blank" rel="noreferrer noopener">
+            {artistPhoto.license}, Wikimedia Commons
+          </a>
+        </p>
+      )}
 
       {(song.capo || song.tuning) && (
         <p className="song-setup">
@@ -147,6 +165,13 @@ function SongPageContent({ slug }: { slug?: string }) {
           </>
         )}
       </div>
+
+      <KeySuggestion
+        keys={originalKey ? [originalKey] : song.keyEstimate?.key ? [song.keyEstimate.key] : (song.keyEstimate?.candidates ?? [])}
+        artist={artists[song.artist]}
+        system={globalPrefs.system}
+        onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
+      />
 
       {(song.links.spotifyVersions?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">

@@ -6,193 +6,193 @@ import type { Song, SpotifyVersion } from '../../lib/types';
 /** Liked recordings of songs that were already in the library, best first. */
 export const spotifyLinks: Record<string, SpotifyVersion[]> = {
   "amara-terra-mia": [
-    { url: "https://open.spotify.com/track/4w1aaqoCHbY8FY58GG5uWI", artist: "Domenico Modugno", albumImage: "https://i.scdn.co/image/ab67616d0000b273160158d9bd4f5876b08efe8a" },
-    { url: "https://open.spotify.com/track/0pBTNkc70XWiPJOXkgCMvE", artist: "Mina", albumImage: "https://i.scdn.co/image/ab67616d0000b2731b3a5b27fc108bc6736bfc0a" },
-    { url: "https://open.spotify.com/track/2U1TPUVmdu5P3BRXxf55HR", artist: "Ermal Meta", albumImage: "https://i.scdn.co/image/c46604d1b33d6d52c54bfac3905068985e600737" },
+    { url: "https://open.spotify.com/track/4w1aaqoCHbY8FY58GG5uWI", artist: "Domenico Modugno", year: 2000, albumImage: "https://i.scdn.co/image/ab67616d0000b273160158d9bd4f5876b08efe8a" },
+    { url: "https://open.spotify.com/track/0pBTNkc70XWiPJOXkgCMvE", artist: "Mina", year: 2001, albumImage: "https://i.scdn.co/image/ab67616d0000b2731b3a5b27fc108bc6736bfc0a" },
+    { url: "https://open.spotify.com/track/2U1TPUVmdu5P3BRXxf55HR", artist: "Ermal Meta", year: 2017, albumImage: "https://i.scdn.co/image/c46604d1b33d6d52c54bfac3905068985e600737" },
   ],
   "anna-e-marco": [
-    { url: "https://open.spotify.com/track/6OVTR9jqJj6tlJiADrNq0F", artist: "Lucio Dalla", albumImage: "https://i.scdn.co/image/ab67616d0000b273302045c6bec32652f01d1d12" },
+    { url: "https://open.spotify.com/track/6OVTR9jqJj6tlJiADrNq0F", artist: "Lucio Dalla", year: 1979, albumImage: "https://i.scdn.co/image/ab67616d0000b273302045c6bec32652f01d1d12" },
   ],
   "autumn-leaves": [
-    { url: "https://open.spotify.com/track/7JtcCde09fsajDNHmPFrX7", artist: "Bill Evans, Scott LaFaro, Paul Motian", albumImage: "https://i.scdn.co/image/ab67616d0000b273079febd5ded0a77d42d70a55" },
-    { url: "https://open.spotify.com/track/7brc41T70B1IIwg2jCIX1Z", artist: "Eva Cassidy", note: "Live At Blues Alley", albumImage: "https://i.scdn.co/image/ab67616d0000b273c21bc61b315b02ec234a54ed" },
-    { url: "https://open.spotify.com/track/2iUrcZcAuVIahQD0dg9HLe", artist: "Chet Baker", albumImage: "https://i.scdn.co/image/ab67616d0000b2734a928d937098ac900d8f9c85" },
+    { url: "https://open.spotify.com/track/7JtcCde09fsajDNHmPFrX7", artist: "Bill Evans, Scott LaFaro, Paul Motian", year: 1960, albumImage: "https://i.scdn.co/image/ab67616d0000b273079febd5ded0a77d42d70a55" },
+    { url: "https://open.spotify.com/track/7brc41T70B1IIwg2jCIX1Z", artist: "Eva Cassidy", note: "Live At Blues Alley", year: 1996, albumImage: "https://i.scdn.co/image/ab67616d0000b273c21bc61b315b02ec234a54ed" },
+    { url: "https://open.spotify.com/track/2iUrcZcAuVIahQD0dg9HLe", artist: "Chet Baker", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b2734a928d937098ac900d8f9c85" },
   ],
   "back-to-black": [
-    { url: "https://open.spotify.com/track/3FAclTFfvUuQYnEsptbK8w", artist: "Amy Winehouse", albumImage: "https://i.scdn.co/image/ab67616d0000b27376ffb5b5ab045d22c81235c1" },
+    { url: "https://open.spotify.com/track/3FAclTFfvUuQYnEsptbK8w", artist: "Amy Winehouse", year: 2006, albumImage: "https://i.scdn.co/image/ab67616d0000b27376ffb5b5ab045d22c81235c1" },
   ],
   "best-part": [
-    { url: "https://open.spotify.com/track/1RMJOxR6GRPsBHL8qeC2ux", artist: "Daniel Caesar", albumImage: "https://i.scdn.co/image/ab67616d0000b2733138f891f3075c9c5d944037" },
+    { url: "https://open.spotify.com/track/1RMJOxR6GRPsBHL8qeC2ux", artist: "Daniel Caesar", year: 2017, albumImage: "https://i.scdn.co/image/ab67616d0000b2733138f891f3075c9c5d944037" },
   ],
   "billionaire": [
-    { url: "https://open.spotify.com/track/2M9ULmQwTaTGmAdXaXpfz5", artist: "Travie McCoy", albumImage: "https://i.scdn.co/image/ab67616d0000b27337ce3dd20c2318e13c6608ed" },
+    { url: "https://open.spotify.com/track/2M9ULmQwTaTGmAdXaXpfz5", artist: "Travie McCoy", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b27337ce3dd20c2318e13c6608ed" },
   ],
   "blackbird": [
-    { url: "https://open.spotify.com/track/5jgFfDIR6FR0gvlA56Nakr", artist: "The Beatles", note: "Remastered 2009", albumImage: "https://i.scdn.co/image/ab67616d0000b2734ce8b4e42588bf18182a1ad2" },
-    { url: "https://open.spotify.com/track/6PtZaHjsx2Pnk3x9O92bB2", artist: "Brad Mehldau", albumImage: "https://i.scdn.co/image/ab67616d0000b273cb70a810d68ae3b71635b4a5" },
+    { url: "https://open.spotify.com/track/5jgFfDIR6FR0gvlA56Nakr", artist: "The Beatles", note: "Remastered 2009", year: 1968, albumImage: "https://i.scdn.co/image/ab67616d0000b2734ce8b4e42588bf18182a1ad2" },
+    { url: "https://open.spotify.com/track/6PtZaHjsx2Pnk3x9O92bB2", artist: "Brad Mehldau", year: 1997, albumImage: "https://i.scdn.co/image/ab67616d0000b273cb70a810d68ae3b71635b4a5" },
   ],
   "blue-bossa": [
-    { url: "https://open.spotify.com/track/4cf8WFHrmO1WNWeFrqsnTq", artist: "Joe Henderson", albumImage: "https://i.scdn.co/image/ab67616d0000b27384417c40f38fc19089efe8cb" },
+    { url: "https://open.spotify.com/track/4cf8WFHrmO1WNWeFrqsnTq", artist: "Joe Henderson", year: 1964, albumImage: "https://i.scdn.co/image/ab67616d0000b27384417c40f38fc19089efe8cb" },
   ],
   "budapest": [
-    { url: "https://open.spotify.com/track/7GJClzimvMSghjcrKxuf1M", artist: "George Ezra", albumImage: "https://i.scdn.co/image/ab67616d0000b2732b01e29ac167ad5be48f03ef" },
+    { url: "https://open.spotify.com/track/7GJClzimvMSghjcrKxuf1M", artist: "George Ezra", year: 2014, albumImage: "https://i.scdn.co/image/ab67616d0000b2732b01e29ac167ad5be48f03ef" },
   ],
   "can-t-take-my-eyes-off-you": [
-    { url: "https://open.spotify.com/track/0bfvHnWWOeU1U5XeKyVLbW", artist: "Frankie Valli", albumImage: "https://i.scdn.co/image/ab67616d0000b273328ba1034774366865d78ac1" },
+    { url: "https://open.spotify.com/track/0bfvHnWWOeU1U5XeKyVLbW", artist: "Frankie Valli", year: 1967, albumImage: "https://i.scdn.co/image/ab67616d0000b273328ba1034774366865d78ac1" },
   ],
   "creep": [
-    { url: "https://open.spotify.com/track/70LcF31zb1H0PyJoS1Sx1r", artist: "Radiohead", albumImage: "https://i.scdn.co/image/ab67616d0000b273ec548c00d3ac2f10be73366d" },
-    { url: "https://open.spotify.com/track/1YX7GffryMNQP59pBWyKpi", artist: "The Macarons Project", note: "Acoustic", albumImage: "https://i.scdn.co/image/ab67616d0000b273dc66ce5e38b950e32c4fd053" },
-    { url: "https://open.spotify.com/track/1PHvwEhB9EUajUKTTIc5Vs", artist: "Lucifer Cast", albumImage: "https://i.scdn.co/image/ab67616d0000b27317e5bdb80d136adb335aecad" },
+    { url: "https://open.spotify.com/track/70LcF31zb1H0PyJoS1Sx1r", artist: "Radiohead", year: 1993, albumImage: "https://i.scdn.co/image/ab67616d0000b273ec548c00d3ac2f10be73366d" },
+    { url: "https://open.spotify.com/track/1YX7GffryMNQP59pBWyKpi", artist: "The Macarons Project", note: "Acoustic", year: 2018, albumImage: "https://i.scdn.co/image/ab67616d0000b273dc66ce5e38b950e32c4fd053" },
+    { url: "https://open.spotify.com/track/1PHvwEhB9EUajUKTTIc5Vs", artist: "Lucifer Cast", year: 2020, albumImage: "https://i.scdn.co/image/ab67616d0000b27317e5bdb80d136adb335aecad" },
   ],
   "dancing-in-the-moonlight": [
-    { url: "https://open.spotify.com/track/55GxhCTq6SY3tFTVh7z1nR", artist: "King Harvest", albumImage: "https://i.scdn.co/image/ab67616d0000b273cc344f09300a0d20635f96f3" },
-    { url: "https://open.spotify.com/track/6vnkIGrygKosSdwgxsUIFe", artist: "Isla June, A.O. Gerber", albumImage: "https://i.scdn.co/image/ab67616d0000b27308340e005420bbe79a03a5d0" },
+    { url: "https://open.spotify.com/track/55GxhCTq6SY3tFTVh7z1nR", artist: "King Harvest", year: 1973, albumImage: "https://i.scdn.co/image/ab67616d0000b273cc344f09300a0d20635f96f3" },
+    { url: "https://open.spotify.com/track/6vnkIGrygKosSdwgxsUIFe", artist: "Isla June, A.O. Gerber", year: 2024, albumImage: "https://i.scdn.co/image/ab67616d0000b27308340e005420bbe79a03a5d0" },
   ],
   "e-cerca-e-me-capi": [
-    { url: "https://open.spotify.com/track/1eEXa0XjXek59hEMZ7oOx9", artist: "Pino Daniele", note: "Remastered 2008", albumImage: "https://i.scdn.co/image/ab67616d0000b273b68007d9bbb960d376a06c89" },
+    { url: "https://open.spotify.com/track/1eEXa0XjXek59hEMZ7oOx9", artist: "Pino Daniele", note: "Remastered 2008", year: 1979, albumImage: "https://i.scdn.co/image/ab67616d0000b273b68007d9bbb960d376a06c89" },
   ],
   "eleanor-rigby": [
-    { url: "https://open.spotify.com/track/6EOKwO6WaLal58MSsi6U4W", artist: "The Beatles", albumImage: "https://i.scdn.co/image/ab67616d0000b273d807dd713cdfbeed142881e2" },
+    { url: "https://open.spotify.com/track/6EOKwO6WaLal58MSsi6U4W", artist: "The Beatles", year: 1999, albumImage: "https://i.scdn.co/image/ab67616d0000b273d807dd713cdfbeed142881e2" },
   ],
   "fantasia-in-d-minor-k-397": [
-    { url: "https://open.spotify.com/track/69F2EgggWWqyVBwwDndJZW", artist: "Glenn Gould", albumImage: "https://i.scdn.co/image/ab67616d0000b27384eef0aec0a29c596d511357" },
-    { url: "https://open.spotify.com/track/2aXNrEcUTZ9UKJPVmgo6IY", artist: "Maria João Pires", albumImage: "https://i.scdn.co/image/ab67616d0000b2738c9baea3309cf94cbdaabf31" },
-    { url: "https://open.spotify.com/track/7IHEJdJhju1F2rhIiwgawx", artist: "Alfred Brendel", albumImage: "https://i.scdn.co/image/ab67616d0000b27389f71983e5da1823dafc9fae" },
+    { url: "https://open.spotify.com/track/69F2EgggWWqyVBwwDndJZW", artist: "Glenn Gould", year: 1958, albumImage: "https://i.scdn.co/image/ab67616d0000b27384eef0aec0a29c596d511357" },
+    { url: "https://open.spotify.com/track/2aXNrEcUTZ9UKJPVmgo6IY", artist: "Maria João Pires", year: 1990, albumImage: "https://i.scdn.co/image/ab67616d0000b2738c9baea3309cf94cbdaabf31" },
+    { url: "https://open.spotify.com/track/7IHEJdJhju1F2rhIiwgawx", artist: "Alfred Brendel", year: 2003, albumImage: "https://i.scdn.co/image/ab67616d0000b27389f71983e5da1823dafc9fae" },
   ],
   "fourfiveseconds": [
-    { url: "https://open.spotify.com/track/78TTtXnFQPzwqlbtbwqN0y", artist: "Rihanna, Kanye West, Paul McCartney", albumImage: "https://i.scdn.co/image/ab67616d0000b27336a9ed72b45e54ff307641be" },
+    { url: "https://open.spotify.com/track/78TTtXnFQPzwqlbtbwqN0y", artist: "Rihanna, Kanye West, Paul McCartney", year: 2015, albumImage: "https://i.scdn.co/image/ab67616d0000b27336a9ed72b45e54ff307641be" },
   ],
   "garota-de-ipanema": [
-    { url: "https://open.spotify.com/track/4qGfJb2KByjvzrwo8HNibg", artist: "Stan Getz, João Gilberto, Astrud Gilberto, Antônio Carlos Jobim", note: "Single Version", albumImage: "https://i.scdn.co/image/ab67616d0000b273417cc363d7286a88489dee3c" },
+    { url: "https://open.spotify.com/track/4qGfJb2KByjvzrwo8HNibg", artist: "Stan Getz, João Gilberto, Astrud Gilberto, Antônio Carlos Jobim", note: "Single Version", year: 1964, albumImage: "https://i.scdn.co/image/ab67616d0000b273417cc363d7286a88489dee3c" },
   ],
   "have-you-ever-seen-the-rain": [
-    { url: "https://open.spotify.com/track/2LawezPeJhN4AWuSB0GtAU", artist: "Creedence Clearwater Revival", albumImage: "https://i.scdn.co/image/ab67616d0000b27351f311c2fb06ad2789e3ff91" },
+    { url: "https://open.spotify.com/track/2LawezPeJhN4AWuSB0GtAU", artist: "Creedence Clearwater Revival", year: 1970, albumImage: "https://i.scdn.co/image/ab67616d0000b27351f311c2fb06ad2789e3ff91" },
   ],
   "hey-there-delilah": [
-    { url: "https://open.spotify.com/track/4RCWB3V8V0dignt99LZ8vH", artist: "Plain White T's", albumImage: "https://i.scdn.co/image/ab67616d0000b273beae6e69d6505fd379ef3081" },
+    { url: "https://open.spotify.com/track/4RCWB3V8V0dignt99LZ8vH", artist: "Plain White T's", year: 2005, albumImage: "https://i.scdn.co/image/ab67616d0000b273beae6e69d6505fd379ef3081" },
   ],
   "ho-hey": [
-    { url: "https://open.spotify.com/track/1K3LRUEcUz5FMtPYyg0F45", artist: "The Lumineers", albumImage: "https://i.scdn.co/image/ab67616d0000b27315784f5212050cf2e67f1935" },
+    { url: "https://open.spotify.com/track/1K3LRUEcUz5FMtPYyg0F45", artist: "The Lumineers", year: 2012, albumImage: "https://i.scdn.co/image/ab67616d0000b27315784f5212050cf2e67f1935" },
   ],
   "hotel-california": [
-    { url: "https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv", artist: "Eagles", note: "2013 Remaster", albumImage: "https://i.scdn.co/image/ab67616d0000b2734637341b9f507521afa9a778" },
+    { url: "https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv", artist: "Eagles", note: "2013 Remaster", year: 1976, albumImage: "https://i.scdn.co/image/ab67616d0000b2734637341b9f507521afa9a778" },
   ],
   "i-m-not-the-only-one": [
-    { url: "https://open.spotify.com/track/7795WJLVKJoAyVoOtCWqXN", artist: "Sam Smith", albumImage: "https://i.scdn.co/image/ab67616d0000b273b11bdc91cb9ac6b14f5c1dae" },
+    { url: "https://open.spotify.com/track/7795WJLVKJoAyVoOtCWqXN", artist: "Sam Smith", year: 2014, albumImage: "https://i.scdn.co/image/ab67616d0000b273b11bdc91cb9ac6b14f5c1dae" },
   ],
   "if-i-ain-t-got-you": [
-    { url: "https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ", artist: "Alicia Keys", albumImage: "https://i.scdn.co/image/ab67616d0000b27356ff19308ebeb48e2ba6094b" },
+    { url: "https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ", artist: "Alicia Keys", year: 2003, albumImage: "https://i.scdn.co/image/ab67616d0000b27356ff19308ebeb48e2ba6094b" },
   ],
   "il-mio-canto-libero": [
-    { url: "https://open.spotify.com/track/2SvXqxiG2ntfkEWvuABT7u", artist: "Lucio Battisti", albumImage: "https://i.scdn.co/image/ab67616d0000b273c47a0e9f35a440685f8c961e" },
+    { url: "https://open.spotify.com/track/2SvXqxiG2ntfkEWvuABT7u", artist: "Lucio Battisti", year: 1972, albumImage: "https://i.scdn.co/image/ab67616d0000b273c47a0e9f35a440685f8c961e" },
   ],
   "isn-t-she-lovely": [
-    { url: "https://open.spotify.com/track/6RANU8AS5ICU5PEHh8BYtH", artist: "Stevie Wonder", albumImage: "https://i.scdn.co/image/ab67616d0000b2732fee61bfec596bb6f5447c50" },
-    { url: "https://open.spotify.com/track/7wGr37BhwtLiGVbHhGgkd2", artist: "Biréli Lagrène, Sylvain Luc", albumImage: "https://i.scdn.co/image/ab67616d0000b2733cf2d71cef525e57859e162e" },
-    { url: "https://open.spotify.com/track/23H8PpuhyTDHwpqcDm7vS6", artist: "Tom Misch", albumImage: "https://i.scdn.co/image/ab67616d0000b2732aebf42d8901fbcd14c9eca8" },
+    { url: "https://open.spotify.com/track/6RANU8AS5ICU5PEHh8BYtH", artist: "Stevie Wonder", year: 1976, albumImage: "https://i.scdn.co/image/ab67616d0000b2732fee61bfec596bb6f5447c50" },
+    { url: "https://open.spotify.com/track/7wGr37BhwtLiGVbHhGgkd2", artist: "Biréli Lagrène, Sylvain Luc", year: 2000, albumImage: "https://i.scdn.co/image/ab67616d0000b2733cf2d71cef525e57859e162e" },
+    { url: "https://open.spotify.com/track/23H8PpuhyTDHwpqcDm7vS6", artist: "Tom Misch", year: 2018, albumImage: "https://i.scdn.co/image/ab67616d0000b2732aebf42d8901fbcd14c9eca8" },
   ],
   "just-the-two-of-us": [
-    { url: "https://open.spotify.com/track/5fdNHVZHbWB1AaXk4RBGVD", artist: "Grover Washington, Jr., Bill Withers", albumImage: "https://i.scdn.co/image/ab67616d0000b273d8e0e065037b496212e554b7" },
-    { url: "https://open.spotify.com/track/1ko2lVN0vKGUl9zrU0qSlT", artist: "Grover Washington, Jr.", albumImage: "https://i.scdn.co/image/ab67616d0000b273472fbc1d5743c7d3c75b9ec0" },
+    { url: "https://open.spotify.com/track/5fdNHVZHbWB1AaXk4RBGVD", artist: "Grover Washington, Jr., Bill Withers", year: 1980, albumImage: "https://i.scdn.co/image/ab67616d0000b273d8e0e065037b496212e554b7" },
+    { url: "https://open.spotify.com/track/1ko2lVN0vKGUl9zrU0qSlT", artist: "Grover Washington, Jr.", year: 2008, albumImage: "https://i.scdn.co/image/ab67616d0000b273472fbc1d5743c7d3c75b9ec0" },
   ],
   "la-vie-en-rose": [
-    { url: "https://open.spotify.com/track/0VxocBntP1XTZRsR9ZURPS", artist: "Daniela Andrade", albumImage: "https://i.scdn.co/image/ab67616d0000b273efc3cef13d496d4388fff85e" },
+    { url: "https://open.spotify.com/track/0VxocBntP1XTZRsR9ZURPS", artist: "Daniela Andrade", year: 2015, albumImage: "https://i.scdn.co/image/ab67616d0000b273efc3cef13d496d4388fff85e" },
   ],
   "lacrimosa-requiem": [
-    { url: "https://open.spotify.com/track/23lDDFpPqVktmCcUhc0ytw", artist: "Czech Symphony Orchestra, Michaela Rózsa Růžičková, Czech Symphony Choir", albumImage: "https://i.scdn.co/image/ab67616d0000b273b72819fe4791a5a72b9d0152" },
+    { url: "https://open.spotify.com/track/23lDDFpPqVktmCcUhc0ytw", artist: "Czech Symphony Orchestra, Michaela Rózsa Růžičková, Czech Symphony Choir", year: 2024, albumImage: "https://i.scdn.co/image/ab67616d0000b273b72819fe4791a5a72b9d0152" },
   ],
   "liebestraum-no-3": [
-    { url: "https://open.spotify.com/track/3Nd9wTStUxHHBWkbrENCVL", artist: "Arthur Rubinstein", albumImage: "https://i.scdn.co/image/ab67616d0000b273cc7dd392cd6cb06d952fa4bc" },
+    { url: "https://open.spotify.com/track/3Nd9wTStUxHHBWkbrENCVL", artist: "Arthur Rubinstein", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b273cc7dd392cd6cb06d952fa4bc" },
   ],
   "mas-que-nada": [
-    { url: "https://open.spotify.com/track/6U7GUjtamt2P0LcFod1dBT", artist: "Sérgio Mendes, Black Eyed Peas", albumImage: "https://i.scdn.co/image/ab67616d0000b273add74c8bfe883a9e31b242fa" },
+    { url: "https://open.spotify.com/track/6U7GUjtamt2P0LcFod1dBT", artist: "Sérgio Mendes, Black Eyed Peas", year: 2006, albumImage: "https://i.scdn.co/image/ab67616d0000b273add74c8bfe883a9e31b242fa" },
   ],
   "nocturne-op-9-no-1": [
-    { url: "https://open.spotify.com/track/1EGFCxKCQ3isMnlPzEW8G1", artist: "Nelson Freire", albumImage: "https://i.scdn.co/image/ab67616d0000b273293e7c01d063a04244d71593" },
+    { url: "https://open.spotify.com/track/1EGFCxKCQ3isMnlPzEW8G1", artist: "Nelson Freire", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b273293e7c01d063a04244d71593" },
   ],
   "pathetique-sonata-op-13": [
-    { url: "https://open.spotify.com/track/3XIGtjlniVGZgYuvZ1A9CF", artist: "Glenn Gould", note: "Remastered", albumImage: "https://i.scdn.co/image/ab67616d0000b2736ca1272dfe2109522d68f3f4" },
-    { url: "https://open.spotify.com/track/0HXkeWXAYYPoR0wml4gtgu", artist: "Daniel Barenboim", albumImage: "https://i.scdn.co/image/ab67616d0000b2734daef82bc7d98c7b62298449" },
+    { url: "https://open.spotify.com/track/3XIGtjlniVGZgYuvZ1A9CF", artist: "Glenn Gould", note: "Remastered", year: 1967, albumImage: "https://i.scdn.co/image/ab67616d0000b2736ca1272dfe2109522d68f3f4" },
+    { url: "https://open.spotify.com/track/0HXkeWXAYYPoR0wml4gtgu", artist: "Daniel Barenboim", year: 1984, albumImage: "https://i.scdn.co/image/ab67616d0000b2734daef82bc7d98c7b62298449" },
   ],
   "piano-sonata-k-545": [
-    { url: "https://open.spotify.com/track/35BWqTyAufkiowBK26ssGQ", artist: "Maria João Pires", albumImage: "https://i.scdn.co/image/ab67616d0000b273b03cba3a69a6e6da346563ae" },
+    { url: "https://open.spotify.com/track/35BWqTyAufkiowBK26ssGQ", artist: "Maria João Pires", year: 2022, albumImage: "https://i.scdn.co/image/ab67616d0000b273b03cba3a69a6e6da346563ae" },
   ],
   "prelude-in-c-minor-bwv-847": [
-    { url: "https://open.spotify.com/track/3tRT6unYEvgBTbAdAWPSVp", artist: "Víkingur Ólafsson", albumImage: "https://i.scdn.co/image/ab67616d0000b273369f6761d1cccba9a34f05cf" },
+    { url: "https://open.spotify.com/track/3tRT6unYEvgBTbAdAWPSVp", artist: "Víkingur Ólafsson", year: 2018, albumImage: "https://i.scdn.co/image/ab67616d0000b273369f6761d1cccba9a34f05cf" },
   ],
   "prince-ali": [
-    { url: "https://open.spotify.com/track/5HaUKBNZFpxfEoHhNIGFpl", artist: "Many Hundred Towns", albumImage: "https://i.scdn.co/image/ab67616d0000b273739609701396d499c116e604" },
+    { url: "https://open.spotify.com/track/5HaUKBNZFpxfEoHhNIGFpl", artist: "Many Hundred Towns", year: 2026, albumImage: "https://i.scdn.co/image/ab67616d0000b273739609701396d499c116e604" },
   ],
   "so-easy-to-fall-in-love": [
-    { url: "https://open.spotify.com/track/6sGIMrtIzQjdzNndVxe397", artist: "Olivia Dean", albumImage: "https://i.scdn.co/image/ab67616d0000b2739a336bfb6d40bbd90a507417" },
+    { url: "https://open.spotify.com/track/6sGIMrtIzQjdzNndVxe397", artist: "Olivia Dean", year: 2025, albumImage: "https://i.scdn.co/image/ab67616d0000b2739a336bfb6d40bbd90a507417" },
   ],
   "something": [
-    { url: "https://open.spotify.com/track/0pNeVovbiZHkulpGeOx1Gj", artist: "The Beatles", note: "Remastered 2009", albumImage: "https://i.scdn.co/image/ab67616d0000b273dc30583ba717007b00cceb25" },
-    { url: "https://open.spotify.com/track/7mzNk14FElnA5DOKQyBrM0", artist: "The Beatles", note: "Remastered 2015", albumImage: "https://i.scdn.co/image/ab67616d0000b273582d56ce20fe0146ffa0e5cf" },
+    { url: "https://open.spotify.com/track/0pNeVovbiZHkulpGeOx1Gj", artist: "The Beatles", note: "Remastered 2009", year: 1969, albumImage: "https://i.scdn.co/image/ab67616d0000b273dc30583ba717007b00cceb25" },
+    { url: "https://open.spotify.com/track/7mzNk14FElnA5DOKQyBrM0", artist: "The Beatles", note: "Remastered 2015", year: 2000, albumImage: "https://i.scdn.co/image/ab67616d0000b273582d56ce20fe0146ffa0e5cf" },
   ],
   "song-without-words-op-67-no-2": [
-    { url: "https://open.spotify.com/track/20EV5Syo7BZ9LWfqouNPyV", artist: "Daniel Barenboim", albumImage: "https://i.scdn.co/image/ab67616d0000b273f360120282aaf58af8393d9a" },
+    { url: "https://open.spotify.com/track/20EV5Syo7BZ9LWfqouNPyV", artist: "Daniel Barenboim", year: 1974, albumImage: "https://i.scdn.co/image/ab67616d0000b273f360120282aaf58af8393d9a" },
   ],
   "stand-by-me": [
-    { url: "https://open.spotify.com/track/3SdTKo2uVsxFblQjpScoHy", artist: "Ben E. King", albumImage: "https://i.scdn.co/image/ab67616d0000b2731813ea8f590a0aab2820f922" },
-    { url: "https://open.spotify.com/track/2TTAnXg0LbtkiQmCZdTZKd", artist: "Joseph Vincent", albumImage: "https://i.scdn.co/image/ab67616d0000b27362708314314fad9361294f89" },
+    { url: "https://open.spotify.com/track/3SdTKo2uVsxFblQjpScoHy", artist: "Ben E. King", year: 1962, albumImage: "https://i.scdn.co/image/ab67616d0000b2731813ea8f590a0aab2820f922" },
+    { url: "https://open.spotify.com/track/2TTAnXg0LbtkiQmCZdTZKd", artist: "Joseph Vincent", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b27362708314314fad9361294f89" },
   ],
   "take-me-to-church": [
-    { url: "https://open.spotify.com/track/3dYD57lRAUcMHufyqn9GcI", artist: "Hozier", albumImage: "https://i.scdn.co/image/ab67616d0000b2737a9bf5f82e32d33d4503fe7b" },
+    { url: "https://open.spotify.com/track/3dYD57lRAUcMHufyqn9GcI", artist: "Hozier", year: 2014, albumImage: "https://i.scdn.co/image/ab67616d0000b2737a9bf5f82e32d33d4503fe7b" },
   ],
   "tempest-sonata-op-31-no-2": [
-    { url: "https://open.spotify.com/track/703iyFFCGrfBxVIFQ1MZ7O", artist: "Daniel Barenboim", albumImage: "https://i.scdn.co/image/ab67616d0000b2734daef82bc7d98c7b62298449" },
+    { url: "https://open.spotify.com/track/703iyFFCGrfBxVIFQ1MZ7O", artist: "Daniel Barenboim", year: 1984, albumImage: "https://i.scdn.co/image/ab67616d0000b2734daef82bc7d98c7b62298449" },
   ],
   "these-boots-are-made-for-walkin": [
-    { url: "https://open.spotify.com/track/2nwCO1PqpvyoFIvq3Vrj8N", artist: "Nancy Sinatra", albumImage: "https://i.scdn.co/image/ab67616d0000b273b16991c5257c7d27033dd50a" },
+    { url: "https://open.spotify.com/track/2nwCO1PqpvyoFIvq3Vrj8N", artist: "Nancy Sinatra", year: 1966, albumImage: "https://i.scdn.co/image/ab67616d0000b273b16991c5257c7d27033dd50a" },
   ],
   "this-love": [
-    { url: "https://open.spotify.com/track/6ECp64rv50XVz93WvxXMGF", artist: "Maroon 5", albumImage: "https://i.scdn.co/image/ab67616d0000b27392f2d790c6a97b195f66d51e" },
+    { url: "https://open.spotify.com/track/6ECp64rv50XVz93WvxXMGF", artist: "Maroon 5", year: 2002, albumImage: "https://i.scdn.co/image/ab67616d0000b27392f2d790c6a97b195f66d51e" },
   ],
   "toccata-and-fugue-in-d-minor": [
-    { url: "https://open.spotify.com/track/0BWJNm4TrO6H3qgiCmDBjM", artist: "William McVicker", albumImage: "https://i.scdn.co/image/ab67616d0000b273d46d75c2d65ac06cb3185c22" },
+    { url: "https://open.spotify.com/track/0BWJNm4TrO6H3qgiCmDBjM", artist: "William McVicker", year: 1997, albumImage: "https://i.scdn.co/image/ab67616d0000b273d46d75c2d65ac06cb3185c22" },
   ],
   "tous-les-memes": [
-    { url: "https://open.spotify.com/track/6M4nkEPZMj58acftDRTuKL", artist: "Stromae", albumImage: "https://i.scdn.co/image/ab67616d0000b273ab580fab750cc9baf0d52b5c" },
+    { url: "https://open.spotify.com/track/6M4nkEPZMj58acftDRTuKL", artist: "Stromae", year: 2013, albumImage: "https://i.scdn.co/image/ab67616d0000b273ab580fab750cc9baf0d52b5c" },
   ],
   "treasure": [
-    { url: "https://open.spotify.com/track/55h7vJchibLdUkxdlX3fK7", artist: "Bruno Mars", albumImage: "https://i.scdn.co/image/ab67616d0000b273926f43e7cce571e62720fd46" },
+    { url: "https://open.spotify.com/track/55h7vJchibLdUkxdlX3fK7", artist: "Bruno Mars", year: 2012, albumImage: "https://i.scdn.co/image/ab67616d0000b273926f43e7cce571e62720fd46" },
   ],
   "tutti-quanti-voglion-fare-il-jazz": [
-    { url: "https://open.spotify.com/track/2dAOKHKapOngJv8sMI8GGZ", artist: "Scatman Crothers, Phil Harris, Thurl Ravenscroft, Liz English", albumImage: "https://i.scdn.co/image/ab67616d0000b27321f2aeda4a34db1130e365d0" },
-    { url: "https://open.spotify.com/track/4tH4bnfPsSWTpzqV0ux4IQ", artist: "Cast - Aristocats", albumImage: "https://i.scdn.co/image/ab67616d0000b27351f66570565bfcee6f28b0c0" },
+    { url: "https://open.spotify.com/track/2dAOKHKapOngJv8sMI8GGZ", artist: "Scatman Crothers, Phil Harris, Thurl Ravenscroft, Liz English", year: 1996, albumImage: "https://i.scdn.co/image/ab67616d0000b27321f2aeda4a34db1130e365d0" },
+    { url: "https://open.spotify.com/track/4tH4bnfPsSWTpzqV0ux4IQ", artist: "Cast - Aristocats", year: 2003, albumImage: "https://i.scdn.co/image/ab67616d0000b27351f66570565bfcee6f28b0c0" },
   ],
   "valerie": [
-    { url: "https://open.spotify.com/track/6kopmMZiyLmw7h66uXcXR7", artist: "Mark Ronson", note: "Version Revisited", albumImage: "https://i.scdn.co/image/ab67616d0000b2736a5beb0500ad6e3b0f7aea22" },
+    { url: "https://open.spotify.com/track/6kopmMZiyLmw7h66uXcXR7", artist: "Mark Ronson", note: "Version Revisited", year: 2007, albumImage: "https://i.scdn.co/image/ab67616d0000b2736a5beb0500ad6e3b0f7aea22" },
   ],
   "vienna": [
-    { url: "https://open.spotify.com/track/4U45aEWtQhrm8A5mxPaFZ7", artist: "Billy Joel", albumImage: "https://i.scdn.co/image/ab67616d0000b2736ce61113662ecf693b605ee5" },
+    { url: "https://open.spotify.com/track/4U45aEWtQhrm8A5mxPaFZ7", artist: "Billy Joel", year: 1977, albumImage: "https://i.scdn.co/image/ab67616d0000b2736ce61113662ecf693b605ee5" },
   ],
   "waltz-no-2": [
-    { url: "https://open.spotify.com/track/0pjCsB0XNSyqM9UazlTODC", artist: "Russian State Symphony Orchestra, Dmitry Yablonsky", albumImage: "https://i.scdn.co/image/ab67616d0000b273da2e4a4059497dbf17a9bb78" },
+    { url: "https://open.spotify.com/track/0pjCsB0XNSyqM9UazlTODC", artist: "Russian State Symphony Orchestra, Dmitry Yablonsky", year: 2002, albumImage: "https://i.scdn.co/image/ab67616d0000b273da2e4a4059497dbf17a9bb78" },
   ],
   "where-is-my-husband": [
-    { url: "https://open.spotify.com/track/0vYSTV1Lye2Z2zktF6P39C", artist: "RAYE, David Guetta, Hypaton", note: "Remix", albumImage: "https://i.scdn.co/image/ab67616d0000b2732baa745a54eb2b504f782b3d" },
+    { url: "https://open.spotify.com/track/0vYSTV1Lye2Z2zktF6P39C", artist: "RAYE, David Guetta, Hypaton", note: "Remix", year: 2025, albumImage: "https://i.scdn.co/image/ab67616d0000b2732baa745a54eb2b504f782b3d" },
   ],
   "william-tell-overture": [
-    { url: "https://open.spotify.com/track/3QaPlDueCFnbJdPCeK0RbM", artist: "Prague Sinfonia, Christian Benda", albumImage: "https://i.scdn.co/image/ab67616d0000b273e30030bbf15f2cdfae93f95c" },
+    { url: "https://open.spotify.com/track/3QaPlDueCFnbJdPCeK0RbM", artist: "Prague Sinfonia, Christian Benda", year: 2013, albumImage: "https://i.scdn.co/image/ab67616d0000b273e30030bbf15f2cdfae93f95c" },
   ],
   "winter-the-four-seasons": [
-    { url: "https://open.spotify.com/track/0ROMalDdNg3L2HoZP4qFyJ", artist: "Adrian Chandler, La Serenissima", albumImage: "https://i.scdn.co/image/ab67616d0000b273577bb481664d06b0b5d5ba58" },
+    { url: "https://open.spotify.com/track/0ROMalDdNg3L2HoZP4qFyJ", artist: "Adrian Chandler, La Serenissima", year: 2015, albumImage: "https://i.scdn.co/image/ab67616d0000b273577bb481664d06b0b5d5ba58" },
   ],
   "yellow": [
-    { url: "https://open.spotify.com/track/3AJwUDP919kvQ9QcozQPxg", artist: "Coldplay", albumImage: "https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a" },
+    { url: "https://open.spotify.com/track/3AJwUDP919kvQ9QcozQPxg", artist: "Coldplay", year: 2000, albumImage: "https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a" },
   ],
   "yesterday": [
-    { url: "https://open.spotify.com/track/4E5rL7YL0hVUPqeMSpjEF2", artist: "The Beatles", note: "Remastered 2015", albumImage: "https://i.scdn.co/image/ab67616d0000b273582d56ce20fe0146ffa0e5cf" },
+    { url: "https://open.spotify.com/track/4E5rL7YL0hVUPqeMSpjEF2", artist: "The Beatles", note: "Remastered 2015", year: 2000, albumImage: "https://i.scdn.co/image/ab67616d0000b273582d56ce20fe0146ffa0e5cf" },
   ],
   "you-ve-got-a-friend-in-me": [
-    { url: "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c", artist: "Randy Newman", albumImage: "https://i.scdn.co/image/ab67616d0000b2739e26f06f82a65f3ceb6c259c" },
+    { url: "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c", artist: "Randy Newman", year: 1995, albumImage: "https://i.scdn.co/image/ab67616d0000b2739e26f06f82a65f3ceb6c259c" },
   ],
   "your-song": [
-    { url: "https://open.spotify.com/track/38zsOOcu31XbbYj9BIPUF1", artist: "Elton John", albumImage: "https://i.scdn.co/image/ab67616d0000b2734b292ed7c7360a04d3d6b74a" },
-    { url: "https://open.spotify.com/track/6XKS2RPVpBGvF7Qn7FffFx", artist: "Ellie Goulding", albumImage: "https://i.scdn.co/image/ab67616d0000b2732f7e133f04cbda737028edc8" },
+    { url: "https://open.spotify.com/track/38zsOOcu31XbbYj9BIPUF1", artist: "Elton John", year: 1970, albumImage: "https://i.scdn.co/image/ab67616d0000b2734b292ed7c7360a04d3d6b74a" },
+    { url: "https://open.spotify.com/track/6XKS2RPVpBGvF7Qn7FffFx", artist: "Ellie Goulding", year: 2020, albumImage: "https://i.scdn.co/image/ab67616d0000b2732f7e133f04cbda737028edc8" },
   ],
 };
 
@@ -203,6 +203,7 @@ export const spotifySongs: Song[] = [
     title: "!ly",
     artist: "thasup",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f362ec65a3b674cdebd19e1",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/60r5kXIqq9d89Y6SsNQC6o" },
   },
   {
@@ -210,6 +211,7 @@ export const spotifySongs: Song[] = [
     title: "...E allora mambo",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738fcc930f4d7635f6bc36457e",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/4vWkC3Qrlu3kAN2ahtQeAw" },
   },
   {
@@ -217,6 +219,7 @@ export const spotifySongs: Song[] = [
     title: "'A Città 'E Pulecenella",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734630ec722b632f95490a7542",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/1R5tQEnWRxORsl4H0hkVD2" },
   },
   {
@@ -224,6 +227,7 @@ export const spotifySongs: Song[] = [
     title: "'Na voce, 'na chitarra e 'o poco 'e luna",
     artist: "Roberto Murolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fde388a08b3b42b0b325accb",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/1YaRare2UTdpdEJ3PcFEvJ" },
   },
   {
@@ -231,6 +235,7 @@ export const spotifySongs: Song[] = [
     title: "'O Mar For",
     artist: "Stefano Lentini, Matteo Paolillo, Lolloflow, Raiz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273afe82b64632627cb5cbaaebf",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/37C2sh12GWcI2SysSVnHor" },
   },
   {
@@ -238,6 +243,7 @@ export const spotifySongs: Song[] = [
     title: "'O trerrote",
     artist: "Tony Tammaro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c5ee24c55443439e3641b4e8",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/1uu4Kc5Np34laP4OfXJGM3" },
   },
   {
@@ -245,6 +251,7 @@ export const spotifySongs: Song[] = [
     title: "\"The Simpsons\" Main Title Theme",
     artist: "The Simpsons",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e3bdb66302aa0678690ee08a",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/7CD8O3gZ5NB7jkfO5cv0WD" },
   },
   {
@@ -252,6 +259,7 @@ export const spotifySongs: Song[] = [
     title: "(What A) Wonderful World",
     artist: "Sam Cooke",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cdea00c6905f588e1f72ccad",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/2g2GkH3vZHk4lWzBjgQ6nY" },
   },
   {
@@ -259,6 +267,7 @@ export const spotifySongs: Song[] = [
     title: "$orries",
     artist: "Peachy!, Shiloh",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273003dfc2c963e94ad4730617e",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3tMhXm8mJ3jXcAiEspHbwf" },
   },
   {
@@ -266,6 +275,7 @@ export const spotifySongs: Song[] = [
     title: "0ffline",
     artist: "thasup",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27358010f854f0b1052a934500f",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6ZWsKJdmoYu1oFJbzCmtK9" },
   },
   {
@@ -273,6 +283,7 @@ export const spotifySongs: Song[] = [
     title: "1-800-273-8255",
     artist: "Logic, Alessia Cara, Khalid",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cfdf40cf325b609a52457805",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5tz69p7tJuGPeMGwNTxYuV" },
   },
   {
@@ -280,6 +291,7 @@ export const spotifySongs: Song[] = [
     title: "1984",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739efeffdf7074481de1cccb39",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0OU4v07h5oT26f4zmxzddH" },
   },
   {
@@ -287,6 +299,7 @@ export const spotifySongs: Song[] = [
     title: "3 Nights",
     artist: "Dominic Fike",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734a42166d927b3acce345c5c0",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1tNJrcVe6gwLEiZCtprs1u" },
   },
   {
@@ -294,6 +307,7 @@ export const spotifySongs: Song[] = [
     title: "31/08",
     artist: "Mecna",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273294dd5f2fad3d133d63d238e",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/3kZCffO5qMkMRLyPdOFKWv" },
   },
   {
@@ -301,6 +315,7 @@ export const spotifySongs: Song[] = [
     title: "4/3/1943",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff919b3b9eb0d006cea2fa2d",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/3yGyWqmw9eCQPdJJ6iJLWs" },
   },
   {
@@ -308,6 +323,7 @@ export const spotifySongs: Song[] = [
     title: "64 Bars",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c34e3f972965731cabe219ea",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/5TwCdc5P9JwHYKIDqgTLR8" },
   },
   {
@@ -315,6 +331,7 @@ export const spotifySongs: Song[] = [
     title: "68",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2bd90b275df83e999affafd",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3HG58pNCGOB5f9qZFZY405" },
   },
   {
@@ -322,6 +339,7 @@ export const spotifySongs: Song[] = [
     title: "7 am",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739efeffdf7074481de1cccb39",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5s9Vg4g8eE7UJ4tEd4aKif" },
   },
   {
@@ -329,6 +347,7 @@ export const spotifySongs: Song[] = [
     title: "7 Years",
     artist: "Lukas Graham",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732d94d0f04e9a58d1654b760b",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5kqIPrATaCc2LqxVWzQGbk" },
   },
   {
@@ -336,6 +355,7 @@ export const spotifySongs: Song[] = [
     title: "7000 Caffè",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/0oe4KvKzh1zD9H2lusSCok" },
   },
   {
@@ -343,6 +363,7 @@ export const spotifySongs: Song[] = [
     title: "8 miliardi di persone",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6mA9cV0ti1IICSv3Wb0rSt" },
   },
   {
@@ -350,6 +371,7 @@ export const spotifySongs: Song[] = [
     title: "A Fifth Of Beethoven",
     artist: "Walter Murphy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273016dea7efa4d30565bf90090",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4hkmC8svm8x15wcpfwD0lx" },
   },
   {
@@ -357,6 +379,7 @@ export const spotifySongs: Song[] = [
     title: "A Me Me Piace 'O Blues",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fd16324507e4dd4c6c042fa5",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/2Ef73KZoTCmkABkxetqQ17" },
   },
   {
@@ -364,6 +387,7 @@ export const spotifySongs: Song[] = [
     title: "Aan De Amsterdamse Grachten",
     artist: "Wim Sonneveld",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a4ca56a782db86be068f3972",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/0XVA5tfnvA8VqiQp2ODFWP" },
   },
   {
@@ -371,6 +395,7 @@ export const spotifySongs: Song[] = [
     title: "Accattone",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/21eKYBhjilQqK5dS2kBOFL" },
   },
   {
@@ -378,6 +403,7 @@ export const spotifySongs: Song[] = [
     title: "Accidenti a te",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731654abae086466e12fe944d9",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3KZAUKhtnux7Gbyf8l5Q43" },
   },
   {
@@ -385,6 +411,7 @@ export const spotifySongs: Song[] = [
     title: "ACORDA PEDRINHO",
     artist: "Jovem Dionisio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730e04eb2d5190d5cf8692397c",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/2sUhjzuc6w4SRFwoC3LvXZ" },
   },
   {
@@ -392,6 +419,7 @@ export const spotifySongs: Song[] = [
     title: "Acqua Calda E Limone",
     artist: "Rkomi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738cdada7a23c8fc1ad9975fc3",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2OIXm3ZM0pbSXQYrq9C5RN" },
   },
   {
@@ -399,6 +427,7 @@ export const spotifySongs: Song[] = [
     title: "Adda venì baffone",
     artist: "Giovanni Block, Moda Loda Broda",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aa9b480ae0eb289f12bf15b9",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0lKouyMGCrAkTgJV0qbfG8" },
   },
   {
@@ -406,6 +435,7 @@ export const spotifySongs: Song[] = [
     title: "Affogare",
     artist: "Legno",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c4f5021be30d95e3065410bc",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3gRQVdIXvWTta7eJY1VPPU" },
   },
   {
@@ -413,6 +443,7 @@ export const spotifySongs: Song[] = [
     title: "Aglio e olio",
     artist: "Fulminacci, Willie Peyote",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e3809a3db113b921ac8b39b7",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/19yag4qL1J2lwjSSgwSXVG" },
   },
   {
@@ -420,6 +451,7 @@ export const spotifySongs: Song[] = [
     title: "agosto",
     artist: "faccianuvola",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739ffaee98c4eaf0f3838ad887",
+    year: 2025,
     links: { spotify: "https://open.spotify.com/track/7LgM0qLhBSZD7kf2FDoVJA" },
   },
   {
@@ -427,6 +459,7 @@ export const spotifySongs: Song[] = [
     title: "Ain't No Sunshine",
     artist: "Bill Withers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f64b9ea8a8a409c6af86134f",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/1k1Bqnv2R0uJXQN4u6LKYt" },
   },
   {
@@ -434,6 +467,7 @@ export const spotifySongs: Song[] = [
     title: "Al Ballo Mascherato",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731503d23da65136af7de53505",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/2uxvuIx2DVT62Nok9jyqKl" },
   },
   {
@@ -441,6 +475,7 @@ export const spotifySongs: Song[] = [
     title: "Albero",
     artist: "Calcutta",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738417b499a1b885a9300a91eb",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/3kLvHkiHlz9kZwVVPkbDyb" },
   },
   {
@@ -448,6 +483,7 @@ export const spotifySongs: Song[] = [
     title: "ALDO RITMO",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387af84fa3b89ffc8cee35589",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1kZtyxJakwddLIxfEDDXEx" },
   },
   {
@@ -455,6 +491,7 @@ export const spotifySongs: Song[] = [
     title: "All About That Bass",
     artist: "Postmodern Jukebox",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273949b99fe6f0408a3088cb7c3",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/1jZRJKE7GZdiZzVgMS9mv2" },
   },
   {
@@ -462,6 +499,7 @@ export const spotifySongs: Song[] = [
     title: "All I Want Is You",
     artist: "Johnny Stimson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273981d248f77eb927636c4d4ab",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/7JeMDjRkASDjdg5WMF1ana" },
   },
   {
@@ -469,6 +507,7 @@ export const spotifySongs: Song[] = [
     title: "All Night",
     artist: "Parov Stelar",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b23b387565e102ea5581571d",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/3Ua0dUmxOWsiSBmwUDbTOL" },
   },
   {
@@ -476,6 +515,7 @@ export const spotifySongs: Song[] = [
     title: "all the kids are depressed",
     artist: "Jeremy Zucker",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273455cc3060b25c1f0015269fe",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/75ls0gurX68lUmMjE7QcsE" },
   },
   {
@@ -483,6 +523,7 @@ export const spotifySongs: Song[] = [
     title: "All The Things You Are",
     artist: "Leslie North",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e875aa835e92e863796ff969",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/11Bap5k9jpMjBbqQA9gSez" },
   },
   {
@@ -490,6 +531,7 @@ export const spotifySongs: Song[] = [
     title: "Altare di Rose",
     artist: "Aromathica",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739e30f02576dd64acdfea928e",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/76AwE1uza0CJarGDn37Zm3" },
   },
   {
@@ -497,6 +539,7 @@ export const spotifySongs: Song[] = [
     title: "Altrove",
     artist: "Eugenio In Via Di Gioia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27315780e3496c9fec45bdfdbb4",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1NltEhWH77wzaYiFeg6ZUK" },
   },
   {
@@ -504,6 +547,7 @@ export const spotifySongs: Song[] = [
     title: "Amarena",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737a3ec828691870734dd9358d",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0nqwOIZtuWl0xVbfYiL6UW" },
   },
   {
@@ -511,6 +555,7 @@ export const spotifySongs: Song[] = [
     title: "Americana",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735685e640207da940dbdf69b4",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0hetcpelQDbeXZrcxrOmag" },
   },
   {
@@ -518,6 +563,7 @@ export const spotifySongs: Song[] = [
     title: "Amici",
     artist: "Massimo Pericolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e1ae51621d108b747ecb64b6",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7m2p3hAjPGlvIholah8Kl5" },
   },
   {
@@ -525,6 +571,7 @@ export const spotifySongs: Song[] = [
     title: "Amore fermati",
     artist: "Fred Bongusto",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ec41d547579df665e3af1514",
+    year: 1963,
     links: { spotify: "https://open.spotify.com/track/7tU0xSzV3kJOLSt70iLNi6" },
   },
   {
@@ -532,6 +579,7 @@ export const spotifySongs: Song[] = [
     title: "Andrea/Tema di Rimini",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27317a5bb2150524a6d415dcff1",
+    year: 1978,
     links: { spotify: "https://open.spotify.com/track/0tAjtOqxOnpohibNk7NSAc" },
   },
   {
@@ -539,6 +587,7 @@ export const spotifySongs: Song[] = [
     title: "Anyone",
     artist: "Justin Bieber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734b02db5cefb177ff97346cf2",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/31qCy5ZaophVA81wtlwLc4" },
   },
   {
@@ -546,6 +595,7 @@ export const spotifySongs: Song[] = [
     title: "Apeirophobia",
     artist: "Animals As Leaders",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff93110327dd6422f55985ae",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/33Y6akOm1Sk2g6nXxNVh9x" },
   },
   {
@@ -553,6 +603,7 @@ export const spotifySongs: Song[] = [
     title: "Appartamento",
     artist: "Venerus, MACE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273597db35df41de5992dadda4f",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3s9ZBjLh7E00qLtqlEPrRi" },
   },
   {
@@ -561,10 +612,11 @@ export const spotifySongs: Song[] = [
     artist: "Claude Debussy",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734abcfec8458f10cec1359561",
+    year: 2000,
     links: {
       spotify: "https://open.spotify.com/track/15p1shEFbxSlTTwxdGMggG",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/1PDF4KlVztuqlVfrLt3FEr", artist: "Hélène Grimaud", albumImage: "https://i.scdn.co/image/ab67616d0000b2738df0c6c297124b4957750669" },
+        { url: "https://open.spotify.com/track/1PDF4KlVztuqlVfrLt3FEr", artist: "Hélène Grimaud", year: 2020, albumImage: "https://i.scdn.co/image/ab67616d0000b2738df0c6c297124b4957750669" },
       ],
     },
   },
@@ -573,6 +625,7 @@ export const spotifySongs: Song[] = [
     title: "Arca Di Noè",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27371c48af97003d77786bb36cc",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/61a2pBTATwaFOLFpVZLTAr" },
   },
   {
@@ -580,6 +633,7 @@ export const spotifySongs: Song[] = [
     title: "Arcade",
     artist: "Duncan Laurence",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a954408e456d4d9d410f448b",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1Xi84slp6FryDSCbzq4UCD" },
   },
   {
@@ -587,6 +641,7 @@ export const spotifySongs: Song[] = [
     title: "Are You Gonna Be My Girl",
     artist: "Jet",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27376ccf87cba2e754a5138cc23",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/305WCRhhS10XUcH6AEwZk6" },
   },
   {
@@ -594,6 +649,7 @@ export const spotifySongs: Song[] = [
     title: "As It Was",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b46f74097655d7f353caab14",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/4LRPiXqCikLlN15c3yImP7" },
   },
   {
@@ -601,6 +657,7 @@ export const spotifySongs: Song[] = [
     title: "Asfalto",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b8fc582fdea0a7a099da2cc9",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/2pJekSUhHjW54XJ3cygIS8" },
   },
   {
@@ -608,6 +665,7 @@ export const spotifySongs: Song[] = [
     title: "Atrévete-Te-Te",
     artist: "Calle 13",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bf3d37f1fd6a7e2cb5fd1487",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/1q8NdCAQ9QUjpYiqzdd3mv" },
   },
   {
@@ -615,6 +673,7 @@ export const spotifySongs: Song[] = [
     title: "Attenti al lupo",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d0a87c2d25c9ad147e6d5a39",
+    year: 1990,
     links: { spotify: "https://open.spotify.com/track/4lJpy10HgdXwVmetgwjGkH" },
   },
   {
@@ -622,6 +681,7 @@ export const spotifySongs: Song[] = [
     title: "Attention",
     artist: "Charlie Puth",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273897f73256b9128a9d70eaf66",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/5cF0dROlMOK5uNZtivgu50" },
   },
   {
@@ -630,6 +690,7 @@ export const spotifySongs: Song[] = [
     artist: "Charles Gounod",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27334bd045ff6189c2a861a1e30",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/2kyEgPaAW8wdpvevPnkf0Z" },
   },
   {
@@ -637,6 +698,7 @@ export const spotifySongs: Song[] = [
     title: "Axé Axé",
     artist: "Milo.zx",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ce7bcbe143f0063aa9649624",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/2748xaUyfUAVA0DjoIKq8e" },
   },
   {
@@ -644,6 +706,7 @@ export const spotifySongs: Song[] = [
     title: "Ayo",
     artist: "Chris Brown, Tyga",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aee727756d5fec0de96dc6d9",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/0k6DnZMLoEUH8NGD5zh2SE" },
   },
   {
@@ -651,10 +714,11 @@ export const spotifySongs: Song[] = [
     title: "Azzurro",
     artist: "Paolo Conte",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733a668d100ab48f907ff0afcd",
+    year: 2012,
     links: {
       spotify: "https://open.spotify.com/track/1BqCvJF4uP54B0leMFo8F1",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/4yh5pfWnlHKio2r3XEPlv3", artist: "Stefano Bollani, Ares Tavolazzi, Walter Paoli", albumImage: "https://i.scdn.co/image/ab67616d0000b27399136938381ea88afc4dab9b" },
+        { url: "https://open.spotify.com/track/4yh5pfWnlHKio2r3XEPlv3", artist: "Stefano Bollani, Ares Tavolazzi, Walter Paoli", year: 2012, albumImage: "https://i.scdn.co/image/ab67616d0000b27399136938381ea88afc4dab9b" },
       ],
     },
   },
@@ -663,6 +727,7 @@ export const spotifySongs: Song[] = [
     title: "Babalù",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27371c48af97003d77786bb36cc",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3ZJMC7MWRtDxZfwVIeUtsq" },
   },
   {
@@ -670,6 +735,7 @@ export const spotifySongs: Song[] = [
     title: "Baby I'm Yours",
     artist: "Arctic Monkeys",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fc5f23d71de7ad824565f94c",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/0SzvmWfOhoxZVGrmvb56YL" },
   },
   {
@@ -677,6 +743,7 @@ export const spotifySongs: Song[] = [
     title: "Baby I'm Yours",
     artist: "Breakbot, Irfane",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d55f44fb47f63f0e7048a5a1",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/5jr6pG3khBcBXZRm8NogSe" },
   },
   {
@@ -684,6 +751,7 @@ export const spotifySongs: Song[] = [
     title: "Baciami baciami",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d78158ed630c7b2d09282c35",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/3Dg0rXmO0ALolVkIQwW7mO" },
   },
   {
@@ -691,6 +759,7 @@ export const spotifySongs: Song[] = [
     title: "Back on My Feet",
     artist: "Joey Burbach",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27353e3c751087c523321892516",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/0bnNOqudw0zdpu1wyOa9mt" },
   },
   {
@@ -698,6 +767,7 @@ export const spotifySongs: Song[] = [
     title: "Back to You",
     artist: "Louis Tomlinson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27335d2faf09b84dca6e01ee930",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7F9vK8hNFMml4GtHsaXui6" },
   },
   {
@@ -705,6 +775,7 @@ export const spotifySongs: Song[] = [
     title: "Back To You",
     artist: "Selena Gomez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27330885dcb2b5f38512fbcbc59",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4hQ6UGyWQIGJmHSo0J88JW" },
   },
   {
@@ -712,6 +783,7 @@ export const spotifySongs: Song[] = [
     title: "Bad Things",
     artist: "mgk",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273748388a726648841ed81027e",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1PSBzsahR2AKwLJgx8ehBj" },
   },
   {
@@ -719,10 +791,11 @@ export const spotifySongs: Song[] = [
     title: "Balla balla ballerino",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27392892a8f263412d85d6e5ba8",
+    year: 1980,
     links: {
       spotify: "https://open.spotify.com/track/2LZvGSAEN2ZThkvixrHcAZ",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0rBQqc8aWodefjG4WfpgB5", artist: "Neri Per Caso", albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b" },
+        { url: "https://open.spotify.com/track/0rBQqc8aWodefjG4WfpgB5", artist: "Neri Per Caso", year: 2008, albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b" },
       ],
     },
   },
@@ -731,6 +804,7 @@ export const spotifySongs: Song[] = [
     title: "Bamboléo",
     artist: "Gipsy Kings",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736e7cb1429534f0d21133b714",
+    year: 1987,
     links: { spotify: "https://open.spotify.com/track/3iB8eciGU9vZkaDYkz7Ir9" },
   },
   {
@@ -738,6 +812,7 @@ export const spotifySongs: Song[] = [
     title: "Bando",
     artist: "ANNA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ee7af6e271d04c728d8a47ba",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0kzGjSRHGVcaWxagzQwAyD" },
   },
   {
@@ -745,6 +820,7 @@ export const spotifySongs: Song[] = [
     title: "Bandoleros",
     artist: "Don Omar, Tego Calderón",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733892a55b29583746e1b4cd48",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/4BxzNZpcm1j3JczZzGNe2k" },
   },
   {
@@ -752,6 +828,7 @@ export const spotifySongs: Song[] = [
     title: "Bang Bang (My Baby Shot Me Down)",
     artist: "Nancy Sinatra",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e4f002bc0e64b7a5e6591caf",
+    year: 1966,
     links: { spotify: "https://open.spotify.com/track/4JLcAU2xY90qTkTSNM1lUa" },
   },
   {
@@ -759,6 +836,7 @@ export const spotifySongs: Song[] = [
     title: "Batismo",
     artist: "Populous, RIVA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2735adaa8632904e63b2015",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7ID62lFC0LQchUqRc9sIZN" },
   },
   {
@@ -766,10 +844,11 @@ export const spotifySongs: Song[] = [
     title: "Beanie",
     artist: "Chezile",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739d181176cafa856a3c8b5537",
+    year: 2023,
     links: {
       spotify: "https://open.spotify.com/track/5e0b9LgOfi3aJSKXFcOWRe",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0MgXKiveyENlXZPI5CY1c5", artist: "Penguin Piano", note: "Piano Version", albumImage: "https://i.scdn.co/image/ab67616d0000b273b9f13e1033e2a8e58783c4c9" },
+        { url: "https://open.spotify.com/track/0MgXKiveyENlXZPI5CY1c5", artist: "Penguin Piano", note: "Piano Version", year: 2025, albumImage: "https://i.scdn.co/image/ab67616d0000b273b9f13e1033e2a8e58783c4c9" },
       ],
     },
   },
@@ -778,6 +857,7 @@ export const spotifySongs: Song[] = [
     title: "Beautiful",
     artist: "Bazzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736e3291f3c9b3cef7bc70f75f",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4VUwkH455At9kENOfzTqmF" },
   },
   {
@@ -785,6 +865,7 @@ export const spotifySongs: Song[] = [
     title: "Beautiful Things",
     artist: "Benson Boone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f85058b7e234523d2d2ef834",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9" },
   },
   {
@@ -792,6 +873,7 @@ export const spotifySongs: Song[] = [
     title: "Before You Go",
     artist: "Lewis Capaldi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f6cda6c81dd1c2d5783fbd2d",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7ce20yLkzuXXLUhzIDoZih" },
   },
   {
@@ -799,11 +881,12 @@ export const spotifySongs: Song[] = [
     title: "Beggin'",
     artist: "Madcon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273197d278a26922f72a4d4b080",
+    year: 2007,
     links: {
       spotify: "https://open.spotify.com/track/1XyL3J7eTTKnxRZAM3LqIT",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/7eXrGBrl1mBKhxlWX0IoOQ", artist: "Madcon", note: "Original Version", albumImage: "https://i.scdn.co/image/ab67616d0000b273065650b72a110b1c120f355d" },
-        { url: "https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e", artist: "Måneskin", albumImage: "https://i.scdn.co/image/ab67616d0000b273fa0ab3a28b5c52d8a5f97045" },
+        { url: "https://open.spotify.com/track/7eXrGBrl1mBKhxlWX0IoOQ", artist: "Madcon", note: "Original Version", year: 2008, albumImage: "https://i.scdn.co/image/ab67616d0000b273065650b72a110b1c120f355d" },
+        { url: "https://open.spotify.com/track/3Wrjm47oTz2sjIgck11l5e", artist: "Måneskin", year: 2017, albumImage: "https://i.scdn.co/image/ab67616d0000b273fa0ab3a28b5c52d8a5f97045" },
       ],
     },
   },
@@ -812,6 +895,7 @@ export const spotifySongs: Song[] = [
     title: "Beggin' Man",
     artist: "Evil Genius, Isaac Waddington",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f77f2cecb0341c76a5df4930",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5xb5LmpDzZqvthEfwX7uwU" },
   },
   {
@@ -819,6 +903,7 @@ export const spotifySongs: Song[] = [
     title: "Believer",
     artist: "Imagine Dragons",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0pqnGHJpmpxLKifKRmU6WP" },
   },
   {
@@ -826,6 +911,7 @@ export const spotifySongs: Song[] = [
     title: "Bella",
     artist: "Samuel Heron",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a5928dd1d0f3b7a0c7de0be8",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/60NJT5dayfEbgEViMSDTuQ" },
   },
   {
@@ -833,6 +919,7 @@ export const spotifySongs: Song[] = [
     title: "Bella come stai",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734d99daebb5868135abdc7c65",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/6B5eD2UKxHB6tU7IIVfDrI" },
   },
   {
@@ -840,6 +927,7 @@ export const spotifySongs: Song[] = [
     title: "Bella Giornata",
     artist: "OG Eastbull",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736c1e1cb62723b2b7b72ad20d",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/76xea5TfeyVu8c4dGWpFD2" },
   },
   {
@@ -847,6 +935,7 @@ export const spotifySongs: Song[] = [
     title: "Bento",
     artist: "Lvnt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dac038f19120027369af084e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0yZVfvdPpq9xiy93auCMDf" },
   },
   {
@@ -854,6 +943,7 @@ export const spotifySongs: Song[] = [
     title: "Beppeanna",
     artist: "Bandabardò",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a490b27cfb86d24284b5fcfe",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/5Wyd0ufyW8YErmZAFqBDsJ" },
   },
   {
@@ -861,6 +951,7 @@ export const spotifySongs: Song[] = [
     title: "Bergamo",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739d4cb13f84ae3a5fd0a93890",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5GRUMkOPUWzzqNTBRNfqt4" },
   },
   {
@@ -868,6 +959,7 @@ export const spotifySongs: Song[] = [
     title: "Best Friend",
     artist: "Rex Orange County",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27333a6b45fa8354efe37633964",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/47Bg6IrMed1GPbxRgwH2aC" },
   },
   {
@@ -875,6 +967,7 @@ export const spotifySongs: Song[] = [
     title: "Big And Chunky",
     artist: "will.i.am",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734fa16ce4d3cf85624dd4dd30",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/5wA5mA9v9lPxAaSg1FagG6" },
   },
   {
@@ -882,6 +975,7 @@ export const spotifySongs: Song[] = [
     title: "Big in Japan",
     artist: "Ane Brun",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ee75a125eae00f432fc8dba7",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/78Teboqh9lPIxWlIW5RMQL" },
   },
   {
@@ -889,6 +983,7 @@ export const spotifySongs: Song[] = [
     title: "Billie Jean",
     artist: "Michael Jackson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27332a7d87248d1b75463483df5",
+    year: 1982,
     links: { spotify: "https://open.spotify.com/track/7J1uxwnxfQLu4APicE5Rnj" },
   },
   {
@@ -896,6 +991,7 @@ export const spotifySongs: Song[] = [
     title: "BILLY4EVER",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733c38c908ac3008cbf314d51c",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/6or1oIKrh9WrmpSmAuRCx6" },
   },
   {
@@ -904,6 +1000,7 @@ export const spotifySongs: Song[] = [
     artist: "Robert Schumann",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27398ac4cc1e3176ea1ec76ff80",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/3MV9u27GAg3GZAvpeeBYGx" },
   },
   {
@@ -911,6 +1008,7 @@ export const spotifySongs: Song[] = [
     title: "bitterlove",
     artist: "Ardhito Pramono",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2768e73a7779fa004ea3816",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/74OLXYsvpfmSgPCMMi898K" },
   },
   {
@@ -918,6 +1016,7 @@ export const spotifySongs: Song[] = [
     title: "Black Dog",
     artist: "Led Zeppelin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c8a11e48c91a982d086afc69",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/3qT4bUD1MaWpGrTwcvguhb" },
   },
   {
@@ -925,6 +1024,7 @@ export const spotifySongs: Song[] = [
     title: "Black or White",
     artist: "Michael Jackson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bf4cf0f48b94d0c8297b751a",
+    year: 1991,
     links: { spotify: "https://open.spotify.com/track/7EsjkelQuoUlJXEw7SeVV4" },
   },
   {
@@ -932,6 +1032,7 @@ export const spotifySongs: Song[] = [
     title: "Black Widow",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739efeffdf7074481de1cccb39",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0mV4HVEvGopgsfnTRfidjF" },
   },
   {
@@ -939,6 +1040,7 @@ export const spotifySongs: Song[] = [
     title: "Blanco",
     artist: "Pitbull, Pharrell Williams",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273274665b331a3e00d9311949e",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/3weALpqEELa1OpaQC1yScV" },
   },
   {
@@ -946,6 +1048,7 @@ export const spotifySongs: Song[] = [
     title: "Blowin' in the Wind",
     artist: "Bob Dylan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c7f7596cd80cbd6436086f80",
+    year: 1963,
     links: { spotify: "https://open.spotify.com/track/18GiV1BaXzPVYpp9rmOg0E" },
   },
   {
@@ -953,6 +1056,7 @@ export const spotifySongs: Song[] = [
     title: "Blue Jeans",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736329c403b6b03d6c2fdcdd93",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3teW1cB7e8HMmtHUeWF7Je" },
   },
   {
@@ -960,6 +1064,7 @@ export const spotifySongs: Song[] = [
     title: "Blue Rondo à la Turk",
     artist: "The Dave Brubeck Quartet",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fe2b2f8f198919925d9dd031",
+    year: 1959,
     links: { spotify: "https://open.spotify.com/track/7d43jBR2mo0kcKcrO2Hg4S" },
   },
   {
@@ -967,6 +1072,7 @@ export const spotifySongs: Song[] = [
     title: "blun7 a swishland",
     artist: "thasup",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27358010f854f0b1052a934500f",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0AcY3DEfZ9uoeP1XHLWJXJ" },
   },
   {
@@ -974,6 +1080,7 @@ export const spotifySongs: Song[] = [
     title: "Bocca Di Rosa",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e8456793365874a3a85a98c7",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/1N2TxshYKcrPBMyFHcwvfY" },
   },
   {
@@ -981,6 +1088,7 @@ export const spotifySongs: Song[] = [
     title: "Bohemian Rhapsody",
     artist: "Queen",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3z8h0TU7ReDPLIbEnYhWZb" },
   },
   {
@@ -988,6 +1096,7 @@ export const spotifySongs: Song[] = [
     title: "Bojack",
     artist: "Jekesa, Smiley Potatoes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27347fd5f56fe22b5eaeb65eabf",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/1bb4R29N7cy1eDDWGI7GVu" },
   },
   {
@@ -995,6 +1104,7 @@ export const spotifySongs: Song[] = [
     title: "Bongo Bong",
     artist: "Manu Chao",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27372c5875a8e4b49075978cd04",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/00SmB7n85SKROGjybsyq5i" },
   },
   {
@@ -1002,6 +1112,7 @@ export const spotifySongs: Song[] = [
     title: "Boogie Wonderland",
     artist: "Earth, Wind & Fire",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738b2238ebc2b233ba73b8c4ca",
+    year: 1979,
     links: { spotify: "https://open.spotify.com/track/6ztstiyZL6FXzh4aG46ZPD" },
   },
   {
@@ -1009,6 +1120,7 @@ export const spotifySongs: Song[] = [
     title: "Boogieman",
     artist: "Ghali",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c51b9ee7905c72399b11f346",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/10Q5VqDAAbwExYkNha3VKH" },
   },
   {
@@ -1016,6 +1128,7 @@ export const spotifySongs: Song[] = [
     title: "Boom Boom Pow",
     artist: "Black Eyed Peas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730bd44f5ff9ecc99f7770acc5",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/3oDFtOhcN08qeDPAK6MEQG" },
   },
   {
@@ -1023,6 +1136,7 @@ export const spotifySongs: Song[] = [
     title: "Border Song",
     artist: "Elton John",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c05ee7800dca138ffb6274ff",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/4gpxT82T8ZzRWknBH30Zey" },
   },
   {
@@ -1030,6 +1144,7 @@ export const spotifySongs: Song[] = [
     title: "Borghese In Borghese",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736caac0b3fd962265a344d59d",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5nOqwmbLIVBpvW0cTaE6Nd" },
   },
   {
@@ -1037,6 +1152,7 @@ export const spotifySongs: Song[] = [
     title: "BOY",
     artist: "Charlie Puth",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273897f73256b9128a9d70eaf66",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/7aSvPfoqiM0zwPqupLGaHd" },
   },
   {
@@ -1044,6 +1160,7 @@ export const spotifySongs: Song[] = [
     title: "Brazil",
     artist: "Django Reinhardt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c92e573a0fafebea7d8e30c2",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/3ctsORVoVEDUxLpQAL0zOC" },
   },
   {
@@ -1051,6 +1168,7 @@ export const spotifySongs: Song[] = [
     title: "Brioschi",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27337298b42580e291499b23e3c",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4b8hQaPTM7FhpOOAkKBj5A" },
   },
   {
@@ -1058,6 +1176,7 @@ export const spotifySongs: Song[] = [
     title: "Broken Bones",
     artist: "KALEO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f793a842c1642b09a768a63b",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0lwUIYJfWGB8qUEAJtYfb6" },
   },
   {
@@ -1065,6 +1184,7 @@ export const spotifySongs: Song[] = [
     title: "Brown Eyed Girl",
     artist: "Van Morrison",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f29a976eea00141514ab936",
+    year: 1967,
     links: { spotify: "https://open.spotify.com/track/3yrSvpt2l1xhsV9Em88Pul" },
   },
   {
@@ -1072,6 +1192,7 @@ export const spotifySongs: Song[] = [
     title: "Bruises",
     artist: "Lewis Capaldi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fc2101e6889d6ce9025f85f2",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4Of7rzpRpV1mWRbhp5rAqG" },
   },
   {
@@ -1079,6 +1200,7 @@ export const spotifySongs: Song[] = [
     title: "Buona sera (Signorina)",
     artist: "Fred Buscaglione",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d7d2cf290e60b8b4a21bd814",
+    year: 1987,
     links: { spotify: "https://open.spotify.com/track/7FBVoh8ndvnPubwdTjvsAK" },
   },
   {
@@ -1086,6 +1208,7 @@ export const spotifySongs: Song[] = [
     title: "Buongiorno a te",
     artist: "Luciano Pavarotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738551bb36524f4a3cdb118d2a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/6IiuxVcMXNZS1YkSmag1z6" },
   },
   {
@@ -1093,6 +1216,7 @@ export const spotifySongs: Song[] = [
     title: "Buttercup",
     artist: "Jack Stauber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27300272ecbea82517b4aafb12f",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2mlGPkAx4kwF8Df0GlScsC" },
   },
   {
@@ -1100,6 +1224,7 @@ export const spotifySongs: Song[] = [
     title: "C'era una Vodka",
     artist: "Willie Peyote",
     albumImage: "https://i.scdn.co/image/2e1634370a794ca7a654edb75a43494394ac3dd2",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0r9IwgbiJL93RfZ2k3wcGb" },
   },
   {
@@ -1107,6 +1232,7 @@ export const spotifySongs: Song[] = [
     title: "California",
     artist: "Bahari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387e506e87875db9d8b12125b",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/6mvfE9VPGnB1qniHpu5B5p" },
   },
   {
@@ -1114,6 +1240,7 @@ export const spotifySongs: Song[] = [
     title: "Calypso",
     artist: "Bauchamp, Round Table Knights",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e997914ed31753bf1a4d41b6",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/6BdmHmozz9yi5sQFGuefru" },
   },
   {
@@ -1121,6 +1248,7 @@ export const spotifySongs: Song[] = [
     title: "Can't Help Falling in Love",
     artist: "Elvis Presley",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b184226408f981e3dd17c606",
+    year: 1961,
     links: { spotify: "https://open.spotify.com/track/44AyOl4qVkzS48vBsbNXaC" },
   },
   {
@@ -1128,6 +1256,7 @@ export const spotifySongs: Song[] = [
     title: "Can't Stop",
     artist: "Red Hot Chili Peppers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273de1af2785a83cc660155a0c4",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/3ZOEytgrvLwQaqXreDs2Jx" },
   },
   {
@@ -1135,6 +1264,7 @@ export const spotifySongs: Song[] = [
     title: "Candle In The Wind 1997",
     artist: "Elton John",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27352a56df14c3a5e318925787c",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/3DUcaEvPO72PijivCjtZcU" },
   },
   {
@@ -1142,6 +1272,7 @@ export const spotifySongs: Song[] = [
     title: "Caney",
     artist: "Rawayana, Jambene",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27364d3eb37505d12d9c4c045c5",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1iy127mskdnMF5mC5kicFF" },
   },
   {
@@ -1149,6 +1280,7 @@ export const spotifySongs: Song[] = [
     title: "Canzone del maggio",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731503d23da65136af7de53505",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/5vWRdNYlnukLT4GkWFpLEC" },
   },
   {
@@ -1156,6 +1288,7 @@ export const spotifySongs: Song[] = [
     title: "Canzone per un amico",
     artist: "Venerus, MACE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d82609e4becc0793c8849b70",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0JJlD4dv5TbgOXnsYSuK6m" },
   },
   {
@@ -1164,6 +1297,7 @@ export const spotifySongs: Song[] = [
     artist: "Francisco Tárrega",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734c8526847d01995076e564ae",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/2jCIkSbrPIHGzLTLHztbcS" },
   },
   {
@@ -1171,6 +1305,7 @@ export const spotifySongs: Song[] = [
     title: "Cara",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27392892a8f263412d85d6e5ba8",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/7uQuSHXICONzPv91hqMBmf" },
   },
   {
@@ -1178,6 +1313,7 @@ export const spotifySongs: Song[] = [
     title: "Careless Whisper",
     artist: "George Michael",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27364c19b24ce947ffa363f8f96",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/4jDmJ51x1o9NZB5Nxxc7gY" },
   },
   {
@@ -1185,6 +1321,7 @@ export const spotifySongs: Song[] = [
     title: "Carillon",
     artist: "Mr.Rain",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b3a86cd6d83acc5422b332b0",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/6HVink8pF0sKYvIbxptsqO" },
   },
   {
@@ -1192,6 +1329,7 @@ export const spotifySongs: Song[] = [
     title: "Carina",
     artist: "Fred Buscaglione",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d7d2cf290e60b8b4a21bd814",
+    year: 1987,
     links: { spotify: "https://open.spotify.com/track/3uNaJtGDTgZCrri8IdlAfI" },
   },
   {
@@ -1199,6 +1337,7 @@ export const spotifySongs: Song[] = [
     title: "carmen",
     artist: "Stromae",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ab580fab750cc9baf0d52b5c",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/1pRvlcrVxqdDAyYT1Ym3Wq" },
   },
   {
@@ -1206,6 +1345,7 @@ export const spotifySongs: Song[] = [
     title: "Carol of the Bells",
     artist: "Cathedral Choir",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734fa0e75b63357cb5ca6206db",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/25AtvmC59O7YhigsrxOme6" },
   },
   {
@@ -1213,6 +1353,7 @@ export const spotifySongs: Song[] = [
     title: "Carolina",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f8b8a9c71b2bd2f3019940b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3Dwq1oiOFys6Sxr5SslmXw" },
   },
   {
@@ -1220,6 +1361,7 @@ export const spotifySongs: Song[] = [
     title: "Caruso",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6f5333c3a45af7ef0dbd619",
+    year: 1986,
     links: { spotify: "https://open.spotify.com/track/6HYm04mKq02OtLMf6sGEFR" },
   },
   {
@@ -1227,6 +1369,7 @@ export const spotifySongs: Song[] = [
     title: "Catch & Release",
     artist: "Matt Simons",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27393805c7a740024bab818f16e",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/11Yp4S3WZA7yqWIbUmMJSd" },
   },
   {
@@ -1234,6 +1377,7 @@ export const spotifySongs: Song[] = [
     title: "Cateto",
     artist: "Elio e le Storie Tese",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d34a413d856b4e3d592cb4f8",
+    year: 1989,
     links: { spotify: "https://open.spotify.com/track/7IWl7sxfEC4z69IQLVFweJ" },
   },
   {
@@ -1241,6 +1385,7 @@ export const spotifySongs: Song[] = [
     title: "Cattolica",
     artist: "Pop X",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732a52a882b1c37d5b0fd20d90",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/7JS2L1mswwPlfalEdVBDsg" },
   },
   {
@@ -1249,6 +1394,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b6a733c08460051e9d2640de",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/7eiTrJ0Q60aF5XeUqgUoDB" },
   },
   {
@@ -1256,6 +1402,7 @@ export const spotifySongs: Song[] = [
     title: "CEO of Watching Television",
     artist: "Ellie Dixon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735ff31e8b84d595cfe784db80",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/2vMeQ5v3l9Jow8T4csVsNa" },
   },
   {
@@ -1263,6 +1410,7 @@ export const spotifySongs: Song[] = [
     title: "Cerchi",
     artist: "Eugenio In Via Di Gioia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27315780e3496c9fec45bdfdbb4",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0WGgNVPXpIdh7Pm9s7CCck" },
   },
   {
@@ -1271,6 +1419,7 @@ export const spotifySongs: Song[] = [
     artist: "Johann Sebastian Bach",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c109f63ff49ef7fa4011a0bb",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0C98fO2u3SCuro95WEqp23" },
   },
   {
@@ -1278,6 +1427,7 @@ export const spotifySongs: Song[] = [
     title: "Chains",
     artist: "Tina Arena",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ab4332b95c9425e87aa06238",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/397sjadktaQXJbur7QFdNO" },
   },
   {
@@ -1285,6 +1435,7 @@ export const spotifySongs: Song[] = [
     title: "CHARLES MANSON (BUON NATALE2)",
     artist: "Salmo, Dani Faiv, Nitro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b65aa14e9c2e09c4b9a824ac",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4z6l90HzhLLCd0hWddzbrh" },
   },
   {
@@ -1292,6 +1443,7 @@ export const spotifySongs: Song[] = [
     title: "Charlotte",
     artist: "L'Officina Della Camomilla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f3879edcb50a3665dd5e81b4",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/07MAvbQx1Ica9Qp3IUQKLJ" },
   },
   {
@@ -1299,6 +1451,7 @@ export const spotifySongs: Song[] = [
     title: "Che cossè l'amor",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27331decf69e40bb08c2d68cd0b",
+    year: 1992,
     links: { spotify: "https://open.spotify.com/track/28lZSZTZjIuoO07nACvfNo" },
   },
   {
@@ -1306,6 +1459,7 @@ export const spotifySongs: Song[] = [
     title: "Che senso ha",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a88530255d90f07d8f29472f",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7CXdIdQAQU4aDk4l7NwznL" },
   },
   {
@@ -1313,6 +1467,7 @@ export const spotifySongs: Song[] = [
     title: "Cherry Wine",
     artist: "Hozier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737a9bf5f82e32d33d4503fe7b",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/4Q66chx9WzqWcLItXoZ5r4" },
   },
   {
@@ -1320,6 +1475,7 @@ export const spotifySongs: Song[] = [
     title: "Chi cazz' m' 'o fa fa'",
     artist: "Squallor",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c3eb2277036a33a2f5b022de",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/0jBYhb12Iy4ahmjJV9Zcu9" },
   },
   {
@@ -1327,6 +1483,7 @@ export const spotifySongs: Song[] = [
     title: "chiara",
     artist: "Colla Zio, Selton",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e0901781fa63c842f30d1ac7",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/3v8frvMAc3oVNBS3SuYtIn" },
   },
   {
@@ -1334,6 +1491,7 @@ export const spotifySongs: Song[] = [
     title: "Chiaro Di Luna",
     artist: "Jovanotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b21b645699e2d1e56dcb4f2",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6t4XT3FQGdB7EjqvfAahNx" },
   },
   {
@@ -1341,6 +1499,7 @@ export const spotifySongs: Song[] = [
     title: "Chicken",
     artist: "Jaco Pastorius, Peter Lübke, Biréli Lagrène",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273413b32aa3c185a2b601185e8",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/4IDdUssauEYJ9kTit6tOU6" },
   },
   {
@@ -1348,6 +1507,7 @@ export const spotifySongs: Song[] = [
     title: "Chicken in the Corn",
     artist: "Brushy One String",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e341451ce4a0dd12c3223b42",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/1jgRSOE7c3Sk60exh6BRsl" },
   },
   {
@@ -1355,6 +1515,7 @@ export const spotifySongs: Song[] = [
     title: "Chicken Little",
     artist: "Spencer Sutherland, Meghan Trainor",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ad3b13e40445a5c012379e8e",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/5NzrfsIkCCexhDh2R9A2cG" },
   },
   {
@@ -1362,6 +1523,7 @@ export const spotifySongs: Song[] = [
     title: "Chiodo Fisso",
     artist: "Eugenio In Via Di Gioia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736ac44a996e41a7cfb5fbad3e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4Ryw3Qv9CpkfX8NaPViEjF" },
   },
   {
@@ -1369,6 +1531,7 @@ export const spotifySongs: Song[] = [
     title: "Chiquetere",
     artist: "Paskman",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738b274b3d4be11a2ee244a505",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/1pdsBkhNchpGCQTGoNQXZI" },
   },
   {
@@ -1376,6 +1539,7 @@ export const spotifySongs: Song[] = [
     title: "Chloe",
     artist: "Joe Pass",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27321549fb226e05c13ff17e70b",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/0cNc2tivyPqzgp13BSM7St" },
   },
   {
@@ -1383,6 +1547,7 @@ export const spotifySongs: Song[] = [
     title: "Ci rimango male quando sei puntuale",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27311d5aaf5c15b71c252d62d47",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/7sfprrxlaqOE4stSFQ7scD" },
   },
   {
@@ -1390,6 +1555,7 @@ export const spotifySongs: Song[] = [
     title: "Ci Vuole Un Fisico Bestiale",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/0yOos6Iw4pkGDNMxK7my95" },
   },
   {
@@ -1397,6 +1563,7 @@ export const spotifySongs: Song[] = [
     title: "Circles",
     artist: "Post Malone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/21jGcNKet2qwijlDFuPiPb" },
   },
   {
@@ -1404,6 +1571,7 @@ export const spotifySongs: Song[] = [
     title: "Città vuota",
     artist: "Mina",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738174a1fa676a01a9f2054f07",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/4LrFMFEu8tc8DKm4VXGnJd" },
   },
   {
@@ -1411,11 +1579,12 @@ export const spotifySongs: Song[] = [
     title: "City Of Stars",
     artist: "Ryan Gosling & Emma Stone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730bdf4dd39843ad48c5b66bc4",
+    year: 2016,
     links: {
       spotify: "https://open.spotify.com/track/6XQHlsNu6so4PdglFkJQRJ",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/5BMwpS4iYKR30kq9U9beaT", artist: "Ryan Gosling", albumImage: "https://i.scdn.co/image/ab67616d0000b2730bdf4dd39843ad48c5b66bc4" },
-        { url: "https://open.spotify.com/track/3gbwtdRrtD05lz08DTxfFt", artist: "Justin Hurwitz, Emma Stone", note: "Humming", albumImage: "https://i.scdn.co/image/ab67616d0000b2730bdf4dd39843ad48c5b66bc4" },
+        { url: "https://open.spotify.com/track/5BMwpS4iYKR30kq9U9beaT", artist: "Ryan Gosling", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b2730bdf4dd39843ad48c5b66bc4" },
+        { url: "https://open.spotify.com/track/3gbwtdRrtD05lz08DTxfFt", artist: "Justin Hurwitz, Emma Stone", note: "Humming", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b2730bdf4dd39843ad48c5b66bc4" },
       ],
     },
   },
@@ -1424,6 +1593,7 @@ export const spotifySongs: Song[] = [
     title: "Clandestino",
     artist: "Manu Chao",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27372c5875a8e4b49075978cd04",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/51R2M1JgyFfRS3e6v5wCt3" },
   },
   {
@@ -1431,6 +1601,7 @@ export const spotifySongs: Song[] = [
     title: "Cleopatra",
     artist: "The Lumineers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e4c3db3e7ebfc22bc080f334",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5bzf1xrbqr1ttjAJuRz2xY" },
   },
   {
@@ -1438,6 +1609,7 @@ export const spotifySongs: Song[] = [
     title: "Closer",
     artist: "The Chainsmokers, Halsey",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273495ce6da9aeb159e94eaa453",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7BKLCZ1jbUBVqRi2FVlTVw" },
   },
   {
@@ -1445,6 +1617,7 @@ export const spotifySongs: Song[] = [
     title: "COCAINA NELLA PUSSY",
     artist: "HACHIKO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b64d3b5e8d30981bc1944460",
+    year: 2025,
     links: { spotify: "https://open.spotify.com/track/4Xoy9vH1Z28BqdPintDKys" },
   },
   {
@@ -1452,6 +1625,7 @@ export const spotifySongs: Song[] = [
     title: "Colpa del vino",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c34e3f972965731cabe219ea",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/06pcJklH8rf0T5aHN64DTN" },
   },
   {
@@ -1459,6 +1633,7 @@ export const spotifySongs: Song[] = [
     title: "Come",
     artist: "Jain",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27364ba66f8a81c52364e55db50",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/02R2z7JWV0G8VuU1xs58OB" },
   },
   {
@@ -1466,6 +1641,7 @@ export const spotifySongs: Song[] = [
     title: "Come Dici Tu",
     artist: "Jamil",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a4f7bebed1d55ef4f6931b61",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4UzmBMDevVkSFFmZzGZYq6" },
   },
   {
@@ -1473,6 +1649,7 @@ export const spotifySongs: Song[] = [
     title: "Come è profondo il mare",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379750137a39be25e07f5324d",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/0JwmNxq34rBNZfdj0HJzOW" },
   },
   {
@@ -1480,6 +1657,7 @@ export const spotifySongs: Song[] = [
     title: "Come Uccidere Un Usignolo",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27314d866e37f694b150fb4b94c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5nTcuLgOASi0E1erGeO6TO" },
   },
   {
@@ -1487,6 +1665,7 @@ export const spotifySongs: Song[] = [
     title: "COME VUOI",
     artist: "Geolier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731f7cb4a2d5f5b4c60cbaf7e5",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/5x9LonDyHxGUO2VzfHJHLE" },
   },
   {
@@ -1494,6 +1673,7 @@ export const spotifySongs: Song[] = [
     title: "comethru",
     artist: "Jeremy Zucker",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cb16227d90152c2a5022bba1",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/18uwL0vNUanqZH0ro2QcOP" },
   },
   {
@@ -1501,6 +1681,7 @@ export const spotifySongs: Song[] = [
     title: "Company",
     artist: "Do Your Thang",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fb096ee1ca0ae0ee950c45cb",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6YYcqtn69iGJ5So3iVxtzZ" },
   },
   {
@@ -1508,6 +1689,7 @@ export const spotifySongs: Song[] = [
     title: "Con La Mani",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348c3bde384983c4abf2fcf9d",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/7lPQsBQ8VxQmq6hNQSL2NR" },
   },
   {
@@ -1515,6 +1697,7 @@ export const spotifySongs: Song[] = [
     title: "Con una rosa",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739eea368346cb3c92a1a6a20a",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/2fekQJdvz6l92UxVVyeu2m" },
   },
   {
@@ -1522,6 +1705,7 @@ export const spotifySongs: Song[] = [
     title: "Contando Lunares",
     artist: "Don Patricio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dd84a038a86a6f50dbae8eb8",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6uW0PIRcyZLvkoonm763xD" },
   },
   {
@@ -1529,6 +1713,7 @@ export const spotifySongs: Song[] = [
     title: "Cookies N' Cream",
     artist: "Guè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f81606d1dbb823ca4a021b3",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1xUnvxp9DFrpwXnO0RHKUp" },
   },
   {
@@ -1536,6 +1721,7 @@ export const spotifySongs: Song[] = [
     title: "Corduroy Dreams",
     artist: "Rex Orange County",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dbf3c10406ac999c39bf4a97",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/02tvc9CFnTyHuSRlGeNv9w" },
   },
   {
@@ -1543,6 +1729,7 @@ export const spotifySongs: Song[] = [
     title: "Core 'Ngrato",
     artist: "Roberto Murolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b7be37e87ab68598d047ab2",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/7IJZ474Hxuo4PH7WFgMiJJ" },
   },
   {
@@ -1550,6 +1737,7 @@ export const spotifySongs: Song[] = [
     title: "Corner Store",
     artist: "Macklemore, Dave B.",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732e94b668c60b06deb1c3a05c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/4m4aiyWCBH011DhxQeoWt1" },
   },
   {
@@ -1557,6 +1745,7 @@ export const spotifySongs: Song[] = [
     title: "Corso Buenos Aires",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379750137a39be25e07f5324d",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/0aV2IIKsqAq6IRwcuSMZBS" },
   },
   {
@@ -1564,6 +1753,7 @@ export const spotifySongs: Song[] = [
     title: "Cosa vuoi da me",
     artist: "Turi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f64d9c2021bf30448bebc9a0",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/0cijQ0ARocxemXilf4vN6G" },
   },
   {
@@ -1571,6 +1761,7 @@ export const spotifySongs: Song[] = [
     title: "Cough Syrup",
     artist: "Young the Giant",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27351729fae66d02122c4951153",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/1UqhkbzB1kuFwt2iy4h29Q" },
   },
   {
@@ -1578,6 +1769,7 @@ export const spotifySongs: Song[] = [
     title: "Could've Been",
     artist: "H.E.R.",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a37d773f1a975bffb51f42fe",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6oEVnWKgPqIEPc53OYDNqG" },
   },
   {
@@ -1585,10 +1777,11 @@ export const spotifySongs: Song[] = [
     title: "Count on Me",
     artist: "Bruno Mars",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a9eb5a1f701d1d367a5ea10",
+    year: 2010,
     links: {
       spotify: "https://open.spotify.com/track/3B5UbSndRz907IZhhmUfLi",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/3WaYPgfJJzJq4hRlJKC9zh", artist: "Judah Kelly", albumImage: "https://i.scdn.co/image/ab67616d0000b273d1fc557d2c62c3390a3cf316" },
+        { url: "https://open.spotify.com/track/3WaYPgfJJzJq4hRlJKC9zh", artist: "Judah Kelly", year: 2017, albumImage: "https://i.scdn.co/image/ab67616d0000b273d1fc557d2c62c3390a3cf316" },
       ],
     },
   },
@@ -1597,6 +1790,7 @@ export const spotifySongs: Song[] = [
     title: "Country",
     artist: "Keith Jarrett, Jan Garbarek, Palle Danielsson, Jon Christensen",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c23c205d1d0bc1d5360ef2ab",
+    year: 1978,
     links: { spotify: "https://open.spotify.com/track/79QByJn6Hp4A677VMSJszm" },
   },
   {
@@ -1604,6 +1798,7 @@ export const spotifySongs: Song[] = [
     title: "Cradle",
     artist: "Doe",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734c70b3c9aaff9ca555ce5b98",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/04XYmCWsrPaPIb1juv6nQz" },
   },
   {
@@ -1611,6 +1806,7 @@ export const spotifySongs: Song[] = [
     title: "Cradles",
     artist: "Sub Urban",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fb032fd9672efc5ac88bd03f",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1y4jsQt7MjnZhiD1L6qFBC" },
   },
   {
@@ -1618,6 +1814,7 @@ export const spotifySongs: Song[] = [
     title: "Cratere",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3XwbooLtQMxO18LHNQtUT6" },
   },
   {
@@ -1625,10 +1822,11 @@ export const spotifySongs: Song[] = [
     title: "Crazy",
     artist: "Gnarls Barkley",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ceb0b3423d21e3da43c58b0b",
+    year: 2007,
     links: {
       spotify: "https://open.spotify.com/track/1vxw6aYJls2oq3gW0DujAo",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/47jgSvqlKwGyBLPnMfeEZN", artist: "Daniela Andrade", albumImage: "https://i.scdn.co/image/ab67616d0000b27304a7570bee2dfcf61c2e66d5" },
+        { url: "https://open.spotify.com/track/47jgSvqlKwGyBLPnMfeEZN", artist: "Daniela Andrade", year: 2014, albumImage: "https://i.scdn.co/image/ab67616d0000b27304a7570bee2dfcf61c2e66d5" },
       ],
     },
   },
@@ -1637,6 +1835,7 @@ export const spotifySongs: Song[] = [
     title: "Crepa",
     artist: "Claver Gold",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730a5ecf42f1914e696ff94143",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3kI105LgQYz9S8N04DHPpS" },
   },
   {
@@ -1644,6 +1843,7 @@ export const spotifySongs: Song[] = [
     title: "Crown",
     artist: "Stormzy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27303bf634fe9526dfcc79f8526",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4CEGyF5A5u5BjweVvkgCsn" },
   },
   {
@@ -1651,6 +1851,7 @@ export const spotifySongs: Song[] = [
     title: "CRUDELIA",
     artist: "Marracash",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27389070654f69ee060803403f3",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0xEgDBXYO9gGzmxCFWKxNg" },
   },
   {
@@ -1658,6 +1859,7 @@ export const spotifySongs: Song[] = [
     title: "Crudelia De Mon",
     artist: "Stefano Bollani",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d886a4d2788aacd7cf5de059",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/4MC6HejKIqkBFvSaYja7Yk" },
   },
   {
@@ -1665,6 +1867,7 @@ export const spotifySongs: Song[] = [
     title: "Cry to Me",
     artist: "Solomon Burke",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c2e1394d71b546e5d9b3e931",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/2sCf9tz6LHByczuVT7rqIx" },
   },
   {
@@ -1672,6 +1875,7 @@ export const spotifySongs: Song[] = [
     title: "CULO",
     artist: "TonyPitony",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27336784fc103689460340fcdde",
+    year: 2025,
     links: { spotify: "https://open.spotify.com/track/3MI1TeWMJqhWuZtpjn0SZX" },
   },
   {
@@ -1679,6 +1883,7 @@ export const spotifySongs: Song[] = [
     title: "Dance",
     artist: "POWERS",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6ef21eb1759cd0305d3695e",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3IR6hy45m99ArQDlxZrYjg" },
   },
   {
@@ -1686,6 +1891,7 @@ export const spotifySongs: Song[] = [
     title: "Dancin",
     artist: "Aaron Smith",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f7a3a5656060030a0d24855c",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/6WkJ2OK163XXS2oARUC9JM" },
   },
   {
@@ -1693,6 +1899,7 @@ export const spotifySongs: Song[] = [
     title: "Dancing Queen",
     artist: "ABBA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27370f7a1b35d5165c85b95a0e0",
+    year: 1976,
     links: { spotify: "https://open.spotify.com/track/0GjEhVFGZW8afUYGChu3Rr" },
   },
   {
@@ -1701,6 +1908,7 @@ export const spotifySongs: Song[] = [
     artist: "Jorge Morel",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273eb8a98e9fb21c19e00095b87",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/35yuAaaJb2EMgSSD5Q8ou6" },
   },
   {
@@ -1708,6 +1916,7 @@ export const spotifySongs: Song[] = [
     title: "death bed (coffee for your head)",
     artist: "Powfu, beabadoobee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bf01fd0986a195d485922167",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/7eJMfftS33KTjuF7lTsMCx" },
   },
   {
@@ -1715,6 +1924,7 @@ export const spotifySongs: Song[] = [
     title: "Dedicato A Te",
     artist: "Le Vibrazioni",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fa0f96c59cd5f9334cc45f63",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/4DxU9yKktJVQXhcLxjh67j" },
   },
   {
@@ -1722,6 +1932,7 @@ export const spotifySongs: Song[] = [
     title: "Deep River Blues",
     artist: "Doc Watson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736a5eb6bd38f10d0f7bda4168",
+    year: 1964,
     links: { spotify: "https://open.spotify.com/track/4PvPkRcbnO4s67MPnij3sh" },
   },
   {
@@ -1729,6 +1940,7 @@ export const spotifySongs: Song[] = [
     title: "Desafinado",
     artist: "Stan Getz, João Gilberto",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273417cc363d7286a88489dee3c",
+    year: 1964,
     links: { spotify: "https://open.spotify.com/track/2tcfbkABIwzpepPyaFsYF4" },
   },
   {
@@ -1736,6 +1948,7 @@ export const spotifySongs: Song[] = [
     title: "Desaparecido",
     artist: "Manu Chao",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27372c5875a8e4b49075978cd04",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/5Hc7O2dX51NI4YcHPuoOpw" },
   },
   {
@@ -1743,6 +1956,7 @@ export const spotifySongs: Song[] = [
     title: "Desaparecido",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739d9c85e2cd3fe475b2f37761",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/6qB6EMEcAo0l3dVxZSvxpC" },
   },
   {
@@ -1750,6 +1964,7 @@ export const spotifySongs: Song[] = [
     title: "Destri",
     artist: "Gazzelle",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a6c5ad1df2c4f2e25eafed03",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0WBg2If3H9nN9RFl2xO2SZ" },
   },
   {
@@ -1757,6 +1972,7 @@ export const spotifySongs: Song[] = [
     title: "Devil Devil",
     artist: "MILCK",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27341c023c4baaff0d6e5a08d9e",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7K0aHJFgffrUKH8Z3IE8a4" },
   },
   {
@@ -1764,6 +1980,7 @@ export const spotifySongs: Song[] = [
     title: "Devo Andare Con Le Mie Winx",
     artist: "G.Mineiro, Flatpearl, Succo, Balanta",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27307bdc873725e7084d79d693f",
+    year: 2026,
     links: { spotify: "https://open.spotify.com/track/5eVWsjUs8OUajXFUWk9fXo" },
   },
   {
@@ -1771,6 +1988,7 @@ export const spotifySongs: Song[] = [
     title: "Diavolo Rosso",
     artist: "Paolo Conte",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273768c6100d15472f524c61916",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/6cILjhU7AkGK537ELlYFqv" },
   },
   {
@@ -1779,6 +1997,7 @@ export const spotifySongs: Song[] = [
     artist: "Franz Schubert",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273eacf9dff1ca8cebddb94efa2",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/7lCqzDWT6GPECGp0TzMnR7" },
   },
   {
@@ -1786,6 +2005,7 @@ export const spotifySongs: Song[] = [
     title: "Dilemme",
     artist: "Lous and The Yakuza",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6938bd293df7957d5007b0f",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/34UANp5qxDg6YcgrlDeILZ" },
   },
   {
@@ -1793,6 +2013,7 @@ export const spotifySongs: Song[] = [
     title: "Disperato erotico stomp",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379750137a39be25e07f5324d",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/7ELgXEWwuVbUFVeXdZMK5c" },
   },
   {
@@ -1800,6 +2021,7 @@ export const spotifySongs: Song[] = [
     title: "Dissolve",
     artist: "Absofacto, NITESHIFT",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738af82e1a1a66c0a4e731428d",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7pBrj5rt4SSxXwFKOyZfHR" },
   },
   {
@@ -1807,6 +2029,7 @@ export const spotifySongs: Song[] = [
     title: "Django's Tiger",
     artist: "Django Reinhardt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dc18cb10445f86bb6f5a943b",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/7D0Vzk7rZ6ncTFZj3AqT84" },
   },
   {
@@ -1814,6 +2037,7 @@ export const spotifySongs: Song[] = [
     title: "DM",
     artist: "DEIV",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273116fdb0f9dfbd6fdf6be007b",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/1tlXKmVo4AJbRnACLlR5rK" },
   },
   {
@@ -1821,6 +2045,7 @@ export const spotifySongs: Song[] = [
     title: "Do It To It",
     artist: "ACRAZE, Cherish",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27384d413b195aac8a69cc6e5c6",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/20on25jryn53hWghthWWW3" },
   },
   {
@@ -1828,6 +2053,7 @@ export const spotifySongs: Song[] = [
     title: "Doing Me",
     artist: "RAY BLK",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b9a8ba3cb29609ccc4b8e1ed",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7gxwtDx8fPhlgpAKc7xQHX" },
   },
   {
@@ -1835,6 +2061,7 @@ export const spotifySongs: Song[] = [
     title: "Doja",
     artist: "Central Cee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27391de4cb28d9066225b55e603",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/3LtpKP5abr2qqjunvjlX5i" },
   },
   {
@@ -1842,6 +2069,7 @@ export const spotifySongs: Song[] = [
     title: "Dolce signora che bruci",
     artist: "Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731401cc33cb391f30ae09eb94",
+    year: 1972,
     links: { spotify: "https://open.spotify.com/track/76VPS01onAeysd0nYzgpyN" },
   },
   {
@@ -1849,6 +2077,7 @@ export const spotifySongs: Song[] = [
     title: "Dolcenera",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737734bec2a50f479d6338399e",
+    year: 1996,
     links: { spotify: "https://open.spotify.com/track/1DFFUsN49AUonUcTiQNnjI" },
   },
   {
@@ -1856,6 +2085,7 @@ export const spotifySongs: Song[] = [
     title: "Domani",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2bd90b275df83e999affafd",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/5AbFqAtjSFbpWi7e3EmLta" },
   },
   {
@@ -1863,6 +2093,7 @@ export const spotifySongs: Song[] = [
     title: "DOMANI TI CHIAMO",
     artist: "Sick Luke",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c6aa303cad1f8eb08a53b416",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/4TgVKaaRt1S9iXZNIjRPaz" },
   },
   {
@@ -1870,6 +2101,7 @@ export const spotifySongs: Song[] = [
     title: "Domenica Bestiale",
     artist: "Fabio Concato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737d8557eeace36b0173a5732e",
+    year: 1982,
     links: { spotify: "https://open.spotify.com/track/2TRcaf9JMAzMifZ6LcVCmC" },
   },
   {
@@ -1877,6 +2109,7 @@ export const spotifySongs: Song[] = [
     title: "Don Raffaè",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27368c98621698cd45e19524cdc",
+    year: 1990,
     links: { spotify: "https://open.spotify.com/track/2T1BCT4JhKVPgAsEgwa4du" },
   },
   {
@@ -1884,6 +2117,7 @@ export const spotifySongs: Song[] = [
     title: "Don't Let Me Down",
     artist: "The Chainsmokers, Daya",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27302df2d642b572cf4f284a5c3",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/1i1fxkWeaMmKEB4T7zqbzK" },
   },
   {
@@ -1891,6 +2125,7 @@ export const spotifySongs: Song[] = [
     title: "Don't Look Back In Anger",
     artist: "Oasis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f2eeee9b405f4d00428d84c",
+    year: 1995,
     links: { spotify: "https://open.spotify.com/track/7ppPZa3TRUSGKaks9wH7VT" },
   },
   {
@@ -1898,6 +2133,7 @@ export const spotifySongs: Song[] = [
     title: "Don't Lose Sight",
     artist: "Lawrence",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738e0ad450240054eeeda687db",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/5PEIORAOmwjDV7OYzxHsvd" },
   },
   {
@@ -1905,6 +2141,7 @@ export const spotifySongs: Song[] = [
     title: "Don't Worry Be Happy",
     artist: "Bobby McFerrin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734d502f3148f70459329e02fd",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/5YbgcwHjQhdT1BYQ4rxWlD" },
   },
   {
@@ -1912,10 +2149,11 @@ export const spotifySongs: Song[] = [
     title: "Don't You Worry 'Bout A Thing",
     artist: "Stevie Wonder",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ea8ab1a548312b79ac955266",
+    year: 1973,
     links: {
       spotify: "https://open.spotify.com/track/1QvWxgZvTU0w8rlPRE5Zrv",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0yh0Dkrq3o4wJWu149VnD9", artist: "Jacob Collier", albumImage: "https://i.scdn.co/image/ab67616d0000b273ca6813b269fe8d591982e2ac" },
+        { url: "https://open.spotify.com/track/0yh0Dkrq3o4wJWu149VnD9", artist: "Jacob Collier", year: 2013, albumImage: "https://i.scdn.co/image/ab67616d0000b273ca6813b269fe8d591982e2ac" },
       ],
     },
   },
@@ -1924,6 +2162,7 @@ export const spotifySongs: Song[] = [
     title: "Donde Estas Yolanda",
     artist: "Pink Martini, Manuel Jimenez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b31bd144093d6e0ad94318a8",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/1HAkzpYXMFgZXljipR4hFQ" },
   },
   {
@@ -1931,6 +2170,7 @@ export const spotifySongs: Song[] = [
     title: "DONNA VEDI",
     artist: "Madame",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738f0790a5c1a64f896ddae910",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1ddXr35F0pevdaLeqW83NH" },
   },
   {
@@ -1938,6 +2178,7 @@ export const spotifySongs: Song[] = [
     title: "Down Below",
     artist: "Roddy Ricch",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273434f4eeb4231f6f4862cafd4",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4SWWe2OYC4mqf40Gc2RSdl" },
   },
   {
@@ -1945,6 +2186,7 @@ export const spotifySongs: Song[] = [
     title: "Drag Me Down",
     artist: "One Direction",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734a075ca70ae4143a37eb4fbe",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/2K87XMYnUMqLcX3zvtAF4G" },
   },
   {
@@ -1952,6 +2194,7 @@ export const spotifySongs: Song[] = [
     title: "Drops of Jupiter (Tell Me)",
     artist: "Train",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731a0278d4109c0f974821aa33",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/2hKdd3qO7cWr2Jo0Bcs0MA" },
   },
   {
@@ -1959,6 +2202,7 @@ export const spotifySongs: Song[] = [
     title: "Dubbi non ho",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fedc97f16e99be9fab3fd275",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/6eQ68Gkpa5wsPaNpMWKI9x" },
   },
   {
@@ -1966,6 +2210,7 @@ export const spotifySongs: Song[] = [
     title: "Due ali",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737a3ec828691870734dd9358d",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4GF6LAJOxoKJO2zwXIb2gY" },
   },
   {
@@ -1973,6 +2218,7 @@ export const spotifySongs: Song[] = [
     title: "Dusk Till Dawn",
     artist: "ZAYN",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a666ed36f975ba78b1c866e",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1j4kHkkpqZRBwE0A4CN4Yv" },
   },
   {
@@ -1980,6 +2226,7 @@ export const spotifySongs: Song[] = [
     title: "Dust in the Wind",
     artist: "Kansas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27359f0f56a7cd13526b5b4204c",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/6zeE5tKyr8Nu882DQhhSQI" },
   },
   {
@@ -1987,6 +2234,7 @@ export const spotifySongs: Song[] = [
     title: "E invece si",
     artist: "Bugo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736e8866337dd02561b07c0c1a",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6QWPNbnMXieBMujtkB0R6v" },
   },
   {
@@ -1994,6 +2242,7 @@ export const spotifySongs: Song[] = [
     title: "E non andar più via",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379750137a39be25e07f5324d",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/3Yy38m4zGZ4fiSfv3fZkhs" },
   },
   {
@@ -2001,6 +2250,7 @@ export const spotifySongs: Song[] = [
     title: "edamame",
     artist: "bbno$, Rich Brian",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273545a202ab06885cf2c6621ca",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1uMHCAyGmHqyygoNRuo7MV" },
   },
   {
@@ -2008,6 +2258,7 @@ export const spotifySongs: Song[] = [
     title: "Egyptian Luvr",
     artist: "Rejjie Snow",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b943ff9b3b735c352b235b3",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4uToWVHXLtKEEboNsG3n2u" },
   },
   {
@@ -2015,6 +2266,7 @@ export const spotifySongs: Song[] = [
     title: "Ehiii",
     artist: "G.bit",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738e061e72859b2829e3f622d4",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/16Y2ApL1P6Zd0V9WapZTuD" },
   },
   {
@@ -2022,6 +2274,7 @@ export const spotifySongs: Song[] = [
     title: "El Tejano",
     artist: "Lauv",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27336b12a4082f11d16a519b964",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0x68K3iDRHrtFl3YkH9bp4" },
   },
   {
@@ -2029,6 +2282,7 @@ export const spotifySongs: Song[] = [
     title: "Empire State of Mind (Part II) Broken Down",
     artist: "Alicia Keys",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fe6a98e875958c7d7080584e",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/5sra5UY6sD658OabHL3QtI" },
   },
   {
@@ -2036,6 +2290,7 @@ export const spotifySongs: Song[] = [
     title: "Empty Love",
     artist: "GRACEY, Ruel",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27362aa4cf39eeabedade86ddad",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/2iqIjiKVQ6p7zdp9pqAeUL" },
   },
   {
@@ -2043,10 +2298,11 @@ export const spotifySongs: Song[] = [
     title: "Englishman In New York",
     artist: "Sting",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d0c7c131a979c9e5436f89ce",
+    year: 1987,
     links: {
       spotify: "https://open.spotify.com/track/4KFM3A5QF2IMcc6nHsu3Wp",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/7pekyucoCaW9d1VT5oY52u", artist: "Neri Per Caso", albumImage: "https://i.scdn.co/image/ab67616d0000b27371bf56d256e9c8af467f40f7" },
+        { url: "https://open.spotify.com/track/7pekyucoCaW9d1VT5oY52u", artist: "Neri Per Caso", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b27371bf56d256e9c8af467f40f7" },
       ],
     },
   },
@@ -2055,6 +2311,7 @@ export const spotifySongs: Song[] = [
     title: "Era De Maggio",
     artist: "Roberto Murolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b7be37e87ab68598d047ab2",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/3KZQTED7rhehLIeSQazXem" },
   },
   {
@@ -2062,6 +2319,7 @@ export const spotifySongs: Song[] = [
     title: "Estate",
     artist: "Erlend Øye",
     albumImage: "https://i.scdn.co/image/c083129d94deacc9d8bb4887a339895566965924",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/6aVjoOuDQV65LxinwWiig4" },
   },
   {
@@ -2069,6 +2327,7 @@ export const spotifySongs: Song[] = [
     title: "Estate",
     artist: "Bruno Martino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27307e99d6e552a2238509f2b37",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/0IrEgqskXHRECFdarnfNuM" },
   },
   {
@@ -2076,6 +2335,7 @@ export const spotifySongs: Song[] = [
     title: "Estate",
     artist: "Jovanotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f31f6898ee6de961e8f3a2d4",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/1tHpYheOUwVgKIgNzH4BvI" },
   },
   {
@@ -2083,6 +2343,7 @@ export const spotifySongs: Song[] = [
     title: "ESTATE 80",
     artist: "bnkr44",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734a26db6791f9c0e1f464d949",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/5QJ2FsEt4kvkEbGW37L1VO" },
   },
   {
@@ -2091,6 +2352,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27323255140767b6d821e07c00f",
+    year: 1984,
     links: { spotify: "https://open.spotify.com/track/5WYAjlqPvLXiVZcVZvHxCX" },
   },
   {
@@ -2098,6 +2360,7 @@ export const spotifySongs: Song[] = [
     title: "Ever Since New York",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f8b8a9c71b2bd2f3019940b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5LABCxgmP7DATATIJXOh6n" },
   },
   {
@@ -2105,6 +2368,7 @@ export const spotifySongs: Song[] = [
     title: "Everybody Dies In Their Nightmares",
     artist: "XXXTENTACION",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273203c89bd4391468eea4cc3f5",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3GVkPk8mqxz0itaAriG1L7" },
   },
   {
@@ -2112,6 +2376,7 @@ export const spotifySongs: Song[] = [
     title: "Everyday",
     artist: "A$AP Rocky",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27349efdc44d0733042f8b99d57",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/2N3U8uTYhjX2KwGT0pf5x0" },
   },
   {
@@ -2119,6 +2384,7 @@ export const spotifySongs: Song[] = [
     title: "EXPERIMENTO",
     artist: "Myke Towers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273722d2b3531903685d240a4b0",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6c32C8T3KlXrbvWSoD5aON" },
   },
   {
@@ -2126,6 +2392,7 @@ export const spotifySongs: Song[] = [
     title: "Faccio un casino",
     artist: "Coez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387f01b35a5806d46277a4316",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6qNXkVk19OYLu4CoqjDfZ0" },
   },
   {
@@ -2133,6 +2400,7 @@ export const spotifySongs: Song[] = [
     title: "Face Off",
     artist: "Tech N9ne, Joey Cool, King Iso, Dwayne Johnson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735ee0a1dafbbf6d8d430821a3",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6M47gaKejso9772SKTa3yH" },
   },
   {
@@ -2140,6 +2408,7 @@ export const spotifySongs: Song[] = [
     title: "FAITHFUL",
     artist: "Macklemore",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27380f97cf1a2b84f800f0cb2a2",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/0Ip7RFwZg9dg7vB8xoyo1z" },
   },
   {
@@ -2147,6 +2416,7 @@ export const spotifySongs: Song[] = [
     title: "Falling Like The Stars",
     artist: "James Arthur",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273287581424579344780ccdc66",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/15xWRPHQMeqgdkGzInx3PY" },
   },
   {
@@ -2155,10 +2425,11 @@ export const spotifySongs: Song[] = [
     artist: "Franz Schubert",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737a66d38d82ceb3679cc520d0",
+    year: 2004,
     links: {
       spotify: "https://open.spotify.com/track/6pWoP3mTpvxst9VrBKsCYg",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/4yiIbaEVZuFctVbWI68P9n", artist: "Sergio Tiempo, Martha Argerich", albumImage: "https://i.scdn.co/image/ab67616d0000b2738586c5179c94f7a3c671832c" },
+        { url: "https://open.spotify.com/track/4yiIbaEVZuFctVbWI68P9n", artist: "Sergio Tiempo, Martha Argerich", year: 2020, albumImage: "https://i.scdn.co/image/ab67616d0000b2738586c5179c94f7a3c671832c" },
       ],
     },
   },
@@ -2167,6 +2438,7 @@ export const spotifySongs: Song[] = [
     title: "Fantasmi",
     artist: "Rose Villain",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273759c2d49c1fa1f7d6b7a2ff4",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/0uXDSAM6q44glALKnQQyqW" },
   },
   {
@@ -2174,6 +2446,7 @@ export const spotifySongs: Song[] = [
     title: "Feel It Still",
     artist: "Portugal. The Man",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273af52c228c9619ff6298b08cd",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6QgjcU0zLnzq5OrUoSZ3OK" },
   },
   {
@@ -2181,6 +2454,7 @@ export const spotifySongs: Song[] = [
     title: "Feeling Better",
     artist: "Malika Ayane",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273542e1fd5e3005ab1b31fdc38",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/07rcGwKWiPx4fTnu96hWXS" },
   },
   {
@@ -2188,6 +2462,7 @@ export const spotifySongs: Song[] = [
     title: "FEELING GOOD",
     artist: "GOLFOS",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dd02c87618ac7d8048d18b42",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7LfI89MxvXGKq0LBIexJA1" },
   },
   {
@@ -2195,6 +2470,7 @@ export const spotifySongs: Song[] = [
     title: "Femme Like U",
     artist: "Emma Peters, MAYKO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27363423dab00ac6763899a9876",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4dVIIxSQlGlRQ2v1kXcSL0" },
   },
   {
@@ -2202,6 +2478,7 @@ export const spotifySongs: Song[] = [
     title: "Fenomeno",
     artist: "Fabri Fibra",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e363565e6fa91f0801c8d281",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6F0xxEWmHIiC9Qnij5hVCr" },
   },
   {
@@ -2209,6 +2486,7 @@ export const spotifySongs: Song[] = [
     title: "Ferma A Guardare",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738167798048de8230c7079545",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1eDC4NiUYgQSKpKDIvXxi4" },
   },
   {
@@ -2216,6 +2494,7 @@ export const spotifySongs: Song[] = [
     title: "Fica Tudo Bem",
     artist: "Silva, Anitta",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738e11cc89cf701c8ca6c214e6",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/7jLwNbEykLVZldRuvngpl9" },
   },
   {
@@ -2223,6 +2502,7 @@ export const spotifySongs: Song[] = [
     title: "Fiore Di Maggio",
     artist: "Fabio Concato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f525d1ea7702f0f303ca97f5",
+    year: 1984,
     links: { spotify: "https://open.spotify.com/track/2pWzPQ2lhuEE2sb3aPKMHX" },
   },
   {
@@ -2230,6 +2510,7 @@ export const spotifySongs: Song[] = [
     title: "Fire Starter",
     artist: "Sons of Legion",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348dd5c9cacc2baffa3815744",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/6c7AFG4njoFRDp9hjpM2OZ" },
   },
   {
@@ -2237,6 +2518,7 @@ export const spotifySongs: Song[] = [
     title: "Fireball",
     artist: "Pitbull",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6efeff81a318670a292090f",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/4Y7XAxTANhu3lmnLAzhWJW" },
   },
   {
@@ -2244,6 +2526,7 @@ export const spotifySongs: Song[] = [
     title: "Fistful Of Love",
     artist: "Antony and the Johnsons",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d24ac1e4c8a0820593c20dfd",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/6ajgCBCtC9NcVTTBBFyZrO" },
   },
   {
@@ -2251,6 +2534,7 @@ export const spotifySongs: Song[] = [
     title: "Fiume Sand Creek",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273275b01c7a1caaf225a07c565",
+    year: 1981,
     links: { spotify: "https://open.spotify.com/track/18DpDNZoPFkMFin7QHzCf9" },
   },
   {
@@ -2258,6 +2542,7 @@ export const spotifySongs: Song[] = [
     title: "Flowers In Your Hair",
     artist: "The Lumineers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27315784f5212050cf2e67f1935",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/7thzIJfxiZNZaPFA5OR9s1" },
   },
   {
@@ -2265,6 +2550,7 @@ export const spotifySongs: Song[] = [
     title: "Fly Me to the Moon",
     artist: "The Macarons Project",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27389c2066e06f2f4b738149b53",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/0YBNpbrmpZdFRT0NFqii5C" },
   },
   {
@@ -2272,6 +2558,7 @@ export const spotifySongs: Song[] = [
     title: "Follia D'Amore",
     artist: "Raphael Gualazzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e0d19132fecff3a18e1a2a0a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/5sFAmIIncDn9O1wcxQmAte" },
   },
   {
@@ -2279,6 +2566,7 @@ export const spotifySongs: Song[] = [
     title: "Fool's Gold",
     artist: "Lucas Jack",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273596a3fc4125e130d7a535734",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/19tXA2Mfvbk6FerG9b5bir" },
   },
   {
@@ -2286,6 +2574,7 @@ export const spotifySongs: Song[] = [
     title: "Forte e chiaro",
     artist: "Capo Plaza",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fe950b9b68419fdb2d3b7631",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/0SHcPBePTpLy22XVvVmYqu" },
   },
   {
@@ -2293,6 +2582,7 @@ export const spotifySongs: Song[] = [
     title: "Fotografia",
     artist: "Carl Brave",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736d68373352abee80852affec",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3fw3W15QK6a9UxJGgndtYu" },
   },
   {
@@ -2300,6 +2590,7 @@ export const spotifySongs: Song[] = [
     title: "Franziska",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273275b01c7a1caaf225a07c565",
+    year: 1981,
     links: { spotify: "https://open.spotify.com/track/1caoo28B6VebWCNQom6lBB" },
   },
   {
@@ -2307,6 +2598,7 @@ export const spotifySongs: Song[] = [
     title: "Free Fallin'",
     artist: "Tom Petty",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27336572e6726714544f5bed456",
+    year: 1989,
     links: { spotify: "https://open.spotify.com/track/5tVA6TkbaAH9QMITTQRrNv" },
   },
   {
@@ -2314,6 +2606,7 @@ export const spotifySongs: Song[] = [
     title: "Fresh Roses",
     artist: "Juke Ross",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b990c4a044a94f4ecbbb025e",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/05RmevbSKDvHHKpYBoXYfR" },
   },
   {
@@ -2322,6 +2615,7 @@ export const spotifySongs: Song[] = [
     artist: "Robert Schumann",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27398f1271163d014efc93cc9d7",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/6CqxOPgADuFf8lKKXx7Jsd" },
   },
   {
@@ -2329,6 +2623,7 @@ export const spotifySongs: Song[] = [
     title: "Fuori il petto",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730000984293c03634b25908f8",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5niO6Ib7cBlFm0BfgAV0VR" },
   },
   {
@@ -2336,6 +2631,7 @@ export const spotifySongs: Song[] = [
     title: "Fur",
     artist: "Endor",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27338c69f0ee59e3eeff0437a54",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/37qV9lhTq40KXUoPLXfGZ6" },
   },
   {
@@ -2343,6 +2639,7 @@ export const spotifySongs: Song[] = [
     title: "Gangsta",
     artist: "Kehlani",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cb4ec52c48a6b071ed2ab6bc",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/1W7zkKgRv9mrLbfdQ8XyH3" },
   },
   {
@@ -2350,6 +2647,7 @@ export const spotifySongs: Song[] = [
     title: "Geordie",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b465cb61ec200f7352e8c0f",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/34EYtmNSISD59rEVGNWN3X" },
   },
   {
@@ -2357,6 +2655,7 @@ export const spotifySongs: Song[] = [
     title: "GHALI",
     artist: "Anna Castiglia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27324c0a76c11a8e76f885f3f31",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/0gpFw84vxNrrxNHkLSRSnR" },
   },
   {
@@ -2364,6 +2663,7 @@ export const spotifySongs: Song[] = [
     title: "Giant",
     artist: "Calvin Harris",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a9a9d8a16c0b4146fb707c02",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5itOtNx0WxtJmi1TQ3RuRd" },
   },
   {
@@ -2371,6 +2671,7 @@ export const spotifySongs: Song[] = [
     title: "Giant Steps",
     artist: "John Coltrane",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273258985b854b3dd27129aeed1",
+    year: 1960,
     links: { spotify: "https://open.spotify.com/track/1ZXu0ib26kWfQQngREMcU2" },
   },
   {
@@ -2378,6 +2679,7 @@ export const spotifySongs: Song[] = [
     title: "Gimmi I.",
     artist: "Elio e le Storie Tese",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b63c95e5301d807f8298ccf6",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/4moaCH895VYZJQgRqsZAdi" },
   },
   {
@@ -2385,6 +2687,7 @@ export const spotifySongs: Song[] = [
     title: "Giornata di merda",
     artist: "Ciliari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27309f4e4bc5cb502879e16c37d",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/5h8kl7fVkld19y3fOwDxII" },
   },
   {
@@ -2392,6 +2695,7 @@ export const spotifySongs: Song[] = [
     title: "Giovani Wannabe",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273df3452686fc1a8bdb6ad5691",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/7iLuBTHJSXM2HalKHFqEEy" },
   },
   {
@@ -2399,6 +2703,7 @@ export const spotifySongs: Song[] = [
     title: "Girasoli",
     artist: "Emanuele Aloia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732d8a93034a9c8a28c5c9019e",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5mChJHY2LlHFvVbux5Pqio" },
   },
   {
@@ -2406,6 +2711,7 @@ export const spotifySongs: Song[] = [
     title: "Girl's Club",
     artist: "Marc Rebillet",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a45a839cb6f2ee4f0b10505f",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6voMS2OL56W3oVdAjikb4X" },
   },
   {
@@ -2413,10 +2719,11 @@ export const spotifySongs: Song[] = [
     title: "Girls Like You",
     artist: "Maroon 5",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273deae7d931928fc1543e70203",
+    year: 2018,
     links: {
       spotify: "https://open.spotify.com/track/7npLlaPu9Mfno8hjk5OagD",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/7fa9MBXhVfQ8P8Df9OEbD8", artist: "Maroon 5", note: "Cardi B Version", albumImage: "https://i.scdn.co/image/ab67616d0000b273deae7d931928fc1543e70203" },
+        { url: "https://open.spotify.com/track/7fa9MBXhVfQ8P8Df9OEbD8", artist: "Maroon 5", note: "Cardi B Version", year: 2018, albumImage: "https://i.scdn.co/image/ab67616d0000b273deae7d931928fc1543e70203" },
       ],
     },
   },
@@ -2425,6 +2732,7 @@ export const spotifySongs: Song[] = [
     title: "Giungla",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273127e738b2dd6dda3dcb36ff4",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3J2ocrXfoCOiHoz8537dnD" },
   },
   {
@@ -2432,6 +2740,7 @@ export const spotifySongs: Song[] = [
     title: "Give Me Everything",
     artist: "Pitbull, AFROJACK, Ne-Yo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731dc7483a9fcfce54822a2f19",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/4QNpBfC0zvjKqPJcyqBy9W" },
   },
   {
@@ -2439,6 +2748,7 @@ export const spotifySongs: Song[] = [
     title: "Gli occhi",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7L7QYf7S6wg6pseN2C0d6K" },
   },
   {
@@ -2446,6 +2756,7 @@ export const spotifySongs: Song[] = [
     title: "Glider",
     artist: "Desanudo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ba8132ec5c90d471ae198985",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5OuCjcBPTDLd5P68DO4Z6n" },
   },
   {
@@ -2453,6 +2764,7 @@ export const spotifySongs: Song[] = [
     title: "Glorious",
     artist: "Macklemore",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732e94b668c60b06deb1c3a05c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0CokSRCu5hZgPxcZBaEzVE" },
   },
   {
@@ -2460,6 +2772,7 @@ export const spotifySongs: Song[] = [
     title: "Glue",
     artist: "Black Sea Dahu",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273552f600750165927012b4a82",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/3wRg5uSSBcSusvRux1ZxJQ" },
   },
   {
@@ -2468,6 +2781,7 @@ export const spotifySongs: Song[] = [
     artist: "Erik Satie",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273949cc0e6728be2f6601eb7ea",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/4820SC1xnUaabzzYQTDkP2" },
   },
   {
@@ -2475,6 +2789,7 @@ export const spotifySongs: Song[] = [
     title: "Go Fuck Yourself",
     artist: "Two Feet",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273488f7916bcb14082e1acb101",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/4NZrZgrRoR4GwR7flWOXRI" },
   },
   {
@@ -2482,6 +2797,7 @@ export const spotifySongs: Song[] = [
     title: "Godzilla",
     artist: "Eminem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f44aec83b20e40f3baef73c",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/7FIWs0pqAYbP91WWM0vlTQ" },
   },
   {
@@ -2489,6 +2805,7 @@ export const spotifySongs: Song[] = [
     title: "Going up the Coast",
     artist: "Clay and Friends",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c3b0dc769a4a8d8ce7357e55",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2bTvNKT8bxyyPhzHu4A2Wx" },
   },
   {
@@ -2496,6 +2813,7 @@ export const spotifySongs: Song[] = [
     title: "Gone",
     artist: "Jake Simon, Kuwada",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c5fabb755aa08be5797549e8",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1bEeR4QZ46izKPq7ETJ5LM" },
   },
   {
@@ -2503,6 +2821,7 @@ export const spotifySongs: Song[] = [
     title: "Good Old Days",
     artist: "Macklemore",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732e94b668c60b06deb1c3a05c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2Za1AlJNvksouPPWbXpR2X" },
   },
   {
@@ -2510,6 +2829,7 @@ export const spotifySongs: Song[] = [
     title: "Good Old-Fashioned Lover Boy",
     artist: "Queen",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27367bc29c251c777361b17a190",
+    year: 1976,
     links: { spotify: "https://open.spotify.com/track/1n7xFAY4xoPeqRvrkzAtsw" },
   },
   {
@@ -2517,6 +2837,7 @@ export const spotifySongs: Song[] = [
     title: "Good People",
     artist: "Rhys Lewis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ac5cd866fb0ad773d55b78d8",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4GyFMEAqbyq5F1PF6Pq6G9" },
   },
   {
@@ -2524,6 +2845,7 @@ export const spotifySongs: Song[] = [
     title: "Good Times",
     artist: "Ghali",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c51b9ee7905c72399b11f346",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6GpvHaqp0Yybx9P6YnodRD" },
   },
   {
@@ -2531,6 +2853,7 @@ export const spotifySongs: Song[] = [
     title: "Gotta Have You",
     artist: "PJ Morton, Lena Byrd-Miles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387f8a1d5f51ffa28ea7aef1c",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/7sua3EElbSneVDxEVDzgX4" },
   },
   {
@@ -2538,6 +2861,7 @@ export const spotifySongs: Song[] = [
     title: "Gracious",
     artist: "Ben Howard",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27325d10f813fd1114b2bb9e39a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/0Kvx22z9wGHn0y2ZiWW9Ft" },
   },
   {
@@ -2546,6 +2870,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f6aa669e9b036127ec68bfc",
+    year: 1964,
     links: { spotify: "https://open.spotify.com/track/7Fo7PmFuA11TCRwD2fOvtL" },
   },
   {
@@ -2554,6 +2879,7 @@ export const spotifySongs: Song[] = [
     artist: "Jean Sibelius",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bf622628d01b3e7385363a0d",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5UNRvB2ENgfVg6wB57NbIr" },
   },
   {
@@ -2561,6 +2887,7 @@ export const spotifySongs: Song[] = [
     title: "Gravità",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c34e3f972965731cabe219ea",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/6FWkfBaqMneWZCeVnEzln4" },
   },
   {
@@ -2568,6 +2895,7 @@ export const spotifySongs: Song[] = [
     title: "Green Grass",
     artist: "Ellie Dixon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f806e8458a71dcb18db08ece",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7kIDMuaQ1JNJuEWjKLMLhM" },
   },
   {
@@ -2575,6 +2903,7 @@ export const spotifySongs: Song[] = [
     title: "Gremolada",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731e3644df484378e41a9fef10",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4gFtVgSaSU3ykogQkTUAyJ" },
   },
   {
@@ -2582,6 +2911,7 @@ export const spotifySongs: Song[] = [
     title: "Guardia '82",
     artist: "Brunori Sas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736b40a0bc52c9348484fd8044",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/6kAyAeTujv9xCciuSyrJwz" },
   },
   {
@@ -2589,6 +2919,7 @@ export const spotifySongs: Song[] = [
     title: "Guasto D'Amore",
     artist: "Bresh, SHUNE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f64227670455b7952ed28c14",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/4CQNELF3U3gyNcI6sLr6yK" },
   },
   {
@@ -2596,6 +2927,7 @@ export const spotifySongs: Song[] = [
     title: "Hai visto mai",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/37rtB3M5CxQf6DQCfDBQ6I" },
   },
   {
@@ -2603,6 +2935,7 @@ export const spotifySongs: Song[] = [
     title: "Hakuna Matata",
     artist: "Nathan Lane, Ernie Sabella, Jason Weaver, Joseph Williams",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273660aadbda2da6b1c2dd3d1a5",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/5k3U0OGYBccHdKJJu3HrUN" },
   },
   {
@@ -2610,6 +2943,7 @@ export const spotifySongs: Song[] = [
     title: "Hallelujah",
     artist: "Jeff Buckley",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273afc2d1d2c8703a10aeded0af",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/3pRaLNL3b8x5uBOcsgvdqM" },
   },
   {
@@ -2617,6 +2951,7 @@ export const spotifySongs: Song[] = [
     title: "Hallelujah, I Love Her So",
     artist: "Ray Charles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f0e951707ca49b533fdbf64e",
+    year: 1957,
     links: { spotify: "https://open.spotify.com/track/5P11rW6aJErF37MTfRZS31" },
   },
   {
@@ -2624,6 +2959,7 @@ export const spotifySongs: Song[] = [
     title: "Happier",
     artist: "Marshmello, Bastille",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27304bfd5a5fd5aa6ca648f66aa",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2dpaYNEQHiRxtZbfNsse99" },
   },
   {
@@ -2631,6 +2967,7 @@ export const spotifySongs: Song[] = [
     title: "Happy",
     artist: "Pharrell Williams",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e89d2c2a3db129062b3b4e4f",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/60nZcImufyMA1MKQY3dcCH" },
   },
   {
@@ -2638,6 +2975,7 @@ export const spotifySongs: Song[] = [
     title: "Havana",
     artist: "Camila Cabello",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273652c9f55dfbf3cfe1800daea",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1rfofaqEpACxVEHIZBJe6W" },
   },
   {
@@ -2645,6 +2983,7 @@ export const spotifySongs: Song[] = [
     title: "Heal the World",
     artist: "Michael Jackson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bf4cf0f48b94d0c8297b751a",
+    year: 1991,
     links: { spotify: "https://open.spotify.com/track/7woW97CfcWaKtuC6W5BP2K" },
   },
   {
@@ -2652,6 +2991,7 @@ export const spotifySongs: Song[] = [
     title: "Heartless",
     artist: "Kanye West",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273346d77e155d854735410ed18",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5" },
   },
   {
@@ -2659,6 +2999,7 @@ export const spotifySongs: Song[] = [
     title: "Hellvisback",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739efeffdf7074481de1cccb39",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5as7xdsoQowstUr16TdWsq" },
   },
   {
@@ -2666,6 +3007,7 @@ export const spotifySongs: Song[] = [
     title: "Hero",
     artist: "Family of the Year",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273263e906ce0d9cfed22c5f8b6",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/1B10XgaxSXRLAFq967oMpF" },
   },
   {
@@ -2673,6 +3015,7 @@ export const spotifySongs: Song[] = [
     title: "Hey Ya!",
     artist: "Outkast",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736e88eb6508fd94cd1b745ce2",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/2PpruBYCo4H7WOBJ7Q2EwM" },
   },
   {
@@ -2680,6 +3023,7 @@ export const spotifySongs: Song[] = [
     title: "HIND'S HALL",
     artist: "Macklemore",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c4ac6d99ccfd215f49a1b847",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/1zOgXnODZUp87IGbF3b8YB" },
   },
   {
@@ -2687,6 +3031,7 @@ export const spotifySongs: Song[] = [
     title: "History",
     artist: "One Direction",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734a075ca70ae4143a37eb4fbe",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/0HMjXBAZmSYOTTi33WpMso" },
   },
   {
@@ -2694,6 +3039,7 @@ export const spotifySongs: Song[] = [
     title: "Holocene",
     artist: "Bon Iver",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736880235a103031a13ff8c902",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/6DESft0qm6RhoYf5wzeoGH" },
   },
   {
@@ -2701,6 +3047,7 @@ export const spotifySongs: Song[] = [
     title: "Home",
     artist: "Edward Sharpe & The Magnetic Zeros",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273807aad47d0c190e56f263038",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/2x1jP9BexWtOKudvuUHbaD" },
   },
   {
@@ -2708,6 +3055,7 @@ export const spotifySongs: Song[] = [
     title: "Houdini",
     artist: "Eminem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731633c43b5695735f7de36487",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/1CDQzbCz4KSQxHe7LMEgRM" },
   },
   {
@@ -2715,6 +3063,7 @@ export const spotifySongs: Song[] = [
     title: "How Long",
     artist: "Charlie Puth",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273897f73256b9128a9d70eaf66",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/6wmAHw1szh5RCKSRjiXhPe" },
   },
   {
@@ -2722,6 +3071,7 @@ export const spotifySongs: Song[] = [
     title: "Human",
     artist: "Rag'n'Bone Man",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f5c397bd6cdac2a6c287b5bd",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/58zsLZPvfflaiIbNWoA22O" },
   },
   {
@@ -2729,6 +3079,7 @@ export const spotifySongs: Song[] = [
     title: "i",
     artist: "Kendrick Lamar",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736d89f336fbfbdf2089701da0",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/7wdzLe2Gsx1RGqbvYZHASz" },
   },
   {
@@ -2736,6 +3087,7 @@ export const spotifySongs: Song[] = [
     title: "I Don’t Wanna Live Forever (Fifty Shades Darker)",
     artist: "ZAYN, Taylor Swift",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27363d77f99117b28af9f656918",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/55n9yjI6qqXh5F2mYvUc2y" },
   },
   {
@@ -2743,10 +3095,11 @@ export const spotifySongs: Song[] = [
     title: "I Got the Blues",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27395c6157e48375dd35ce99140",
+    year: 1982,
     links: {
       spotify: "https://open.spotify.com/track/1Aw4HWV7ZROSAfwSCcbqkl",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/5kTCZRcxA88Nj5AJN96ScL", artist: "Neri Per Caso", albumImage: "https://i.scdn.co/image/ab67616d0000b27371bf56d256e9c8af467f40f7" },
+        { url: "https://open.spotify.com/track/5kTCZRcxA88Nj5AJN96ScL", artist: "Neri Per Caso", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b27371bf56d256e9c8af467f40f7" },
       ],
     },
   },
@@ -2755,6 +3108,7 @@ export const spotifySongs: Song[] = [
     title: "I Kissed A Girl",
     artist: "Katy Perry",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f97d4244eff5852477d9ee0",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/14iN3o8ptQ8cFVZTEmyQRV" },
   },
   {
@@ -2762,6 +3116,7 @@ export const spotifySongs: Song[] = [
     title: "I Like It",
     artist: "Cardi B, Bad Bunny, J Balvin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a0caffda54afd0a65995bbab",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/58q2HKrzhC3ozto2nDdN4z" },
   },
   {
@@ -2769,6 +3124,7 @@ export const spotifySongs: Song[] = [
     title: "I Like Me Better",
     artist: "Lauv",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735355919e31efac9b14c45c49",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2P91MQbaiQOfbiz9VqhqKQ" },
   },
   {
@@ -2776,6 +3132,7 @@ export const spotifySongs: Song[] = [
     title: "I Love You 3000",
     artist: "Stephanie Poetri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27390189bfc9a5d39e0d88e4103",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3znQ9i61vfe2E7URHlOiyc" },
   },
   {
@@ -2783,6 +3140,7 @@ export const spotifySongs: Song[] = [
     title: "I Say a Little Prayer",
     artist: "Aretha Franklin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27346c31f64babcbfca6e061b6b",
+    year: 1968,
     links: { spotify: "https://open.spotify.com/track/3NfxSdJnVdon1axzloJgba" },
   },
   {
@@ -2790,6 +3148,7 @@ export const spotifySongs: Song[] = [
     title: "I Say I' Sto Ccà",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fd16324507e4dd4c6c042fa5",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/2lyaLEbGPn7i1paCfnuFZz" },
   },
   {
@@ -2797,6 +3156,7 @@ export const spotifySongs: Song[] = [
     title: "I Shot the Sheriff",
     artist: "The Big Push",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273907f2facafadbda3ab14c62c",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/7c29gVgpyq038B6nay97E0" },
   },
   {
@@ -2804,6 +3164,7 @@ export const spotifySongs: Song[] = [
     title: "I vitelloni",
     artist: "Bobo Rondelli",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27316dab8c05e60877cf0b08b16",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/5RjCxsGJ29NAmY3CfHHPWL" },
   },
   {
@@ -2811,6 +3172,7 @@ export const spotifySongs: Song[] = [
     title: "I Wan'na Be Like You",
     artist: "Robbie Williams, Olly Murs",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732e60ff0f37e6504fcc503981",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/1mTRYyPfAhvfPmmu5WqLl1" },
   },
   {
@@ -2818,6 +3180,7 @@ export const spotifySongs: Song[] = [
     title: "I Will Survive",
     artist: "Gloria Gaynor",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732a1049b6d0d2b4c3c0abe7a8",
+    year: 1978,
     links: { spotify: "https://open.spotify.com/track/7rIovIsXE6kMn629b7kDig" },
   },
   {
@@ -2825,6 +3188,7 @@ export const spotifySongs: Song[] = [
     title: "I'm Gonna Miss You When You Go",
     artist: "Marty Robbins",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27376d63404f270a4b9326c7b92",
+    year: 1976,
     links: { spotify: "https://open.spotify.com/track/3nteEQhYYtD14cMBfcOLKv" },
   },
   {
@@ -2832,6 +3196,7 @@ export const spotifySongs: Song[] = [
     title: "I'm In Love With a Monster",
     artist: "Fifth Harmony",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c6ca949e16aefdd57f95f517",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/0hO71r8vbnrXSaXVrR9ptF" },
   },
   {
@@ -2839,6 +3204,7 @@ export const spotifySongs: Song[] = [
     title: "I'm Shipping Up To Boston",
     artist: "Dropkick Murphys",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273030915ffa58125ae36f13a6f",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/7rSERmjAT38lC5QhJ8hnQc" },
   },
   {
@@ -2846,6 +3212,7 @@ export const spotifySongs: Song[] = [
     title: "i'm so tired...",
     artist: "Lauv, Troye Sivan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27336b12a4082f11d16a519b964",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4vjpLMyL3ZO6aphdYr8XYw" },
   },
   {
@@ -2853,6 +3220,7 @@ export const spotifySongs: Song[] = [
     title: "I'm Still Standing",
     artist: "Elton John",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273eb11e2abccdca41f39ad3b89",
+    year: 1983,
     links: { spotify: "https://open.spotify.com/track/1jDJFeK9x3OZboIAHsY9k2" },
   },
   {
@@ -2860,6 +3228,7 @@ export const spotifySongs: Song[] = [
     title: "I'm Yours",
     artist: "Jason Mraz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273125b1a330b6f6100ab19dbed",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/1EzrEOXmMH3G43AXT1y7pA" },
   },
   {
@@ -2867,6 +3236,7 @@ export const spotifySongs: Song[] = [
     title: "Ieri L'Altro",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27337298b42580e291499b23e3c",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1c0hOZ4rGASabvJQbIFeP0" },
   },
   {
@@ -2874,6 +3244,7 @@ export const spotifySongs: Song[] = [
     title: "If I Can't Have You",
     artist: "Shawn Mendes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c820f033bd82bef4355d1563",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/2bT1PH7Cw3J9p3t7nlXCdh" },
   },
   {
@@ -2881,6 +3252,7 @@ export const spotifySongs: Song[] = [
     title: "Il Bar Della Rabbia",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736b58cd81f400b7761f8e5a8c",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/0Aywzp2szqUj2GoXm2VYVr" },
   },
   {
@@ -2888,6 +3260,7 @@ export const spotifySongs: Song[] = [
     title: "Il bevitore longevo",
     artist: "Duo bucolico, Giacomo Toni",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b27a5e9fc26c5852a9fbd08",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/7vLqyRAO6JQ9IXhd8ogQcp" },
   },
   {
@@ -2895,6 +3268,7 @@ export const spotifySongs: Song[] = [
     title: "Il bombarolo",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731503d23da65136af7de53505",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/2zT6ahvNZgrXu2MWi0h5LG" },
   },
   {
@@ -2902,6 +3276,7 @@ export const spotifySongs: Song[] = [
     title: "Il Costume Da Torero",
     artist: "Brunori Sas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738fa5929955ef6ac8a99499af",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/4ovl3OPvjH6vqbjwvY3DzT" },
   },
   {
@@ -2909,6 +3284,7 @@ export const spotifySongs: Song[] = [
     title: "Il cucciolo Alfredo",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379750137a39be25e07f5324d",
+    year: 1977,
     links: { spotify: "https://open.spotify.com/track/5KFSKLQ12YsaQzE74hBuil" },
   },
   {
@@ -2916,6 +3292,7 @@ export const spotifySongs: Song[] = [
     title: "Il gorilla",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273316a1b206589c043a2d8837a",
+    year: 1968,
     links: { spotify: "https://open.spotify.com/track/7mlOO9JBY4vhzK7PniqUK8" },
   },
   {
@@ -2923,6 +3300,7 @@ export const spotifySongs: Song[] = [
     title: "Il pescatore",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273788e773b7e1a6fc48f4b6149",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/0i4mLwfyxnSSgF6hwIkU2L" },
   },
   {
@@ -2930,6 +3308,7 @@ export const spotifySongs: Song[] = [
     title: "Il posto più freddo",
     artist: "i cani",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273566737e323a84c13b37c51b7",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/3qymmynl9HTSIHQZ81g1KH" },
   },
   {
@@ -2937,6 +3316,7 @@ export const spotifySongs: Song[] = [
     title: "Il soldato Bruna",
     artist: "Pino Masi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273108f5ba4c8aaed77c2f6b2a9",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6EMzWu9sR1NE8xGexTY1WR" },
   },
   {
@@ -2944,6 +3324,7 @@ export const spotifySongs: Song[] = [
     title: "Il suonatore Jones",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f1ff7e66425c266a5efa5d3c",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/1xJNR07EtkerG9uNsnnbAq" },
   },
   {
@@ -2951,6 +3332,7 @@ export const spotifySongs: Song[] = [
     title: "Il tempo di morire",
     artist: "Lucio Battisti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733828e35888244c53204da1c3",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/1sJjEtWk7ucSfmDOaS6zf2" },
   },
   {
@@ -2958,6 +3340,7 @@ export const spotifySongs: Song[] = [
     title: "Il testamento di Tito",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27384b780e7d08b16ed737e577c",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/2P6N0okOLlwr2kAIxwXIsv" },
   },
   {
@@ -2965,6 +3348,7 @@ export const spotifySongs: Song[] = [
     title: "Illegale",
     artist: "Samuel Heron",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a5928dd1d0f3b7a0c7de0be8",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3qYrZVUe7CAEEr8n06kvNQ" },
   },
   {
@@ -2972,6 +3356,7 @@ export const spotifySongs: Song[] = [
     title: "In A Sentimental Mood",
     artist: "Duke Ellington, John Coltrane",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732def9ef3f6a82c8d6fd8c143",
+    year: 1963,
     links: { spotify: "https://open.spotify.com/track/0E8q2Fx2XuzXCO2NSAppkR" },
   },
   {
@@ -2979,6 +3364,7 @@ export const spotifySongs: Song[] = [
     title: "In Case I Fall for You",
     artist: "Black Sea Dahu",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737aea3f1e2afd946e70db6771",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2qz7KoWTLGuWuIfwqZmk4y" },
   },
   {
@@ -2986,6 +3372,7 @@ export const spotifySongs: Song[] = [
     title: "In the Jungle",
     artist: "Rilès",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ebf3cc032ebdd807503ba4a6",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0FxIDZ0d2169ACdRbe8mtk" },
   },
   {
@@ -2993,6 +3380,7 @@ export const spotifySongs: Song[] = [
     title: "In The Woods Somewhere",
     artist: "Hozier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732303ece0e9af3917d0bce05f",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/5LDb4ZwsEAar1EIFd9iTkF" },
   },
   {
@@ -3000,6 +3388,7 @@ export const spotifySongs: Song[] = [
     title: "In Too Deep",
     artist: "Eminem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730bb096916743c3b7852ea818",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3nahkhyS4cUjkmXQpsG6KA" },
   },
   {
@@ -3007,6 +3396,7 @@ export const spotifySongs: Song[] = [
     title: "INDUSTRY BABY",
     artist: "Lil Nas X",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f27e4bdc58ebe249a6b90da0",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/5Z9KJZvQzH6PFmb8SNkxuk" },
   },
   {
@@ -3014,6 +3404,7 @@ export const spotifySongs: Song[] = [
     title: "Intoxicated",
     artist: "Martin Solveig, Good Times Ahead",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cc8e623887d8b954834421b4",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/4ICuOce1qV8UDAmpudYBXf" },
   },
   {
@@ -3021,6 +3412,7 @@ export const spotifySongs: Song[] = [
     title: "Inverno",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738f4f5636d76a1a69a22e0676",
+    year: 1968,
     links: { spotify: "https://open.spotify.com/track/7bnnu8bfcHxRh1WC0FMXjX" },
   },
   {
@@ -3028,6 +3420,7 @@ export const spotifySongs: Song[] = [
     title: "Inverno",
     artist: "Post Nebbia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f2147fb37bd8229d2be6c568",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2Syd1e3FwLxL8CBiOZNmVe" },
   },
   {
@@ -3035,10 +3428,11 @@ export const spotifySongs: Song[] = [
     title: "Io che amo solo te",
     artist: "Sergio Endrigo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735b84b7b6eff74e08477490b6",
+    year: 2001,
     links: {
       spotify: "https://open.spotify.com/track/66BpqCO5k2oQJrvWEV5Wpd",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/5pIkHN0w7plRaNo5coHVx2", artist: "Neri Per Caso", albumImage: "https://i.scdn.co/image/ab67616d0000b2731eebb4ae7f189eba4f11ce05" },
+        { url: "https://open.spotify.com/track/5pIkHN0w7plRaNo5coHVx2", artist: "Neri Per Caso", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b2731eebb4ae7f189eba4f11ce05" },
       ],
     },
   },
@@ -3047,6 +3441,7 @@ export const spotifySongs: Song[] = [
     title: "Irene",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735b3cb5aa936655424de11fa2",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2JeQN06RJrdNTh5LpCPBHq" },
   },
   {
@@ -3054,6 +3449,7 @@ export const spotifySongs: Song[] = [
     title: "Island In The Sun",
     artist: "Weezer",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731e0dc5baaabda304b0ad1815",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/2MLHyLy5z5l5YRp7momlgw" },
   },
   {
@@ -3061,6 +3457,7 @@ export const spotifySongs: Song[] = [
     title: "Istinto Animale",
     artist: "Don Joe",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fdb593e6810c2066d1adce3f",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/4Q46G91LXPGAdUt5kc1QEQ" },
   },
   {
@@ -3068,6 +3465,7 @@ export const spotifySongs: Song[] = [
     title: "It Ain't Me",
     artist: "Kygo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27341f289940f2e6a0d51988d77",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3eR23VReFzcdmS7TYCrhCe" },
   },
   {
@@ -3075,6 +3473,7 @@ export const spotifySongs: Song[] = [
     title: "It Don't Mean a Thing (If It Ain't Got That Swing)",
     artist: "Louis Armstrong, Duke Ellington",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731b438131da866e530c440b0f",
+    year: 1963,
     links: { spotify: "https://open.spotify.com/track/4M5Mnz9ORqaMMUAgKtv3bI" },
   },
   {
@@ -3082,6 +3481,7 @@ export const spotifySongs: Song[] = [
     title: "It Runs Through Me",
     artist: "Tom Misch, De La Soul",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732aebf42d8901fbcd14c9eca8",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/02CygBCQOIyEuhNZqHHcNx" },
   },
   {
@@ -3089,6 +3489,7 @@ export const spotifySongs: Song[] = [
     title: "It's A Man's, Man's, Man's World",
     artist: "James Brown & The Famous Flames",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273341d7644f66c2abff86314b2",
+    year: 1966,
     links: { spotify: "https://open.spotify.com/track/3SQ9Hb9rfpJ02AWfaOPhpy" },
   },
   {
@@ -3096,6 +3497,7 @@ export const spotifySongs: Song[] = [
     title: "Japanese Denim",
     artist: "Daniel Caesar",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273617c314e94693fad9a26f798",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/1boXOL0ua7N2iCOUVI1p9F" },
   },
   {
@@ -3103,6 +3505,7 @@ export const spotifySongs: Song[] = [
     title: "Je ne t'aime plus",
     artist: "Manu Chao",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27372c5875a8e4b49075978cd04",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/7Deb4scGmEv4fY2CZcVnSb" },
   },
   {
@@ -3110,6 +3513,7 @@ export const spotifySongs: Song[] = [
     title: "Je So' Pazzo",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348c3bde384983c4abf2fcf9d",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/1Q1Ou3Xny3GxIp1mQx3oha" },
   },
   {
@@ -3117,6 +3521,7 @@ export const spotifySongs: Song[] = [
     title: "Je suis seul ce soir",
     artist: "Biréli Lagrène",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273553c771b4c4db5d9aa82a8e8",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/6jiIaleR0ou5NXFBC8wWjb" },
   },
   {
@@ -3124,6 +3529,7 @@ export const spotifySongs: Song[] = [
     title: "Je veux",
     artist: "Zaz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733b5969aba116e8248a3e6369",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/734dz1YaFITwawPpM25fSt" },
   },
   {
@@ -3131,6 +3537,7 @@ export const spotifySongs: Song[] = [
     title: "Jealous Guy",
     artist: "Donny Hathaway",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cd1c0c1656e51ef0c1fe08cd",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/4ZMofBIe1948b23GZJriAd" },
   },
   {
@@ -3138,6 +3545,7 @@ export const spotifySongs: Song[] = [
     title: "Jenny Jenny",
     artist: "AnnenMayKantereit",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273408f6232613555fb22c2dc81",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1SJOgVfZueXANpaMwDhVDJ" },
   },
   {
@@ -3145,6 +3553,7 @@ export const spotifySongs: Song[] = [
     title: "Joshua",
     artist: "Bobby McFerrin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27306a2ce608dd1b3dacc18b8fa",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/56imEvJMCfdzSrGsw6oG6U" },
   },
   {
@@ -3152,6 +3561,7 @@ export const spotifySongs: Song[] = [
     title: "Judgement Day",
     artist: "Stealth",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b5243de63d7aa44c67112623",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3ob5Yh6SPJiHUGC6yUgvC1" },
   },
   {
@@ -3159,6 +3569,7 @@ export const spotifySongs: Song[] = [
     title: "Just The Way You Are",
     artist: "James Smith",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739f48d446654c7b8b9b7bc58b",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1YwbObIsxLhBTjSI5lwJz6" },
   },
   {
@@ -3166,6 +3577,7 @@ export const spotifySongs: Song[] = [
     title: "K.O.",
     artist: "Gemitaiz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739bc0f2396a3033896410b63c",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/7sYJw5AwPw30ZyLdvuEtg0" },
   },
   {
@@ -3173,6 +3585,7 @@ export const spotifySongs: Song[] = [
     title: "Katchi",
     artist: "Ofenbach",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ea926e8fceb6e4f411144a8f",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2NF8A7C6tICScdRaZ0BrEe" },
   },
   {
@@ -3180,6 +3593,7 @@ export const spotifySongs: Song[] = [
     title: "Killer Game",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273beca846333b89312c1d971e8",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/5ujx6AOCwO30cymvkX8KdK" },
   },
   {
@@ -3187,6 +3601,7 @@ export const spotifySongs: Song[] = [
     title: "Kiss",
     artist: "Prince",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27323cc0f0a925845a3de4aca38",
+    year: 1986,
     links: { spotify: "https://open.spotify.com/track/62LJFaYihsdVrrkgUOJC05" },
   },
   {
@@ -3194,6 +3609,7 @@ export const spotifySongs: Song[] = [
     title: "kiss kiss",
     artist: "mgk",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d4d4929a3a86fe2f9fadbd42",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/69LvvkHnFFnX3d5eNObtMo" },
   },
   {
@@ -3201,6 +3617,7 @@ export const spotifySongs: Song[] = [
     title: "Kiss Me More",
     artist: "Doja Cat",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736c031afd210aed3084f80956",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/748mdHapucXQri7IAO8yFK" },
   },
   {
@@ -3208,6 +3625,7 @@ export const spotifySongs: Song[] = [
     title: "Kiwi",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f8b8a9c71b2bd2f3019940b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/33SNO8AaciGbNaQFkxvPrW" },
   },
   {
@@ -3215,6 +3633,7 @@ export const spotifySongs: Song[] = [
     title: "Klimt",
     artist: "Gio Evan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273013d2ac61b7e0495d885318f",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7b29Ep7loW8hoPsBiDce8i" },
   },
   {
@@ -3222,6 +3641,7 @@ export const spotifySongs: Song[] = [
     title: "Knockin' On Heaven's Door",
     artist: "Bob Dylan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736c86683d20c72e3874c11c6d",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/6HSXNV0b4M4cLJ7ljgVVeh" },
   },
   {
@@ -3229,6 +3649,7 @@ export const spotifySongs: Song[] = [
     title: "Korea",
     artist: "Desanudo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d15da7f4c871a2dfb01a822a",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7srdciHDFOSZkBO9JsDNIS" },
   },
   {
@@ -3236,6 +3657,7 @@ export const spotifySongs: Song[] = [
     title: "Kurt Cobain",
     artist: "Brunori Sas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739ff42c1336a84f13afeb60c0",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/1Ad0FaLs2KfnMsFPCS7Pp0" },
   },
   {
@@ -3243,6 +3665,7 @@ export const spotifySongs: Song[] = [
     title: "L'altra dimensione",
     artist: "Måneskin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dbc892b8194e35ca3524e767",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/36ONZ2CvV8KsLPapNPGTqa" },
   },
   {
@@ -3250,6 +3673,7 @@ export const spotifySongs: Song[] = [
     title: "L'amore non si spiega",
     artist: "Sergio Cammariere",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27341df1bc60ccbf46634158ad6",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/6MRb6TjYkJkFPd9HSBADkn" },
   },
   {
@@ -3257,6 +3681,7 @@ export const spotifySongs: Song[] = [
     title: "L'Anno Che Verrà",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273302045c6bec32652f01d1d12",
+    year: 1979,
     links: { spotify: "https://open.spotify.com/track/2buPtPaKomtwoT8YvxO13f" },
   },
   {
@@ -3264,6 +3689,7 @@ export const spotifySongs: Song[] = [
     title: "L'Arcobaleno",
     artist: "Adriano Celentano",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cca8e4f480faca1e75815237",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/2UKUFCvKIumT0T1xCvizx6" },
   },
   {
@@ -3271,6 +3697,7 @@ export const spotifySongs: Song[] = [
     title: "L'effetto che mi fai",
     artist: "K-DUE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273acc60c9adcff8a1c5d4c1d70",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3juz9HZMNC90v4Z0psPdnr" },
   },
   {
@@ -3278,6 +3705,7 @@ export const spotifySongs: Song[] = [
     title: "L'isola che non c'è",
     artist: "Edoardo Bennato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739070b0f065f68a7972bbeada",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/3KPEhB7AbIkDRy93rtZgJA" },
   },
   {
@@ -3285,6 +3713,7 @@ export const spotifySongs: Song[] = [
     title: "L'ULTIMA CANZONE",
     artist: "Geolier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735ac5877b54c5b3dbef9ae901",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/74zkabIZ8moMuJUuxTQcCR" },
   },
   {
@@ -3292,6 +3721,7 @@ export const spotifySongs: Song[] = [
     title: "L'uomo nello specchio",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734d99daebb5868135abdc7c65",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/3suvxDgZjlbGBlFV8jaEea" },
   },
   {
@@ -3299,6 +3729,7 @@ export const spotifySongs: Song[] = [
     title: "La Ballata Dell'Amore Cieco (O Della Vanita')",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b465cb61ec200f7352e8c0f",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/6tY6R9x2Fe3UQn3kW58uc3" },
   },
   {
@@ -3306,6 +3737,7 @@ export const spotifySongs: Song[] = [
     title: "La bicicletta",
     artist: "L'Officina Della Camomilla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27389dc4f93548f5470cde2fc72",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2xEJVYnQeJ8N5BmqzoQpdU" },
   },
   {
@@ -3313,6 +3745,7 @@ export const spotifySongs: Song[] = [
     title: "La Camisa Negra",
     artist: "Juanes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c091c40987e92a9256d2f210",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/2EM9zpAc7PVeoAydmbfVIL" },
   },
   {
@@ -3321,6 +3754,7 @@ export const spotifySongs: Song[] = [
     artist: "Franz Liszt",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dc7e831d880de1c90d621379",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/2Hnurh1BcigGbCGFOb4Uid" },
   },
   {
@@ -3328,6 +3762,7 @@ export const spotifySongs: Song[] = [
     title: "La Canzone Dei Vecchi Amanti",
     artist: "Franco Battiato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27350d73c3af790971dc61ba9aa",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/40LYHoLTm9yzoM0T3hBKVp" },
   },
   {
@@ -3335,6 +3770,7 @@ export const spotifySongs: Song[] = [
     title: "La Canzone Del Padre",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731503d23da65136af7de53505",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/4iFi2ly45kSqWzg7zCURJN" },
   },
   {
@@ -3342,6 +3778,7 @@ export const spotifySongs: Song[] = [
     title: "LA CANZONE NOSTRA ⟁",
     artist: "MACE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27329d6faafa718f4b9224d9544",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0aQi1JGO1oKWEmKGfvf8TF" },
   },
   {
@@ -3349,6 +3786,7 @@ export const spotifySongs: Song[] = [
     title: "La casa in riva al mare",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff919b3b9eb0d006cea2fa2d",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/0mevI5k23pDD0n3ZWn4ecd" },
   },
   {
@@ -3356,6 +3794,7 @@ export const spotifySongs: Song[] = [
     title: "La collina dei ciliegi",
     artist: "Lucio Battisti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ba23ecff9298d99b2e6664e4",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/1barmMRNFXuBEWNyWvbUwI" },
   },
   {
@@ -3363,6 +3802,7 @@ export const spotifySongs: Song[] = [
     title: "La colpa al vento",
     artist: "Willie Peyote",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f7056484bb4f61a259c4d70b",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/6bAY89YslMZ7TdRmFouliI" },
   },
   {
@@ -3370,6 +3810,7 @@ export const spotifySongs: Song[] = [
     title: "La Cura",
     artist: "Franco Battiato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d75b1d231a3f464eaa09071f",
+    year: 1996,
     links: { spotify: "https://open.spotify.com/track/3sc9YIcDSPCXsQ0zzX3JLW" },
   },
   {
@@ -3377,6 +3818,7 @@ export const spotifySongs: Song[] = [
     title: "La donna cannone",
     artist: "Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b1ecd40e8913c050268bbe26",
+    year: 1983,
     links: { spotify: "https://open.spotify.com/track/2T2t1DXwzdilKF3BQPHREo" },
   },
   {
@@ -3384,6 +3826,7 @@ export const spotifySongs: Song[] = [
     title: "La maggior parte",
     artist: "Claver Gold, Faith",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27360efaab9260728ffb39ba30f",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3D3hF81uddEVWDsn82WOpL" },
   },
   {
@@ -3391,6 +3834,7 @@ export const spotifySongs: Song[] = [
     title: "La Mia Signorina",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273276312754bde39c018b1a1d7",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/0kM3bPNUPgxaeOf7VzRQer" },
   },
   {
@@ -3398,6 +3842,7 @@ export const spotifySongs: Song[] = [
     title: "la noia",
     artist: "Angelina Mango",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f104488c01f09f87a3f4b22d",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/49R1F3rIdSzuPk7AcHi6d1" },
   },
   {
@@ -3405,6 +3850,7 @@ export const spotifySongs: Song[] = [
     title: "La Notte",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27327f17db210be4953567f52b0",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/5FH4J8Gp9I0dM0bjODc0DN" },
   },
   {
@@ -3412,6 +3858,7 @@ export const spotifySongs: Song[] = [
     title: "La Nuova Stella Di Broadway",
     artist: "Cesare Cremonini",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27322ae5b5ba67f6f218b5f3e34",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/3qtuOAI0YyfoBM1s7Tvm46" },
   },
   {
@@ -3419,6 +3866,7 @@ export const spotifySongs: Song[] = [
     title: "La paranza",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f584ee41ca975be8f6a48eb0",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/2m3BCcthxDo4o4JTJ3CejS" },
   },
   {
@@ -3426,6 +3874,7 @@ export const spotifySongs: Song[] = [
     title: "La ragazza dall'Olanda",
     artist: "DJ Matrix, Matt Joe",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730083c186be192760285e9690",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/0TATvzn58eveFEbZtLspVw" },
   },
   {
@@ -3433,6 +3882,7 @@ export const spotifySongs: Song[] = [
     title: "La sera dei miracoli",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27392892a8f263412d85d6e5ba8",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/4tKiqgP4hiFNSCDeoaNctg" },
   },
   {
@@ -3440,6 +3890,7 @@ export const spotifySongs: Song[] = [
     title: "La stella e il marinaio",
     artist: "Murubutu, Dj T-Robb",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27354b2ff9ff5fe9b49840333c6",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1MshKaEP8K37meKS9LMaUh" },
   },
   {
@@ -3447,6 +3898,7 @@ export const spotifySongs: Song[] = [
     title: "La tocco piano",
     artist: "Highsnob",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736838e1e420179277669886e5",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/58SUvJDWQVzcFOR6Sh8ndz" },
   },
   {
@@ -3454,6 +3906,7 @@ export const spotifySongs: Song[] = [
     title: "La Vasca",
     artist: "Alex Britti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f7f1645498d55eef36b1d1e4",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/1GIio7BuzB2DCrDMd0pk1z" },
   },
   {
@@ -3461,6 +3914,7 @@ export const spotifySongs: Song[] = [
     title: "La Vita Com'è",
     artist: "Max Gazzè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27338142aa25f939346c6a80416",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/053trmldheiFgDGCGgZ4WW" },
   },
   {
@@ -3468,6 +3922,7 @@ export const spotifySongs: Song[] = [
     title: "LA VITTIMA",
     artist: "FUCKYOURCLIQUE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c5355c8e71abdbe4e494bcb7",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/6BarEhWtRa51kVjNuf6tqx" },
   },
   {
@@ -3475,6 +3930,7 @@ export const spotifySongs: Song[] = [
     title: "Lady by the Sea",
     artist: "Stephen Sanchez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27345e84347e774d1c2dcf45941",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4wPKUEm0EOoyUiFtI6mz1a" },
   },
   {
@@ -3482,6 +3938,7 @@ export const spotifySongs: Song[] = [
     title: "Lady D'Arbanville",
     artist: "Yusuf / Cat Stevens",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dcc7d80ac24734a1d2cde062",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/4ntaCVtTclqT43krz9n3Z9" },
   },
   {
@@ -3489,6 +3946,7 @@ export const spotifySongs: Song[] = [
     title: "Lala Song",
     artist: "Bob Sinclar, Hendogg, Wonder Mike, Master Gee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ebaecfa7969c4121a8f8737e",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/13BZ9kfuEhkNmlTKky1Chj" },
   },
   {
@@ -3496,6 +3954,7 @@ export const spotifySongs: Song[] = [
     title: "Lalala",
     artist: "Y2K, bbno$",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a6ccb507dd6a66f7f6e2440",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/51Fjme0JiitpyXKuyQiCDo" },
   },
   {
@@ -3504,6 +3963,7 @@ export const spotifySongs: Song[] = [
     artist: "Anton Webern",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c2610032d2db5c4725bb2933",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0R2qyLsZ2RGLTVuWYqaRWS" },
   },
   {
@@ -3511,6 +3971,7 @@ export const spotifySongs: Song[] = [
     title: "Lay All Your Love On Me",
     artist: "ABBA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734d08fc99eff4ed52dfce91fa",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/4euAGZTszWPrriggYK0HG9" },
   },
   {
@@ -3518,6 +3979,7 @@ export const spotifySongs: Song[] = [
     title: "Lazzari felici",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27331d6ba7e4fa3b5a9c0224de0",
+    year: 1984,
     links: { spotify: "https://open.spotify.com/track/2oIeuKv3dV7hGjnYGpxY3y" },
   },
   {
@@ -3525,6 +3987,7 @@ export const spotifySongs: Song[] = [
     title: "Le cose in comune",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27382d184d9971189a42b946477",
+    year: 1995,
     links: { spotify: "https://open.spotify.com/track/2Mc4mdbLGW4ti1Ai6PEFp7" },
   },
   {
@@ -3532,6 +3995,7 @@ export const spotifySongs: Song[] = [
     title: "Le navi",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27367f514f664ec19f85303296a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/0JlrCjFVI4foCyBkHbQuZn" },
   },
   {
@@ -3539,6 +4003,7 @@ export const spotifySongs: Song[] = [
     title: "Le ore piccole",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734b2eca1192d9d9267412b593",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/5iSOkz5KUkNrUSADFGGmG9" },
   },
   {
@@ -3546,6 +4011,7 @@ export const spotifySongs: Song[] = [
     title: "Le Pietre Non Volano",
     artist: "Luchè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735558244723616933a29ebcbd",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5hjMhdi5EBlwpcthmhUgOD" },
   },
   {
@@ -3553,6 +4019,7 @@ export const spotifySongs: Song[] = [
     title: "Le Ragazze",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348c3bde384983c4abf2fcf9d",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/7zjbF7hSWzhdYIYp3ANmax" },
   },
   {
@@ -3560,6 +4027,7 @@ export const spotifySongs: Song[] = [
     title: "Le storie di ieri",
     artist: "Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27361f0a08db269d1d99e913a58",
+    year: 1975,
     links: { spotify: "https://open.spotify.com/track/1VZ2NRipdqeGfm072epxKF" },
   },
   {
@@ -3567,6 +4035,7 @@ export const spotifySongs: Song[] = [
     title: "Leave The Door Open",
     artist: "Bruno Mars, Anderson .Paak, Silk Sonic",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736f9e6abbd6fa43ac3cdbeee0",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7MAibcTli4IisCtbHKrGMh" },
   },
   {
@@ -3574,6 +4043,7 @@ export const spotifySongs: Song[] = [
     title: "Let Her Go",
     artist: "Passenger",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736cfb157da31ca5e8fca24bd8",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/5KReHDo8W8w9bKTY3KxPy3" },
   },
   {
@@ -3581,6 +4051,7 @@ export const spotifySongs: Song[] = [
     title: "Let It Be",
     artist: "The Beatles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273582d56ce20fe0146ffa0e5cf",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/4qsVPnhbvEooD1bSNqvvh0" },
   },
   {
@@ -3588,6 +4059,7 @@ export const spotifySongs: Song[] = [
     title: "Let Me Love You",
     artist: "DJ Snake, Justin Bieber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273212d776c31027c511f0ee3bc",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0lYBSQXN6rCTvUZvg9S0lU" },
   },
   {
@@ -3595,6 +4067,7 @@ export const spotifySongs: Song[] = [
     title: "Let's Get It On",
     artist: "Marvin Gaye",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738e3ab2d3ef6d45d315b2ad61",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/4CH56YZD7UcUP5EUJy8x88" },
   },
   {
@@ -3602,10 +4075,11 @@ export const spotifySongs: Song[] = [
     title: "Let's Get It Started",
     artist: "Black Eyed Peas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a70ca1e24812ade2446e6b12",
+    year: 2004,
     links: {
       spotify: "https://open.spotify.com/track/6Ct1AsE9oTWUg1rmvIWJKM",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/28jHD8xBLnN8esbroQ6zz8", artist: "Black Eyed Peas", albumImage: "https://i.scdn.co/image/ab67616d0000b2730765a89c06f091764e045bc9" },
+        { url: "https://open.spotify.com/track/28jHD8xBLnN8esbroQ6zz8", artist: "Black Eyed Peas", year: 2007, albumImage: "https://i.scdn.co/image/ab67616d0000b2730765a89c06f091764e045bc9" },
       ],
     },
   },
@@ -3614,6 +4088,7 @@ export const spotifySongs: Song[] = [
     title: "Lewandowski VI",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734dc927414901257d4f182482",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0KvKUijfGJjBgtWse4ot1Y" },
   },
   {
@@ -3621,6 +4096,7 @@ export const spotifySongs: Song[] = [
     title: "Lewandowski VII",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27363172ba3c697b35377ed0a0f",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/37hdLoozh7mKLbDeO5GAt8" },
   },
   {
@@ -3628,6 +4104,7 @@ export const spotifySongs: Song[] = [
     title: "Lieto fine",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731654abae086466e12fe944d9",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4Yh3MuIdwVYbFr00TbOaA5" },
   },
   {
@@ -3635,6 +4112,7 @@ export const spotifySongs: Song[] = [
     title: "Like a Rolling Stone",
     artist: "Bob Dylan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730cb0884829c5503b2e242541",
+    year: 1965,
     links: { spotify: "https://open.spotify.com/track/3AhXZa8sUQht0UEdBJgpGc" },
   },
   {
@@ -3642,6 +4120,7 @@ export const spotifySongs: Song[] = [
     title: "Like I Love You",
     artist: "Lost Frequencies, The NGHBRS",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273984fb6fed8c55fe994fa3519",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2AVredtzre1KADDXWoGd4I" },
   },
   {
@@ -3649,6 +4128,7 @@ export const spotifySongs: Song[] = [
     title: "Lo Sai Che",
     artist: "Aromathica",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733114cc12d2f64f733d36eac6",
+    year: 2025,
     links: { spotify: "https://open.spotify.com/track/4ToDYpj5xh677w4MGN3ZpY" },
   },
   {
@@ -3656,10 +4136,11 @@ export const spotifySongs: Song[] = [
     title: "Lonely",
     artist: "Justin Bieber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731b2bb35006cc39e7215b6b24",
+    year: 2020,
     links: {
       spotify: "https://open.spotify.com/track/4fKiuIavbsoTRZ6R7xuAyT",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/1q1LRzp71Lm6q9Fg1vF504", artist: "Justin Bieber, benny blanco", note: "Acoustic", albumImage: "https://i.scdn.co/image/ab67616d0000b2737f86ae201628628a0e27ee3a" },
+        { url: "https://open.spotify.com/track/1q1LRzp71Lm6q9Fg1vF504", artist: "Justin Bieber, benny blanco", note: "Acoustic", year: 2021, albumImage: "https://i.scdn.co/image/ab67616d0000b2737f86ae201628628a0e27ee3a" },
       ],
     },
   },
@@ -3668,6 +4149,7 @@ export const spotifySongs: Song[] = [
     title: "Lonely",
     artist: "Akon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736ec7ab30397ea37295340a41",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/4v7DCN09hgXkKazefkznDQ" },
   },
   {
@@ -3675,6 +4157,7 @@ export const spotifySongs: Song[] = [
     title: "Look At Her Now",
     artist: "Selena Gomez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730d4349841a125fd697100285",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4yI3HpbSFSgFZtJP2kDe5m" },
   },
   {
@@ -3682,6 +4165,7 @@ export const spotifySongs: Song[] = [
     title: "Look Back at It",
     artist: "A Boogie Wit da Hoodie",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a5c7151899ae5da4f4382d54",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3Ol2xnObFdKV9pmRD2t9x8" },
   },
   {
@@ -3689,6 +4173,7 @@ export const spotifySongs: Song[] = [
     title: "Lose Control",
     artist: "Teddy Swims",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739a7e719f37e9264656b95997",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/6usohdchdzW9oML7VC4Uhk" },
   },
   {
@@ -3696,6 +4181,7 @@ export const spotifySongs: Song[] = [
     title: "Losers",
     artist: "YOUNGTONES",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e5f151f08c4f7f3591a97429",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0TOCRIo2NjnhVLVQc1vdG6" },
   },
   {
@@ -3703,6 +4189,7 @@ export const spotifySongs: Song[] = [
     title: "LOSERS",
     artist: "Laxxard",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aeab6eb69d51929dcd86de4e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/2KgI16DCEF6pqxs8IwuDHf" },
   },
   {
@@ -3710,6 +4197,7 @@ export const spotifySongs: Song[] = [
     title: "Lost on You",
     artist: "LP",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273af9276f7c7faec1beee16dc8",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/40x5K8xyIWVmSeUrYjj0os" },
   },
   {
@@ -3717,6 +4205,7 @@ export const spotifySongs: Song[] = [
     title: "Love Anthem, No. 1",
     artist: "Venerus, MACE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27302c1621d8656f25c34ee06b0",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3oBVv54hTMSYXXJGxO5JxJ" },
   },
   {
@@ -3724,6 +4213,7 @@ export const spotifySongs: Song[] = [
     title: "Love Lockdown",
     artist: "Kanye West",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273346d77e155d854735410ed18",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/1kxeWHF9PrCVZHvVskv8lg" },
   },
   {
@@ -3731,6 +4221,7 @@ export const spotifySongs: Song[] = [
     title: "Love On Top",
     artist: "Beyoncé",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff5429125128b43572dbdccd",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/1z6WtY7X4HQJvzxC4UgkSf" },
   },
   {
@@ -3738,6 +4229,7 @@ export const spotifySongs: Song[] = [
     title: "Love Someone",
     artist: "Lukas Graham",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27345100f4cdb2a88ecf80f270f",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/0OCRwXbQRdOZ1OtB4Imsp1" },
   },
   {
@@ -3745,6 +4237,7 @@ export const spotifySongs: Song[] = [
     title: "Love Tonight",
     artist: "Shouse",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27381376e47003d45f6513b5657",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6OufwUcCqo81guU2jAlDVP" },
   },
   {
@@ -3752,6 +4245,7 @@ export const spotifySongs: Song[] = [
     title: "Love Yourself",
     artist: "Justin Bieber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f46b9d202509a8f7384b90de",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/50kpGaPAhYJ3sGmk6vplg0" },
   },
   {
@@ -3759,6 +4253,7 @@ export const spotifySongs: Song[] = [
     title: "Lovelace",
     artist: "Kadebostany, VASSIŁINA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273944feca202336691aa5993b4",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/55V3CcxdVRjcOsJpYYsCcB" },
   },
   {
@@ -3766,6 +4261,7 @@ export const spotifySongs: Song[] = [
     title: "lovely",
     artist: "Billie Eilish",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a3f0a3ca7929dea23cd274c",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/0u2P5u6lvoDfwTYjAADbn4" },
   },
   {
@@ -3773,6 +4269,7 @@ export const spotifySongs: Song[] = [
     title: "Loyal",
     artist: "Chris Brown, Lil Wayne, Tyga",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732fa07c5de267229a015fe25d",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/7kqcudBGM74MXVoYMaoWkC" },
   },
   {
@@ -3780,6 +4277,7 @@ export const spotifySongs: Song[] = [
     title: "LUCCIOLA",
     artist: "Tamango",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27333158836e46554dea149b7ad",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6LEG4PJ3kyA8Ko7VMTKZ7F" },
   },
   {
@@ -3787,6 +4285,7 @@ export const spotifySongs: Song[] = [
     title: "Lupin",
     artist: "Castellina Pasi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27352ebe9581210c64de6a072ca",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/0u4yXtxqcuWtY3FegzlA2u" },
   },
   {
@@ -3794,6 +4293,7 @@ export const spotifySongs: Song[] = [
     title: "Luz Negra",
     artist: "Stefano Bollani",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b2bf59c471af3b4bdc44959b",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0bC3qsbaZwd9w2cfH77eCw" },
   },
   {
@@ -3801,6 +4301,7 @@ export const spotifySongs: Song[] = [
     title: "Ma che discorsi",
     artist: "Daniele Silvestri",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27367f514f664ec19f85303296a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/6ImdRRwVPpFFFWZXHCosLh" },
   },
   {
@@ -3808,6 +4309,7 @@ export const spotifySongs: Song[] = [
     title: "Ma come fanno i marinai",
     artist: "Lucio Dalla, Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739ba983002ba35c974a6fc030",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0XRovEG4lLc9HgccdhBBwu" },
   },
   {
@@ -3815,6 +4317,7 @@ export const spotifySongs: Song[] = [
     title: "Maggese",
     artist: "Cesare Cremonini",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737839771341a65f97aa2c7f47",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/5psIeCubygBYVM62l5IQiB" },
   },
   {
@@ -3822,6 +4325,7 @@ export const spotifySongs: Song[] = [
     title: "Mago Bianco",
     artist: "Aromathica",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730004e39abd4d0ff0fff77926",
+    year: 2026,
     links: { spotify: "https://open.spotify.com/track/1D2QpwLVGW24Lui4EbXHnn" },
   },
   {
@@ -3829,6 +4333,7 @@ export const spotifySongs: Song[] = [
     title: "Make Me Feel",
     artist: "Janelle Monáe",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730a60fb0deda858270cca82ee",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/5gW5dSy3vXJxgzma4rQuzH" },
   },
   {
@@ -3836,6 +4341,7 @@ export const spotifySongs: Song[] = [
     title: "Malafemmena",
     artist: "Roberto Murolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b7be37e87ab68598d047ab2",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/6gl8j0wqkgv5WyxV6I49dy" },
   },
   {
@@ -3843,6 +4349,7 @@ export const spotifySongs: Song[] = [
     title: "Mama África",
     artist: "Chico César",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273827271f914c1478d2ddaecc6",
+    year: 1995,
     links: { spotify: "https://open.spotify.com/track/4S18cCp2R0Z0SdbCwNC4ZL" },
   },
   {
@@ -3850,6 +4357,7 @@ export const spotifySongs: Song[] = [
     title: "Mama Said",
     artist: "Lukas Graham",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732d94d0f04e9a58d1654b760b",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5ArQzSBevAdXTxRY6Ulhbq" },
   },
   {
@@ -3857,6 +4365,7 @@ export const spotifySongs: Song[] = [
     title: "Mamita",
     artist: "CNCO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b8aad78e8fcc831acde817ce",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5ojXuKXBYq0apcNucYSDXq" },
   },
   {
@@ -3864,6 +4373,7 @@ export const spotifySongs: Song[] = [
     title: "Manhã De Carnaval",
     artist: "John McLaughlin, Al Di Meola, Paco de Lucía",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2df811a90faa9b58effc4f5",
+    year: 1996,
     links: { spotify: "https://open.spotify.com/track/2T8p7MvybiHtfvvldFJ218" },
   },
   {
@@ -3871,6 +4381,7 @@ export const spotifySongs: Song[] = [
     title: "Many the Miles",
     artist: "Sara Bareilles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737f0eb6a8c3ca507382b57ca8",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/03kCR9HZpX5muU7D8xYPOL" },
   },
   {
@@ -3878,6 +4389,7 @@ export const spotifySongs: Song[] = [
     title: "Manzarek",
     artist: "Canova",
     albumImage: "https://i.scdn.co/image/181869eff1077ead725f2717414fe60afe95b190",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/1c545gcoPZglxnjHTxXBeX" },
   },
   {
@@ -3885,6 +4397,7 @@ export const spotifySongs: Song[] = [
     title: "MARADONA",
     artist: "Geolier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731f7cb4a2d5f5b4c60cbaf7e5",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1Bf3WnU7Y6YGP0k4RbbErB" },
   },
   {
@@ -3892,6 +4405,7 @@ export const spotifySongs: Song[] = [
     title: "Marajà",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738fcc930f4d7635f6bc36457e",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/6cFnHCs958DhNqcwOOBaDW" },
   },
   {
@@ -3899,6 +4413,7 @@ export const spotifySongs: Song[] = [
     title: "MARIJUANA",
     artist: "Rilès",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737d9be9e69a5cf98199d17b37",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/33Om1hVbO2fvyERdp7CBO8" },
   },
   {
@@ -3906,6 +4421,7 @@ export const spotifySongs: Song[] = [
     title: "Marvin Gaye",
     artist: "Charlie Puth",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7bd365fb962fb7882a81d24",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/6ukMqDxnOPOgoHdak7Kyp3" },
   },
   {
@@ -3913,6 +4429,7 @@ export const spotifySongs: Song[] = [
     title: "Marylou",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733954001ba6f75f173f26dce3",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/0jmlr4s46HBohH95A6O5O0" },
   },
   {
@@ -3920,6 +4437,7 @@ export const spotifySongs: Song[] = [
     title: "Mask Off",
     artist: "Future",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e0b64c8be3c4e804abcb2696",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0VgkVdmE4gld66l8iyGjgx" },
   },
   {
@@ -3927,6 +4445,7 @@ export const spotifySongs: Song[] = [
     title: "Me Llaman Calle",
     artist: "Manu Chao",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e37f9a3fdedc3d7dc2c49b26",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/4EMJ0OvlQ0AeYx9Y72QiP4" },
   },
   {
@@ -3934,6 +4453,7 @@ export const spotifySongs: Song[] = [
     title: "Me Mueve el Aire",
     artist: "Las Migas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f9635798f452bcd625e39e67",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/1EPI0COW5WeoIMvkrrsnlU" },
   },
   {
@@ -3941,6 +4461,7 @@ export const spotifySongs: Song[] = [
     title: "Me So' Mbriacato",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736b58cd81f400b7761f8e5a8c",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/4wb3UG3WkhrvjkjhlBn7dQ" },
   },
   {
@@ -3948,6 +4469,7 @@ export const spotifySongs: Song[] = [
     title: "Memories",
     artist: "Maroon 5",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b8c0135a218de2d10a8435f5",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/2b8fOow8UzyDFAE27YhOZM" },
   },
   {
@@ -3955,6 +4477,7 @@ export const spotifySongs: Song[] = [
     title: "Merdman",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27302ce86c4d3693c4874beebf8",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/0YcucnoEbI3vLFcTy4eRXg" },
   },
   {
@@ -3962,6 +4485,7 @@ export const spotifySongs: Song[] = [
     title: "Mi Amor",
     artist: "Cloonee, Wade",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cac2eaa294a8f2663bebfc61",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6U7DCvIA93YYzyFYwmiIIe" },
   },
   {
@@ -3969,6 +4493,7 @@ export const spotifySongs: Song[] = [
     title: "Mi Piaci",
     artist: "Alex Britti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731a06e328323753a167071f25",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/1W12KKTnQZobUIncFDxZEM" },
   },
   {
@@ -3976,6 +4501,7 @@ export const spotifySongs: Song[] = [
     title: "Mi sono innamorato di te",
     artist: "Luigi Tenco",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27376f405676cd44d423eba6eef",
+    year: 1962,
     links: { spotify: "https://open.spotify.com/track/4fwR5b66ud3xUxPEUSID8q" },
   },
   {
@@ -3983,6 +4509,7 @@ export const spotifySongs: Song[] = [
     title: "Michelle",
     artist: "The Beatles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ed801e58a9ababdea6ac7ce4",
+    year: 1965,
     links: { spotify: "https://open.spotify.com/track/5By7Pzgl6TMuVJG168VWzS" },
   },
   {
@@ -3990,6 +4517,7 @@ export const spotifySongs: Song[] = [
     title: "Migrazione Generale Dalle Campagne Alle Città",
     artist: "Lucio Corsi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736179717f4755921f4a5de1e4",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/4ajr5Sw1lQ4HmD0eR7EtS0" },
   },
   {
@@ -3997,6 +4525,7 @@ export const spotifySongs: Song[] = [
     title: "MILLE",
     artist: "Fedez, Achille Lauro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379176f38a96c9a1a014538b7",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6qdMhG7pRFi0csRlFGvLE4" },
   },
   {
@@ -4004,6 +4533,7 @@ export const spotifySongs: Song[] = [
     title: "Minnie The Moocher",
     artist: "Brothers Moving",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27313e8308b63ffbb082e85bb01",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/6kIm6NejP3hxeccPGTr1NY" },
   },
   {
@@ -4011,6 +4541,7 @@ export const spotifySongs: Song[] = [
     title: "Minor Swing",
     artist: "Django Reinhardt, Stéphane Grappelli, Quintette du Hot Club de France",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27349526c468869c78eaad4d250",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/0NDjQezJaEC1KX9TfwEfzf" },
   },
   {
@@ -4018,6 +4549,7 @@ export const spotifySongs: Song[] = [
     title: "Mio Cristo Piange Diamanti",
     artist: "ROSALÍA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27393ee2e2f2dfb7de9befcc164",
+    year: 2025,
     links: { spotify: "https://open.spotify.com/track/0hVZnH3f3xmudcfCFLdw1V" },
   },
   {
@@ -4025,6 +4557,7 @@ export const spotifySongs: Song[] = [
     title: "Mio fratello",
     artist: "Biagio Antonacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732ceceb038fc9be4a6d56a139",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/2LFlAvKPh9qD2kItFvqH75" },
   },
   {
@@ -4032,6 +4565,7 @@ export const spotifySongs: Song[] = [
     title: "Miopia",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731654abae086466e12fe944d9",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4gsA2p1KSEU4JuHT3a4Q5Z" },
   },
   {
@@ -4039,6 +4573,7 @@ export const spotifySongs: Song[] = [
     title: "Misunderstood",
     artist: "Dream Theater",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27300a66b6001a5d898c7004de4",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/0rtZDAM62FpqCb0Srj1jD9" },
   },
   {
@@ -4046,6 +4581,7 @@ export const spotifySongs: Song[] = [
     title: "Mon Amour",
     artist: "Annalisa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e59dc7fd5dced598b767f458",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/4qx89c79cx9Q1DvClaLTOZ" },
   },
   {
@@ -4053,6 +4589,7 @@ export const spotifySongs: Song[] = [
     title: "Money",
     artist: "Bill Wurtz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739f8386d6a56509c3b2b44ead",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4jEbwvqgEXhJwZ6wKOvJ6U" },
   },
   {
@@ -4060,6 +4597,7 @@ export const spotifySongs: Song[] = [
     title: "Monopoli",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ab2d601177caa3074c7d4a2b",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0vjEvTiqbbKXlTAuG0pgqT" },
   },
   {
@@ -4067,6 +4605,7 @@ export const spotifySongs: Song[] = [
     title: "MONTERO (Call Me By Your Name)",
     artist: "Lil Nas X",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ddb9cf14094fa5b3f8683b14",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3BZEcbdtXQSo7OrvKRJ6mb" },
   },
   {
@@ -4074,6 +4613,7 @@ export const spotifySongs: Song[] = [
     title: "Mood",
     artist: "24kGoldn",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27360036f58bbb4b25a7a6f2712",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6FuGJB290AQMAHTfjOYVaK" },
   },
   {
@@ -4081,6 +4621,7 @@ export const spotifySongs: Song[] = [
     title: "Movement",
     artist: "Hozier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273299e8e9983e2b0455e5e8505",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0SFq19lgG4qbQAZaNZ3xhO" },
   },
   {
@@ -4088,6 +4629,7 @@ export const spotifySongs: Song[] = [
     title: "Movin' On",
     artist: "Jonathan McReynolds, Mali Music",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734c2e20f8f5a86564cb03f138",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4qduSkpBMLjxLseOLN28kv" },
   },
   {
@@ -4095,6 +4637,7 @@ export const spotifySongs: Song[] = [
     title: "Ms. Jackson",
     artist: "Party Pupils",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cd8f316e6b7ab04f670b9fc7",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0uIbS3hBnqjJ9cVG0XmMHr" },
   },
   {
@@ -4102,6 +4645,7 @@ export const spotifySongs: Song[] = [
     title: "Mustang Nismo",
     artist: "Brian Tyler",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738145bb6e2611f387b716dc40",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/4nVd6ujtEH2XbtTxU7IG8E" },
   },
   {
@@ -4109,6 +4653,7 @@ export const spotifySongs: Song[] = [
     title: "My All",
     artist: "Mariah Carey",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27398ed501c6a838b2244ebaf75",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/3RSpK5Y0y5tl25qvssrwJ6" },
   },
   {
@@ -4116,6 +4661,7 @@ export const spotifySongs: Song[] = [
     title: "My Baby",
     artist: "Meresha",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b4a5de731f5cb127e8c7bbc",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1Hp29CEyLy4thm5JjEo7CK" },
   },
   {
@@ -4123,6 +4669,7 @@ export const spotifySongs: Song[] = [
     title: "My House Is Your Home",
     artist: "Jack Garratt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ee053a3589ea64a4a4d00dc8",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7oQggEcRPh7XxPSGjogYr2" },
   },
   {
@@ -4130,6 +4677,7 @@ export const spotifySongs: Song[] = [
     title: "My Way",
     artist: "Frank Sinatra",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b81d66d1416afa139d12767b",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/2YkIDPL5lGhRhomCq4S2RO" },
   },
   {
@@ -4137,6 +4685,7 @@ export const spotifySongs: Song[] = [
     title: "Mystic Woman",
     artist: "Ian Elliott",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cf509858800de3aaf6b460d8",
+    year: 2026,
     links: { spotify: "https://open.spotify.com/track/7MU3McCKbX1IPnKJnLgLcD" },
   },
   {
@@ -4144,6 +4693,7 @@ export const spotifySongs: Song[] = [
     title: "Na Na Na",
     artist: "Holden",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736c1efac8ffc024c62872773b",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3arKLum0IMREFOSq3OkpaF" },
   },
   {
@@ -4151,6 +4701,7 @@ export const spotifySongs: Song[] = [
     title: "Nella Mia Ora Di Libertà",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731503d23da65136af7de53505",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/5PWWE1zru2DTIQBUUjG1F5" },
   },
   {
@@ -4158,6 +4709,7 @@ export const spotifySongs: Song[] = [
     title: "Nessuna è come te",
     artist: "Sergio Cammariere",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273feaba5b07d20619fd159fd32",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/16Dqd4ix2TvVA7rB8Rzwmq" },
   },
   {
@@ -4165,6 +4717,7 @@ export const spotifySongs: Song[] = [
     title: "Never Know",
     artist: "Jack Johnson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273628dba01c669d89586967dc5",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/2BnTUxzWAcv0qerzESIunY" },
   },
   {
@@ -4172,6 +4725,7 @@ export const spotifySongs: Song[] = [
     title: "NEVER MET!",
     artist: "CMTEN",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a7951248f798d2099d43ead6",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4iMfYGWDKKuP79CAqsKd3n" },
   },
   {
@@ -4179,6 +4733,7 @@ export const spotifySongs: Song[] = [
     title: "Never Tear Us Apart",
     artist: "Paloma Faith",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c4eb6c2cb720f3257c614388",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/2NIeqDoYuMWaX8KtAz4C5o" },
   },
   {
@@ -4186,6 +4741,7 @@ export const spotifySongs: Song[] = [
     title: "NEW DANCE",
     artist: "AYYBO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e1a5540a8cffe57194697fd4",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/0NCwA5clLTjO0xW6YkbQmq" },
   },
   {
@@ -4193,6 +4749,7 @@ export const spotifySongs: Song[] = [
     title: "Night and Day",
     artist: "Cole Porter",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736c1533dd9886721e7681dbed",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/23ObhfKJdLVJstWbIkkuwT" },
   },
   {
@@ -4200,6 +4757,7 @@ export const spotifySongs: Song[] = [
     title: "Nobody Knows You When You're Down and Out",
     artist: "Eric Clapton",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273195d2c01c72fc37c5bd58019",
+    year: 1992,
     links: { spotify: "https://open.spotify.com/track/7sVxm1I8G8tTznXeirDEXm" },
   },
   {
@@ -4208,6 +4766,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b071f86f2b752f9cf2532a98",
+    year: 1965,
     links: { spotify: "https://open.spotify.com/track/2MMm5gCJ7z9HgYGcDcuwdb" },
   },
   {
@@ -4215,6 +4774,7 @@ export const spotifySongs: Song[] = [
     title: "Non mi va",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733c38c908ac3008cbf314d51c",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1i5KZuk9052PeWBEOgTbkG" },
   },
   {
@@ -4222,6 +4782,7 @@ export const spotifySongs: Song[] = [
     title: "Not Like Us",
     artist: "Kendrick Lamar",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731ea0c62b2339cbf493a999ad",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/6AI3ezQ4o3HUoP6Dhudph3" },
   },
   {
@@ -4229,6 +4790,7 @@ export const spotifySongs: Song[] = [
     title: "Not Us",
     artist: "Mike Äpt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f24f1f336b93cbe4a57a0c57",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/3q2mJjL2n8urHIUi4jcCSl" },
   },
   {
@@ -4236,6 +4798,7 @@ export const spotifySongs: Song[] = [
     title: "Nothing",
     artist: "Bruno Major",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e321a69d7454d9365c667187",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/1lORkxEMmsCZqhoxcmk3A3" },
   },
   {
@@ -4243,6 +4806,7 @@ export const spotifySongs: Song[] = [
     title: "Nothing Breaks Like a Heart",
     artist: "Mark Ronson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f85f932a8b7211903c51cb3f",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/27rdGxbavYJeBphck5MZAF" },
   },
   {
@@ -4250,6 +4814,7 @@ export const spotifySongs: Song[] = [
     title: "Nulla Accade",
     artist: "Marracash, Guè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fcdb056319eddf6f6f4b20da",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/6uqeN1m6DXG0yOQ4WMNndB" },
   },
   {
@@ -4257,6 +4822,7 @@ export const spotifySongs: Song[] = [
     title: "NUOVO RANGE",
     artist: "Rkomi, Junior K",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27339d31d6a9fc1f9301b5db850",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3fxSSvnUS7ALxmhOckb7t6" },
   },
   {
@@ -4264,6 +4830,7 @@ export const spotifySongs: Song[] = [
     title: "Nuttööö",
     artist: "SSIO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27357d7641872655e70777d22ab",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/59BhNnVBBXKhUjONX7jlrk" },
   },
   {
@@ -4271,6 +4838,7 @@ export const spotifySongs: Song[] = [
     title: "O Frigideiro",
     artist: "Bruno Lauzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732c99b1347fe8755f626a02d9",
+    year: 1975,
     links: { spotify: "https://open.spotify.com/track/5r8mFgVQciAnELz9WrrUOw" },
   },
   {
@@ -4278,6 +4846,7 @@ export const spotifySongs: Song[] = [
     title: "O surdato nnammurato",
     artist: "Roberto Murolo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27347504192f4c33340586ada6e",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/70kJbkX3SBgvVh4TL857Ci" },
   },
   {
@@ -4285,6 +4854,7 @@ export const spotifySongs: Song[] = [
     title: "Obscura",
     artist: "Methyl Ethel",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273bad703c0971526ba587214bf",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7BHeg9Pjk04paOMn3qx22c" },
   },
   {
@@ -4292,6 +4862,7 @@ export const spotifySongs: Song[] = [
     title: "Occhi Lucidi",
     artist: "Leon Faun, Duffy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273945f7bd76283278311c3ac80",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/7dYgzrhdIIjTQTvUjlrWxa" },
   },
   {
@@ -4299,6 +4870,7 @@ export const spotifySongs: Song[] = [
     title: "Occhi rossi",
     artist: "Coez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738f05338b112b25d40aad90c6",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5bvsNn7f4m0MTCuUQkMZGY" },
   },
   {
@@ -4306,6 +4878,7 @@ export const spotifySongs: Song[] = [
     title: "Odessa",
     artist: "Caribou",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27339c7302c04f8d06f60e14403",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/305tGJy16yTTFe6Ya9nMKJ" },
   },
   {
@@ -4313,6 +4886,7 @@ export const spotifySongs: Song[] = [
     title: "Off My Face",
     artist: "Justin Bieber",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736036cfd2a718036fc523855f",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7HsGR3H6eeZm7C0BGqLyWC" },
   },
   {
@@ -4320,6 +4894,7 @@ export const spotifySongs: Song[] = [
     title: "Oggi Sono Io",
     artist: "Alex Britti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731a06e328323753a167071f25",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/4EsU1itX1LEPptKwjhGbVl" },
   },
   {
@@ -4327,6 +4902,7 @@ export const spotifySongs: Song[] = [
     title: "Ogni pensiero vola",
     artist: "Venerus, MACE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27322a99e5c891c9f9ccafbfcd2",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1gwcz7W3VgOYKlIdTykPhy" },
   },
   {
@@ -4334,6 +4910,7 @@ export const spotifySongs: Song[] = [
     title: "OKAY?!",
     artist: "Nitro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27378b7eaa4a5e69e0e41413cae",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5dIkDibfzme6eZddAOQQqZ" },
   },
   {
@@ -4341,6 +4918,7 @@ export const spotifySongs: Song[] = [
     title: "Olha A Explosão",
     artist: "MC Kevinho",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733452d31d2ef8ce06f151a028",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/6Q4foUefrAyCt8VxJFML56" },
   },
   {
@@ -4348,6 +4926,7 @@ export const spotifySongs: Song[] = [
     title: "Once upon a time in the West",
     artist: "Ennio Morricone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273398658d9f6209b34e02bd021",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/0wHB9UpPrFakzU1XalVp1a" },
   },
   {
@@ -4355,6 +4934,7 @@ export const spotifySongs: Song[] = [
     title: "Only The Strong",
     artist: "Laura Marling",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27307339e6ebac15c37f546df5e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/2WdAAR5lx5VDvEcLxOtfNk" },
   },
   {
@@ -4362,6 +4942,7 @@ export const spotifySongs: Song[] = [
     title: "Only Wanna Be with You",
     artist: "Samm Henshaw",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737a8d74c4b0e526cfae66dbb4",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/6ppFSsCpKpOONCuw9hxM3p" },
   },
   {
@@ -4369,6 +4950,7 @@ export const spotifySongs: Song[] = [
     title: "Ovunque proteggi",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730959330851e5fc7c97796995",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/2eqKaF9zznD2WWrgAeoq8n" },
   },
   {
@@ -4376,6 +4958,7 @@ export const spotifySongs: Song[] = [
     title: "Oye Como Va",
     artist: "Santana",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273283cccda1ee115b8f44f1c8b",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/5u6y4u5EgDv0peILf60H5t" },
   },
   {
@@ -4384,6 +4967,7 @@ export const spotifySongs: Song[] = [
     artist: "Karl Jenkins",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c16ca599030bb99ea236fcab",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/1Uf9cT6BIRr333uIZ64H0T" },
   },
   {
@@ -4391,6 +4975,7 @@ export const spotifySongs: Song[] = [
     title: "Panda",
     artist: "Desiigner",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c598ea6ec584cafb062cafdf",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5YEOzOojehCqxGQCcQiyR4" },
   },
   {
@@ -4398,6 +4983,7 @@ export const spotifySongs: Song[] = [
     title: "Panico",
     artist: "Fabri Fibra, Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731e9f532e13a09ec51a858e38",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/0ecor3g04uErdVjzEvozKE" },
   },
   {
@@ -4405,6 +4991,7 @@ export const spotifySongs: Song[] = [
     title: "Paolo",
     artist: "Brunori Sas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736b40a0bc52c9348484fd8044",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/7sEhyIgcxOIQnagTNqphNP" },
   },
   {
@@ -4412,6 +4999,7 @@ export const spotifySongs: Song[] = [
     title: "Papaya",
     artist: "Yiuliusly",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aa5a02d33e108e7e35d22468",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/30Jf4qTyfEJWDZj5VgIti5" },
   },
   {
@@ -4419,6 +5007,7 @@ export const spotifySongs: Song[] = [
     title: "Paradise",
     artist: "MEDUZA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b6567be9f8b996a2b5f9b7fa",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6ft4hAq6yde8jPZY2i5zLr" },
   },
   {
@@ -4426,6 +5015,7 @@ export const spotifySongs: Song[] = [
     title: "PARADISO VS. INFERNO (INTERLUDE)",
     artist: "Rkomi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27339d31d6a9fc1f9301b5db850",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1hNmQc9kFq67hSxA92ODcE" },
   },
   {
@@ -4433,6 +5023,7 @@ export const spotifySongs: Song[] = [
     title: "Paranoia Mia",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a2bd90b275df83e999affafd",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4uiVtLME2Rm0XGRK6M2MLV" },
   },
   {
@@ -4440,6 +5031,7 @@ export const spotifySongs: Song[] = [
     title: "Pasilda",
     artist: "DJ Wady, MoonDark",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27379d5e680c7d9e0796be02fce",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/31mI2mz9AdOr8YsnAdOZyR" },
   },
   {
@@ -4447,6 +5039,7 @@ export const spotifySongs: Song[] = [
     title: "Passione",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273edaf74784b916b6b3fe3d26e",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/30d0sW0NXcd7imhGASllCo" },
   },
   {
@@ -4454,6 +5047,7 @@ export const spotifySongs: Song[] = [
     title: "Patlamaya Devam",
     artist: "Isyan Tetick",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d149f7774e9eb193b729d0ba",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4UG4Jn8OUGdoArS1AC4GKG" },
   },
   {
@@ -4461,6 +5055,7 @@ export const spotifySongs: Song[] = [
     title: "Pazza Musica",
     artist: "Marco Mengoni, Elodie",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739a4203b19388f6af0b92501c",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/4pd5GcsNHIBY5AHhSV5Qh3" },
   },
   {
@@ -4468,6 +5063,7 @@ export const spotifySongs: Song[] = [
     title: "Peaches",
     artist: "Justin Bieber, GIVĒON",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6f407c7f3a0ec98845e4431",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4iJyoBOLtHqaGxP12qzhQI" },
   },
   {
@@ -4475,6 +5071,7 @@ export const spotifySongs: Song[] = [
     title: "Per due che come noi",
     artist: "Brunori Sas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27377adb00b7e83d11393270992",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6JXlccLNpK7F2XFwHuMy23" },
   },
   {
@@ -4482,6 +5079,7 @@ export const spotifySongs: Song[] = [
     title: "Per tutti quelli che",
     artist: "Izi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f0ff57a0f009979140cb49ae",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0C52SK8m9VLPddzV79A45h" },
   },
   {
@@ -4489,6 +5087,7 @@ export const spotifySongs: Song[] = [
     title: "Per uno come me",
     artist: "Negramaro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b18c3a9c71f00acc66abd54c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0XRxwt5AoIFG0cIfRnb2f2" },
   },
   {
@@ -4496,6 +5095,7 @@ export const spotifySongs: Song[] = [
     title: "PERDONAMI",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b65aa14e9c2e09c4b9a824ac",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/2AxImEQaZo7FlITZ59LebB" },
   },
   {
@@ -4503,6 +5103,7 @@ export const spotifySongs: Song[] = [
     title: "Pesetas",
     artist: "Rilès",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273add60dc79474eee099df30d9",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0Ei1aBiIELwXmUcIZDETOi" },
   },
   {
@@ -4510,6 +5111,7 @@ export const spotifySongs: Song[] = [
     title: "Pessima",
     artist: "Achille Lauro",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273df30180f51aa900eb153bcae",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/15tuplVNNcoEdZqjO9Xrvi" },
   },
   {
@@ -4517,6 +5119,7 @@ export const spotifySongs: Song[] = [
     title: "Pezzi di vetro",
     artist: "Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27361f0a08db269d1d99e913a58",
+    year: 1975,
     links: { spotify: "https://open.spotify.com/track/3sSi7rkknbzSNc02yac6Tz" },
   },
   {
@@ -4524,6 +5127,7 @@ export const spotifySongs: Song[] = [
     title: "Phi",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734dc927414901257d4f182482",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0E5bmLyxyiHsmc82D5gsiY" },
   },
   {
@@ -4532,6 +5136,7 @@ export const spotifySongs: Song[] = [
     artist: "Wolfgang Amadeus Mozart",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e4c943e5951bc50434dc8e8c",
+    year: 1987,
     links: { spotify: "https://open.spotify.com/track/5WQ0WJJihKicN8eax9mtkX" },
   },
   {
@@ -4539,6 +5144,7 @@ export const spotifySongs: Song[] = [
     title: "Piano Man",
     artist: "Billy Joel",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aff4aef671b2510be7c115b3",
+    year: 1973,
     links: { spotify: "https://open.spotify.com/track/70C4NyhjD5OZUMzvWZ3njJ" },
   },
   {
@@ -4547,6 +5153,7 @@ export const spotifySongs: Song[] = [
     artist: "Franz Schubert",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27367f53133540a4b189ee5655e",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/1Cze6qOgsF59CJhF2qWEMQ" },
   },
   {
@@ -4555,6 +5162,7 @@ export const spotifySongs: Song[] = [
     artist: "Wolfgang Amadeus Mozart",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f5a4a791fb6ad51b3b2b8c94",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/56IjDZaIBAPEMpILBVGiMW" },
   },
   {
@@ -4563,6 +5171,7 @@ export const spotifySongs: Song[] = [
     artist: "Franz Schubert",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273eb1916b76be9ef728cbca734",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/126F4IqzqgRSArBiO8yEuK" },
   },
   {
@@ -4570,6 +5179,7 @@ export const spotifySongs: Song[] = [
     title: "Piazza Grande",
     artist: "Lucio Dalla, Rosalino Cellamare",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d5ac3fc935856bec462e7695",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/25ebyn9QQcDwkvxOpPWbA2" },
   },
   {
@@ -4577,6 +5187,7 @@ export const spotifySongs: Song[] = [
     title: "Play Date",
     artist: "Melanie Martinez",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733899712512f50a8d9e01e951",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/4DpNNXFMMxQEKl7r0ykkWA" },
   },
   {
@@ -4584,6 +5195,7 @@ export const spotifySongs: Song[] = [
     title: "Playing Love",
     artist: "Ennio Morricone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b03cdbbce28f82e5ba64f548",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/6wQl9On2Mb6zNyyq7Q5LEd" },
   },
   {
@@ -4591,6 +5203,7 @@ export const spotifySongs: Song[] = [
     title: "Poetica",
     artist: "Cesare Cremonini",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731db10a63f5f8d418cdebf572",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3JGpVV4kq6S0hjQ8VzHeSI" },
   },
   {
@@ -4598,6 +5211,7 @@ export const spotifySongs: Song[] = [
     title: "POLKA 3",
     artist: "Rosa Chemical, Bdope",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27338f921e40e0d3ad0a7207dfd",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/2vAyFmd5LfkSCIHA8uuya1" },
   },
   {
@@ -4605,6 +5219,7 @@ export const spotifySongs: Song[] = [
     title: "Pony",
     artist: "Party Pupils",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27394668d87d89d84697106a8b6",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/6BJh4SZyRwVHgeKIPfykbQ" },
   },
   {
@@ -4612,6 +5227,7 @@ export const spotifySongs: Song[] = [
     title: "POPSTAR",
     artist: "DJ Khaled",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273efaecb4b9cbae7c120d14617",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6EDO9iiTtwNv6waLwa1UUq" },
   },
   {
@@ -4619,6 +5235,7 @@ export const spotifySongs: Song[] = [
     title: "Postcards",
     artist: "James Blunt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fcf5fe7c303170c384855fe2",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/0nS5Sgk5fMGT8dUC1L7OvG" },
   },
   {
@@ -4626,6 +5243,7 @@ export const spotifySongs: Song[] = [
     title: "Praise God",
     artist: "Kanye West",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cad190f1a73c024e5a40dddd",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0WSEq9Ko4kFPt8yo3ICd6T" },
   },
   {
@@ -4634,6 +5252,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273da673657374e88d973dad080",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/1MHkrzApuTiaDNJqY4m9IW" },
   },
   {
@@ -4641,6 +5260,7 @@ export const spotifySongs: Song[] = [
     title: "Pretty Little Lies",
     artist: "Andy Powell",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b1e239c8706d11f52392cdaf",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/2VLCyzJJ55LK5pYmRaP2to" },
   },
   {
@@ -4648,10 +5268,11 @@ export const spotifySongs: Song[] = [
     title: "Prima di andare via",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273905c3d1016c2288873fa9b4a",
+    year: 2003,
     links: {
       spotify: "https://open.spotify.com/track/00b7i3sXa6hlR2ZIDwyNLN",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/5cOGmTFBweaupO4fLiKrf3", artist: "Neri Per Caso", albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b" },
+        { url: "https://open.spotify.com/track/5cOGmTFBweaupO4fLiKrf3", artist: "Neri Per Caso", year: 2008, albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b" },
       ],
     },
   },
@@ -4660,6 +5281,7 @@ export const spotifySongs: Song[] = [
     title: "Propaganda",
     artist: "Fabri Fibra, Colapesce, Dimartino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b39f1cccb454cd361da50fdb",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/6t0ovtgnoAq9orbnisSzZp" },
   },
   {
@@ -4667,6 +5289,7 @@ export const spotifySongs: Song[] = [
     title: "Pubblicità progresso",
     artist: "Mazzariello",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273540608ca4ebebae97af7b900",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/4jNCaFgGh7gsRm6tV360WH" },
   },
   {
@@ -4674,6 +5297,7 @@ export const spotifySongs: Song[] = [
     title: "Pump It",
     artist: "Black Eyed Peas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c6710b4a52539506c30e5354",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/2ygMBIctKIAfbEBcT9065L" },
   },
   {
@@ -4681,6 +5305,7 @@ export const spotifySongs: Song[] = [
     title: "Pump It Up",
     artist: "Joe Budden",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27346efda13942b94aea34382cf",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/7tDbbfzB1d52lWP8rq8zRZ" },
   },
   {
@@ -4688,6 +5313,7 @@ export const spotifySongs: Song[] = [
     title: "Punk Road",
     artist: "NOIA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27334e16958324376c036c9ed85",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/2ZSYzb2JdR1Qpc9glkvy5U" },
   },
   {
@@ -4695,6 +5321,7 @@ export const spotifySongs: Song[] = [
     title: "Putesse Essere Allero",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b68007d9bbb960d376a06c89",
+    year: 1979,
     links: { spotify: "https://open.spotify.com/track/7z3HxE2C9hH9ZhjGpLALej" },
   },
   {
@@ -4702,6 +5329,7 @@ export const spotifySongs: Song[] = [
     title: "Quando",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738b0f679bbe74bfee96dd5a36",
+    year: 1991,
     links: { spotify: "https://open.spotify.com/track/2wcfoB1fYTDaLdV4RqA42H" },
   },
   {
@@ -4709,6 +5337,7 @@ export const spotifySongs: Song[] = [
     title: "Quando ci sei",
     artist: "Rareș",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a934941a7276c5b72375b88e",
+    year: 2026,
     links: { spotify: "https://open.spotify.com/track/09S5y69XOx3mex3xgb8Aj1" },
   },
   {
@@ -4716,6 +5345,7 @@ export const spotifySongs: Song[] = [
     title: "Quando sorridi",
     artist: "Neffa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273eafee1176f8bd2acfac815ee",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/76PxEsNFsOuQ2rM0dxGR9n" },
   },
   {
@@ -4723,6 +5353,7 @@ export const spotifySongs: Song[] = [
     title: "Quando, Quando, Quando",
     artist: "Tony Renis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a9c3de2c52fc2c5cb5f29b25",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/5NVKrGAZjusEqZJ7onT9gO" },
   },
   {
@@ -4730,6 +5361,7 @@ export const spotifySongs: Song[] = [
     title: "Quanto ti vorrei",
     artist: "chiello",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a9df9868bd1b0cdcf560cfe",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1AC9rHDPQC3QoC3iYPeSEI" },
   },
   {
@@ -4737,6 +5369,7 @@ export const spotifySongs: Song[] = [
     title: "Quattro amici",
     artist: "Gino Paoli",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738884c46c54b5cbdf139cf373",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/4LukerPbrFlSlFQaA0kFs3" },
   },
   {
@@ -4744,6 +5377,7 @@ export const spotifySongs: Song[] = [
     title: "Quattro cani",
     artist: "Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27361f0a08db269d1d99e913a58",
+    year: 1975,
     links: { spotify: "https://open.spotify.com/track/0EINWVcF2RSNeDMKohUdjF" },
   },
   {
@@ -4751,6 +5385,7 @@ export const spotifySongs: Song[] = [
     title: "Quelli Che Restano",
     artist: "Elisa, Francesco De Gregori",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fff9bc2822b4dc258861b37d",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0KBB3rqNCRUyb2j4Q3wg3Q" },
   },
   {
@@ -4758,6 +5393,7 @@ export const spotifySongs: Song[] = [
     title: "Quello Che Intendevi",
     artist: "Jovanotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b21b645699e2d1e56dcb4f2",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7JcafiMnlotFAowA1MYRUk" },
   },
   {
@@ -4765,6 +5401,7 @@ export const spotifySongs: Song[] = [
     title: "Quello che non ho",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273275b01c7a1caaf225a07c565",
+    year: 1981,
     links: { spotify: "https://open.spotify.com/track/2aevpdnesd9kO4tZlEcZKs" },
   },
   {
@@ -4772,6 +5409,7 @@ export const spotifySongs: Song[] = [
     title: "Questo piccolo grande amore",
     artist: "Claudio Baglioni",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737e81d336ae5e0394ed5b5604",
+    year: 1972,
     links: { spotify: "https://open.spotify.com/track/0P55M408LsT6E8c7fHrPBa" },
   },
   {
@@ -4779,6 +5417,7 @@ export const spotifySongs: Song[] = [
     title: "Quizás, Quizás",
     artist: "Buena Vista Social Club",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a4d2e132b2682b1f73ada1c7",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/78JVMoMUJw2zyeswgHKfrP" },
   },
   {
@@ -4786,6 +5425,7 @@ export const spotifySongs: Song[] = [
     title: "Rain",
     artist: "The Teskey Brothers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f121b00d5a55a5ec6be574fb",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6yCmGgRK5SqR8QHrWxooqh" },
   },
   {
@@ -4793,6 +5433,7 @@ export const spotifySongs: Song[] = [
     title: "Rapper's Delight",
     artist: "The Sugarhill Gang",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732cec548cc774c17e78933481",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/4IUVLtJEf5k9PIXXTlZy9L" },
   },
   {
@@ -4800,6 +5441,7 @@ export const spotifySongs: Song[] = [
     title: "Ratlin' Bog",
     artist: "Brigham Phillips, John Herberman",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273748d89dad8c0037516f7f4bd",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/0EaYaOmZoEIjUWzZM8YJyn" },
   },
   {
@@ -4807,6 +5449,7 @@ export const spotifySongs: Song[] = [
     title: "Reality And Fantasy",
     artist: "Raphael Gualazzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e0d19132fecff3a18e1a2a0a",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/4mmca2Uijyz34GDPwyrJH9" },
   },
   {
@@ -4814,6 +5457,7 @@ export const spotifySongs: Song[] = [
     title: "Reckless",
     artist: "Healy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a75266493210089601507b25",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3eB4rqVk93cQpxXUtdZr5K" },
   },
   {
@@ -4821,6 +5465,7 @@ export const spotifySongs: Song[] = [
     title: "Redbone",
     artist: "Childish Gambino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f78c98bbf2b3c9e2a764203e",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0wXuerDYiBnERgIpbb3JBR" },
   },
   {
@@ -4828,6 +5473,7 @@ export const spotifySongs: Song[] = [
     title: "Redemption Song",
     artist: "Bob Marley & The Wailers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273413a6c2c7b296d98171e5e21",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/7MKcM6TfaGKQVFfhstCbOw" },
   },
   {
@@ -4835,6 +5481,7 @@ export const spotifySongs: Song[] = [
     title: "Rhythm Of Love",
     artist: "Plain White T's",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27382553135f696b573f09a9a7d",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/6MDTpYxPFL0wtFd0pjfKws" },
   },
   {
@@ -4842,6 +5489,7 @@ export const spotifySongs: Song[] = [
     title: "Rich Men North of Richmond",
     artist: "Oliver Anthony Music",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f842f028c8716c62bbd7c57a",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/78Du4CMFgnhdlG33gblkiP" },
   },
   {
@@ -4849,6 +5497,7 @@ export const spotifySongs: Song[] = [
     title: "Riptide",
     artist: "Vance Joy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d3ce97395ff522b0d70c1094",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/7yq4Qj7cqayVTp3FF9CWbm" },
   },
   {
@@ -4856,6 +5505,7 @@ export const spotifySongs: Song[] = [
     title: "Rose viola",
     artist: "Ghemon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27396f27ca3779f6169c3a25385",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/4MDRt2vfYMkXCLXAVgnWJk" },
   },
   {
@@ -4863,6 +5513,7 @@ export const spotifySongs: Song[] = [
     title: "Roses",
     artist: "Ukweli, Karun",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739ba74683d4880d4afe22f8ba",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5P5Y9Lc6Sm1AJ6ggzB0VrA" },
   },
   {
@@ -4870,6 +5521,7 @@ export const spotifySongs: Song[] = [
     title: "Runaway Baby",
     artist: "Bruno Mars",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737039c1c841fc3dfa2ad8a0d8",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/5MMLS3xm12D7N26xlfFApr" },
   },
   {
@@ -4877,6 +5529,7 @@ export const spotifySongs: Song[] = [
     title: "Russell Crowe",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273beca846333b89312c1d971e8",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/0ufbpC56vK4nbSRAdiDbn1" },
   },
   {
@@ -4884,6 +5537,7 @@ export const spotifySongs: Song[] = [
     title: "S'è sposata la mia zia",
     artist: "Duo bucolico",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a297a5c2473dce3f761e42cd",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/6UcxMU7lfUlwUadoyNqrB8" },
   },
   {
@@ -4891,6 +5545,7 @@ export const spotifySongs: Song[] = [
     title: "Sally",
     artist: "Vasco Rossi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273121902de4bc28e87685506ec",
+    year: 1996,
     links: { spotify: "https://open.spotify.com/track/4hJSzUREpdDo8uhgEflbHr" },
   },
   {
@@ -4899,6 +5554,7 @@ export const spotifySongs: Song[] = [
     artist: "Edward Elgar",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27334bd045ff6189c2a861a1e30",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/0P7UwPB9vL74bD6gzYaKIu" },
   },
   {
@@ -4906,6 +5562,7 @@ export const spotifySongs: Song[] = [
     title: "Samba",
     artist: "Taxi B",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735af51c5c71a9913a15c55780",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/2xZOxK1Emq85FfnJGVR21a" },
   },
   {
@@ -4913,6 +5570,7 @@ export const spotifySongs: Song[] = [
     title: "Sambassim",
     artist: "DJ Patife",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c9c31141ed6244ca84ad0555",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/0IP9U6sTH3BBbmczskyxvm" },
   },
   {
@@ -4920,6 +5578,7 @@ export const spotifySongs: Song[] = [
     title: "Same Love",
     artist: "Macklemore & Ryan Lewis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730dff053a2ffb550d25184999",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/5oLyUnHXzkgBzcEr73hiaC" },
   },
   {
@@ -4927,6 +5586,7 @@ export const spotifySongs: Song[] = [
     title: "San Giovanni",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733d7b69d232d3c9ac97e6b46d",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3Ai6pk40sx55M9cx0DQ5vR" },
   },
   {
@@ -4935,6 +5595,7 @@ export const spotifySongs: Song[] = [
     artist: "George Frideric Handel",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d402a56a6ea55af4119c2c89",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/1upQiytDIEZfl9ItruoXuC" },
   },
   {
@@ -4942,6 +5603,7 @@ export const spotifySongs: Song[] = [
     title: "Saturday Nights",
     artist: "Khalid",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c243500e164150d229750c91",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/7vGGAJBkHKxKtOnGjQduDV" },
   },
   {
@@ -4949,6 +5611,7 @@ export const spotifySongs: Song[] = [
     title: "Savage Daughter",
     artist: "Sarah Hester Ross",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fea21bce28214b1f9dc17211",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0dVnj3XPVTHfCvxpbIDOcx" },
   },
   {
@@ -4956,6 +5619,7 @@ export const spotifySongs: Song[] = [
     title: "SBORRA 2",
     artist: "FUCKYOURCLIQUE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c5355c8e71abdbe4e494bcb7",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/1tW0X9WTsU1Q01ZjjnkIvN" },
   },
   {
@@ -4963,6 +5627,7 @@ export const spotifySongs: Song[] = [
     title: "Scatterbrain",
     artist: "Emei",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ec9c3c43789f911722c31512",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/0LVdV9NG0y0ROxbYLpjbKc" },
   },
   {
@@ -4970,6 +5635,7 @@ export const spotifySongs: Song[] = [
     title: "Scrivile Scemo",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27399db4ee49d361f876e0a7f14",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/71r3UlkV7sWvUYjas5paqi" },
   },
   {
@@ -4977,6 +5643,7 @@ export const spotifySongs: Song[] = [
     title: "Se avessi saputo",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273df705f44b5ce6c720d9815b1",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0ofgKc30D8UwcU2xE0wOr8" },
   },
   {
@@ -4984,6 +5651,7 @@ export const spotifySongs: Song[] = [
     title: "Sentimento Pentimento",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348c3bde384983c4abf2fcf9d",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/6gwLtpIJ9xpgu37Nk0O7hy" },
   },
   {
@@ -4991,6 +5659,7 @@ export const spotifySongs: Song[] = [
     title: "Senza Di Me",
     artist: "Gemitaiz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273728e943dc9efdb0909f52ff7",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3xGD5KhnizETt7KQwxtUAc" },
   },
   {
@@ -4998,6 +5667,7 @@ export const spotifySongs: Song[] = [
     title: "Senza Dio",
     artist: "Marracash, Guè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fcdb056319eddf6f6f4b20da",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/4oASNavzBNZ5ocrthxc9mP" },
   },
   {
@@ -5005,6 +5675,7 @@ export const spotifySongs: Song[] = [
     title: "Senza fine",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731fd0ce0f51399eba7383620b",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/1IFbcoczDzFupWNW8zf6oi" },
   },
   {
@@ -5012,6 +5683,7 @@ export const spotifySongs: Song[] = [
     title: "September",
     artist: "Earth, Wind & Fire",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730faf2fc17446651865ce2282",
+    year: 1978,
     links: { spotify: "https://open.spotify.com/track/3kXoKlD84c6OmIcOLfrfEs" },
   },
   {
@@ -5019,6 +5691,7 @@ export const spotifySongs: Song[] = [
     title: "Serenata",
     artist: "Alfa, Yanomi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ac025b2e81564bbc71e57785",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/4NrGziEgimt0gpnhmjIVCW" },
   },
   {
@@ -5026,6 +5699,7 @@ export const spotifySongs: Song[] = [
     title: "SESSO E SAMBA",
     artist: "Tony Effe",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273638bb7621c3b50df1ef607ca",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/2rMhztfOqEt00j47vpCfKl" },
   },
   {
@@ -5033,6 +5707,7 @@ export const spotifySongs: Song[] = [
     title: "SESSO OCCASIONALE",
     artist: "Tananai",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dcb40d24910a8513988aa183",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/0Dz9zyx2w3zYtRK6yp3VKD" },
   },
   {
@@ -5040,6 +5715,7 @@ export const spotifySongs: Song[] = [
     title: "Sh-Boom",
     artist: "The Chords",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732b2b381797678c89db8603cf",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/6NjYEcZLw648J3TDddkmWg" },
   },
   {
@@ -5047,6 +5723,7 @@ export const spotifySongs: Song[] = [
     title: "Shape of You",
     artist: "Ed Sheeran",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3" },
   },
   {
@@ -5054,6 +5731,7 @@ export const spotifySongs: Song[] = [
     title: "Shop",
     artist: "Toby Fox",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ea8cf0b9b768290d74486656",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/4aMrd3aAnuVgGbwdmAQWY4" },
   },
   {
@@ -5061,6 +5739,7 @@ export const spotifySongs: Song[] = [
     title: "Si, ah",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e7546ed84b9c6941fe0a1879",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/4nS6mZBLYgtksYyXsuXgBw" },
   },
   {
@@ -5068,6 +5747,7 @@ export const spotifySongs: Song[] = [
     title: "Siamo Dei",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cbf339c6daf1226be09bbda0",
+    year: 1980,
     links: { spotify: "https://open.spotify.com/track/1GiJ9kRcnwAkDh9Tu5dOXY" },
   },
   {
@@ -5075,6 +5755,7 @@ export const spotifySongs: Song[] = [
     title: "Siamo Tuoi Amici",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d886a4d2788aacd7cf5de059",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/62dOfcv5mN457fQXBuo86H" },
   },
   {
@@ -5082,6 +5763,7 @@ export const spotifySongs: Song[] = [
     title: "Siamo uguali",
     artist: "Lorenzo Fragola",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a3fe852f2fa7ec47ce3db21",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/1E646EbKhR5pVWZGswXta8" },
   },
   {
@@ -5090,6 +5772,7 @@ export const spotifySongs: Song[] = [
     artist: "Johann Sebastian Bach",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b5ce31b09788ac1a47bbeb2b",
+    year: 1976,
     links: { spotify: "https://open.spotify.com/track/2zroUyG80xataKpq0JaYtX" },
   },
   {
@@ -5097,6 +5780,7 @@ export const spotifySongs: Song[] = [
     title: "Sign of the Times",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f8b8a9c71b2bd2f3019940b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5Ohxk2dO5COHF1krpoPigN" },
   },
   {
@@ -5104,6 +5788,7 @@ export const spotifySongs: Song[] = [
     title: "Signorina",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f31f464e722a735bf5b36e9e",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/7HmHoikgMIhN3VnVjdAPC1" },
   },
   {
@@ -5111,6 +5796,7 @@ export const spotifySongs: Song[] = [
     title: "Singin' In The Rain",
     artist: "Gene Kelly",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273663d3037af130fd97fa35ac9",
+    year: 1952,
     links: { spotify: "https://open.spotify.com/track/5U3MkUWTpzj37A33GboDtv" },
   },
   {
@@ -5118,6 +5804,7 @@ export const spotifySongs: Song[] = [
     title: "Sixteen Tons",
     artist: "Geoff Castellucci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ece7ebb2c1ada0b0aa3cd66e",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/50eBP4arxI9WZqSXAy8j9d" },
   },
   {
@@ -5125,6 +5812,7 @@ export const spotifySongs: Song[] = [
     title: "Skin",
     artist: "Rag'n'Bone Man",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f5c397bd6cdac2a6c287b5bd",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6y2Kaz9QI01XBKJ8mTb7Pf" },
   },
   {
@@ -5132,6 +5820,7 @@ export const spotifySongs: Song[] = [
     title: "Skinny Love",
     artist: "Bon Iver",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739626ee117a93c158d17aee17",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/1HkOPLwAJH3kE8UnqgxF4s" },
   },
   {
@@ -5139,6 +5828,7 @@ export const spotifySongs: Song[] = [
     title: "Skyfall",
     artist: "Adele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b479bb2aed275bb1b13d83da",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/6VObnIkLVruX4UVyxWhlqm" },
   },
   {
@@ -5146,6 +5836,7 @@ export const spotifySongs: Song[] = [
     title: "Sleigh Ride",
     artist: "Ella Fitzgerald",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f8daf45f645da3cae641a008",
+    year: 1960,
     links: { spotify: "https://open.spotify.com/track/79a2ejVzj2SpXkpWdfv1Co" },
   },
   {
@@ -5153,6 +5844,7 @@ export const spotifySongs: Song[] = [
     title: "Slide",
     artist: "H.E.R.",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d4db1fd0f9eccb93a9e75639",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6MO2bfLHKykUgCChFdw91H" },
   },
   {
@@ -5160,6 +5852,7 @@ export const spotifySongs: Song[] = [
     title: "Snuff",
     artist: "Slipknot",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273457163bec7e8e4decf8c6375",
+    year: 2008,
     links: { spotify: "https://open.spotify.com/track/3RptaQ5Xb8WvtpItZ2f9Hi" },
   },
   {
@@ -5167,6 +5860,7 @@ export const spotifySongs: Song[] = [
     title: "Sobre O Amor E Seu Trabalho Silencioso",
     artist: "Céu",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f7551ff451fec1bfe5c699ab",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/6RPQlpWjKCBy9uT4WkWCf0" },
   },
   {
@@ -5174,6 +5868,7 @@ export const spotifySongs: Song[] = [
     title: "Sofia",
     artist: "I Segreti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aaede16f9e70cf350cebc6df",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3hIbaKK0vfKfY7YU5DvV5O" },
   },
   {
@@ -5182,6 +5877,7 @@ export const spotifySongs: Song[] = [
     artist: "Carl Philipp Emanuel Bach",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737cf9cca435217aae9f739eb4",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/2yfPOfxj9nWrFAQtvyP8J6" },
   },
   {
@@ -5189,6 +5885,7 @@ export const spotifySongs: Song[] = [
     title: "Solo dove vai tu",
     artist: "Venerus, amanda lean, not for climbing",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273597db35df41de5992dadda4f",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1MfAoWk2tbCOax6iMHBUxF" },
   },
   {
@@ -5196,6 +5893,7 @@ export const spotifySongs: Song[] = [
     title: "Someone You Loved",
     artist: "Lewis Capaldi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fc2101e6889d6ce9025f85f2",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7qEHsqek33rTcFNT9PFqLf" },
   },
   {
@@ -5203,6 +5901,7 @@ export const spotifySongs: Song[] = [
     title: "Something 4 Ya",
     artist: "URF Tone, Rae Khalil",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732c62ae344372e9527a6dbff5",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6jFNpIwWNwqYUo7wsmYtUM" },
   },
   {
@@ -5210,6 +5909,7 @@ export const spotifySongs: Song[] = [
     title: "Something Just Like This",
     artist: "The Chainsmokers, Coldplay",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730c13d3d5a503c84fcc60ae94",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW" },
   },
   {
@@ -5217,6 +5917,7 @@ export const spotifySongs: Song[] = [
     title: "Sona orchestraccia sona",
     artist: "Orchestraccia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cd0886c003580efa483b2a21",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/1bwA6koq8p7swjGBJ9T9EI" },
   },
   {
@@ -5224,6 +5925,7 @@ export const spotifySongs: Song[] = [
     title: "Sono un bravo ragazzo un po' fuori di testa",
     artist: "Random",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a787166d0980fd1b88b86995",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/4fllTuc6KM95uB3ZqqiGYd" },
   },
   {
@@ -5231,6 +5933,7 @@ export const spotifySongs: Song[] = [
     title: "Sosta",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b92a851e1045124584e9aab6",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5rItTdPxhUoEnBhlq3Y7Br" },
   },
   {
@@ -5238,6 +5941,7 @@ export const spotifySongs: Song[] = [
     title: "Sotto Casa",
     artist: "Max Gazzè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27381937d82ff9ad88eb51a1094",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/28VLTrPaxvmNfeouDsUkll" },
   },
   {
@@ -5246,6 +5950,7 @@ export const spotifySongs: Song[] = [
     artist: "Ladislav Kupkovic",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735c3b84f67c7f88a71b9d50b3",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/1v9vRBvm5aqDN3M2Y4lHVY" },
   },
   {
@@ -5253,6 +5958,7 @@ export const spotifySongs: Song[] = [
     title: "Space Out!",
     artist: "Ellie Dixon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fde5f5f61e9b7f123baa1679",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5Avmd3awxZBFLmma5sHGmG" },
   },
   {
@@ -5260,6 +5966,7 @@ export const spotifySongs: Song[] = [
     title: "Spanish Joint",
     artist: "Sam Fribush, Charlie Hunter, Geoff Clapp",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273870157961f4c0ac167a5f794",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3yIMbncJrxUWoS5J1AlGLs" },
   },
   {
@@ -5267,6 +5974,7 @@ export const spotifySongs: Song[] = [
     title: "Sparring Partner",
     artist: "Paolo Conte",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27328755c09006df10ec674e5b5",
+    year: 1984,
     links: { spotify: "https://open.spotify.com/track/7p5jetoN7m7LeDKA2Mfhvv" },
   },
   {
@@ -5274,6 +5982,7 @@ export const spotifySongs: Song[] = [
     title: "Speed",
     artist: "Atari Teenage Riot",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c8f367dd3ba73dab107eaaf3",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/7fftnG8BcZ7385YMvWuBes" },
   },
   {
@@ -5281,6 +5990,7 @@ export const spotifySongs: Song[] = [
     title: "Sprinter",
     artist: "Dave, Central Cee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e3a09a9ae3f1fa102c110e60",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/2FDTHlrBguDzQkp7PVj16Q" },
   },
   {
@@ -5288,6 +5998,7 @@ export const spotifySongs: Song[] = [
     title: "Stairway to Heaven",
     artist: "Led Zeppelin",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c8a11e48c91a982d086afc69",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/5CQ30WqJwcep0pYcV4AMNc" },
   },
   {
@@ -5295,6 +6006,7 @@ export const spotifySongs: Song[] = [
     title: "STANOTTE",
     artist: "TY1",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e2f116015b76343849e5a18b",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/16UKRoJsS0i0eUNCCroz7n" },
   },
   {
@@ -5302,6 +6014,7 @@ export const spotifySongs: Song[] = [
     title: "Stanza Singola",
     artist: "Franco126",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27337298b42580e291499b23e3c",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/23hpOtox5sIuRqVBVVJxsO" },
   },
   {
@@ -5309,6 +6022,7 @@ export const spotifySongs: Song[] = [
     title: "Stare bene a metà",
     artist: "Pino Daniele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fedc97f16e99be9fab3fd275",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/7d6Ldd3Uz319BbEIyOspvF" },
   },
   {
@@ -5316,6 +6030,7 @@ export const spotifySongs: Song[] = [
     title: "Statte Zitta",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733954001ba6f75f173f26dce3",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/7IyklFD2lDjHEWxYVixQqv" },
   },
   {
@@ -5323,6 +6038,7 @@ export const spotifySongs: Song[] = [
     title: "Stavo pensando a te",
     artist: "MOBRICI",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27310048646e41f422c04aaa435",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/1mBSWayaS9nnqLvZNdOdL7" },
   },
   {
@@ -5330,6 +6046,7 @@ export const spotifySongs: Song[] = [
     title: "STAY",
     artist: "The Kid LAROI",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273aed1660585c1e3c9ffb50b6a",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/5HCyWlXZPP0y6Gqq8TgA20" },
   },
   {
@@ -5337,6 +6054,7 @@ export const spotifySongs: Song[] = [
     title: "Stay sereno",
     artist: "Highsnob",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735cb7e7a3cd57587856356481",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/4sboRKk8apCsQf83zSyE8c" },
   },
   {
@@ -5344,6 +6062,7 @@ export const spotifySongs: Song[] = [
     title: "STO BENE",
     artist: "PSICOLOGI",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ae97c5a9687a378f0f0b870e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/46koDbgm48mkLwjPsSrTef" },
   },
   {
@@ -5351,6 +6070,7 @@ export const spotifySongs: Song[] = [
     title: "Stole the Show",
     artist: "Kygo, Parson James",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737247979b8bc6027bf97043ef",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/5masKPHeAOVNgxdLebIcK7" },
   },
   {
@@ -5358,6 +6078,7 @@ export const spotifySongs: Song[] = [
     title: "Stolen Dance",
     artist: "Milky Chance",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732001bc1b4dd82d06631fcb9e",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/34xGLuxM0rkxhCVyMSqwJO" },
   },
   {
@@ -5365,6 +6086,7 @@ export const spotifySongs: Song[] = [
     title: "Stormy Weather",
     artist: "Oscar Peterson Trio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e8abaa3e4a2ec6ef98259087",
+    year: 2001,
     links: { spotify: "https://open.spotify.com/track/6ffJxrVKkPVW4hiRoiteB2" },
   },
   {
@@ -5372,6 +6094,7 @@ export const spotifySongs: Song[] = [
     title: "Story of My Life",
     artist: "One Direction",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733cf0191cca87a4bc7e34bc4a",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg" },
   },
   {
@@ -5379,6 +6102,7 @@ export const spotifySongs: Song[] = [
     title: "STRAINTRA",
     artist: "Colla Zio",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d932fc11bc829726dcbabe98",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3XVCKOELOG64sE6l1ccCTa" },
   },
   {
@@ -5386,6 +6110,7 @@ export const spotifySongs: Song[] = [
     title: "Strange",
     artist: "Celeste",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a724f0a2c23fdc0ef98201b8",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/7sq2z9oX2S0CvgTqCZ0ko4" },
   },
   {
@@ -5393,6 +6118,7 @@ export const spotifySongs: Song[] = [
     title: "Stressed Out",
     artist: "Twenty One Pilots",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732df0d98a423025032d0db1f7",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/3CRDbSIZ4r5MsZ0YwxuEkn" },
   },
   {
@@ -5400,6 +6126,7 @@ export const spotifySongs: Song[] = [
     title: "Strip That Down",
     artist: "Liam Payne",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273373a46efca570f83dd78313f",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/29JrmE89KgRyCxBIzq2Ocw" },
   },
   {
@@ -5407,6 +6134,7 @@ export const spotifySongs: Song[] = [
     title: "SUBMARINE",
     artist: "Thehiz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f1a1e631b64136d2889a605c",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/3mO2Vgyeyml8SIqLV152cy" },
   },
   {
@@ -5414,6 +6142,7 @@ export const spotifySongs: Song[] = [
     title: "Sucker",
     artist: "Ellie Dixon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fde5f5f61e9b7f123baa1679",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/42b6SkizciL2P8yGhaD6gX" },
   },
   {
@@ -5421,6 +6150,7 @@ export const spotifySongs: Song[] = [
     title: "Sucker",
     artist: "Jonas Brothers",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273de1a3a5eaa0c75bb18e7b597",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/22vgEDb5hykfaTwLuskFGD" },
   },
   {
@@ -5428,6 +6158,7 @@ export const spotifySongs: Song[] = [
     title: "Sucker for Pain",
     artist: "Lil Wayne",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737d8dfcfd507069d7f2062caf",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/4dASQiO1Eoo3RJvt74FtXB" },
   },
   {
@@ -5435,6 +6166,7 @@ export const spotifySongs: Song[] = [
     title: "Suerte",
     artist: "Raffa Fl",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27370528defb66ddf1b838f5963",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/3wAeV5YnVopXm4jynlfJQr" },
   },
   {
@@ -5442,6 +6174,7 @@ export const spotifySongs: Song[] = [
     title: "Suga Wata",
     artist: "Shelem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273655a09e26b2445156aa8b223",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/0TUVrxEaAZR7Oytei3q973" },
   },
   {
@@ -5449,6 +6182,7 @@ export const spotifySongs: Song[] = [
     title: "Sugar for the Joneses",
     artist: "The Weather Machine",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27338315292dc75dd2e1539e0ab",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/21s4znCDnjurGnwfEvcRYl" },
   },
   {
@@ -5456,6 +6190,7 @@ export const spotifySongs: Song[] = [
     title: "Summer Days",
     artist: "Martin Garrix",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27351528c08d64e44497cb007c0",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/7Feaw9WAEREY0DUOSXJLOM" },
   },
   {
@@ -5463,6 +6198,7 @@ export const spotifySongs: Song[] = [
     title: "Summertime",
     artist: "Ella Fitzgerald, Louis Armstrong",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27311aafea0ad62648d4669626f",
+    year: 1958,
     links: { spotify: "https://open.spotify.com/track/2gNjmvuQiEd2z9SqyYi8HH" },
   },
   {
@@ -5470,6 +6206,7 @@ export const spotifySongs: Song[] = [
     title: "Sunkissed",
     artist: "khai dreams",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273589ec50a427b005cba7bb21c",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/1tD8J13a74q8fBqXwAP50j" },
   },
   {
@@ -5477,6 +6214,7 @@ export const spotifySongs: Song[] = [
     title: "Sunrise",
     artist: "Norah Jones",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27364026be0e09c1beda2f67c32",
+    year: 2004,
     links: { spotify: "https://open.spotify.com/track/7zkLpY72g6lKQbiHDqri1S" },
   },
   {
@@ -5484,6 +6222,7 @@ export const spotifySongs: Song[] = [
     title: "Svegliatevi Italiani",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736b58cd81f400b7761f8e5a8c",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/4Flv2ZSR35u2UMqL5Vxszx" },
   },
   {
@@ -5491,6 +6230,7 @@ export const spotifySongs: Song[] = [
     title: "sw1n6o",
     artist: "thasup",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27337baa3bdecc1dc19f7364d82",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/0I26eEAwEoii0wHuFqwhYO" },
   },
   {
@@ -5498,6 +6238,7 @@ export const spotifySongs: Song[] = [
     title: "Sway",
     artist: "Michael Bublé",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b732a522a686bb304a5d3fdf",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/2ajUl8lBLAXOXNpG4NEPMz" },
   },
   {
@@ -5505,6 +6246,7 @@ export const spotifySongs: Song[] = [
     title: "Sweet Caroline",
     artist: "Neil Diamond",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734d1a7a3e5043173883653ffc",
+    year: 1969,
     links: { spotify: "https://open.spotify.com/track/62AuGbAkt8Ox2IrFFb8GKV" },
   },
   {
@@ -5512,6 +6254,7 @@ export const spotifySongs: Song[] = [
     title: "Sweet Creature",
     artist: "Harry Styles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733f8b8a9c71b2bd2f3019940b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5kRPPEWFJIMox5qIkQkiz5" },
   },
   {
@@ -5519,6 +6262,7 @@ export const spotifySongs: Song[] = [
     title: "Sweet Dreams (Are Made of This)",
     artist: "Eurythmics",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273b3994c94dfb241923664bb4d",
+    year: 1983,
     links: { spotify: "https://open.spotify.com/track/1TfqLAPs4K3s2rJMoCokcS" },
   },
   {
@@ -5526,6 +6270,7 @@ export const spotifySongs: Song[] = [
     title: "Swing For The Low",
     artist: "Sage.",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a4908a8353bce2e646f8eb3d",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/4ngAxN2bOwlLISV7nyjhmO" },
   },
   {
@@ -5533,6 +6278,7 @@ export const spotifySongs: Song[] = [
     title: "Swing!",
     artist: "Ellie Dixon",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730901fb670dbea1a0957e4522",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/6As82n96RAwuoR9Y69N0EB" },
   },
   {
@@ -5540,6 +6286,7 @@ export const spotifySongs: Song[] = [
     title: "Sylvie",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d5ac3fc935856bec462e7695",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/7dbBEYOhi91qDhMJ960nmd" },
   },
   {
@@ -5547,6 +6294,7 @@ export const spotifySongs: Song[] = [
     title: "Sympathy For The Devil",
     artist: "The Rolling Stones",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273329024dd3a0b300a24586db2",
+    year: 1989,
     links: { spotify: "https://open.spotify.com/track/75zMKn5euxQdlkZgu4P42J" },
   },
   {
@@ -5554,6 +6302,7 @@ export const spotifySongs: Song[] = [
     title: "Symphony",
     artist: "Clean Bandit",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735c66e925d8fe4c92ebfb49ed",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/72gv4zhNvRVdQA0eOenCal" },
   },
   {
@@ -5562,10 +6311,11 @@ export const spotifySongs: Song[] = [
     artist: "Sergei Rachmaninoff",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d328f2cd5fd3f41e57fea426",
+    year: 2019,
     links: {
       spotify: "https://open.spotify.com/track/1VXTtqcjdhofFgrvz19FMJ",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0vn3HaXWDrMWsW4yKofMRs", artist: "Katya Kramer-Lapin", albumImage: "https://i.scdn.co/image/ab67616d0000b2735f481bd4813c3b3fc2c6f3e4" },
+        { url: "https://open.spotify.com/track/0vn3HaXWDrMWsW4yKofMRs", artist: "Katya Kramer-Lapin", year: 2023, albumImage: "https://i.scdn.co/image/ab67616d0000b2735f481bd4813c3b3fc2c6f3e4" },
       ],
     },
   },
@@ -5575,6 +6325,7 @@ export const spotifySongs: Song[] = [
     artist: "Wolfgang Amadeus Mozart",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735c32aedf7fbc1ba7e4d92501",
+    year: 2024,
     links: { spotify: "https://open.spotify.com/track/5VPHCoZskR2TyrubMtersz" },
   },
   {
@@ -5582,6 +6333,7 @@ export const spotifySongs: Song[] = [
     title: "Take Me Home, Country Roads",
     artist: "John Denver",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a19cee952b6dae128d68f116",
+    year: 1997,
     links: { spotify: "https://open.spotify.com/track/1QbOvACeYanja5pbnJbAmk" },
   },
   {
@@ -5589,6 +6341,7 @@ export const spotifySongs: Song[] = [
     title: "Take You Dancing",
     artist: "Jason Derulo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733fe5fd52dc5a8650199942b2",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/59qrUpoplZxbIZxk6X0Bm3" },
   },
   {
@@ -5597,6 +6350,7 @@ export const spotifySongs: Song[] = [
     artist: "Roland Dyens",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b273db0f425edc9ced2546293a06",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/2Eie2WmbIoujBGuEFBNld5" },
   },
   {
@@ -5604,6 +6358,7 @@ export const spotifySongs: Song[] = [
     title: "Tatarue",
     artist: "Geovana",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736ca75292d9519cb3f0eefbd9",
+    year: 1975,
     links: { spotify: "https://open.spotify.com/track/397flPDxxM0ThZbsGTVGMb" },
   },
   {
@@ -5611,6 +6366,7 @@ export const spotifySongs: Song[] = [
     title: "Tattica",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff81eafc88e4e9c01d130443",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/2LVtLW8u1MOgdFNwY7lpeY" },
   },
   {
@@ -5618,6 +6374,7 @@ export const spotifySongs: Song[] = [
     title: "TATUAGGI",
     artist: "PSICOLOGI",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734874942a448b39671704774a",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/6KbZkR3sSTwrGvmJd8ECZj" },
   },
   {
@@ -5625,6 +6382,7 @@ export const spotifySongs: Song[] = [
     title: "Tazza di te",
     artist: "Galeffi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d5490bf80ec7c5f97f57d3d5",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1a6Fvn69DKqmMlpSh8rTRi" },
   },
   {
@@ -5632,6 +6390,7 @@ export const spotifySongs: Song[] = [
     title: "Tears in Heaven",
     artist: "Eric Clapton",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27344cb13558d57f5a066fac381",
+    year: 1992,
     links: { spotify: "https://open.spotify.com/track/1kgdslQYmeTR4thk9whoRw" },
   },
   {
@@ -5639,6 +6398,7 @@ export const spotifySongs: Song[] = [
     title: "Telefonami tra vent'anni",
     artist: "Lucio Dalla",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27309ca5bd63389fec1a549645c",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/2yzbTAMGp07rrAJ0lfcXkk" },
   },
   {
@@ -5646,6 +6406,7 @@ export const spotifySongs: Song[] = [
     title: "Tell Me Where To Go",
     artist: "Bungalow Collect, Apollo J, Zay Suav, Marcus Isiah, Rshad",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273be83f5ee0d05e155f5f68006",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/53y04TJM9wBkTqBMZA0f2F" },
   },
   {
@@ -5653,6 +6414,7 @@ export const spotifySongs: Song[] = [
     title: "Temporary Home",
     artist: "Amanda Pascali",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733018c8606be2c7f71f57418d",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/2YnU3NwuM3NgC6l03D3rwV" },
   },
   {
@@ -5660,6 +6422,7 @@ export const spotifySongs: Song[] = [
     title: "Tennessee Whiskey",
     artist: "Chris Stapleton",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273540fc1d083eac5bcff8dad21",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/3fqwjXwUGN6vbzIwvyFMhx" },
   },
   {
@@ -5667,6 +6430,7 @@ export const spotifySongs: Song[] = [
     title: "Tetris",
     artist: "Pinguini Tattici Nucleari",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735b3cb5aa936655424de11fa2",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/5SGm0Q5Wur9mhpXnbzaPjG" },
   },
   {
@@ -5674,6 +6438,7 @@ export const spotifySongs: Song[] = [
     title: "The A Team",
     artist: "Ed Sheeran",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e6d489d359c546fea254f440",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/1VdZ0vKfR5jneCmWIUAMxK" },
   },
   {
@@ -5681,6 +6446,7 @@ export const spotifySongs: Song[] = [
     title: "The Banjo Beat, Pt. 1",
     artist: "Ricky Desktop",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730d6c71d71eb8893b83e33e99",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5O0JIw4YvvTdKlN9l69JFQ" },
   },
   {
@@ -5689,6 +6455,7 @@ export const spotifySongs: Song[] = [
     artist: "Gioachino Rossini",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733551d20b21c64cbc17f878c5",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1PT3zNAnVCN2CjeYaTcQH7" },
   },
   {
@@ -5696,6 +6463,7 @@ export const spotifySongs: Song[] = [
     title: "The Ciggie",
     artist: "Cloonee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f8f350d60df80a3a779166e9",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/1r8ZqfggYqW1R2JjiDGBQV" },
   },
   {
@@ -5703,6 +6471,7 @@ export const spotifySongs: Song[] = [
     title: "The Climb",
     artist: "Judah Kelly",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d1fc557d2c62c3390a3cf316",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1vbTWw7Hrf0jVRdFL1KOEt" },
   },
   {
@@ -5710,6 +6479,7 @@ export const spotifySongs: Song[] = [
     title: "The Fairly Oddparents Main Theme",
     artist: "Geek Music",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273999b8cee84e873220d6aaa1e",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/44HYXCbgUZax2PB8ezkVOO" },
   },
   {
@@ -5717,6 +6487,7 @@ export const spotifySongs: Song[] = [
     title: "The Flintstones",
     artist: "Geek Music",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273935ad231e672f056929afde1",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/205WULeR14jbgFYtqauqpE" },
   },
   {
@@ -5724,6 +6495,7 @@ export const spotifySongs: Song[] = [
     title: "The Good, The Bad And The Ugly",
     artist: "Ennio Morricone",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27388eb37784eee4c3651807406",
+    year: 1967,
     links: { spotify: "https://open.spotify.com/track/1JSIWsJfxOji0FrxFcxdCK" },
   },
   {
@@ -5731,6 +6503,7 @@ export const spotifySongs: Song[] = [
     title: "The Groovy Cat",
     artist: "PAWSA",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732fed09099502884eab4b4d77",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/08d1uFAAtQgLbuvyP2AkoH" },
   },
   {
@@ -5738,6 +6511,7 @@ export const spotifySongs: Song[] = [
     title: "The House of the Rising Sun",
     artist: "The Animals",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273015c484a7aca592df1a77828",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/4mn2kNTqiGLwaUR8JdhJ1l" },
   },
   {
@@ -5745,6 +6519,7 @@ export const spotifySongs: Song[] = [
     title: "The Island",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273beca846333b89312c1d971e8",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/3DZa0s06F8I8euQ8LKUJ5T" },
   },
   {
@@ -5752,6 +6527,7 @@ export const spotifySongs: Song[] = [
     title: "The Long And Winding Road",
     artist: "The Beatles",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27384243a01af3c77b56fe01ab1",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/3mlMpmY8oZIBFc39D9zLbh" },
   },
   {
@@ -5759,6 +6535,7 @@ export const spotifySongs: Song[] = [
     title: "The Man in Me",
     artist: "Bob Dylan",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27300395da7ce063ed4b1d202bd",
+    year: 1970,
     links: { spotify: "https://open.spotify.com/track/7xRemq7GLu0Tbqe9OckG87" },
   },
   {
@@ -5766,6 +6543,7 @@ export const spotifySongs: Song[] = [
     title: "The Middle",
     artist: "Zedd, Maren Morris, Grey",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fbe22d168a743b782a5e856a",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/09IStsImFySgyp0pIQdqAc" },
   },
   {
@@ -5774,6 +6552,7 @@ export const spotifySongs: Song[] = [
     artist: "Camille Saint-Saëns",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27334bd045ff6189c2a861a1e30",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/0jOnZhF75V68VsBObWx2XO" },
   },
   {
@@ -5781,6 +6560,7 @@ export const spotifySongs: Song[] = [
     title: "Theme From Lupin Ⅲ",
     artist: "Yuji Ohno Trio & Friends, Yuji Ohno",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27315767ffbb52c01e47a15bded",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/56kcNCuV0iDRHj496c8HdO" },
   },
   {
@@ -5788,6 +6568,7 @@ export const spotifySongs: Song[] = [
     title: "There's Nothing Holdin' Me Back",
     artist: "Shawn Mendes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ea3ef7697cfd5705b8f47521",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7JJmb5XwzOO8jgpou264Ml" },
   },
   {
@@ -5795,6 +6576,7 @@ export const spotifySongs: Song[] = [
     title: "Think About Things",
     artist: "Daði Freyr",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27304c7f62f1ecf29cfc4c1df3b",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5crhbtfcOWIfN5NbkqQRql" },
   },
   {
@@ -5802,6 +6584,7 @@ export const spotifySongs: Song[] = [
     title: "Thinkin 'Bout You",
     artist: "Wizzy the Kid",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273725f366f8a269ed1aee55ef8",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/5G3JR9Kctsym9alSdS6JZW" },
   },
   {
@@ -5809,6 +6592,7 @@ export const spotifySongs: Song[] = [
     title: "This Girl (Kungs Vs. Cookin' On 3 Burners)",
     artist: "Kungs, Cookin' On 3 Burners",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f504cc56f3bd99bc61929272",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/0tICYNayWWhH9GPeFrfjfD" },
   },
   {
@@ -5816,10 +6600,11 @@ export const spotifySongs: Song[] = [
     title: "this is what falling in love feels like",
     artist: "JVKE",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737bc333ff94bcb174a817e346",
+    year: 2021,
     links: {
       spotify: "https://open.spotify.com/track/4UG2Fm0E98LhE2dlNxiAXx",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/60DkG4mCA52rUUXz0F0wNi", artist: "JVKE", note: "Leon Leiden Remix", albumImage: "https://i.scdn.co/image/ab67616d0000b273fd494f0a7cdbe58c455e2d98" },
+        { url: "https://open.spotify.com/track/60DkG4mCA52rUUXz0F0wNi", artist: "JVKE", note: "Leon Leiden Remix", year: 2022, albumImage: "https://i.scdn.co/image/ab67616d0000b273fd494f0a7cdbe58c455e2d98" },
       ],
     },
   },
@@ -5828,6 +6613,7 @@ export const spotifySongs: Song[] = [
     title: "This Is What You Are",
     artist: "Mario Biondi, High Five Quintet",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a5488b0aa6c5b67823d294d0",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/62nS0VYuhczrQeDxjPNQnc" },
   },
   {
@@ -5835,6 +6621,7 @@ export const spotifySongs: Song[] = [
     title: "Thugz Mansion (N.Y.)",
     artist: "Nas",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730b3331c0bfce749049377d70",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/6xfMOEq6oyNKWy5884A4u6" },
   },
   {
@@ -5842,6 +6629,7 @@ export const spotifySongs: Song[] = [
     title: "Thunder",
     artist: "Imagine Dragons",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1zB4vmk8tFRmM9UULNzbLB" },
   },
   {
@@ -5849,6 +6637,7 @@ export const spotifySongs: Song[] = [
     title: "Ti volevo dedicare",
     artist: "Rocco Hunt",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735c685dbd2a3bdf9b7ad00e59",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/00GxbkrW4m1Tac5xySEJ4M" },
   },
   {
@@ -5856,6 +6645,7 @@ export const spotifySongs: Song[] = [
     title: "Tiene Sabor",
     artist: "Buena Vista Social Club",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273773f95f94a6981365257d9f0",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/4DFbRXlTdH9JdqCBeX6NOG" },
   },
   {
@@ -5863,6 +6653,7 @@ export const spotifySongs: Song[] = [
     title: "Timmy Turner Trap",
     artist: "Jmbeatz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273cb70b11f28361a4b243b2e62",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0pw5rNoxDWvO4UUGC2NqpC" },
   },
   {
@@ -5870,6 +6661,7 @@ export const spotifySongs: Song[] = [
     title: "Titanium",
     artist: "David Guetta",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27363bf1cd36632031eb3081cb0",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/0TDLuuLlV54CkRRUOahJb4" },
   },
   {
@@ -5877,6 +6669,7 @@ export const spotifySongs: Song[] = [
     title: "To Build A Home",
     artist: "The Cinematic Orchestra, Patrick Watson",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f04457d8ce4be7b714f35cb1",
+    year: 2007,
     links: { spotify: "https://open.spotify.com/track/54KFQB6N4pn926IUUYZGzK" },
   },
   {
@@ -5884,6 +6677,7 @@ export const spotifySongs: Song[] = [
     title: "Tokyo Drift (Fast & Furious)",
     artist: "Teriyaki Boyz",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733892a55b29583746e1b4cd48",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/5iJfzXKvQXlYOBtEQhEmpA" },
   },
   {
@@ -5891,10 +6685,11 @@ export const spotifySongs: Song[] = [
     title: "Tom's Diner",
     artist: "Suzanne Vega",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273af88ea235fe72d89fa6eed6a",
+    year: 2018,
     links: {
       spotify: "https://open.spotify.com/track/01FFgrZHoHWRcQWFolElUm",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0oA9wBGDY4uyILLg4GymWP", artist: "AnnenMayKantereit, Giant Rooks", albumImage: "https://i.scdn.co/image/ab67616d0000b2732186eb1b0b5436f858c0508c" },
+        { url: "https://open.spotify.com/track/0oA9wBGDY4uyILLg4GymWP", artist: "AnnenMayKantereit, Giant Rooks", year: 2019, albumImage: "https://i.scdn.co/image/ab67616d0000b2732186eb1b0b5436f858c0508c" },
       ],
     },
   },
@@ -5903,6 +6698,7 @@ export const spotifySongs: Song[] = [
     title: "Tony",
     artist: "Marracash, Guè",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fcdb056319eddf6f6f4b20da",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7p1tXCqsvmWUM308SIiSQ4" },
   },
   {
@@ -5910,10 +6706,11 @@ export const spotifySongs: Song[] = [
     title: "Too Sweet",
     artist: "Hozier",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273be392334d99f82bc410cb239",
+    year: 2024,
     links: {
       spotify: "https://open.spotify.com/track/3HMY0r2BAdpasXMY8rseR0",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/5oCyK3vuoQWzczWNwabnL9", artist: "The Macarons Project", albumImage: "https://i.scdn.co/image/ab67616d0000b273586432d7a290adbb71344f76" },
+        { url: "https://open.spotify.com/track/5oCyK3vuoQWzczWNwabnL9", artist: "The Macarons Project", year: 2024, albumImage: "https://i.scdn.co/image/ab67616d0000b273586432d7a290adbb71344f76" },
       ],
     },
   },
@@ -5922,6 +6719,7 @@ export const spotifySongs: Song[] = [
     title: "Tornado",
     artist: "Frah Quintale",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739478e7d97ec9a014dfc53c8e",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/7kaSoPMXosinhFVHR4S5BN" },
   },
   {
@@ -5930,10 +6728,11 @@ export const spotifySongs: Song[] = [
     artist: "Robert Schumann",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27335887a1c7edc3395cd8d5937",
+    year: 1984,
     links: {
       spotify: "https://open.spotify.com/track/4SbAXtlOJ0eCL0XwFVi0Ij",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/1kof0mlRSrLyGP4vdS2hjh", artist: "Vladimir Horowitz", albumImage: "https://i.scdn.co/image/ab67616d0000b2735cb8f9600b58715cced9cf30" },
+        { url: "https://open.spotify.com/track/1kof0mlRSrLyGP4vdS2hjh", artist: "Vladimir Horowitz", year: 2021, albumImage: "https://i.scdn.co/image/ab67616d0000b2735cb8f9600b58715cced9cf30" },
       ],
     },
   },
@@ -5942,6 +6741,7 @@ export const spotifySongs: Song[] = [
     title: "TRE TERRONI A MILANO",
     artist: "FSK SATELLITE, Greg Willen",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c675e4820c68ceee15f277a2",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/1aS4B9xoEbArqruGQwiU9q" },
   },
   {
@@ -5949,6 +6749,7 @@ export const spotifySongs: Song[] = [
     title: "Treat You Better",
     artist: "Shawn Mendes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2731376b4b16f4bfcba02dc571b",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3QGsuHI8jO1Rx4JWLUh9jd" },
   },
   {
@@ -5956,6 +6757,7 @@ export const spotifySongs: Song[] = [
     title: "Trinity: titoli",
     artist: "Franco Micalizzi, Annibale, I Cantori Moderni Di Alessandroni",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c2ec8dd5c08fcb65944e566f",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/2w5lNPWb8vsCYiwPPGxL4W" },
   },
   {
@@ -5963,6 +6765,7 @@ export const spotifySongs: Song[] = [
     title: "Tripasia",
     artist: "Cloonee, Brisotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734f8271b8e3144331923491e2",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/365aB2RegILTAZqCEgmkUc" },
   },
   {
@@ -5970,6 +6773,7 @@ export const spotifySongs: Song[] = [
     title: "Truth's a Little Mean",
     artist: "Frankie",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730c1179929e08f6bf35af1735",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/1TIaOfUx8GWTOoQsdYamIr" },
   },
   {
@@ -5977,6 +6781,7 @@ export const spotifySongs: Song[] = [
     title: "Tu Non Sei Con Noi, Bro",
     artist: "Tredici Pietro, Mr. Monkey",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736e56ee66518064cef063fca1",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6hookjQYho92UD7zm9DXum" },
   },
   {
@@ -5984,6 +6789,7 @@ export const spotifySongs: Song[] = [
     title: "Tua Mamma",
     artist: "TonyPitony, Jerry Canaglia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27359c27dd8ee022668f0e15d5f",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0QCgDsWRYO6sROZIsrpFWZ" },
   },
   {
@@ -5991,6 +6797,7 @@ export const spotifySongs: Song[] = [
     title: "Tutto inutile",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273230ebba5ab470ea8e0309224",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/4NFeTbNACZZeihPQB2Jx79" },
   },
   {
@@ -5998,6 +6805,7 @@ export const spotifySongs: Song[] = [
     title: "Tutto Passa",
     artist: "Ale Pinto",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273acb9ce60d7f90131a599ea19",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/1Wgyn2f4Sb5FAUCwVQLgrs" },
   },
   {
@@ -6005,10 +6813,11 @@ export const spotifySongs: Song[] = [
     title: "Tuyo",
     artist: "Rodrigo Amarante",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736ac9fbfa13ea58e432eb25ae",
+    year: 2016,
     links: {
       spotify: "https://open.spotify.com/track/4F6bP95ULviRgg17IPaox6",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/0FrP64eh0yTC3uDVsq0wG4", artist: "Jack Villa, George Z", albumImage: "https://i.scdn.co/image/ab67616d0000b273bc9d8fc162fc0fa912b7c9a6" },
+        { url: "https://open.spotify.com/track/0FrP64eh0yTC3uDVsq0wG4", artist: "Jack Villa, George Z", year: 2021, albumImage: "https://i.scdn.co/image/ab67616d0000b273bc9d8fc162fc0fa912b7c9a6" },
       ],
     },
   },
@@ -6017,6 +6826,7 @@ export const spotifySongs: Song[] = [
     title: "Ultimo amore",
     artist: "Vinicio Capossela",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738fcc930f4d7635f6bc36457e",
+    year: 2003,
     links: { spotify: "https://open.spotify.com/track/6kpNriwONdTQYHXeZeilYM" },
   },
   {
@@ -6024,6 +6834,7 @@ export const spotifySongs: Song[] = [
     title: "Un fatto tuo personale",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ff81eafc88e4e9c01d130443",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/1xJaiNiGNpaWp0sNZ8Nm5X" },
   },
   {
@@ -6031,6 +6842,7 @@ export const spotifySongs: Song[] = [
     title: "Un giudice",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f1ff7e66425c266a5efa5d3c",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/4UsYN68FV4laJT0ppCswS3" },
   },
   {
@@ -6038,6 +6850,7 @@ export const spotifySongs: Song[] = [
     title: "Un mare in luce",
     artist: "Raphael Gualazzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273be17598430540368ee66e854",
+    year: 2014,
     links: { spotify: "https://open.spotify.com/track/5UCq9hVUu7ryf1KGRMrpQ5" },
   },
   {
@@ -6045,6 +6858,7 @@ export const spotifySongs: Song[] = [
     title: "Un matto",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f1ff7e66425c266a5efa5d3c",
+    year: 1971,
     links: { spotify: "https://open.spotify.com/track/6MCNOQr2m6Efzkj7S1Qrnh" },
   },
   {
@@ -6052,6 +6866,7 @@ export const spotifySongs: Song[] = [
     title: "Un minuto",
     artist: "Ensi, Nerone, Brava Gente",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273235d50e28fed4df227039832",
+    year: 2023,
     links: { spotify: "https://open.spotify.com/track/0wMYwdsaxjqHc8yfPn9tcj" },
   },
   {
@@ -6059,6 +6874,7 @@ export const spotifySongs: Song[] = [
     title: "Un Pazzo",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734dc927414901257d4f182482",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/6gyxlY3xltYQY6IpiWajH2" },
   },
   {
@@ -6066,6 +6882,7 @@ export const spotifySongs: Song[] = [
     title: "Un Raggio Di Sole",
     artist: "Jovanotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273325e4c29ac064a7e68c4b992",
+    year: 1999,
     links: { spotify: "https://open.spotify.com/track/79eVpzQmBBVSPy9CZNP2fa" },
   },
   {
@@ -6073,6 +6890,7 @@ export const spotifySongs: Song[] = [
     title: "Un Sasso Nella Scarpa",
     artist: "Ernia",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734dc927414901257d4f182482",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/5lgoZ0wIOgNmb7faqSdAJb" },
   },
   {
@@ -6080,6 +6898,7 @@ export const spotifySongs: Song[] = [
     title: "Un Temporale",
     artist: "Ghemon",
     albumImage: "https://i.scdn.co/image/700c314d7dfa0b4b128f0d19aaf3ad33ba0e5760",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/22SAfNzN9GHbTUghiCR8l5" },
   },
   {
@@ -6087,6 +6906,7 @@ export const spotifySongs: Song[] = [
     title: "Un'avventura",
     artist: "Lucio Battisti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dfb2cc3eb32065d468c502ff",
+    year: 1969,
     links: { spotify: "https://open.spotify.com/track/7B09xj4jnG1763TWkVxazM" },
   },
   {
@@ -6094,6 +6914,7 @@ export const spotifySongs: Song[] = [
     title: "Una lunga storia d'amore",
     artist: "Gino Paoli",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738aaef459e4c55fff61131f44",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/2YH6U8NUwDNDKXE8tj4n6G" },
   },
   {
@@ -6101,6 +6922,7 @@ export const spotifySongs: Song[] = [
     title: "Una Sera",
     artist: "Fulminacci",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736caac0b3fd962265a344d59d",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3nLZu8yaHzJgFqfYIKPMRo" },
   },
   {
@@ -6108,6 +6930,7 @@ export const spotifySongs: Song[] = [
     title: "Una storia disonesta",
     artist: "Stefano Rosso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f0175574eb2d8cbf7d06728d",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/068wCIIVm2y0eaDwDzbihX" },
   },
   {
@@ -6115,6 +6938,7 @@ export const spotifySongs: Song[] = [
     title: "Unforgettable",
     artist: "French Montana, Swae Lee",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738a31195a371b2233456f6c07",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3B54sVLJ402zGa6Xm4YGNe" },
   },
   {
@@ -6122,6 +6946,7 @@ export const spotifySongs: Song[] = [
     title: "Unsteady",
     artist: "Ollie, X Ambassadors",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273029bd729329afc3a775392a9",
+    year: 2016,
     links: { spotify: "https://open.spotify.com/track/3rBHNlOJqNQM7rtxHJvPNV" },
   },
   {
@@ -6129,6 +6954,7 @@ export const spotifySongs: Song[] = [
     title: "Vai (Menina Amanhã de Manhã)",
     artist: "Tom Zé",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736060785b810074ef29190d60",
+    year: 2005,
     links: { spotify: "https://open.spotify.com/track/48Oyi9J1YqL6q1EFqq9KtM" },
   },
   {
@@ -6137,6 +6963,7 @@ export const spotifySongs: Song[] = [
     artist: "Pyotr Ilyich Tchaikovsky",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735a34d11f1846ee4387b73ff3",
+    year: 1972,
     links: { spotify: "https://open.spotify.com/track/2hNhsPZVVOr0SOqShooaEJ" },
   },
   {
@@ -6144,6 +6971,7 @@ export const spotifySongs: Song[] = [
     title: "Vasame",
     artist: "Arisa",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737d81bc283b17c7485153085c",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/7EM78BcTulyLcmt6lSX8Gu" },
   },
   {
@@ -6151,6 +6979,7 @@ export const spotifySongs: Song[] = [
     title: "Vecchio frack",
     artist: "Domenico Modugno",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273160158d9bd4f5876b08efe8a",
+    year: 2000,
     links: { spotify: "https://open.spotify.com/track/0rHIXD2GmjixirvBfTUV2b" },
   },
   {
@@ -6158,6 +6987,7 @@ export const spotifySongs: Song[] = [
     title: "Via Con Me",
     artist: "Neri Per Caso",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27348c3bde384983c4abf2fcf9d",
+    year: 2009,
     links: { spotify: "https://open.spotify.com/track/0VojtWq4Po5zNLaeNPaPu0" },
   },
   {
@@ -6165,6 +6995,7 @@ export const spotifySongs: Song[] = [
     title: "Via del campo",
     artist: "Fabrizio De André",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2738eeb336aff3e753c3359df51",
+    year: 1967,
     links: { spotify: "https://open.spotify.com/track/732hl1bSexhqKxC3B0T3IU" },
   },
   {
@@ -6172,6 +7003,7 @@ export const spotifySongs: Song[] = [
     title: "Violent Crimes",
     artist: "Kanye West",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730cd942c1a864afa4e92d04f2",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/3s7MCdXyWmwjdcWh7GWXas" },
   },
   {
@@ -6179,6 +7011,7 @@ export const spotifySongs: Song[] = [
     title: "Viva La Libertà",
     artist: "Jovanotti",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b21b645699e2d1e56dcb4f2",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/3YQsdw4FNt17lxAEXXURqV" },
   },
   {
@@ -6186,6 +7019,7 @@ export const spotifySongs: Song[] = [
     title: "Vivere La Vita",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27329a6941822cb58dcd27defc5",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/4e2LlObWWxvG0pk4jdbiPy" },
   },
   {
@@ -6193,6 +7027,7 @@ export const spotifySongs: Song[] = [
     title: "Vivo",
     artist: "Mannarino",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27371c48af97003d77786bb36cc",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0LTAFctxpR1waWbcYoxDtL" },
   },
   {
@@ -6200,6 +7035,7 @@ export const spotifySongs: Song[] = [
     title: "Voglio andare al mare",
     artist: "Duo bucolico",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739b27a5e9fc26c5852a9fbd08",
+    year: 2011,
     links: { spotify: "https://open.spotify.com/track/6AqWMU2GShm6kb8WfDFV2U" },
   },
   {
@@ -6207,6 +7043,7 @@ export const spotifySongs: Song[] = [
     title: "Voglio Vederti Danzare",
     artist: "Franco Battiato",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273428f8b004c9fa099cbf2973b",
+    year: 1982,
     links: { spotify: "https://open.spotify.com/track/0Yncd2CxjjlWLrIukzsk2M" },
   },
   {
@@ -6214,6 +7051,7 @@ export const spotifySongs: Song[] = [
     title: "Vorrei cantare come Biagio Antonacci",
     artist: "Simone Cristicchi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273ab93449d225af9a1fc547cec",
+    year: 2006,
     links: { spotify: "https://open.spotify.com/track/3GKjJiVwxmrD3K4a0d9Ntz" },
   },
   {
@@ -6221,6 +7059,7 @@ export const spotifySongs: Song[] = [
     title: "Walk It Talk It",
     artist: "Migos, Drake",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2739c188c494d8bfaf895411890",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/6n4U3TlzUGhdSFbUUhTvLP" },
   },
   {
@@ -6229,6 +7068,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27352d50db1e508cb51041504ea",
+    year: 1995,
     links: { spotify: "https://open.spotify.com/track/71MpmxCJ1TW05c7Fvv1SfI" },
   },
   {
@@ -6237,10 +7077,11 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f6aa669e9b036127ec68bfc",
+    year: 1964,
     links: {
       spotify: "https://open.spotify.com/track/7okKvdleT3J4My0srfGEWG",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/7HDqxZ13HhwtwCEGAlz3Gz", artist: "Alice Sara Ott", albumImage: "https://i.scdn.co/image/ab67616d0000b2730a1b2b8c22b5feb720ca2312" },
+        { url: "https://open.spotify.com/track/7HDqxZ13HhwtwCEGAlz3Gz", artist: "Alice Sara Ott", year: 2010, albumImage: "https://i.scdn.co/image/ab67616d0000b2730a1b2b8c22b5feb720ca2312" },
       ],
     },
   },
@@ -6250,6 +7091,7 @@ export const spotifySongs: Song[] = [
     artist: "Frédéric Chopin",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730999b2d8b4ddf9b8d4ca3899",
+    year: 1992,
     links: { spotify: "https://open.spotify.com/track/4Cdqa3xwvMc5NrLo2nnQTV" },
   },
   {
@@ -6257,10 +7099,11 @@ export const spotifySongs: Song[] = [
     title: "Way Down We Go",
     artist: "KALEO",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f793a842c1642b09a768a63b",
+    year: 2016,
     links: {
       spotify: "https://open.spotify.com/track/0y1QJc3SJVPKJ1OvFmFqe6",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/16mVRtyoHvKR95lkWGGPxv", artist: "KALEO", note: "Stripped", albumImage: "https://i.scdn.co/image/ab67616d0000b2731e3cb1fe749bb0b167969e3b" },
+        { url: "https://open.spotify.com/track/16mVRtyoHvKR95lkWGGPxv", artist: "KALEO", note: "Stripped", year: 2016, albumImage: "https://i.scdn.co/image/ab67616d0000b2731e3cb1fe749bb0b167969e3b" },
       ],
     },
   },
@@ -6269,6 +7112,7 @@ export const spotifySongs: Song[] = [
     title: "We Don't Eat",
     artist: "James Vincent McMorrow",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e258b59ace75e2761408d707",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/2Fpf5a5fGDWSHNj1iIPc5W" },
   },
   {
@@ -6276,6 +7120,7 @@ export const spotifySongs: Song[] = [
     title: "What He Wrote",
     artist: "Laura Marling",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2735b8a533afb19311ae6a0b530",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/2CTOa3CEBts3p1NyTVLTXU" },
   },
   {
@@ -6283,6 +7128,7 @@ export const spotifySongs: Song[] = [
     title: "What's Up?",
     artist: "4 Non Blondes",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273381371cb8ce680d0dc324600",
+    year: 1992,
     links: { spotify: "https://open.spotify.com/track/0jWgAnTrNZmOGmqgvHhZEm" },
   },
   {
@@ -6290,6 +7136,7 @@ export const spotifySongs: Song[] = [
     title: "When We Were Young",
     artist: "Adele",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14",
+    year: 2015,
     links: { spotify: "https://open.spotify.com/track/6O5TrlFWTYvznd9fMC0VvU" },
   },
   {
@@ -6297,6 +7144,7 @@ export const spotifySongs: Song[] = [
     title: "When Your Heart Is A Stranger",
     artist: "Friends In Paris",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2734cc3a1e79518720d61682aac",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/1vZqSAWEKH4Aby3Z9nJ1Ln" },
   },
   {
@@ -6304,6 +7152,7 @@ export const spotifySongs: Song[] = [
     title: "why are you here",
     artist: "mgk",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273a70af97357ff1910173cc084",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/63h44N1oLElnzut7RxZt6Z" },
   },
   {
@@ -6311,6 +7160,7 @@ export const spotifySongs: Song[] = [
     title: "Wild in Secret",
     artist: "Kadebostany, Valeria Stoica",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273e17add90124cf44e88e74c2b",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/5pGH3rUJBAj0ClSI3ZJU6E" },
   },
   {
@@ -6319,6 +7169,7 @@ export const spotifySongs: Song[] = [
     artist: "Robert Schumann",
     classical: true,
     albumImage: "https://i.scdn.co/image/ab67616d0000b27398f1271163d014efc93cc9d7",
+    year: 2010,
     links: { spotify: "https://open.spotify.com/track/3rRe7Kq4f7KJWAmAcDACLI" },
   },
   {
@@ -6326,6 +7177,7 @@ export const spotifySongs: Song[] = [
     title: "Wing$",
     artist: "Macklemore & Ryan Lewis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273162f60d1c6de9aa46b138399",
+    year: 2012,
     links: { spotify: "https://open.spotify.com/track/56LYsQITV7nEggGBVuu846" },
   },
   {
@@ -6333,6 +7185,7 @@ export const spotifySongs: Song[] = [
     title: "Winona Ryder",
     artist: "Willow the Cat",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27358c12d6e60eacb19d89852e1",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/1gvW0ydlUe1Edk6xGnFYYy" },
   },
   {
@@ -6340,6 +7193,7 @@ export const spotifySongs: Song[] = [
     title: "Without Me",
     artist: "Eminem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2736ca5c90113b30c3c43ffb8f4",
+    year: 2002,
     links: { spotify: "https://open.spotify.com/track/7lQ8MOhq6IN2w8EYcFNSUk" },
   },
   {
@@ -6347,6 +7201,7 @@ export const spotifySongs: Song[] = [
     title: "Without Me",
     artist: "Halsey",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273c42acc1b86597285c2c79559",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/5p7ujcrUXASCNwRaWNHR1C" },
   },
   {
@@ -6354,6 +7209,7 @@ export const spotifySongs: Song[] = [
     title: "Wolves",
     artist: "Selena Gomez, Marshmello",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273307910d4242c0d6b1fedf955",
+    year: 2017,
     links: { spotify: "https://open.spotify.com/track/0tBbt8CrmxbjRP0pueQkyU" },
   },
   {
@@ -6361,10 +7217,11 @@ export const spotifySongs: Song[] = [
     title: "Wonderwall",
     artist: "Oasis",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f2eeee9b405f4d00428d84c",
+    year: 1995,
     links: {
       spotify: "https://open.spotify.com/track/1qPbGZqppFwLwcBC1JQ6Vr",
       spotifyVersions: [
-        { url: "https://open.spotify.com/track/1FxxVZBOnN1Z0bAG9bC2Pg", artist: "Oasis", note: "Remastered", albumImage: "https://i.scdn.co/image/ab67616d0000b27345f650cb111376d740cf0848" },
+        { url: "https://open.spotify.com/track/1FxxVZBOnN1Z0bAG9bC2Pg", artist: "Oasis", note: "Remastered", year: 1995, albumImage: "https://i.scdn.co/image/ab67616d0000b27345f650cb111376d740cf0848" },
       ],
     },
   },
@@ -6373,6 +7230,7 @@ export const spotifySongs: Song[] = [
     title: "Would Look Perfect",
     artist: "Powfu, Rxseboy",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273d375a2578f60aff5e6eb0261",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/2L2mNkEWo818IE4fKbnP0O" },
   },
   {
@@ -6380,6 +7238,7 @@ export const spotifySongs: Song[] = [
     title: "Yah Yah",
     artist: "Eminem",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2732f44aec83b20e40f3baef73c",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5mZXWEH2eh8zMZGCxT5aW0" },
   },
   {
@@ -6387,6 +7246,7 @@ export const spotifySongs: Song[] = [
     title: "Yerba Mate",
     artist: "Bayo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f560073689f449ecb7a10287",
+    year: 2022,
     links: { spotify: "https://open.spotify.com/track/193hRCEWV7FYRyNKlL3Yqz" },
   },
   {
@@ -6394,6 +7254,7 @@ export const spotifySongs: Song[] = [
     title: "YHWH",
     artist: "Salmo",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387af84fa3b89ffc8cee35589",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/3Oot2B5eeU7WTwlk4wsMJE" },
   },
   {
@@ -6401,6 +7262,7 @@ export const spotifySongs: Song[] = [
     title: "Yodel al Cazzo",
     artist: "Cantoscena",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2733bc4dc5d62240436d8af74fd",
+    year: 2026,
     links: { spotify: "https://open.spotify.com/track/4LVQzZMUTT3nnMH1avyOtM" },
   },
   {
@@ -6408,6 +7270,7 @@ export const spotifySongs: Song[] = [
     title: "YOSHI",
     artist: "MACHETE, Dani Faiv, thasup",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273685a640a130b7b36c5ffc5ff",
+    year: 2019,
     links: { spotify: "https://open.spotify.com/track/3Hh0ZcGIqIkSiJVZGLcVLx" },
   },
   {
@@ -6415,6 +7278,7 @@ export const spotifySongs: Song[] = [
     title: "You & Me",
     artist: "Disclosure, Eliza Doolittle",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273786201dca187d2b0c956c24b",
+    year: 2013,
     links: { spotify: "https://open.spotify.com/track/3W2ZcrRsInZbjWylOi6KhZ" },
   },
   {
@@ -6422,6 +7286,7 @@ export const spotifySongs: Song[] = [
     title: "You Are The Reason",
     artist: "Calum Scott",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273f2d671c22b70e01b78a618a8",
+    year: 2018,
     links: { spotify: "https://open.spotify.com/track/69vToJ9BMbbLlFZo7k7A7B" },
   },
   {
@@ -6429,6 +7294,7 @@ export const spotifySongs: Song[] = [
     title: "You Get What You Give",
     artist: "New Radicals",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27387e512c79842c7ed2a8f2035",
+    year: 1998,
     links: { spotify: "https://open.spotify.com/track/32lF1rsInDTdK6Av3KdfaY" },
   },
   {
@@ -6436,6 +7302,7 @@ export const spotifySongs: Song[] = [
     title: "You Need Love",
     artist: "Muddy Waters",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273dc8136afa6d14e89c8c321e6",
+    year: 1989,
     links: { spotify: "https://open.spotify.com/track/7Ak1aR9cK5b4yKHdhIhNVq" },
   },
   {
@@ -6443,6 +7310,7 @@ export const spotifySongs: Song[] = [
     title: "You're Smart",
     artist: "Jacob Sigman",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273fa78b08c4079e146c6c90213",
+    year: 2021,
     links: { spotify: "https://open.spotify.com/track/2tGiOun1iXlIRVxbRngj57" },
   },
   {
@@ -6450,6 +7318,7 @@ export const spotifySongs: Song[] = [
     title: "Young & Alive",
     artist: "Bazzi",
     albumImage: "https://i.scdn.co/image/ab67616d0000b2730a46946aa83f0173db152092",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/5RsKelNxucrDxgMbZ3vd3W" },
   },
   {
@@ -6457,6 +7326,7 @@ export const spotifySongs: Song[] = [
     title: "Zitta",
     artist: "Silent Bob, Sick Budd",
     albumImage: "https://i.scdn.co/image/ab67616d0000b273919fedadb83a4c63970987eb",
+    year: 2020,
     links: { spotify: "https://open.spotify.com/track/0kBhFZl1m457vCZ6vL6geq" },
   },
   {
@@ -6464,6 +7334,7 @@ export const spotifySongs: Song[] = [
     title: "Zombie",
     artist: "The Cranberries",
     albumImage: "https://i.scdn.co/image/ab67616d0000b27372d481a5999197ef5f42f796",
+    year: 1994,
     links: { spotify: "https://open.spotify.com/track/7EZC6E7UjZe63f1jRmkWxt" },
   },
 ];

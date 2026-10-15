@@ -13,6 +13,20 @@ export function useSongPrefs(slug: string) {
   return useLocalStorage<SongPrefs>(`song-prefs:${slug}`, DEFAULT_SONG_PREFS);
 }
 
+/** The user's voice, as note names ("E2", "Sib4"); empty when not set. */
+export interface VoicePrefs {
+  /** Range the user sings in comfortably: what key suggestions aim for. */
+  comfortableLow: string;
+  comfortableHigh: string;
+  /** Full range, chest and falsetto included (optional, for reference). */
+  fullLow: string;
+  fullHigh: string;
+}
+
+export function useVoicePrefs() {
+  return useLocalStorage<VoicePrefs>('voice-prefs', { comfortableLow: '', comfortableHigh: '', fullLow: '', fullHigh: '' });
+}
+
 export interface GlobalPrefs {
   system: ChordSystem;
 }

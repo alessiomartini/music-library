@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { coverCount, songs } from '../data/songs';
+import { VoiceSettings } from '../components/VoiceSettings';
 
 export function Home() {
   const [query, setQuery] = useState('');
@@ -11,6 +12,7 @@ export function Home() {
     <div className="page home-page">
       <h1>Song Library</h1>
       <p className="subtitle">Lead sheets — melody, chords, bass line and lyrics. Transposable, in Italian or English chord notation.</p>
+      <VoiceSettings />
       <input
         type="search"
         className="song-search"
