@@ -509,7 +509,9 @@ committed when explicitly justified.
 
 > Implemented meanwhile (Oct 2026), outside this model: `links.instagram`
 > (posts from Alessio's saved "piano" collection) and chord-site links
-> (`links.accordiESpartiti` / `links.ultimateGuitar`, search fallback). They
+> (`links.accordiESpartiti` / `links.ultimateGuitar`, search fallback), and
+> direct `links.spotify` track links from Alessio's Liked Songs
+> (`scripts/import-spotify.ts`; one link per song, which may be a cover). They
 > are plain links, not `media` items; fold them in when `media` lands.
 > Local MIDI archive for future MIDI-first songs:
 > `music-library-offline/midi-intake/library/` (~830 files, mostly
