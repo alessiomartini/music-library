@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getSongBySlug } from '../data/songs';
+import { instagramAuthors } from '../data/songs/instagramAuthors';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
 import { ScoreViewer } from '../components/ScoreViewer';
@@ -93,6 +94,25 @@ function SongPageContent({ slug }: { slug?: string }) {
             <strong>Key</strong> {displayedKey}
           </span>
         )}
+        {!displayedKey && song.keyEstimate && (
+          <span className="key-estimate">
+            <strong>{song.keyEstimate.key ? 'Key' : 'Possible keys'}</strong>{' '}
+            {song.keyEstimate.key ?? song.keyEstimate.candidates?.join(' · ')}{' '}
+            <span className="key-sources">
+              (
+              {song.keyEstimate.sources.map((s, i) => (
+                <span key={s.url}>
+                  {i > 0 && ', '}
+                  <a href={s.url} target="_blank" rel="noreferrer noopener">
+                    {s.source}
+                  </a>
+                  {!song.keyEstimate?.key && `: ${s.key}`}
+                </span>
+              ))}
+              )
+            </span>
+          </span>
+        )}
         {song.timeSignature && (
           <span>
             <strong>Meter</strong> {song.timeSignature}
@@ -144,7 +164,7 @@ function SongPageContent({ slug }: { slug?: string }) {
             {song.links.instagram?.map((url, i) => (
               <li key={url}>
                 <a href={url} target="_blank" rel="noreferrer noopener">
-                  Post {i + 1}
+                  {instagramAuthors[url] ? `@${instagramAuthors[url]}` : `Post ${i + 1}`}
                 </a>{' '}
                 <span className="version-source">Instagram</span>
               </li>

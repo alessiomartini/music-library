@@ -1,4 +1,5 @@
 import type { Score } from './score';
+import type { KeyEstimate } from './songKey';
 
 /** One Spotify recording of a song; `artist` is who plays it (performers, for classical pieces). */
 export interface SpotifyVersion {
@@ -51,6 +52,8 @@ export interface Song {
   links: SongLinks;
   /** Cover art of the album of the main Spotify recording. */
   albumImage?: string;
+  /** Key found on the web (scripts/fetch-keys.ts) for songs without a curated `originalKey`. */
+  keyEstimate?: KeyEstimate;
   /** Classical piece: no chord-site links. */
   classical?: boolean;
   /** Background/trivia shown in a "History & trivia" section. */

@@ -10,6 +10,7 @@ import { annaEMarco } from './anna-e-marco';
 import { savedSongs } from './saved';
 import { chordSiteLinks } from './chordSiteLinks';
 import { spotifyLinks, spotifySongs } from './spotify';
+import { songKeys } from './keys';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
 import annaEMarcoScoreJson from './anna-e-marco.json';
@@ -84,12 +85,17 @@ function withLinks(s: Song): Song {
   links.youtube ??= `https://www.youtube.com/results?search_query=${query(s)}`;
   const liked = spotifyLinks[s.slug];
   const albumImage = s.albumImage ?? (liked?.find((v) => v.url === links.spotify) ?? liked?.[0])?.albumImage;
-  return albumImage ? { ...s, links, albumImage } : { ...s, links };
+  const keyEstimate = s.originalKey ? undefined : songKeys[s.slug];
+  return { ...s, links, ...(albumImage && { albumImage }), ...(keyEstimate && { keyEstimate }) };
 }
 
-/** Recordings beyond the song's main one: other Spotify versions and saved Instagram posts. */
-export function extraVersions(s: Song): number {
-  return (s.links.spotifyVersions?.length ?? 0) + (s.links.instagram?.length ?? 0);
+const words = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);
+
+/** Covers of a song: Spotify versions by other artists, and saved Instagram posts. */
+export function coverCount(s: Song): number {
+  const own = new Set(words(s.artist));
+  const spotifyCovers = (s.links.spotifyVersions ?? []).filter((v) => !words(v.artist).some((w) => own.has(w)));
+  return spotifyCovers.length + (s.links.instagram?.length ?? 0);
 }
 
 export const songs: Song[] = allSongs.map(withLinks);
