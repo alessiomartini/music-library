@@ -96,7 +96,10 @@ covers are named after the account that posted them
 accordoTV, chitarradisagio, Allie Sherlock, Fabio Rodrigues and single
 covers), matched to songs from the video titles by hand and via the Deezer
 search API; a covered song missing from the library becomes a light entry
-(`src/lib/youtubeCovers.ts`). Song pages group a performer's videos.
+(`src/lib/youtubeCovers.ts`). Song pages group a performer's videos. Medleys and
+videos about an artist or a genre list one entry per song played, identified
+from the videos' automatic transcripts (`yt-dlp --write-auto-subs`) or from
+viewers' timestamp comments, with the minute in the note ("medley, from 3:20").
 
 `src/data/songs/artists.ts` (`npm run fetch:artists`: Wikipedia, Wikidata,
 Wikimedia Commons) gives each artist a photo, chosen closest to the song's
