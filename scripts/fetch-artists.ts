@@ -2,8 +2,8 @@
  * Looks up each song artist on Wikidata (SPARQL) and their photos on
  * Wikimedia Commons, and writes src/data/songs/artists.ts.
  *
- * - The artist is the Wikidata musician or musical group whose label matches
- *   the song's artist name (most-linked one when several match).
+ * - The artist is the musician or group whose Wikipedia page (en, it, pt, es,
+ *   fr; with a "(singer)"/"(band)"… qualifier when needed) has that name.
  * - Photos are Commons files that "depict" the artist (structured data), with
  *   the date they were taken when Commons knows it, so a song page can show
  *   the artist around the year of the song. The Wikidata main image comes
@@ -41,40 +41,45 @@ async function get(url: string, form?: Record<string, string>, pause = 1000): Pr
     const status = Number(out.slice(out.lastIndexOf('\n') + 1));
     const body = out.slice(0, out.lastIndexOf('\n'));
     if (status === 200 && body.startsWith('{')) { writeFileSync(file, body); return body; }
+    if (status === 404) { writeFileSync(file, '{}'); return '{}'; }
     console.log(`  HTTP ${status || 'error'} for ${url.slice(0, 60)}…, retrying`);
   }
   // Give up loudly rather than write a partial artists file.
   throw new Error(`Could not fetch ${url}`);
 }
 
-const MUSIC_OCCUPATIONS = [
-  'Q177220', 'Q488111', 'Q639669', 'Q36834', 'Q2252262', 'Q855091', 'Q486748', 'Q130857', 'Q183945',
-  'Q753110', 'Q15981151', 'Q158852', 'Q1259917', 'Q1198887', 'Q2865819', 'Q12800682', 'Q584301', 'Q806349',
-].map((q) => `wd:${q}`).join(' ');
-// Kinds of musical group, listed rather than walked via P279* (which times out).
-const GROUP_TYPES = [
-  'Q215380', 'Q5741069', 'Q2088357', 'Q9212979', 'Q216337', 'Q641066', 'Q281643', 'Q56816954', 'Q105543609', 'Q1752346',
-].map((q) => `wd:${q}`).join(' ');
-const LANGS = ['en', 'it', 'es', 'fr', 'pt', 'de'];
+// Wikipedia summary descriptions that mark a page as a musician or musical group.
+const MUSICAL = /singer|songwriter|band|musician|rapper|composer|group|duo|trio|guitarist|pianist|\bdj\b|producer|orchestra|choir|cantante|cantautore|gruppo|musicista|compositore|chitarrista|pianista|produttore|coro|cantora|cantor|banda|compositor|músic|chanteu|groupe/i;
+const QUALIFIERS: Record<string, string[]> = {
+  en: ['', ' (band)', ' (singer)', ' (musician)', ' (rapper)', ' (group)', ' (composer)'],
+  it: ['', ' (cantante)', ' (gruppo musicale)', ' (rapper)', ' (cantautore)', ' (musicista)'],
+  pt: ['', ' (cantor)', ' (cantora)', ' (banda)'],
+  es: ['', ' (cantante)', ' (banda)'],
+  fr: ['', ' (chanteur)', ' (chanteuse)', ' (groupe)'],
+};
 
-interface Binding { [k: string]: { value: string } | undefined }
-
-async function sparql(names: string[]): Promise<Binding[]> {
-  const values = names.flatMap((n) => LANGS.map((l) => `${JSON.stringify(n)}@${l}`)).join(' ');
-  const query = `SELECT ?item ?name ?links ?img ?voiceLabel ?sex WHERE {
-    VALUES ?name { ${values} }
-    ?item rdfs:label ?name .
-    { ?item wdt:P106 ?occ . VALUES ?occ { ${MUSIC_OCCUPATIONS} } }
-    UNION { ?item wdt:P31 ?group . VALUES ?group { ${GROUP_TYPES} } }
-    ?item wikibase:sitelinks ?links .
-    OPTIONAL { ?item wdt:P18 ?img }
-    OPTIONAL { ?item wdt:P412 ?voice . ?voice rdfs:label ?voiceLabel . FILTER(LANG(?voiceLabel) = "en") }
-    OPTIONAL { ?item wdt:P21 ?sex }
-  }`;
-  // The query service may throttle hard (one request a minute): pace and retry slowly.
-  const body = await get('https://query.wikidata.org/sparql', { query, format: 'json' }, 65_000);
-  return body ? (JSON.parse(body).results.bindings as Binding[]) : [];
+/** Wikidata id of the musician or group a Wikipedia page of that name is about. */
+async function findArtist(name: string): Promise<string | null> {
+  for (const [lang, quals] of Object.entries(QUALIFIERS)) {
+    for (const qual of quals) {
+      const title = encodeURIComponent(`${name}${qual}`.replace(/ /g, '_'));
+      const body = await get(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${title}`);
+      const page = body ? (JSON.parse(body) as { type?: string; description?: string; extract?: string; wikibase_item?: string }) : {};
+      if (page.type === 'standard' && page.wikibase_item && MUSICAL.test(`${page.description ?? ''} ${(page.extract ?? '').slice(0, 200)}`)) {
+        return page.wikibase_item;
+      }
+    }
+  }
+  return null;
 }
+
+interface Claim { mainsnak: { datavalue?: { value: string | { id: string } } } }
+async function entity(qid: string): Promise<{ claims: Record<string, Claim[]>; labels: Record<string, { value: string }> } | null> {
+  const body = await get(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, undefined, 3000);
+  return body ? (JSON.parse(body).entities?.[qid] ?? null) : null;
+}
+const claimValues = (e: { claims: Record<string, Claim[]> }, prop: string) =>
+  (e.claims[prop] ?? []).map((c) => c.mainsnak.datavalue?.value).filter((v) => v !== undefined);
 
 const strip = (html: string) => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
@@ -124,40 +129,31 @@ async function photos(qid: string, mainImage?: string): Promise<ArtistPhoto[]> {
 const nameVariants = (artist: string) => [...new Set([artist, artist.split(/, | ft\. | feat\. /)[0]])];
 
 const artists = [...new Set(songs.map((s) => s.artist))];
-const allNames = [...new Set(artists.flatMap(nameVariants))];
-const best = new Map<string, { qid: string; links: number; img?: string; voice?: string; sex?: string }>();
-const BATCH = 40;
-for (let i = 0; i < allNames.length; i += BATCH) {
-  for (const b of await sparql(allNames.slice(i, i + BATCH))) {
-    const name = b.name!.value;
-    const qid = b.item!.value.split('/').pop()!;
-    const links = Number(b.links!.value);
-    const cur = best.get(name);
-    if (!cur || links > cur.links) {
-      best.set(name, { qid, links, img: b.img?.value, voice: b.voiceLabel?.value, sex: b.sex?.value.split('/').pop() });
-    } else if (cur.qid === qid) {
-      cur.img ??= b.img?.value; cur.voice ??= b.voiceLabel?.value; cur.sex ??= b.sex?.value.split('/').pop();
-    }
-  }
-  console.log(`wikidata ${Math.min(i + BATCH, allNames.length)}/${allNames.length}`);
-}
-
 const out: Record<string, ArtistInfo> = {};
+const voiceLabels = new Map<string, string>();
 let done = 0;
 for (const artist of artists) {
-  const name = nameVariants(artist).find((n) => best.has(n));
-  if (name) {
-    const w = best.get(name)!;
-    const sex = w.sex === 'Q6581097' ? 'male' : w.sex === 'Q6581072' ? 'female' : undefined;
+  for (const name of nameVariants(artist)) {
+    const qid = await findArtist(name);
+    if (!qid) continue;
+    const e = await entity(qid);
+    if (!e) break;
+    const image = claimValues(e, 'P18')[0] as string | undefined;
+    const sexId = (claimValues(e, 'P21')[0] as { id: string } | undefined)?.id;
+    const sex = sexId === 'Q6581097' ? 'male' : sexId === 'Q6581072' ? 'female' : undefined;
+    const voiceId = (claimValues(e, 'P412')[0] as { id: string } | undefined)?.id;
+    if (voiceId && !voiceLabels.has(voiceId)) voiceLabels.set(voiceId, (await entity(voiceId))?.labels.en?.value ?? '');
+    const voiceType = voiceId ? voiceLabels.get(voiceId) : undefined;
     out[artist] = {
       name,
-      wikidata: w.qid,
-      ...(w.voice && { voiceType: w.voice }),
+      wikidata: qid,
+      ...(voiceType && { voiceType }),
       ...(sex && { sex }),
-      photos: await photos(w.qid, w.img),
+      photos: await photos(qid, image && `/Special:FilePath/${encodeURIComponent(image)}`),
     };
+    break;
   }
-  if (++done % 50 === 0) console.log(`commons ${done}/${artists.length}`);
+  if (++done % 25 === 0) console.log(`${done}/${artists.length}`);
 }
 
 const q = (v: unknown) => JSON.stringify(v);

@@ -12,6 +12,7 @@ import { chordSiteLinks } from './chordSiteLinks';
 import { spotifyLinks, spotifySongs } from './spotify';
 import { songKeys } from './keys';
 import { youtubeCovers } from './youtubeCovers';
+import { attachYoutubeCovers } from '../../lib/youtubeCovers';
 import yourSongScoreJson from './your-song.json';
 import eCercaScoreJson from './e-cerca-e-me-capi.json';
 import annaEMarcoScoreJson from './anna-e-marco.json';
@@ -82,7 +83,6 @@ const query = (s: Song) => encodeURIComponent(`${s.title} ${s.artist}`);
 /** Every song links to Spotify and YouTube: its own recording when known, else a search. */
 function withLinks(s: Song): Song {
   const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) };
-  if (youtubeCovers[s.slug]) links.youtubeVersions = [...(links.youtubeVersions ?? []), ...youtubeCovers[s.slug]];
   links.spotify ??= `https://open.spotify.com/search/${query(s)}`;
   links.youtube ??= `https://www.youtube.com/results?search_query=${query(s)}`;
   const liked = spotifyLinks[s.slug];
@@ -102,7 +102,10 @@ export function coverCount(s: Song): number {
   return spotifyCovers.length + (s.links.youtubeVersions?.length ?? 0) + (s.links.instagram?.length ?? 0);
 }
 
-export const songs: Song[] = allSongs.map(withLinks);
+// YouTube covers attach to their songs; covered songs not in the library become light entries.
+const covered = attachYoutubeCovers(allSongs, youtubeCovers);
+
+export const songs: Song[] = [...covered.songs, ...covered.added].map(withLinks);
 
 export function getSongBySlug(slug: string): Song | undefined {
   return songs.find((s) => s.slug === slug);
