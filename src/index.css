@@ -189,6 +189,15 @@ select, textarea, input {
   object-fit: cover;
 }
 
+.key-sources {
+  font-size: 0.85em;
+  color: var(--text);
+}
+
+.key-sources a {
+  color: inherit;
+}
+
 .song-key {
   margin-left: auto;
   font-size: 13px;
