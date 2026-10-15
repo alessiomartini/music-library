@@ -41,21 +41,17 @@ const VOICE_TYPES: Record<string, [string, string]> = {
   bass: ['E2', 'E4'],
 };
 
-/** Rough fallback when only the singer's sex is known. */
-const BY_SEX: Record<'male' | 'female', [string, string]> = { male: ['A2', 'G4'], female: ['F3', 'D5'] };
-
 export interface ArtistRange extends PitchRange {
   /** How the range was obtained, for display. */
   basis: string;
 }
 
-/** Approximate vocal range of an artist, from their voice type or, failing that, their sex. */
+/** Approximate vocal range of an artist from their Wikidata voice type; null when it isn't known. */
 export function artistRange(artist: ArtistInfo | undefined): ArtistRange | null {
   const voice = artist?.voiceType?.toLowerCase();
-  const pair = voice && VOICE_TYPES[voice] ? VOICE_TYPES[voice] : artist?.sex ? BY_SEX[artist.sex] : null;
+  const pair = voice ? VOICE_TYPES[voice] : undefined;
   if (!pair) return null;
-  const basis = voice && VOICE_TYPES[voice] ? `voice type: ${voice}` : `typical ${artist!.sex} voice`;
-  return { low: parseNote(pair[0])!, high: parseNote(pair[1])!, basis };
+  return { low: parseNote(pair[0])!, high: parseNote(pair[1])!, basis: `voice type: ${voice}` };
 }
 
 /**

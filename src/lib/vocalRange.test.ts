@@ -18,9 +18,9 @@ describe('parseNote', () => {
 });
 
 describe('artistRange', () => {
-  it('uses the voice type, else the sex', () => {
+  it('uses the voice type only', () => {
     expect(artistRange({ name: 'x', wikidata: 'Q', voiceType: 'baritone', photos: [] })).toMatchObject({ low: 45, high: 65 });
-    expect(artistRange({ name: 'x', wikidata: 'Q', sex: 'female', photos: [] })?.basis).toBe('typical female voice');
+    expect(artistRange({ name: 'x', wikidata: 'Q', sex: 'female', photos: [] })).toBeNull();
     expect(artistRange({ name: 'x', wikidata: 'Q', photos: [] })).toBeNull();
   });
 });
