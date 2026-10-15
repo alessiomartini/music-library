@@ -7,6 +7,7 @@ import { photoForYear } from '../lib/artist';
 import { TransposeControls } from '../components/TransposeControls';
 import { KeyPreference } from '../components/KeyPreference';
 import { KeySuggestion } from '../components/KeySuggestion';
+import { ProviderIcon } from '../components/ProviderIcon';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
@@ -180,18 +181,16 @@ function SongPageContent({ slug }: { slug?: string }) {
             {song.links.spotifyVersions?.map((v) => (
               <li key={v.url}>
                 <a href={v.url} target="_blank" rel="noreferrer noopener">
-                  {v.artist}
+                  <ProviderIcon provider="spotify" /> {v.artist}
                   {v.note ? ` · ${v.note}` : ''}
-                </a>{' '}
-                <span className="version-source">Spotify</span>
+                </a>
               </li>
             ))}
             {song.links.instagram?.map((url, i) => (
               <li key={url}>
                 <a href={url} target="_blank" rel="noreferrer noopener">
-                  {instagramAuthors[url] ? `@${instagramAuthors[url]}` : `Post ${i + 1}`}
-                </a>{' '}
-                <span className="version-source">Instagram</span>
+                  <ProviderIcon provider="instagram" /> {instagramAuthors[url] ? `@${instagramAuthors[url]}` : `Post ${i + 1}`}
+                </a>
               </li>
             ))}
           </ul>
