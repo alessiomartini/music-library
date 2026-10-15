@@ -132,6 +132,7 @@ export const savedSongs: Song[] = [
     artist: "Billy Joel",
     links: {
       instagram: [
+        'https://www.instagram.com/reel/DdUbLNNTBWZ/',
         'https://www.instagram.com/reel/Da_xf89hC9a/',
         'https://www.instagram.com/reel/DbtucagyqDg/',
         'https://www.instagram.com/reel/DaBiLxEvUjo/',
@@ -410,6 +411,7 @@ export const savedSongs: Song[] = [
     links: {
       instagram: [
         'https://www.instagram.com/reel/Db54g9JRoF9/',
+        'https://www.instagram.com/reel/Dcl5SksxDVT/',
       ],
     },
   },
@@ -787,6 +789,7 @@ export const savedSongs: Song[] = [
     links: {
       instagram: [
         'https://www.instagram.com/reel/Dah0Y2JjSST/',
+        'https://www.instagram.com/reel/DZliVzDiTc3/',
         'https://www.instagram.com/reel/DVTd1toDZOZ/',
       ],
     },
@@ -797,6 +800,9 @@ export const savedSongs: Song[] = [
     artist: "Sam Smith",
     links: {
       instagram: [
+        'https://www.instagram.com/reel/DdVqs0rigN6/',
+        'https://www.instagram.com/reel/DbjGIoMM8qp/',
+        'https://www.instagram.com/reel/DaXzJSeCxxr/',
         'https://www.instagram.com/reel/DaYJ1m_MKDO/',
       ],
     },
@@ -863,6 +869,7 @@ export const savedSongs: Song[] = [
     artist: "Sylvie Vartan",
     links: {
       instagram: [
+        'https://www.instagram.com/reel/DXzPtXJRNeY/',
         'https://www.instagram.com/reel/DZLPv6cNiBD/',
       ],
     },
@@ -897,6 +904,7 @@ export const savedSongs: Song[] = [
     links: {
       instagram: [
         'https://www.instagram.com/reel/DXFx9imEXB7/',
+        'https://www.instagram.com/reel/DV8mamHCLkE/',
       ],
     },
   },
@@ -954,6 +962,7 @@ export const savedSongs: Song[] = [
         'https://www.instagram.com/reel/DZK0JbbKk68/',
         'https://www.instagram.com/reel/DUvUIbPDmOX/',
         'https://www.instagram.com/reel/DTGWQXPDR2q/',
+        'https://www.instagram.com/reel/DTAswf-CQeE/',
       ],
     },
   },
@@ -1082,6 +1091,7 @@ export const savedSongs: Song[] = [
     artist: "Antônio Carlos Jobim",
     links: {
       instagram: [
+        'https://www.instagram.com/reel/DZdfBV0Mb_O/',
         'https://www.instagram.com/reel/DWjaFTbDPnS/',
       ],
     },
@@ -1094,6 +1104,7 @@ export const savedSongs: Song[] = [
     links: {
       instagram: [
         'https://www.instagram.com/reel/DWCcuOPjp68/',
+        'https://www.instagram.com/reel/DVqGEfliUQr/',
         'https://www.instagram.com/reel/DVd-KNKgJjV/',
       ],
     },
@@ -1228,6 +1239,118 @@ export const savedSongs: Song[] = [
     links: {
       instagram: [
         'https://www.instagram.com/reel/DSw9HuWDbU8/',
+      ],
+    },
+  },
+  {
+    slug: "ain-t-no-mountain-high-enough",
+    title: "Ain't No Mountain High Enough",
+    artist: "Marvin Gaye & Tammi Terrell",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DeZ4vLSR2b5/',
+      ],
+    },
+  },
+  {
+    slug: "fourfiveseconds",
+    title: "FourFiveSeconds",
+    artist: "Rihanna, Kanye West & Paul McCartney",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/Dd1Z7JDiMP1/',
+      ],
+    },
+  },
+  {
+    slug: "thank-you",
+    title: "Thank You",
+    artist: "Dido",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DaQZ6SAs9ww/',
+      ],
+    },
+  },
+  {
+    slug: "call-up-nancy",
+    title: "Call Up Nancy",
+    artist: "Zinadelphia",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DYNbNPBvxmb/',
+      ],
+    },
+  },
+  {
+    slug: "love-theme-cinema-paradiso",
+    title: "Love Theme (Cinema Paradiso)",
+    artist: "Ennio Morricone",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DcTS1XMtbuA/',
+      ],
+    },
+  },
+  {
+    slug: "guitar-boogie",
+    title: "Guitar Boogie",
+    artist: "Tommy Emmanuel",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/Dc-EtnSOeYo/',
+      ],
+    },
+  },
+  {
+    slug: "moanin",
+    title: "Moanin'",
+    artist: "Bobby Timmons",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DaQRfHnvB4t/',
+      ],
+    },
+  },
+  {
+    slug: "nocturne-op-9-no-1",
+    title: "Nocturne Op. 9 No. 1",
+    artist: "Frédéric Chopin",
+    classical: true,
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DZpQGQOtoMP/',
+      ],
+    },
+  },
+  {
+    slug: "california-dreamin",
+    title: "California Dreamin'",
+    artist: "The Mamas & the Papas",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DaAiA_iMMZQ/',
+      ],
+    },
+  },
+  {
+    slug: "tu-vuo-fa-l-americano",
+    title: "Tu vuò fà l'americano",
+    artist: "Renato Carosone",
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DYmwob8MLJ-/',
+      ],
+    },
+  },
+  {
+    slug: "song-without-words-op-67-no-2",
+    title: "Song Without Words Op. 67 No. 2",
+    artist: "Felix Mendelssohn",
+    classical: true,
+    links: {
+      instagram: [
+        'https://www.instagram.com/reel/DY0vdGTymrP/',
       ],
     },
   },
