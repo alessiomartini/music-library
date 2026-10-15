@@ -23,8 +23,9 @@ export interface VoicePrefs {
   fullHigh: string;
 }
 
+// Defaults to Alessio's range (17 Sep 2026); each browser can change it.
 export function useVoicePrefs() {
-  return useLocalStorage<VoicePrefs>('voice-prefs', { comfortableLow: '', comfortableHigh: '', fullLow: '', fullHigh: '' });
+  return useLocalStorage<VoicePrefs>('voice-prefs', { comfortableLow: 'Mi2', comfortableHigh: 'Sib4', fullLow: '', fullHigh: '' });
 }
 
 export interface GlobalPrefs {

@@ -174,7 +174,7 @@ function SongPageContent({ slug }: { slug?: string }) {
         onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
       />
 
-      {(song.links.spotifyVersions?.length || song.links.instagram?.length) ? (
+      {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">
           <h2>Other versions</h2>
           <ul>
@@ -182,6 +182,14 @@ function SongPageContent({ slug }: { slug?: string }) {
               <li key={v.url}>
                 <a href={v.url} target="_blank" rel="noreferrer noopener">
                   <ProviderIcon provider="spotify" /> {v.artist}
+                  {v.note ? ` · ${v.note}` : ''}
+                </a>
+              </li>
+            ))}
+            {song.links.youtubeVersions?.map((v) => (
+              <li key={v.url}>
+                <a href={v.url} target="_blank" rel="noreferrer noopener">
+                  <ProviderIcon provider="youtube" /> {v.artist}
                   {v.note ? ` · ${v.note}` : ''}
                 </a>
               </li>

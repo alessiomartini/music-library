@@ -17,6 +17,8 @@ export interface SongLinks {
   spotify?: string;
   /** Other Spotify recordings (versions, covers) liked or saved in a playlist. */
   spotifyVersions?: SpotifyVersion[];
+  /** YouTube covers (artist = who plays it). */
+  youtubeVersions?: SpotifyVersion[];
   youtube?: string;
   /** Where to consult the published sheet music this transcription was
    * checked against. A link to the publisher/retailer page, not a copy of
