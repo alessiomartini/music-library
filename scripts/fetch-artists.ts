@@ -20,6 +20,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { songs } from '../src/data/songs';
 import type { ArtistInfo, ArtistPhoto } from '../src/lib/artist';
+import { artistOverrides, mainPhotoOnly } from './artist-overrides';
 
 const OUT = 'src/data/songs/artists.ts';
 const CACHE = 'node_modules/.cache/artists';
@@ -29,7 +30,7 @@ const run = promisify(execFile);
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** GET (or POST form data) with an on-disk cache; curl honours the sandbox HTTPS_PROXY. */
-async function get(url: string, form?: Record<string, string>, pause = 1000): Promise<string | null> {
+async function get(url: string, form?: Record<string, string>, pause = 250): Promise<string | null> {
   const file = `${CACHE}/${createHash('sha1').update(url + JSON.stringify(form ?? {})).digest('hex')}`;
   if (existsSync(file)) return readFileSync(file, 'utf8');
   // Wikimedia throttles shared IPs hard at times: back off up to ~5 min, for up to ~2 h.
@@ -49,7 +50,7 @@ async function get(url: string, form?: Record<string, string>, pause = 1000): Pr
 }
 
 // Wikipedia summary descriptions that mark a page as a musician or musical group.
-const MUSICAL = /singer|songwriter|band|musician|rapper|composer|group|duo|trio|guitarist|pianist|\bdj\b|producer|orchestra|choir|cantante|cantautore|gruppo|musicista|compositore|chitarrista|pianista|produttore|coro|cantora|cantor|banda|compositor|músic|chanteu|groupe/i;
+const MUSICAL = /singer|songwriter|band|musician|rapper|composer|group|duo|trio|guitarist|pianist|saxophonist|trumpeter|bassist|drummer|violinist|\bjazz\b|\bdj\b|producer|orchestra|choir|cantante|cantautore|gruppo|musicista|compositore|chitarrista|pianista|produttore|coro|cantora|cantor|banda|compositor|músic|chanteu|groupe/i;
 const QUALIFIERS: Record<string, string[]> = {
   en: ['', ' (band)', ' (singer)', ' (musician)', ' (rapper)', ' (group)', ' (composer)'],
   it: ['', ' (cantante)', ' (gruppo musicale)', ' (rapper)', ' (cantautore)', ' (musicista)'],
@@ -75,11 +76,20 @@ async function findArtist(name: string): Promise<string | null> {
 
 interface Claim { mainsnak: { datavalue?: { value: string | { id: string } } } }
 async function entity(qid: string): Promise<{ claims: Record<string, Claim[]>; labels: Record<string, { value: string }> } | null> {
-  const body = await get(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, undefined, 3000);
+  const body = await get(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, undefined, 500);
   return body ? (JSON.parse(body).entities?.[qid] ?? null) : null;
 }
 const claimValues = (e: { claims: Record<string, Claim[]> }, prop: string) =>
   (e.claims[prop] ?? []).map((c) => c.mainsnak.datavalue?.value).filter((v) => v !== undefined);
+
+/** Birth (or founding) to death (or break-up) year; open-ended when unknown. */
+function activeYears(e: { claims: Record<string, Claim[]> }): [number, number] {
+  const year = (prop: string) => {
+    const v = claimValues(e, prop)[0] as unknown as { time?: string } | undefined;
+    return v?.time ? Number(v.time.slice(1, 5)) : undefined;
+  };
+  return [year('P569') ?? year('P571') ?? 0, year('P570') ?? year('P576') ?? 9999];
+}
 
 const strip = (html: string) => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
@@ -104,7 +114,17 @@ function photo(p: ImageInfo): ArtistPhoto | null {
 
 const IMAGE_PROPS = '&prop=imageinfo&iiprop=url|mime|extmetadata&iiurlwidth=320&iiextmetadatafilter=DateTimeOriginal|LicenseShortName|Artist';
 
-async function photos(qid: string, mainImage?: string): Promise<ArtistPhoto[]> {
+// File-name words of signatures, logos, record sleeves and memorials, not photos of the artist.
+const NOT_A_PHOTO = new Set(['sig', 'signature', 'logo', 'cover', 'single', 'side', 'album', 'sleeve', 'front', 'poster', 'sheet',
+  'monument', 'monumento', 'statue', 'statua', 'plaque', 'targa', 'graffiti', 'mural', 'murale', 'omaggio', 'tribute']);
+const words = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);
+
+/**
+ * Commons "depicts" also tags plaques, monuments, murals and namesakes (a
+ * ping-pong ball for Queen), so a dated photo is kept only when it was taken
+ * while the artist was alive or active and its file name has a word of the name.
+ */
+async function photos(qid: string, name: string, active: [number, number], mainImage?: string): Promise<ArtistPhoto[]> {
   const found: ArtistPhoto[] = [];
   if (mainImage) {
     const title = `File:${decodeURIComponent(mainImage.split('/Special:FilePath/')[1] ?? '')}`;
@@ -117,7 +137,10 @@ async function photos(qid: string, mainImage?: string): Promise<ArtistPhoto[]> {
   const pages = body ? Object.values((JSON.parse(body).query?.pages ?? {}) as Record<string, ImageInfo>) : [];
   for (const p of pages) {
     const ph = photo(p);
-    if (ph?.year && !found.some((f) => f.page === ph.page)) found.push(ph);
+    const file = words(decodeURIComponent(p.title));
+    const named = !mainPhotoOnly.has(name) && words(name).some((w) => file.some((f) => f.includes(w)));
+    if (file.some((f) => NOT_A_PHOTO.has(f))) continue;
+    if (ph?.year && named && ph.year >= active[0] && ph.year <= active[1] && !found.some((f) => f.page === ph.page)) found.push(ph);
   }
   // Keep the main image plus at most one dated photo per year.
   const perYear = new Map<number, ArtistPhoto>();
@@ -126,15 +149,17 @@ async function photos(qid: string, mainImage?: string): Promise<ArtistPhoto[]> {
 }
 
 /** "Rihanna, Kanye West" → ["Rihanna, Kanye West", "Rihanna"]: try the full credit, then the first name. */
-const nameVariants = (artist: string) => [...new Set([artist, artist.split(/, | ft\. | feat\. /)[0]])];
+const nameVariants = (artist: string) => [...new Set([artist, artist.split(/, | ft\. | feat\. | & /)[0]])];
 
 const artists = [...new Set(songs.map((s) => s.artist))];
 const out: Record<string, ArtistInfo> = {};
 const voiceLabels = new Map<string, string>();
 let done = 0;
-for (const artist of artists) {
-  for (const name of nameVariants(artist)) {
-    const qid = await findArtist(name);
+async function lookUp(artist: string) {
+  const override = artistOverrides[artist];
+  const candidates = override !== undefined ? [artist] : nameVariants(artist);
+  for (const name of candidates) {
+    const qid = override !== undefined ? override : await findArtist(name);
     if (!qid) continue;
     const e = await entity(qid);
     if (!e) break;
@@ -149,12 +174,15 @@ for (const artist of artists) {
       wikidata: qid,
       ...(voiceType && { voiceType }),
       ...(sex && { sex }),
-      photos: await photos(qid, image && `/Special:FilePath/${encodeURIComponent(image)}`),
+      photos: await photos(qid, name, activeYears(e), image && `/Special:FilePath/${encodeURIComponent(image)}`),
     };
     break;
   }
   if (++done % 25 === 0) console.log(`${done}/${artists.length}`);
 }
+// A few artists at a time: polite to Wikimedia, but hours faster than one by one.
+const queue = [...artists];
+await Promise.all(Array.from({ length: 4 }, async () => { while (queue.length) await lookUp(queue.shift()!); }));
 
 const q = (v: unknown) => JSON.stringify(v);
 writeFileSync(OUT, [
