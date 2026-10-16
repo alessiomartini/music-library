@@ -190,7 +190,7 @@ function SongPageContent({ slug }: { slug?: string }) {
       />
 
       {vocalRanges[song.slug] && (
-        <VocalHistogram profile={vocalRanges[song.slug]} semitones={songPrefs.semitones} system={globalPrefs.system} />
+        <VocalHistogram profile={vocalRanges[song.slug]} system={globalPrefs.system} />
       )}
 
       {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.instagram?.length) ? (
