@@ -4,69 +4,75 @@ import type { ChordSystem } from '../lib/theory';
 
 interface Props {
   profile: VocalProfile;
-  /** Current transposition of the song, so the bars move with the key. */
-  semitones: number;
   system: ChordSystem;
 }
+
+/** Same axis for every song (C2–C6, which holds every range measured so far), so songs compare at a glance. */
+const AXIS_LOW = 36;
+const AXIS_HIGH = 84;
+const NOTES = Array.from({ length: AXIS_HIGH - AXIS_LOW + 1 }, (_, i) => AXIS_LOW + i);
 
 const pct = (share: number) => `${Math.round(share * 100)}%`;
 
 /**
- * The notes sung in the recording, twice: weighted by how long each is sung
- * and by how many times. The user's comfortable range is shaded behind the bars.
+ * The notes sung in the recording, as sung (not transposed): for each note, one bar
+ * for its share of the singing time and one for its share of the sung notes (how many
+ * times it is sung). The user's comfortable range is shaded behind the bars.
  */
-export function VocalHistogram({ profile, semitones, system }: Props) {
+export function VocalHistogram({ profile, system }: Props) {
   const [voice] = useVoicePrefs();
   const italian = system === 'it';
   const comfortLow = parseNote(voice.comfortableLow);
   const comfortHigh = parseNote(voice.comfortableHigh);
-  const notes = Array.from({ length: profile.high - profile.low + 1 }, (_, i) => profile.low + i);
-  const outside = (h: Record<string, number>) =>
-    Object.entries(h).reduce((sum, [n, share]) => (Number(n) < profile.low || Number(n) > profile.high ? sum + share : sum), 0);
-  const name = (n: number) => noteName(n + semitones, italian);
-
-  const chart = (title: string, h: Record<string, number>, unit: string) => {
-    const max = Math.max(...notes.map((n) => h[n] ?? 0));
-    return (
-      <figure className="vocal-histogram">
-        <figcaption>{title}</figcaption>
-        <div className="vocal-bars" role="img" aria-label={`${title}: ${notes.map((n) => `${name(n)} ${pct(h[n] ?? 0)}`).join(', ')}`}>
-          {notes.map((n) => {
-            const sounding = n + semitones;
-            const comfortable = comfortLow !== null && comfortHigh !== null && sounding >= comfortLow && sounding <= comfortHigh;
-            const labelled = n === profile.low || n === profile.high || sounding % 12 === 0;
-            return (
-              <div key={n} className={`vocal-col${comfortable ? ' comfortable' : ''}`} title={`${name(n)}: ${pct(h[n] ?? 0)} ${unit}`}>
-                <div className="vocal-bar-area">
-                  <div className="vocal-bar" style={{ height: `${max ? ((h[n] ?? 0) / max) * 100 : 0}%` }} />
-                </div>
-                <span className="vocal-label">{labelled ? name(n) : ''}</span>
-              </div>
-            );
-          })}
-        </div>
-        {outside(h) >= 0.01 && <p className="vocal-note">Plus {pct(outside(h))} on rarer notes outside this range.</p>}
-      </figure>
-    );
-  };
+  const time = profile.histogram;
+  const count = profile.countHistogram;
+  const max = Math.max(...NOTES.map((n) => Math.max(time[n] ?? 0, count[n] ?? 0)));
+  const height = (share = 0) => `${max ? (share / max) * 100 : 0}%`;
+  const name = (n: number) => noteName(n, italian);
 
   return (
     <div className="vocal-profile">
       <h2>Vocal range</h2>
       <p className="vocal-summary">
         Sung from <strong>{name(profile.low)}</strong> to <strong>{name(profile.high)}</strong>, mostly between{' '}
-        {name(profile.coreLow)} and {name(profile.coreHigh)}
-        {semitones !== 0 && ` (in the transposed key, ${semitones > 0 ? '+' : ''}${semitones})`}.
+        {name(profile.coreLow)} and {name(profile.coreHigh)}.
       </p>
-      {chart('By time sung', profile.histogram, 'of the singing time')}
-      {chart('By times sung', profile.countHistogram, 'of the sung notes')}
+      <p className="vocal-legend">
+        <span className="vocal-swatch time" /> share of the singing time{' '}
+        <span className="vocal-swatch count" /> share of the sung notes (how many times)
+      </p>
+      <div
+        className="vocal-bars"
+        role="img"
+        aria-label={`Vocal histogram: ${NOTES.filter((n) => time[n] || count[n])
+          .map((n) => `${name(n)} ${pct(time[n] ?? 0)} of the time, ${pct(count[n] ?? 0)} of the notes`)
+          .join('; ')}`}
+      >
+        {NOTES.map((n) => {
+          const comfortable = comfortLow !== null && comfortHigh !== null && n >= comfortLow && n <= comfortHigh;
+          return (
+            <div
+              key={n}
+              className={`vocal-col${comfortable ? ' comfortable' : ''}`}
+              title={`${name(n)}: ${pct(time[n] ?? 0)} of the singing time, ${pct(count[n] ?? 0)} of the sung notes`}
+            >
+              <div className="vocal-bar-area">
+                <div className="vocal-bar time" style={{ height: height(time[n]) }} />
+                <div className="vocal-bar count" style={{ height: height(count[n]) }} />
+              </div>
+              <span className="vocal-label">{n % 12 === 0 ? name(n) : ''}</span>
+            </div>
+          );
+        })}
+      </div>
       <p className="vocal-note">
         Measured from the{' '}
         <a href={`https://www.youtube.com/watch?v=${profile.source}`} target="_blank" rel="noreferrer noopener">
           recording
         </a>{' '}
-        ({Math.round(profile.seconds)} s of singing, {profile.notes} notes): the voice is separated from the instruments and
-        its pitch tracked automatically, so treat it as an estimate. Shaded: your comfortable range (My voice).
+        ({Math.round(profile.seconds)} s of singing, {profile.notes} notes), in the original key: the voice is separated
+        from the instruments and its pitch tracked automatically, so treat it as an estimate. Shaded: your comfortable
+        range (My voice).
       </p>
     </div>
   );

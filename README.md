@@ -52,7 +52,11 @@ same offline pipeline, not reviving the old format.
 
 The published scores are machine-transcribed (source separation + automatic
 melody/harmony extraction) and not checked against a published edition;
-treat pitches and chords as a close but unverified transcription.
+treat pitches and chords as a close but unverified transcription. **Anna e Marco**'s
+melody is probably written an octave too high: the measurement from the
+recording finds the same most-sung notes an octave lower (C4/D4/Bb3 vs
+C5/D5/Bb4), which also fits Lucio Dalla's voice. Karaoke MIDI files often
+double the melody an octave up.
 
 `ScoreViewer`'s layout is functional but not typeset: multi-line pieces
 divide measures evenly per line rather than balancing them, chord symbols are
@@ -124,10 +128,11 @@ pages about albums, films or games are rejected; no article, no entry.
 `src/data/songs/vocalRanges.ts` (`npm run import:vocal-ranges`, from
 `music-library-offline/output/vocal/`) holds the sung notes measured from a
 song's recording (Demucs vocal stem + pYIN pitch tracking, see that repo). The
-song page shows two histograms over the sung range: share of the singing time
-on each note and share of the sung notes (how many times each is sung), moved
-with the current transposition, with the comfortable range from "My voice"
-shaded. So far measured: Your Song, E cerca 'e me capi, Anna e Marco.
+song page shows one histogram with two bars per note: share of the singing time
+and share of the sung notes (how many times each is sung). The axis is the same
+for every song (C2–C6) and the notes are as sung in the recording, never
+transposed, so songs can be compared at a glance; the comfortable range from
+"My voice" is shaded. So far measured: Your Song, E cerca 'e me capi, Anna e Marco.
 
 `src/data/songs/keys.ts` holds the key of songs without a curated
 `originalKey`, looked up by `npm run fetch:keys` on Hooktheory (hand
