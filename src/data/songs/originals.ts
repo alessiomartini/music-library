@@ -169,4 +169,15 @@ export const originals: Record<string, Partial<Song>> = {
   'summertime': { artist: 'George Gershwin' },
   // Same title as a standard in Wikipedia's lists, but a different song.
   swing: { standard: false },
+  'timmy-turner-trap': {
+    // The liked track is a trap instrumental by Jmbeatz: it stays as a version.
+    title: 'Tiimmy Turner',
+    artist: 'Desiigner',
+    year: 2016,
+    albumImage: 'https://i.scdn.co/image/ab67616d0000b27335243e14634fea3e3cfe3121',
+    links: {
+      spotify: 'https://open.spotify.com/track/3NJG6vMH1ZsectZkocMEm0',
+      spotifyVersions: [{ url: 'https://open.spotify.com/track/0pw5rNoxDWvO4UUGC2NqpC', artist: 'Jmbeatz', note: 'Trap' }],
+    },
+  },
 };
