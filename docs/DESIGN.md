@@ -1632,6 +1632,22 @@ These questions should be resolved explicitly in future design work. Future
 sessions must not silently turn one of these alternatives into an assumed
 requirement.
 
+### Key from the audio (tried 2026-10-18, not published)
+
+Tested on the 265 songs with a vocal profile and a key agreed by Hooktheory and
+Ultimate Guitar (`keys.ts`), picking the best of 24 key profiles by correlation:
+
+| Input | Profile | Exact | MIREX score |
+| --- | --- | --- | --- |
+| accompaniment stem, mean chroma (librosa CQT) | Krumhansl-Kessler | 64% | 0.72 |
+| accompaniment + vocal time histogram | Aarden | 63% | 0.71 |
+| vocal histogram by time | Temperley / Aarden | 54-55% | 0.64 |
+| vocal histogram by count | Temperley / Aarden | 54% | 0.63-0.64 |
+
+The two vocal histograms carry the same key information. 64% is too low to show
+as the song's key; open question whether to show it as "estimated from the audio"
+for songs without a web key, or try a stronger estimator (Essentia, a CNN).
+
 ## 21. Suggested Implementation Phases
 
 This roadmap is a planning aid only. It does not authorize implementation as
