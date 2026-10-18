@@ -7,7 +7,7 @@
  *
  * A song with no score yet is reported as PENDING, not FAIL: that's an
  * expected, temporary state during incremental migration (see
- * docs/FUTURE-ARCHITECTURE.md), not a data defect. Only a *present but
+ * docs/DESIGN.md), not a data defect. Only a *present but
  * malformed* score fails the run.
  *
  * Run with:  npm run validate
