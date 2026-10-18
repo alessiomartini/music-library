@@ -65,6 +65,7 @@ function SongPageContent({ slug }: { slug?: string }) {
   const wiki = songHistory[song.slug];
   const artistPhoto = photoForYear(artists[song.artist]?.photos ?? [], song.year);
   const originalKey = song.originalKey;
+  const theoryTab = song.keyEstimate?.sources.find((s) => s.source === 'Hooktheory')?.url;
   const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
   const displayedKey = originalKey
     ? transposeKeyLabel(originalKey, songPrefs.semitones, globalPrefs.system, preferFlats)
@@ -178,6 +179,11 @@ function SongPageContent({ slug }: { slug?: string }) {
             <a href={ultimateGuitarUrl(song)} target="_blank" rel="noreferrer noopener" className="link-pill ug">
               Ultimate Guitar
             </a>
+            {theoryTab && (
+              <a href={theoryTab} target="_blank" rel="noreferrer noopener" className="link-pill ug">
+                Hooktheory analysis
+              </a>
+            )}
           </>
         )}
       </div>

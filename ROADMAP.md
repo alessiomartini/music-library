@@ -30,7 +30,10 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Range vocale dell'artista per trasporre al range comodo dell'utente
 - [ ] Link YouTube diretti (oggi ricerca) — serve accesso di rete a YouTube
 - [ ] Tonalità ed estensione vocale di ogni canzone
-- [ ] Range vocale misurato dalla registrazione per tutte le canzoni (oggi 3; ~3-4,5 min a canzone)
+- [x] Range vocale misurato dalla registrazione: 1743 canzoni su 1904
+- [ ] Range vocale per le 161 canzoni senza video abbinabile automaticamente (scelta a mano del video)
+- [x] Link all'analisi Hooktheory (TheoryTab) nella pagina canzone, dove la pagina è verificata (153 canzoni)
+- [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
 - [ ] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
 - [ ] Schede Testo / Accordi a battute / Lead sheet
 - [ ] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
@@ -41,6 +44,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/FUTURE-ARCHITECTURE.md`](docs/FUTURE-ARCHITECTURE.md).
 
 ## Log
+- 2026-10-18: range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
 - 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
 - 2026-10-15 (sera): foto degli artisti e tipo di voce da Wikipedia/Wikidata/Commons, controllo a campione e override degli omonimi, filtro delle foto non dell'artista
