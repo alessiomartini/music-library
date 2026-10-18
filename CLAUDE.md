@@ -7,13 +7,13 @@ Static React/TypeScript `music-library` application deployed to GitHub Pages.
 The current implementation is a chord/lyrics-oriented song library. The
 project is planned to migrate toward a normalized symbolic score
 representation. The detailed architecture and roadmap are documented in
-[`docs/FUTURE-ARCHITECTURE.md`](docs/FUTURE-ARCHITECTURE.md).
+[`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Source of truth
 
 For current behavior, inspect the actual source code and `README.md`.
 
-For future architecture, use `docs/FUTURE-ARCHITECTURE.md`. Do not treat
+For the long-term design, use `docs/DESIGN.md`. Do not treat
 planned features as already implemented.
 
 ## Implementation workflow
@@ -161,7 +161,7 @@ they are still cheap to fix, with a commit boundary at every verified chunk.
 ## Roadmap, idee e progressi
 
 `ROADMAP.md` nella root è l'**unico** file per todo, idee, decisioni e diario del progetto
-(niente `FUTURE-ARCHITECTURE.md` in root, `IDEE.md`, `TODO.md`; il documento di progetto lungo resta in `docs/FUTURE-ARCHITECTURE.md`). È letto da https://alessiomartini.github.io/projects-overview/.
+(niente `FUTURE-ARCHITECTURE.md`, `IDEE.md`, `TODO.md`; il documento di progetto lungo è `docs/DESIGN.md`). È letto da https://alessiomartini.github.io/projects-overview/.
 Sezioni: `## <fase>` (checkbox, contano nella percentuale), `## Idee` (checkbox, non contano),
 `## Decisioni e cose provate` (prosa: scartato/rimandato e perché, provato e annullato, limiti e bug noti), `## Log`.
 
