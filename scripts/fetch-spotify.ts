@@ -67,14 +67,15 @@ async function pages<T>(url: string, auth: string): Promise<T[]> {
   return items;
 }
 
-const cell = (s: string) => `"${s.replace(/"/g, '""')}"`;
+// The API leaves fields null at times (unavailable or local tracks): write them empty.
+const cell = (s: string | null | undefined) => `"${(s ?? '').replace(/"/g, '""')}"`;
 /** Exportify's columns, as import-spotify.ts reads them; commas inside an artist name are escaped. */
 function csv(tracks: (ApiTrack | null)[]): string {
-  const rows = [['Track URI', 'Track Name', 'Artist Name(s)', 'Popularity', 'Album Release Date', 'Album Image URL']];
+  const rows: (string | null | undefined)[][] = [['Track URI', 'Track Name', 'Artist Name(s)', 'Popularity', 'Album Release Date', 'Album Image URL']];
   for (const t of tracks) {
     if (!t?.uri) continue;
-    rows.push([t.uri, t.name, t.artists.map((a) => a.name.replace(/,/g, '\\,')).join(','), String(t.popularity ?? 0),
-      t.album.release_date, t.album.images[0]?.url ?? '']);
+    rows.push([t.uri, t.name, (t.artists ?? []).map((a) => (a.name ?? '').replace(/,/g, '\\,')).join(','), String(t.popularity ?? 0),
+      t.album?.release_date, t.album?.images?.[0]?.url]);
   }
   return rows.map((r) => r.map(cell).join(',')).join('\n') + '\n';
 }
