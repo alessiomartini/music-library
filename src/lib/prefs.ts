@@ -43,6 +43,10 @@ export interface FeedbackNote {
   text: string;
   done: boolean;
   createdAt: number;
+  /** Page it was written on (the hash route). */
+  page?: string;
+  /** Sent to site-notes; unsent notes are retried. */
+  sent?: boolean;
 }
 
 export function useFeedbackNotes() {
