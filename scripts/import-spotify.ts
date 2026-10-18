@@ -11,14 +11,15 @@
  * Recordings of the same song (remasters, live/acoustic takes, remixes,
  * covers) collapse onto one entry, keyed by cleaned-up title: the best one is
  * `links.spotify`, the others `links.spotifyVersions`. Local files have no
- * Spotify link and are skipped. Hand-curated fixes live in
+ * Spotify link and are skipped. The import only adds: songs and links of earlier
+ * imports missing from the CSVs are kept. Hand-curated fixes live in
  * scripts/spotify-overrides.ts.
  *
  * Run with:  npm run import:spotify -- liked.csv guitar.csv ...
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { songs } from '../src/data/songs';
-import { spotifySongs as previousImport } from '../src/data/songs/spotify';
+import { spotifyLinks as previousLinks, spotifySongs as previousImport } from '../src/data/songs/spotify';
 import { classicalComposers, overrides } from './spotify-overrides';
 
 const OUT = 'src/data/songs/spotify.ts';
@@ -272,6 +273,14 @@ for (const [t, ...others] of named) {
   );
 }
 
+// Add-only: a song or link from an earlier import that no CSV has any more (unliked, or in a
+// playlist the API can't read: only the user's own playlists are readable) stays as it was.
+const newSlugs = new Set(named.length ? songLines.filter((l) => l.startsWith('    slug: ')).map((l) => JSON.parse(l.slice(10, -1))) : []);
+const kept = previousImport.filter((s) => !newSlugs.has(s.slug) && !libraryBySlug.has(s.slug));
+for (const s of kept) songLines.push(`  ${JSON.stringify(s)},`);
+const linkedSlugs = new Set(links.map(([slug]) => slug));
+const keptLinks = Object.entries(previousLinks).filter(([slug]) => !linkedSlugs.has(slug));
+
 const out = [
   "import type { Song, SpotifyVersion } from '../../lib/types';",
   '',
@@ -285,6 +294,7 @@ const out = [
     ...distinctVersions(e).map((t) => `    ${version(t)},`),
     '  ],',
   ]),
+  ...keptLinks.map(([slug, versions]) => `  ${q(slug)}: ${JSON.stringify(versions)},`),
   '};',
   '',
   '/** Liked songs not otherwise in the library. */',
@@ -294,7 +304,7 @@ const out = [
   '',
 ].join('\n');
 writeFileSync(OUT, out);
-console.log(`${seen.size} tracks (${local} local files), ${skipped} skipped → ${links.length} links to existing songs, ${newSongs.length} new songs → ${OUT}`);
+console.log(`${seen.size} tracks (${local} local files), ${skipped} skipped → ${links.length} links to existing songs, ${newSongs.length} new songs, ${kept.length} songs and ${keptLinks.length} links kept from earlier imports → ${OUT}`);
 
 if (process.env.SPOTIFY_IMPORT_REPORT) {
   for (const e of entries.values()) {
