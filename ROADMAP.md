@@ -36,6 +36,10 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
 - [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
 
+## Decisioni e cose provate
+
+Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/FUTURE-ARCHITECTURE.md`](docs/FUTURE-ARCHITECTURE.md).
+
 ## Log
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
 - 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
