@@ -64,7 +64,7 @@ placed by proportional x-position rather than true rhythmic alignment, and
 there's no beaming/tie rendering yet (`ScoreNoteEvent.tie` is not drawn).
 There is no automatic vocal-range analysis, pitch-distribution analysis,
 automatic key recommendation, or embedded recording/cover players yet — see
-[Future Architecture](docs/FUTURE-ARCHITECTURE.md).
+[Design document](docs/DESIGN.md).
 
 ## Song Data
 
@@ -259,7 +259,7 @@ score fails the run and the exit code.
 
 ## Future Architecture
 
-See [Future Architecture](docs/FUTURE-ARCHITECTURE.md) for the full design:
+See [Design document](docs/DESIGN.md) for the full design:
 vocal-range analysis, automatic key recommendation, original-recording/cover
 media, in-app stem playback (play a song with vocals or instrumentals
 excluded, reusing the offline pipeline's existing Demucs separation), and the

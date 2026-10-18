@@ -96,7 +96,7 @@ export interface Score {
   harmony: HarmonyEvent[];
   // How closely lyric timing tracks real per-syllable timestamps: 'midi-native'
   // for a MIDI-first score (parsed directly from a karaoke MIDI's own lyric
-  // events, see docs/FUTURE-ARCHITECTURE.md), 'derived' or absent for the
+  // events, see docs/DESIGN.md), 'derived' or absent for the
   // audio-first path (forced alignment). Gates ScoreViewer's held-syllable
   // ("_") marks, which rely on MIDI-first's note-level lyric granularity and
   // read as noise on audio-first's coarser transcription.

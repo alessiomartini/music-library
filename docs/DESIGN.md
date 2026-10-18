@@ -1,4 +1,4 @@
-# Future Architecture: Symbolic Lead Sheets and Vocal Analysis
+# Design: Symbolic Lead Sheets and Vocal Analysis
 
 ## 1. Purpose
 
