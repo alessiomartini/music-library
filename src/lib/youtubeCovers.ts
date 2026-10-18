@@ -12,6 +12,8 @@ export interface YoutubeCover {
   note?: string;
   /** Library song to attach to, when title matching would not find it. */
   slug?: string;
+  /** Classical piece: set on the light entry created for a song the library doesn't have. */
+  classical?: true;
 }
 
 const norm = (s: string) =>
@@ -46,7 +48,7 @@ export function attachYoutubeCovers(songs: Song[], covers: YoutubeCover[]): { so
       if (!song) {
         let newSlug = slugify(c.song);
         if (bySlug.has(newSlug) || [...added.values()].some((a) => a.slug === newSlug)) newSlug = `${newSlug}-${slugify(c.artist)}`;
-        song = { slug: newSlug, title: c.song, artist: c.artist, links: {} };
+        song = { slug: newSlug, title: c.song, artist: c.artist, links: {}, ...(c.classical && { classical: true }) };
         added.set(key, song);
       }
       slug = song.slug;

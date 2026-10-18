@@ -36,6 +36,8 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Import Spotify automatico ogni lunedì (GitHub Action), attivo quando ci sono i 3 secret Spotify
 - [x] Originali vs cover: correzioni a mano (`originals.ts`), versioni tradotte con link nella pagina dell'originale
 - [x] Filtri della lista: inglese, italiano, altre lingue, jazz standards; link a Wikipedia nella pagina canzone
+- [x] Filtri Classica / Non classica (78 brani classici, compresi 3 arrivati dalle cover YouTube)
+- [x] Istogramma del range vocale: oltre al range comodo, a righe la parte dell'estensione completa che non è comoda (da *My voice*)
 - [ ] Cover non ancora trovate: canzoni senza pagina Wikipedia (~680) da controllare
 - [ ] Tonalità dall'audio: 64% esatte sulle 265 canzoni con tonalità nota (accompagnamento + profilo Krumhansl); non pubblicata
 - [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
@@ -44,11 +46,15 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
 - [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
 
+## Idee
+- [ ] Registri della voce separati nell'istogramma: voce di petto, mista, di testa, falsetto (ognuno col suo range e colore), al posto della sola coppia comodo / estensione completa
+
 ## Decisioni e cose provate
 
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
+- 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati
 - 2026-10-18: docs/FUTURE-ARCHITECTURE.md rinominato docs/DESIGN.md (protocollo unico: niente file FUTURE-ARCHITECTURE); note isolate tolte dagli istogrammi; cover corrette con l'originale e versioni tradotte; filtri per lingua e jazz standards; import Spotify automatico; range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
 - 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
