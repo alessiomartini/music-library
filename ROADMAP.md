@@ -34,6 +34,10 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Range vocale per le 161 canzoni senza video abbinabile automaticamente (scelta a mano del video)
 - [x] Link all'analisi Hooktheory (TheoryTab) nella pagina canzone, dove la pagina è verificata (153 canzoni)
 - [x] Import Spotify automatico ogni lunedì (GitHub Action), attivo quando ci sono i 3 secret Spotify
+- [x] Originali vs cover: correzioni a mano (`originals.ts`), versioni tradotte con link nella pagina dell'originale
+- [x] Filtri della lista: inglese, italiano, altre lingue, jazz standards; link a Wikipedia nella pagina canzone
+- [ ] Cover non ancora trovate: canzoni senza pagina Wikipedia (~680) da controllare
+- [ ] Tonalità dall'audio: 64% esatte sulle 265 canzoni con tonalità nota (accompagnamento + profilo Krumhansl); non pubblicata
 - [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
 - [ ] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
 - [ ] Schede Testo / Accordi a battute / Lead sheet
@@ -45,7 +49,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/FUTURE-ARCHITECTURE.md`](docs/FUTURE-ARCHITECTURE.md).
 
 ## Log
-- 2026-10-18: range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
+- 2026-10-18: note isolate tolte dagli istogrammi; cover corrette con l'originale e versioni tradotte; filtri per lingua e jazz standards; import Spotify automatico; range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
 - 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
 - 2026-10-15 (sera): foto degli artisti e tipo di voce da Wikipedia/Wikidata/Commons, controllo a campione e override degli omonimi, filtro delle foto non dell'artista

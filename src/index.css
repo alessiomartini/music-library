@@ -363,6 +363,26 @@ select, textarea, input {
   font-size: 12px;
 }
 
+.song-translations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: grid;
+  gap: 12px;
+  color: var(--text-h);
+}
+
+.song-translations li {
+  display: grid;
+  gap: 6px;
+}
+
+.translation-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .song-source-notes {
   margin-top: 28px;
   padding: 12px 14px;
@@ -452,6 +472,35 @@ select, textarea, input {
   background: var(--bg-alt);
   color: var(--text-h);
   font: inherit;
+}
+
+.song-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.song-filters button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-h);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.song-filters button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.song-filters .filter-count {
+  color: var(--text);
+  font-weight: 400;
 }
 
 .song-saved-posts ul {

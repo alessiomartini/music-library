@@ -14,6 +14,7 @@
     "fetch:instagram-authors": "esbuild scripts/fetch-instagram-authors.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-instagram-authors.mjs --log-level=error && node node_modules/.cache/fetch-instagram-authors.mjs",
     "fetch:artists": "esbuild scripts/fetch-artists.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-artists.mjs --log-level=error && node node_modules/.cache/fetch-artists.mjs",
     "fetch:keys": "esbuild scripts/fetch-keys.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-keys.mjs --log-level=error && node node_modules/.cache/fetch-keys.mjs",
+    "fetch:song-info": "esbuild scripts/fetch-song-info.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-song-info.mjs --log-level=error && node node_modules/.cache/fetch-song-info.mjs",
     "fetch:history": "esbuild scripts/fetch-history.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-history.mjs --log-level=error && node node_modules/.cache/fetch-history.mjs",
     "import:vocal-ranges": "esbuild scripts/import-vocal-ranges.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/import-vocal-ranges.mjs --log-level=error && node node_modules/.cache/import-vocal-ranges.mjs",
     "validate": "esbuild scripts/validate-scores.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/validate.mjs --log-level=error && node node_modules/.cache/validate.mjs"

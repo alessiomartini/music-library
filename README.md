@@ -96,6 +96,18 @@ under "Other versions" together with its Instagram posts. Local files have no
 Spotify link and are skipped. The import also keeps each recording's album
 cover (`albumImage`, shown on the song page).
 
+`src/data/songs/originals.ts` corrects, by hand, songs whose imported artist
+is a cover (a liked Spotify recording by Neri per Caso, Stefano Bollani, Jeff
+Buckley...): it sets the original artist and recording, which stays first, and
+lists translated versions (Italian Disney dubs...) shown on the original's page
+under "In other languages", with links to the recording and to its lyrics.
+Jazz standards sung by a later artist take the composer as artist.
+
+`src/data/songs/songInfo.ts` (`npm run fetch:song-info`) holds each song's
+language (Wikidata, else the Wikipedia edition, else the artist's country) and
+the jazz-standard flag (Wikipedia's lists of jazz standards), used by the list
+filters English / Italian / Other languages / Jazz standards.
+
 Every song links to Spotify and YouTube: its own recording when known,
 otherwise a title + artist search. The home list shows a badge with the number
 of covers (Spotify versions by other artists + Instagram posts); Instagram
