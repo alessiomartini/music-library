@@ -1,0 +1,42 @@
+name: Import Spotify songs
+
+# Weekly: Liked Songs + own playlists -> src/data/songs/spotify.ts, committed to main
+# and deployed. Secrets: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN
+# (see scripts/fetch-spotify.ts).
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run fetch:spotify
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+      - run: npm run import:spotify -- node_modules/.cache/spotify-csv/*.csv
+      - run: npm run build && npm run lint && npm run validate && npm test
+      - name: Commit and deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --quiet && { echo "No changes"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Spotify import $(date -u +%F)"
+          git push
+          # A push made with the workflow token starts no other workflow: deploy explicitly.
+          gh workflow run deploy.yml --ref main

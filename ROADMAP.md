@@ -33,6 +33,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Range vocale misurato dalla registrazione: 1743 canzoni su 1904
 - [ ] Range vocale per le 161 canzoni senza video abbinabile automaticamente (scelta a mano del video)
 - [x] Link all'analisi Hooktheory (TheoryTab) nella pagina canzone, dove la pagina è verificata (153 canzoni)
+- [x] Import Spotify automatico ogni lunedì (GitHub Action), attivo quando ci sono i 3 secret Spotify
 - [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
 - [ ] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
 - [ ] Schede Testo / Accordi a battute / Lead sheet

@@ -81,6 +81,12 @@ the repo; pass every CSV each time):
 npm run import:spotify -- liked.csv guitar.csv piano.csv ...
 ```
 
+The same CSVs can be downloaded from the Spotify Web API instead of Exportify:
+`npm run fetch:spotify` writes Liked Songs and Alessio's own playlists to
+`node_modules/.cache/spotify-csv/` (setup in the header of
+`scripts/fetch-spotify.ts`). `.github/workflows/spotify-import.yml` does this
+every Monday, runs the import and the checks, commits to main and deploys.
+
 Recordings of a song already in the library give it a direct track link
 (`spotifyLinks`, replacing a Spotify search link but never a curated track
 link); every other song becomes a light entry (`spotifySongs`). Versions and

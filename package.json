@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "import:spotify": "esbuild scripts/import-spotify.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/import-spotify.mjs --log-level=error && node node_modules/.cache/import-spotify.mjs",
+    "fetch:spotify": "esbuild scripts/fetch-spotify.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-spotify.mjs --log-level=error && node node_modules/.cache/fetch-spotify.mjs",
     "fetch:instagram-authors": "esbuild scripts/fetch-instagram-authors.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-instagram-authors.mjs --log-level=error && node node_modules/.cache/fetch-instagram-authors.mjs",
     "fetch:artists": "esbuild scripts/fetch-artists.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-artists.mjs --log-level=error && node node_modules/.cache/fetch-artists.mjs",
     "fetch:keys": "esbuild scripts/fetch-keys.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-keys.mjs --log-level=error && node node_modules/.cache/fetch-keys.mjs",
