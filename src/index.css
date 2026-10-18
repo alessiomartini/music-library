@@ -265,8 +265,15 @@ select, textarea, input {
   border-radius: 3px 3px 0 0;
 }
 
-.vocal-col.comfortable .vocal-bar-area {
+.vocal-col.comfortable .vocal-bar-area,
+.vocal-swatch.comfortable {
   background: var(--accent-bg);
+}
+
+/* Full range outside the comfortable one: same tint, hatched and fainter. */
+.vocal-col.reachable .vocal-bar-area,
+.vocal-swatch.reachable {
+  background: repeating-linear-gradient(135deg, var(--accent-bg) 0 3px, transparent 3px 6px);
 }
 
 .vocal-bar-area {

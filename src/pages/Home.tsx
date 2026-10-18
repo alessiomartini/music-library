@@ -11,6 +11,8 @@ const FILTERS: [string, (s: Song) => boolean][] = [
   ['Italian', (s) => s.language === 'it'],
   ['Other languages', (s) => s.language !== 'en' && s.language !== 'it'],
   ['Jazz standards', (s) => !!s.standard],
+  ['Classical', (s) => !!s.classical],
+  ['Not classical', (s) => !s.classical],
 ];
 
 export function Home() {

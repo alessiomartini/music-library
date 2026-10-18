@@ -17,13 +17,16 @@ const pct = (share: number) => `${Math.round(share * 100)}%`;
 /**
  * The notes sung in the recording, as sung (not transposed): for each note, one bar
  * for its share of the singing time and one for its share of the sung notes (how many
- * times it is sung). The user's comfortable range is shaded behind the bars.
+ * times it is sung). The user's comfortable range is shaded behind the bars, the rest of
+ * their full range (reachable, not comfortable) is hatched.
  */
 export function VocalHistogram({ profile, system }: Props) {
   const [voice] = useVoicePrefs();
   const italian = system === 'it';
   const comfortLow = parseNote(voice.comfortableLow);
   const comfortHigh = parseNote(voice.comfortableHigh);
+  const fullLow = parseNote(voice.fullLow);
+  const fullHigh = parseNote(voice.fullHigh);
   const time = profile.histogram;
   const count = profile.countHistogram;
   const max = Math.max(...NOTES.map((n) => Math.max(time[n] ?? 0, count[n] ?? 0)));
@@ -39,7 +42,9 @@ export function VocalHistogram({ profile, system }: Props) {
       </p>
       <p className="vocal-legend">
         <span className="vocal-swatch time" /> share of the singing time{' '}
-        <span className="vocal-swatch count" /> share of the sung notes (how many times)
+        <span className="vocal-swatch count" /> share of the sung notes (how many times){' '}
+        <span className="vocal-swatch comfortable" /> your comfortable range{' '}
+        <span className="vocal-swatch reachable" /> your full range, not comfortable
       </p>
       <div
         className="vocal-bars"
@@ -50,10 +55,11 @@ export function VocalHistogram({ profile, system }: Props) {
       >
         {NOTES.map((n) => {
           const comfortable = comfortLow !== null && comfortHigh !== null && n >= comfortLow && n <= comfortHigh;
+          const reachable = !comfortable && fullLow !== null && fullHigh !== null && n >= fullLow && n <= fullHigh;
           return (
             <div
               key={n}
-              className={`vocal-col${comfortable ? ' comfortable' : ''}`}
+              className={`vocal-col${comfortable ? ' comfortable' : reachable ? ' reachable' : ''}`}
               title={`${name(n)}: ${pct(time[n] ?? 0)} of the singing time, ${pct(count[n] ?? 0)} of the sung notes`}
             >
               <div className="vocal-bar-area">
@@ -71,8 +77,8 @@ export function VocalHistogram({ profile, system }: Props) {
           recording
         </a>{' '}
         ({Math.round(profile.seconds)} s of singing, {profile.notes} notes), in the original key: the voice is separated
-        from the instruments and its pitch tracked automatically, so treat it as an estimate. Shaded: your comfortable
-        range (My voice).
+        from the instruments and its pitch tracked automatically, so treat it as an estimate. Your ranges come from My voice
+        on the home page (set the full range to see the hatched part).
       </p>
     </div>
   );
