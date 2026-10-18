@@ -19,6 +19,8 @@ import type { Score } from '../lib/score';
 import type { SpotifyVersion } from '../lib/types';
 import { accordiESpartitiUrl, ultimateGuitarUrl } from '../lib/chordLinks';
 
+const languageName = new Intl.DisplayNames(['en'], { type: 'language' });
+
 /** Videos by the same performer (and note) under one label: "Allie Sherlock · 2 · 3". */
 function groupVersions(versions: SpotifyVersion[]): [string, SpotifyVersion[]][] {
   const groups = new Map<string, SpotifyVersion[]>();
@@ -171,6 +173,11 @@ function SongPageContent({ slug }: { slug?: string }) {
             Watch on YouTube
           </a>
         )}
+        {wiki && (
+          <a href={wiki.url} target="_blank" rel="noreferrer noopener" className="link-pill ug">
+            Wikipedia
+          </a>
+        )}
         {!song.classical && (
           <>
             <a href={accordiESpartitiUrl(song)} target="_blank" rel="noreferrer noopener" className="link-pill accordi">
@@ -187,6 +194,35 @@ function SongPageContent({ slug }: { slug?: string }) {
           </>
         )}
       </div>
+
+      {song.translations?.length ? (
+        <div className="song-translations">
+          <h2>In other languages</h2>
+          <ul>
+            {song.translations.map((t) => {
+              const q = encodeURIComponent(`${t.title} ${t.artist}`);
+              return (
+                <li key={t.title} lang={t.language}>
+                  <span>
+                    <strong>{t.title}</strong> · {t.artist} · {languageName.of(t.language)}
+                  </span>
+                  <span className="translation-links">
+                    <a href={t.spotify ?? `https://open.spotify.com/search/${q}`} target="_blank" rel="noreferrer noopener" className="link-pill spotify">
+                      Spotify
+                    </a>
+                    <a href={t.youtube ?? `https://www.youtube.com/results?search_query=${q}`} target="_blank" rel="noreferrer noopener" className="link-pill youtube">
+                      YouTube
+                    </a>
+                    <a href={`https://www.musixmatch.com/search?query=${q}`} target="_blank" rel="noreferrer noopener" className="link-pill ug">
+                      Lyrics
+                    </a>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
 
       <KeySuggestion
         keys={originalKey ? [originalKey] : song.keyEstimate?.key ? [song.keyEstimate.key] : (song.keyEstimate?.candidates ?? [])}

@@ -11,6 +11,8 @@ import { savedSongs } from './saved';
 import { chordSiteLinks } from './chordSiteLinks';
 import { spotifyLinks, spotifySongs } from './spotify';
 import { songKeys } from './keys';
+import { originals } from './originals';
+import { songInfo } from './songInfo';
 import { youtubeCovers } from './youtubeCovers';
 import { attachYoutubeCovers } from '../../lib/youtubeCovers';
 import yourSongScoreJson from './your-song.json';
@@ -74,14 +76,16 @@ function spotifyFor(s: Song): Partial<SongLinks> {
   const liked = spotifyLinks[s.slug];
   if (!liked) return {};
   const spotify = !s.links.spotify || s.links.spotify.includes('/search/') ? liked[0].url : s.links.spotify;
-  const spotifyVersions = liked.filter((v) => v.url !== spotify);
+  const translated = new Set((s.translations ?? []).map((t) => t.spotify));
+  const spotifyVersions = liked.filter((v) => v.url !== spotify && !translated.has(v.url));
   return spotifyVersions.length ? { spotify, spotifyVersions } : { spotify };
 }
 
 const query = (s: Song) => encodeURIComponent(`${s.title} ${s.artist}`);
 
 /** Every song links to Spotify and YouTube: its own recording when known, else a search. */
-function withLinks(s: Song): Song {
+function withLinks(song: Song): Song {
+  const s = { ...songInfo[song.slug], ...song };
   const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) };
   links.spotify ??= `https://open.spotify.com/search/${query(s)}`;
   links.youtube ??= `https://www.youtube.com/results?search_query=${query(s)}`;
@@ -103,7 +107,11 @@ export function coverCount(s: Song): number {
 }
 
 // YouTube covers attach to their songs; covered songs not in the library become light entries.
-const covered = attachYoutubeCovers(allSongs, youtubeCovers);
+const corrected = allSongs.map((s) => {
+  const o = originals[s.slug];
+  return o ? { ...s, ...o, links: { ...s.links, ...o.links } } : s;
+});
+const covered = attachYoutubeCovers(corrected, youtubeCovers);
 
 export const songs: Song[] = [...covered.songs, ...covered.added].map(withLinks);
 

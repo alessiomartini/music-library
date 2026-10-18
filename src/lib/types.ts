@@ -41,6 +41,23 @@ export interface SongHistory {
   lang: string;
 }
 
+/** Language and jazz-standard flag of a song (scripts/fetch-song-info.ts). */
+export interface SongInfo {
+  /** ISO 639-1 code of the sung language ("zxx": instrumental). */
+  language?: string;
+  standard?: true;
+}
+
+/** A version of the song sung in another language, e.g. the Italian dub of a Disney song. */
+export interface Translation {
+  /** ISO 639-1 code, e.g. "it". */
+  language: string;
+  title: string;
+  artist: string;
+  spotify?: string;
+  youtube?: string;
+}
+
 export interface Song {
   slug: string;
   title: string;
@@ -71,6 +88,12 @@ export interface Song {
   keyEstimate?: KeyEstimate;
   /** Classical piece: no chord-site links. */
   classical?: boolean;
+  /** ISO 639-1 code of the sung language ("zxx": instrumental), from scripts/fetch-song-info.ts. */
+  language?: string;
+  /** Jazz standard (Wikipedia's lists of jazz standards, or set by hand). */
+  standard?: boolean;
+  /** Versions in other languages, listed on the original's page. */
+  translations?: Translation[];
   /** Background/trivia shown in a "History & trivia" section. */
   history?: string;
   notes?: string;
