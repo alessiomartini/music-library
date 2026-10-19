@@ -1,3 +1,4 @@
+import { inferInstruments, type Instrument } from './instruments';
 import type { Song, SpotifyVersion } from './types';
 
 /** One YouTube video of someone playing a song. */
@@ -10,6 +11,8 @@ export interface YoutubeCover {
   song: string;
   artist: string;
   note?: string;
+  /** Set by hand; otherwise read from the channel name and note. */
+  instruments?: Instrument[];
   /** Library song to attach to, when title matching would not find it. */
   slug?: string;
   /** Classical piece: set on the light entry created for a song the library doesn't have. */
@@ -35,7 +38,8 @@ export function attachYoutubeCovers(songs: Song[], covers: YoutubeCover[]): { so
   const added = new Map<string, Song>();
 
   for (const c of covers) {
-    const link: SpotifyVersion = { url: `https://www.youtube.com/watch?v=${c.id}`, artist: c.by, ...(c.note && { note: c.note }) };
+    const instruments = c.instruments ?? inferInstruments(c.by, c.note);
+    const link: SpotifyVersion = { url: `https://www.youtube.com/watch?v=${c.id}`, artist: c.by, ...(c.note && { note: c.note }), ...(instruments.length > 0 && { instruments }) };
     const sameTitle = byTitle.get(norm(c.song)) ?? [];
     const artist = words(c.artist);
     // Same title and a shared artist word: a different song may share the title (Hero by Enrique Iglesias
