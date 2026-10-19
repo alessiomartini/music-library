@@ -1,4 +1,5 @@
 import type { Score } from './score';
+import type { Instrument } from './instruments';
 import type { KeyEstimate } from './songKey';
 
 /** One Spotify recording of a song; `artist` is who plays it (performers, for classical pieces). */
@@ -11,6 +12,8 @@ export interface SpotifyVersion {
   albumImage?: string;
   /** Release year of the album the recording is on. */
   year?: number;
+  /** Instruments played, when the channel or note says so (src/lib/instruments.ts). */
+  instruments?: Instrument[];
 }
 
 export interface SongLinks {

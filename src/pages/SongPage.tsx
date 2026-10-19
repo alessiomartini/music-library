@@ -11,6 +11,7 @@ import { KeySuggestion } from '../components/KeySuggestion';
 import { VocalHistogram } from '../components/VocalHistogram';
 import { vocalRanges } from '../data/songs/vocalRanges';
 import { ProviderIcon } from '../components/ProviderIcon';
+import { InstrumentEmoji } from '../components/InstrumentEmoji';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
 import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
@@ -252,6 +253,7 @@ function SongPageContent({ slug }: { slug?: string }) {
                 <a href={videos[0].url} target="_blank" rel="noreferrer noopener">
                   <ProviderIcon provider="youtube" /> {label}
                 </a>
+                <InstrumentEmoji instruments={videos[0].instruments} />
                 {videos.length > 1 &&
                   videos.slice(1).map((v, i) => (
                     <span key={v.url}>

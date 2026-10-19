@@ -26,7 +26,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Video dedicati a un artista e medley (Paolo Pilo, chitarradisagio): 314 voci dalle trascrizioni e dai commenti, col minuto
 
 ## Da fare
-- [ ] Emoji degli strumenti usati nelle cover
+- [x] Emoji degli strumenti usati nelle cover (433 cover su 1860, dove il canale o la nota nominano lo strumento)
 - [ ] Range vocale dell'artista per trasporre al range comodo dell'utente
 - [ ] Link YouTube diretti (oggi ricerca) — serve accesso di rete a YouTube
 - [ ] Tonalità ed estensione vocale di ogni canzone
@@ -51,10 +51,12 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 
 ## Decisioni e cose provate
 
+Emoji degli strumenti: il modello dati non aveva strumenti. Aggiunto `instruments` opzionale a `SpotifyVersion` e `YoutubeCover`; se manca, `src/lib/instruments.ts` lo ricava con parole chiave esplicite nel nome del canale o nella nota (chitarra/guitar/12-string/nylon-string, piano, violin, drums, sax, ukulele). Non si deduce nulla dall'artista o dalla canzone. Restano senza emoji le cover di Allie Sherlock, Fabio Rodrigues e Paolo Pilo (a meno che la nota nomini lo strumento): serve il dato da Alessio, da mettere a mano in `instruments`.
+
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
-- 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati; le note del sito ora vanno nel backend unico `site-notes` (prima restavano solo nel browser), con l'autore (`?sono-alessio` segna il browser di Alessio)
+- 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati; le note del sito ora vanno nel backend unico `site-notes` (prima restavano solo nel browser), con l'autore (`?sono-alessio` segna il browser di Alessio); 🤖 emoji degli strumenti accanto alle cover YouTube (433 su 1860, da canale e nota)
 - 2026-10-18: docs/FUTURE-ARCHITECTURE.md rinominato docs/DESIGN.md (protocollo unico: niente file FUTURE-ARCHITECTURE); note isolate tolte dagli istogrammi; cover corrette con l'originale e versioni tradotte; filtri per lingua e jazz standards; import Spotify automatico; range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
 - 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
