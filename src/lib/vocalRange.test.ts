@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { artistRange, keyShift, noteName, parseNote, rangeShift } from './vocalRange';
+import { artistRange, keyShift, measuredShift, noteName, parseNote, rangeShift } from './vocalRange';
 
 describe('parseNote', () => {
   it('reads English and Italian names', () => {
@@ -39,5 +39,27 @@ describe('rangeShift', () => {
     expect(keyShift(-8)).toBe(4);
     expect(keyShift(7)).toBe(-5);
     expect(keyShift(-12)).toBe(0);
+  });
+});
+
+describe('measuredShift', () => {
+  const user = { low: 48, high: 60 };
+  it('keeps the song as recorded when it already fits', () => {
+    expect(measuredShift({ '50': 0.5, '58': 0.5 }, user)).toEqual({ shift: 0, share: 1, currentShare: 1 });
+  });
+  it('moves the sung time into the comfortable range, by the smallest shift', () => {
+    const r = measuredShift({ '53': 0.5, '62': 0.5 }, user)!;
+    expect(r.shift).toBe(-2);
+    expect(r.share).toBe(1);
+    expect(r.currentShare).toBe(0.5);
+  });
+  it('prefers the share of time over the extremes', () => {
+    // one rare high note must not drag the whole song down
+    const r = measuredShift({ '50': 0.9, '72': 0.1 }, user)!;
+    expect(r.shift).toBe(0);
+    expect(r.share).toBeCloseTo(0.9);
+  });
+  it('returns null without data', () => {
+    expect(measuredShift({}, user)).toBeNull();
   });
 });

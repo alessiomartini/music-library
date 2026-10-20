@@ -228,6 +228,7 @@ function SongPageContent({ slug }: { slug?: string }) {
       <KeySuggestion
         keys={originalKey ? [originalKey] : song.keyEstimate?.key ? [song.keyEstimate.key] : (song.keyEstimate?.candidates ?? [])}
         artist={artists[song.artist]}
+        profile={vocalRanges[song.slug]}
         system={globalPrefs.system}
         onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
       />
