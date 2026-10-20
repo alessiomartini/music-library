@@ -92,3 +92,43 @@ export interface VocalProfile {
   /** YouTube id of the recording measured. */
   source: string;
 }
+
+export interface MeasuredShift {
+  /** Semitones to move the song by. */
+  shift: number;
+  /** Share of the singing time inside the comfortable range after the shift. */
+  share: number;
+  /** The same share without any shift. */
+  currentShare: number;
+}
+
+/**
+ * Transposition that puts the largest share of the measured singing time inside the user's
+ * comfortable range; ties go to the smallest shift (upwards first). `histogram` maps MIDI
+ * numbers to their share of the singing time. Null when the histogram is empty.
+ */
+export function measuredShift(
+  histogram: Record<string, number>,
+  user: PitchRange,
+  maxShift = 24,
+): MeasuredShift | null {
+  const entries = Object.entries(histogram)
+    .map(([n, w]) => [Number(n), w] as const)
+    .filter(([n, w]) => Number.isFinite(n) && w > 0);
+  const total = entries.reduce((sum, [, w]) => sum + w, 0);
+  if (!total) return null;
+  const shareAt = (shift: number) =>
+    entries.reduce((sum, [n, w]) => (n + shift >= user.low && n + shift <= user.high ? sum + w : sum), 0) / total;
+  let best = 0;
+  let bestShare = shareAt(0);
+  for (let d = 1; d <= maxShift; d++) {
+    for (const shift of [d, -d]) {
+      const share = shareAt(shift);
+      if (share > bestShare + 1e-9) {
+        best = shift;
+        bestShare = share;
+      }
+    }
+  }
+  return { shift: best, share: bestShare, currentShare: shareAt(0) };
+}

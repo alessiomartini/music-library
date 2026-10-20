@@ -41,7 +41,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Cover non ancora trovate: canzoni senza pagina Wikipedia (~680) da controllare
 - [ ] Tonalità dall'audio: 64% esatte sulle 265 canzoni con tonalità nota (accompagnamento + profilo Krumhansl); non pubblicata
 - [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
-- [ ] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
+- [x] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
 - [ ] Schede Testo / Accordi a battute / Lead sheet
 - [ ] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
 - [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
@@ -53,9 +53,12 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 
 Emoji degli strumenti: il modello dati non aveva strumenti. Aggiunto `instruments` opzionale a `SpotifyVersion` e `YoutubeCover`; se manca, `src/lib/instruments.ts` lo ricava con parole chiave esplicite nel nome del canale o nella nota (chitarra/guitar/12-string/nylon-string, piano, violin, drums, sax, ukulele). Non si deduce nulla dall'artista o dalla canzone. Restano senza emoji le cover di Allie Sherlock, Fabio Rodrigues e Paolo Pilo (a meno che la nota nomini lo strumento): serve il dato da Alessio, da mettere a mano in `instruments`.
 
+Suggerimento di tonalità dalla distribuzione misurata: tra le trasposizioni da −24 a +24 semitoni sceglie quella che mette più tempo cantato (istogramma per tempo) nel range comodo, a parità la più piccola (verso l'alto per prima); senza dati misurati resta il tipo di voce. Scartato per ora: pesare anche l'istogramma per numero di note o penalizzare le note fuori dal range *full* ma non comode (si potrebbe, ma è una scelta da fare con l'uso); la distribuzione non distingue i registri (voce di petto/falsetto), vedi idea già in lista. La stima resta approssimata: la registrazione misurata può essere in una tonalità diversa dal grafico.
+
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
+- 2026-10-20: 🤖 suggerimento di tonalità basato sulla distribuzione misurata del tempo cantato (con ripiego sul tipo di voce) e indicazione della base usata nella pagina canzone
 - 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati; le note del sito ora vanno nel backend unico `site-notes` (prima restavano solo nel browser), con l'autore (`?sono-alessio` segna il browser di Alessio); 🤖 emoji degli strumenti accanto alle cover YouTube (433 su 1860, da canale e nota); installabile come app a sé dal telefono (manifest con nome, icona e perimetro propri)
 - 2026-10-18: docs/FUTURE-ARCHITECTURE.md rinominato docs/DESIGN.md (protocollo unico: niente file FUTURE-ARCHITECTURE); note isolate tolte dagli istogrammi; cover corrette con l'originale e versioni tradotte; filtri per lingua e jazz standards; import Spotify automatico; range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
 - 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
