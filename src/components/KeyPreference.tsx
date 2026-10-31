@@ -13,7 +13,6 @@ interface Props {
 export function KeyPreference({ originalKey, preferredKey, note, system, onSave, onApply }: Props) {
   const [draftKey, setDraftKey] = useState(preferredKey);
   const [draftNote, setDraftNote] = useState(note);
-  const preferFlats = shouldPreferFlats(originalKey);
 
   function handleSave() {
     onSave(draftKey, draftNote);
@@ -31,7 +30,7 @@ export function KeyPreference({ originalKey, preferredKey, note, system, onSave,
         <select value={draftKey} onChange={(e) => setDraftKey(e.target.value)}>
           <option value="">— not set —</option>
           {ALL_KEYS_SHARP.map((_, i) => {
-            const label = keyName(i, system, preferFlats);
+            const label = keyName(i, system, shouldPreferFlats(ALL_KEYS_SHARP[i]));
             return (
               <option key={label} value={label}>
                 {label}

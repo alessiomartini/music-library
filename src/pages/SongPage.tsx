@@ -14,7 +14,7 @@ import { ProviderIcon } from '../components/ProviderIcon';
 import { InstrumentEmoji } from '../components/InstrumentEmoji';
 import { ScoreViewer } from '../components/ScoreViewer';
 import { useGlobalPrefs, useSongPrefs } from '../lib/prefs';
-import { shouldPreferFlats, transposeKeyLabel } from '../lib/theory';
+import { targetPrefersFlats, transposedKeyLabel } from '../lib/theory';
 import { loadSongScore, hasScore } from '../lib/songLoader';
 import type { Score } from '../lib/score';
 import type { SpotifyVersion } from '../lib/types';
@@ -69,15 +69,16 @@ function SongPageContent({ slug }: { slug?: string }) {
   const artistPhoto = photoForYear(artists[song.artist]?.photos ?? [], song.year);
   const originalKey = song.originalKey;
   const theoryTab = song.keyEstimate?.sources.find((s) => s.source === 'Hooktheory')?.url;
-  const preferFlats = originalKey ? shouldPreferFlats(originalKey) : false;
+  // Chords and key names are spelled by the key they are shown in, not the original one.
+  const preferFlats = originalKey ? targetPrefersFlats(originalKey, songPrefs.semitones) : false;
   const displayedKey = originalKey
-    ? transposeKeyLabel(originalKey, songPrefs.semitones, globalPrefs.system, preferFlats)
+    ? transposedKeyLabel(originalKey, songPrefs.semitones, globalPrefs.system)
     : null;
   // A capo raises what sounds, so the shapes you finger sit that many
   // semitones *below* the key on the page. Derived rather than stored, so it
   // stays right when the chart is transposed.
   const capoShapeKey = song.capo && originalKey
-    ? transposeKeyLabel(originalKey, songPrefs.semitones - song.capo, globalPrefs.system, preferFlats)
+    ? transposedKeyLabel(originalKey, songPrefs.semitones - song.capo, globalPrefs.system)
     : null;
 
   return (
