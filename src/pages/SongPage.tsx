@@ -231,6 +231,7 @@ function SongPageContent({ slug }: { slug?: string }) {
         profile={vocalRanges[song.slug]}
         system={globalPrefs.system}
         onApply={originalKey ? (semitones) => setSongPrefs({ ...songPrefs, semitones }) : undefined}
+        current={originalKey ? songPrefs.semitones : undefined}
       />
 
       {vocalRanges[song.slug] && (
