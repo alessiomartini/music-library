@@ -1,6 +1,6 @@
 import { useVoicePrefs } from '../lib/prefs';
 import { artistRange, keyShift, measuredShift, noteName, parseNote, rangeShift, type VocalProfile } from '../lib/vocalRange';
-import { transposeKeyLabel, shouldPreferFlats, type ChordSystem } from '../lib/theory';
+import { transposedKeyLabel, type ChordSystem } from '../lib/theory';
 import type { ArtistInfo } from '../lib/artist';
 
 interface Props {
@@ -34,7 +34,7 @@ export function KeySuggestion({ keys, artist, profile, system, onApply, current 
   const measured = profile ? measuredShift(profile.histogram, { low, high }) : null;
   const shift = measured ? measured.shift : rangeShift(range!, { low, high });
   const move = keyShift(shift);
-  const suggested = keys.map((k) => transposeKeyLabel(k, shift, system, shouldPreferFlats(k)));
+  const suggested = keys.map((k) => transposedKeyLabel(k, shift, system));
   const octaves = Math.round((shift - move) / 12);
   return (
     <div className="key-suggestion">

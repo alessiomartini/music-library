@@ -31,8 +31,9 @@ const EN_TO_IT_ROOT: Record<string, string> = {
   C: 'Do', D: 'Re', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si',
 };
 
-// Keys whose major scale is conventionally spelled with flats.
-const FLAT_KEYS = new Set(['F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb', 'Dm', 'Gm', 'Cm', 'Fm', 'Bbm', 'Ebm']);
+// Major keys (by tonic index, 0 = C) conventionally spelled with flats: F, Bb, Eb, Ab, Db, Gb.
+// The others (C, G, D, A, E, B, F#) use sharps. Minor keys follow their relative major.
+const FLAT_MAJOR_TONICS = new Set([1, 3, 5, 6, 8, 10]);
 
 export interface ParsedChord {
   root: string; // English spelling, e.g. "F#"
@@ -165,8 +166,30 @@ export function keyName(index: number, system: ChordSystem, preferFlats: boolean
   return system === 'it' ? toItalianRoot(spelling) : spelling;
 }
 
+/** True for the quality of a minor key label such as "m" in "Am" ("maj..." is major). */
+function isMinorQuality(quality: string): boolean {
+  return /^m(?!aj)/.test(quality);
+}
+
+/** Whether a key is conventionally spelled with flats (fewest accidentals); minor keys follow their relative major. */
 export function shouldPreferFlats(key: string): boolean {
-  return FLAT_KEYS.has(key);
+  const parsed = parseChord(key);
+  if (!parsed) return false;
+  const tonic = indexOfNote(parsed.root);
+  return FLAT_MAJOR_TONICS.has(isMinorQuality(parsed.quality) ? (tonic + 3) % 12 : tonic);
+}
+
+/** Whether the notes of `key` moved by `semitones` should be spelled with flats: decided by the target key, not the original. */
+export function targetPrefersFlats(key: string, semitones: number): boolean {
+  const parsed = parseChord(key);
+  if (!parsed) return false;
+  const target = spellNote(indexOfNote(parsed.root) + semitones, false);
+  return shouldPreferFlats(target + parsed.quality);
+}
+
+/** Key label moved by `semitones`, spelled by the target key's convention (Bb, not A#). */
+export function transposedKeyLabel(key: string, semitones: number, system: ChordSystem): string {
+  return transposeKeyLabel(key, semitones, system, targetPrefersFlats(key, semitones));
 }
 
 /** Transpose a VexFlow-style pitch string, e.g. "f#/4" -> "g/4". */

@@ -1,4 +1,4 @@
-import { shouldPreferFlats, transposeKeyLabel, type ChordSystem } from '../lib/theory';
+import { transposedKeyLabel, type ChordSystem } from '../lib/theory';
 
 interface Props {
   originalKey: string;
@@ -9,8 +9,7 @@ interface Props {
 }
 
 export function TransposeControls({ originalKey, semitones, onSemitonesChange, system, onSystemChange }: Props) {
-  const preferFlats = shouldPreferFlats(originalKey);
-  const displayedKey = transposeKeyLabel(originalKey, semitones, system, preferFlats);
+  const displayedKey = transposedKeyLabel(originalKey, semitones, system);
 
   return (
     <div className="transpose-controls">
