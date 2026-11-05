@@ -7,7 +7,10 @@ import {
   parseChord,
   semitoneDiff,
   transposeChord,
+  shouldPreferFlats,
+  targetPrefersFlats,
   transposeKeyLabel,
+  transposedKeyLabel,
 } from './theory';
 
 describe('parseChord', () => {
@@ -81,5 +84,37 @@ describe('key helpers', () => {
     expect(keyName(1, 'en', false)).toBe('C#');
     expect(keyName(1, 'en', true)).toBe('Db');
     expect(keyName(1, 'it', true)).toBe('Reb');
+  });
+});
+
+describe('key spelling by target key', () => {
+  it('spells the 12 major targets with their conventional names', () => {
+    const expected = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+    expected.forEach((name, i) => expect(transposedKeyLabel('C', i, 'en')).toBe(name));
+  });
+  it('spells the 12 minor targets by their relative major', () => {
+    const expected = ['Cm', 'C#m', 'Dm', 'Ebm', 'Em', 'Fm', 'F#m', 'Gm', 'G#m', 'Am', 'Bbm', 'Bm'];
+    expected.forEach((name, i) => expect(transposedKeyLabel('Cm', i, 'en')).toBe(name));
+  });
+  it('does not depend on the original key spelling', () => {
+    expect(transposedKeyLabel('F#', 4, 'en')).toBe('Bb');
+    expect(transposedKeyLabel('E', -3, 'en')).toBe('Db');
+    expect(transposedKeyLabel('Bb', 2, 'en')).toBe('C');
+    expect(transposedKeyLabel('Fa', -5, 'it')).toBe('Do');
+    expect(transposedKeyLabel('Sol', 3, 'it')).toBe('Sib');
+    expect(transposedKeyLabel('Mim', 3, 'it')).toBe('Solm');
+    expect(transposedKeyLabel('Fa', 9, 'it')).toBe('Re');
+  });
+  it('the suggested key for a song in G moved -4 is Eb, not D#', () => {
+    expect(transposedKeyLabel('G', -4, 'en')).toBe('Eb');
+    expect(transposedKeyLabel('D', -4, 'it')).toBe('Sib');
+  });
+  it('flags flat targets for chord spelling', () => {
+    expect(targetPrefersFlats('C', 3)).toBe(true);
+    expect(targetPrefersFlats('Cm', 3)).toBe(true);
+    expect(targetPrefersFlats('C', 2)).toBe(false);
+    expect(shouldPreferFlats('Bbm')).toBe(true);
+    expect(shouldPreferFlats('G#m')).toBe(false);
+    expect(shouldPreferFlats('Cmaj7')).toBe(false);
   });
 });
