@@ -46,10 +46,16 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
 - [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
 
+- [x] Ordine della lista per preferenza: Mio (ascolti reali ≥30 s dallo storico Spotify, solo percentile), Globale (popolarità Spotify), Mix 0.7/0.3; schede Artisti e Generi (Wikidata P136, altrimenti «No genre»)
+- [ ] Popolarità Spotify: `popularity.ts` è vuoto finché non gira l'import Spotify (lancia il workflow `spotify-import`, i secret sono su GitHub); finché è vuoto «Globale» non ordina e il Mix = Mio
+- [ ] Globale: aggiungere le views di YouTube (serve accesso di rete a YouTube)
+
 ## Idee
 - [ ] Registri della voce separati nell'istogramma: voce di petto, mista, di testa, falsetto (ognuno col suo range e colore), al posto della sola coppia comodo / estensione completa
 
 ## Decisioni e cose provate
+
+Ranking: il sito è pubblico, quindi nel repo ci sono solo percentili (`mine.ts`), mai conteggi né date. Gli ascolti contano sulle registrazioni Spotify collegate alla canzone (link principale, versioni, traduzioni); canzoni mai ascoltate = 0, quindi anche un solo ascolto vale già oltre la metà classifica (pareggi a rango medio). Globale = percentile della popolarità Spotify migliore fra le registrazioni; senza popolarità il Mix usa solo Mio. Generi: nessuno inventato, 109 artisti senza P136 → «No genre».
 
 Emoji degli strumenti: il modello dati non aveva strumenti. Aggiunto `instruments` opzionale a `SpotifyVersion` e `YoutubeCover`; se manca, `src/lib/instruments.ts` lo ricava con parole chiave esplicite nel nome del canale o nella nota (chitarra/guitar/12-string/nylon-string, piano, violin, drums, sax, ukulele). Non si deduce nulla dall'artista o dalla canzone. Restano senza emoji le cover di Allie Sherlock, Fabio Rodrigues e Paolo Pilo (a meno che la nota nomini lo strumento): serve il dato da Alessio, da mettere a mano in `instruments`.
 
@@ -62,6 +68,7 @@ Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggior
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
+- 2026-11-05: ordine per Mio / Globale / Mix e schede Artisti e Generi nella lista; `npm run compute:mine` (storico esteso Spotify → solo percentile in `mine.ts`), `npm run fetch:genres` (Wikidata P136, 763/872 artisti), l'import Spotify salva anche la popolarità per traccia
 - 2026-10-31: 🤖 suggerimento di tonalità dal range vocale: test dei casi limite, suggerimento anche senza tonalità nota, «applied» quando già in uso; tonalità e accordi trasposti scritti secondo la tonalità di arrivo (Sib, non La#)
 - 2026-10-20: 🤖 suggerimento di tonalità basato sulla distribuzione misurata del tempo cantato (con ripiego sul tipo di voce) e indicazione della base usata nella pagina canzone
 - 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati; le note del sito ora vanno nel backend unico `site-notes` (prima restavano solo nel browser), con l'autore (`?sono-alessio` segna il browser di Alessio); 🤖 emoji degli strumenti accanto alle cover YouTube (433 su 1860, da canale e nota); installabile come app a sé dal telefono (manifest con nome, icona e perimetro propri)

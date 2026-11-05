@@ -40,6 +40,19 @@ chart fallback.
 - Browser-local site-improvement notes.
 - Light/dark appearance support through the user's system color preference.
 
+### Ranking, artists and genres
+
+The list can be ordered by **Mine** (how much I listen: plays of at least 30 s in the Spotify extended
+streaming history, as a 0-100 percentile), **Global** (Spotify popularity, also a percentile) or **Mix**
+(0.7·Mine + 0.3·Global, default), and shown as Songs / Artists / Genres (Wikidata P136; artists without a genre
+are under "No genre"). The site is public: `src/data/songs/mine.ts` holds only the percentile, never counts or dates.
+
+```bash
+npm run compute:mine   # needs the private history zip (see scripts/compute-mine.ts); writes mine.ts
+npm run fetch:genres   # Wikidata genres of the artists in artists.ts; writes genres.ts
+npm run import:spotify # also writes popularity.ts (Spotify popularity per track)
+```
+
 ## Current Limitations
 
 Only **Your Song** and **E cerca 'e me capi** currently have a published
