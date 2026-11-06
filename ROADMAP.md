@@ -68,6 +68,7 @@ Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggior
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
+- 2026-11-06: widget note v2 canonico (public/notes-widget.js) al posto di FeedbackBox (migra feedback-notes); tolti FeedbackBox, siteNotes.ts, CSS.
 - 2026-11-05: ordine per Mio / Globale / Mix e schede Artisti e Generi nella lista; `npm run compute:mine` (storico esteso Spotify → solo percentile in `mine.ts`), `npm run fetch:genres` (Wikidata P136, 763/872 artisti), l'import Spotify salva anche la popolarità per traccia
 - 2026-10-31: 🤖 suggerimento di tonalità dal range vocale: test dei casi limite, suggerimento anche senza tonalità nota, «applied» quando già in uso; tonalità e accordi trasposti scritti secondo la tonalità di arrivo (Sib, non La#)
 - 2026-10-20: 🤖 suggerimento di tonalità basato sulla distribuzione misurata del tempo cantato (con ripiego sul tipo di voce) e indicazione della base usata nella pagina canzone

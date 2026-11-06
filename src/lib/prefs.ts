@@ -37,18 +37,3 @@ const DEFAULT_GLOBAL_PREFS: GlobalPrefs = { system: 'it' };
 export function useGlobalPrefs() {
   return useLocalStorage<GlobalPrefs>('global-prefs', DEFAULT_GLOBAL_PREFS);
 }
-
-export interface FeedbackNote {
-  id: string;
-  text: string;
-  done: boolean;
-  createdAt: number;
-  /** Page it was written on (the hash route). */
-  page?: string;
-  /** Sent to site-notes; unsent notes are retried. */
-  sent?: boolean;
-}
-
-export function useFeedbackNotes() {
-  return useLocalStorage<FeedbackNote[]>('feedback-notes', []);
-}

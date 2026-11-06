@@ -178,6 +178,10 @@ key.
 `KeyPreference.tsx` lets the user choose a key, calculate a semitone
 difference, apply the transposition, and save a free-form note.
 
+**Update 2026-11-06:** `FeedbackBox.tsx` was replaced by the canonical site-notes widget
+(`public/notes-widget.js`, loaded from `index.html`; notes go to the shared site-notes Worker,
+local list under `site-notes.list.music-library`, old `feedback-notes` migrated). The text below is historical.
+
 `FeedbackBox.tsx` is a browser-local list of site improvement notes. It is
 mounted globally by `App.tsx`.
 
