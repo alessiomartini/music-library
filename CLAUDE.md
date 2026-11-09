@@ -36,11 +36,6 @@ foundation
 → audio-first offline transcription pipeline
 ```
 
-Keep changes focused, use small commits or checkpoints where appropriate, and
-inspect `git status` and `git diff` before finishing. Commit automatically
-after each chunk is complete and verification has passed — see Git
-workflow below.
-
 ## Architecture rules
 
 Preserve these established decisions:
@@ -67,19 +62,7 @@ and song-specific special cases.
 
 ## Verification
 
-After relevant changes, run:
-
-```bash
-npm run build
-npm run lint
-npm run validate
-```
-
-Also run relevant unit or integration tests. If a command fails, determine
-whether the failure was introduced by the current change, fix failures that
-belong to the current chunk, and report pre-existing failures separately.
-
-For UI changes, run `npm run dev` and inspect the affected flow in a browser.
+After relevant changes run `npm run build`, `npm run lint`, `npm run validate` and the relevant unit or integration tests. Fix failures that belong to the current chunk; report pre-existing failures separately. For UI changes inspect the affected flow with `npm run dev`.
 
 ## Music-data changes
 
@@ -108,12 +91,7 @@ Spotify is not an embedded-player requirement.
 
 ## Files and dependencies
 
-- Do not commit credentials or generated bundles.
-- Do not commit large ML models, audio files, or local MusicXML working files
-  to the web repository unless explicitly requested.
-- Avoid unrelated formatting changes.
-- Add dependencies only when required by the current chunk.
-- Inspect `git diff` before finishing.
+Do not commit large ML models, audio files, or local MusicXML working files to the web repository unless explicitly requested.
 
 ## Completion report
 
@@ -140,37 +118,3 @@ ARCHITECTURAL DECISIONS / OPEN QUESTIONS:
 
 Do not claim completion if relevant verification fails. After completing the
 requested chunk, stop and wait for the next explicit instruction.
-
-## Git workflow
-
-Before committing, inspect:
-
-```bash
-git status
-git diff
-```
-
-Commit automatically once a chunk is complete and its verification (build,
-lint, validate, relevant tests) has passed — do not wait for the user to ask
-for that specific commit. Still never commit credentials, generated
-artifacts, or changes unrelated to the current chunk (see Files and
-dependencies). Push, PR and merge autonomously after each verified chunk.
-The goal is a robust, incremental migration where mistakes are detected while
-they are still cheap to fix, with a commit boundary at every verified chunk.
-
-## Roadmap, idee e progressi
-
-`ROADMAP.md` nella root è l'**unico** file per todo, idee, decisioni e diario del progetto
-(niente `FUTURE-ARCHITECTURE.md`, `IDEE.md`, `TODO.md`; il documento di progetto lungo è `docs/DESIGN.md`). È letto da https://alessiomartini.github.io/projects-overview/.
-Sezioni: `## <fase>` (checkbox, contano nella percentuale), `## Idee` (checkbox, non contano),
-`## Decisioni e cose provate` (prosa: scartato/rimandato e perché, provato e annullato, limiti e bug noti), `## Log`.
-
-- Alla fine di ogni sessione di lavoro (prima del commit finale), aggiorna `ROADMAP.md`:
-  - spunta (`- [x]`) i punti completati in questa sessione;
-  - aggiungi come `- [ ]` i nuovi compiti nella fase giusta, e le idee non decise in `## Idee`;
-  - annota in `## Decisioni e cose provate` ciò che è stato scartato, rimandato o annullato, col perché;
-  - aggiungi in cima a `## Log` una riga `- AAAA-MM-GG: <cosa è stato fatto, in una frase>`
-    (se esiste già una riga con la data di oggi, estendila invece di crearne un'altra).
-- Non riscrivere né riordinare le voci esistenti senza motivo; non cancellare le voci completate.
-- Se `ROADMAP.md` non esiste, crealo da `templates/ROADMAP.md` di projects-overview.
-- Includi l'aggiornamento di `ROADMAP.md` nello stesso commit del lavoro.
