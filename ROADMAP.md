@@ -76,8 +76,7 @@ Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggior
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
-- 2026-11-14: 🤖 verificato che la sezione «History & trivia» (testo Wikipedia con link e CC BY-SA, nascosta senza dati) è già implementata per 1243 canzoni: voce spuntata, nessun codice nuovo
-- 2026-11-14: 🤖 istogramma del range vocale: di default solo «share of the singing time», «share of the sung notes» con una casella opzionale; spartito più compatto (scala 0,85, testo su una riga sotto la nota più bassa, senza «Tempo ♩ = N» tra i dati del brano; Key e accordi non erano bloccati in alto: verificato, nessun `sticky`)
+- 2026-11-14: 🤖 istogramma del range vocale: di default solo «share of the singing time», «share of the sung notes» con una casella opzionale; spartito più compatto (scala 0,85, testo su una riga sotto la nota più bassa, senza «Tempo ♩ = N» tra i dati del brano; Key e accordi non erano bloccati in alto: verificato, nessun `sticky`); verificato che la sezione «History & trivia» (Wikipedia, CC BY-SA, nascosta senza dati) c'è già per 1243 canzoni: voce spuntata
 - 2026-11-14: note dal sito portate nel ROADMAP
 - 2026-11-07: 🤖 verificato che la trasposizione al range comodo dal range dell'artista è già coperta (suggerimento, Apply, istogramma): voce spuntata, nessun codice nuovo
 - 2026-11-06: widget note v2 canonico (public/notes-widget.js) al posto di FeedbackBox (migra feedback-notes); tolti FeedbackBox, siteNotes.ts, CSS.
