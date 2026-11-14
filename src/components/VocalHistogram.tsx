@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useVoicePrefs } from '../lib/prefs';
 import { noteName, parseNote, type VocalProfile } from '../lib/vocalRange';
 import type { ChordSystem } from '../lib/theory';
@@ -16,12 +17,13 @@ const pct = (share: number) => `${Math.round(share * 100)}%`;
 
 /**
  * The notes sung in the recording, as sung (not transposed): for each note, one bar
- * for its share of the singing time and one for its share of the sung notes (how many
- * times it is sung). The user's comfortable range is shaded behind the bars, the rest of
+ * for its share of the singing time and, only when asked, one for its share of the sung
+ * notes (how many times it is sung). The user's comfortable range is shaded behind the bars, the rest of
  * their full range (reachable, not comfortable) is hatched.
  */
 export function VocalHistogram({ profile, system }: Props) {
   const [voice] = useVoicePrefs();
+  const [showCount, setShowCount] = useState(false);
   const italian = system === 'it';
   const comfortLow = parseNote(voice.comfortableLow);
   const comfortHigh = parseNote(voice.comfortableHigh);
@@ -29,7 +31,7 @@ export function VocalHistogram({ profile, system }: Props) {
   const fullHigh = parseNote(voice.fullHigh);
   const time = profile.histogram;
   const count = profile.countHistogram;
-  const max = Math.max(...NOTES.map((n) => Math.max(time[n] ?? 0, count[n] ?? 0)));
+  const max = Math.max(...NOTES.map((n) => Math.max(time[n] ?? 0, showCount ? (count[n] ?? 0) : 0)));
   const height = (share = 0) => `${max ? (share / max) * 100 : 0}%`;
   const name = (n: number) => noteName(n, italian);
 
@@ -42,15 +44,26 @@ export function VocalHistogram({ profile, system }: Props) {
       </p>
       <p className="vocal-legend">
         <span className="vocal-swatch time" /> share of the singing time{' '}
-        <span className="vocal-swatch count" /> share of the sung notes (how many times){' '}
+        {showCount && (
+          <>
+            <span className="vocal-swatch count" /> share of the sung notes (how many times){' '}
+          </>
+        )}
         <span className="vocal-swatch comfortable" /> your comfortable range{' '}
         <span className="vocal-swatch reachable" /> your full range, not comfortable
       </p>
+      <label className="vocal-option">
+        <input type="checkbox" checked={showCount} onChange={(e) => setShowCount(e.target.checked)} /> Also show the
+        share of the sung notes
+      </label>
       <div
         className="vocal-bars"
         role="img"
-        aria-label={`Vocal histogram: ${NOTES.filter((n) => time[n] || count[n])
-          .map((n) => `${name(n)} ${pct(time[n] ?? 0)} of the time, ${pct(count[n] ?? 0)} of the notes`)
+        aria-label={`Vocal histogram: ${NOTES.filter((n) => time[n] || (showCount && count[n]))
+          .map(
+            (n) =>
+              `${name(n)} ${pct(time[n] ?? 0)} of the time${showCount ? `, ${pct(count[n] ?? 0)} of the notes` : ''}`,
+          )
           .join('; ')}`}
       >
         {NOTES.map((n) => {
@@ -60,11 +73,11 @@ export function VocalHistogram({ profile, system }: Props) {
             <div
               key={n}
               className={`vocal-col${comfortable ? ' comfortable' : reachable ? ' reachable' : ''}`}
-              title={`${name(n)}: ${pct(time[n] ?? 0)} of the singing time, ${pct(count[n] ?? 0)} of the sung notes`}
+              title={`${name(n)}: ${pct(time[n] ?? 0)} of the singing time${showCount ? `, ${pct(count[n] ?? 0)} of the sung notes` : ''}`}
             >
               <div className="vocal-bar-area">
                 <div className="vocal-bar time" style={{ height: height(time[n]) }} />
-                <div className="vocal-bar count" style={{ height: height(count[n]) }} />
+                {showCount && <div className="vocal-bar count" style={{ height: height(count[n]) }} />}
               </div>
               <span className="vocal-label">{n % 12 === 0 ? name(n) : ''}</span>
             </div>
