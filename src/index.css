@@ -304,6 +304,13 @@ select, textarea, input {
   color: var(--text);
 }
 
+.vocal-option {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 12px;
+  color: var(--text);
+}
+
 .vocal-swatch {
   display: inline-block;
   width: 10px;
