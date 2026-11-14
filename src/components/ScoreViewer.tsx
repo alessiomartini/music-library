@@ -102,6 +102,44 @@ const MEASURE_END_PADDING = 20;
 // key signature, and (on the very first line) time signature.
 const LINE_START_EXTRA_WIDTH = 55;
 const CHORD_GAP = 18;
+// The whole drawing is scaled down so the score takes less scrolling; the
+// layout is computed in unscaled units against (container width / SCALE).
+const SCORE_SCALE = 0.85;
+const LYRIC_FONT_PX = 12;
+const CHORD_FONT_PX = 13;
+const LYRIC_FONT = `${LYRIC_FONT_PX}px Arial`;
+// Vertical metrics (unscaled px). A VexFlow staff has 5 lines 10 px apart.
+const STAFF_HEIGHT = 40;
+const STAVE_TOP_LINE_OFFSET = 40; // Stave y -> y of its top line (4 empty lines above by default)
+const SEMITONE_PX = 3.4; // ~ a diatonic step (5 px) per 1.7 semitones
+const CHORD_ROW_HEIGHT = 24;
+const LYRIC_ROW_HEIGHT = 20;
+const PART_GAP = 8;
+// MIDI pitch of the bottom and top staff lines, to know how far notes and
+// their ledger lines stick out of the staff.
+const CLEF_RANGE: Record<'treble' | 'bass' | 'alto', { bottom: number; top: number }> = {
+  treble: { bottom: 64, top: 77 },
+  bass: { bottom: 43, top: 57 },
+  alto: { bottom: 53, top: 67 },
+};
+
+// How far (px) the notes of `part` in measures [start, end) reach below the
+// bottom and above the top staff line.
+function noteExtents(part: ScorePart, measures: ScoreMeasure[], start: number, end: number, clef: 'treble' | 'bass' | 'alto') {
+  const from = measures[start].start;
+  const to = measures[end - 1].start + measures[end - 1].duration;
+  const range = CLEF_RANGE[clef];
+  let low = 0;
+  let high = 0;
+  let hasLyrics = false;
+  for (const e of part.events) {
+    if (e.kind === 'rest' || e.start < from || e.start >= to) continue;
+    low = Math.max(low, (range.bottom - e.pitch) * SEMITONE_PX);
+    high = Math.max(high, (e.pitch - range.top) * SEMITONE_PX);
+    if (e.lyrics?.length) hasLyrics = true;
+  }
+  return { low, high, hasLyrics };
+}
 // A note this short or shorter (in quarter notes) gets beamed to its
 // neighbors instead of an individual flag, matching normal engraving.
 const BEAM_ELIGIBLE_MAX_QUARTER_NOTES = 0.5;
@@ -175,7 +213,7 @@ function eventSlotWidth(event: ScoreEvent, ppq: number, sustained: Set<ScoreEven
   const lastSyllabic = lyrics?.[lyrics.length - 1]?.syllabic;
   const wordInternal = lastSyllabic === 'begin' || lastSyllabic === 'middle';
   const padding = wordInternal ? LYRIC_PADDING_WORD_INTERNAL : LYRIC_PADDING_WORD_FINAL;
-  const lyricWidth = measureTextWidth(lyricText, '10px Arial') + padding;
+  const lyricWidth = measureTextWidth(lyricText, LYRIC_FONT) + padding;
   return Math.max(base, lyricWidth);
 }
 
@@ -293,7 +331,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
             widest = Math.max(widest, content + MEASURE_END_PADDING);
           }
           const harmonyWidth = harmonyForMeasure(measure).reduce(
-            (sum, h) => sum + measureTextWidth(harmonyChordSymbol(h, theorySystem, preferFlats), 'bold 12px Arial') + CHORD_GAP,
+            (sum, h) => sum + measureTextWidth(harmonyChordSymbol(h, theorySystem, preferFlats), `bold ${CHORD_FONT_PX}px Arial`) + CHORD_GAP,
             0,
           );
           widest = Math.max(widest, harmonyWidth + MEASURE_END_PADDING);
@@ -304,7 +342,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
         // container width), instead of a fixed measure count per line, so
         // the number of measures per line adapts to both the screen width
         // and how much room each measure's content needs.
-        const availableWidth = Math.max(320, container.clientWidth || 900);
+        const availableWidth = Math.max(320, (container.clientWidth || 900) / SCORE_SCALE);
         const lines: { start: number; end: number; width: number }[] = [];
         {
           let start = 0;
@@ -319,30 +357,44 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
             start = end;
           }
         }
-        const numLines = lines.length;
+        // Per line and part: room above (chords, high notes) and below
+        // (ledger lines, then a row for the lyrics) the staff, so lyrics sit
+        // under the lowest note instead of on top of it.
+        const layouts = lines.map(({ start, end }) =>
+          transposedScore.parts.map((part, partIndex) => {
+            const ext = noteExtents(part, measures, start, end, getClefForPart(part));
+            const above = (partIndex === 0 ? CHORD_ROW_HEIGHT : PART_GAP) + ext.high;
+            const lyricRow = ext.hasLyrics ? LYRIC_ROW_HEIGHT : 0;
+            const below = ext.low + lyricRow + PART_GAP;
+            return { above, below, lyricRow, high: ext.high, low: ext.low, height: above + STAFF_HEIGHT + below };
+          }),
+        );
+        const lineHeights = layouts.map((l) => l.reduce((sum, p) => sum + p.height, 0) + 10);
         const totalWidth = Math.max(availableWidth, ...lines.map((l) => l.width));
-        const partHeight = 100;
-        const chordRowHeight = 30;
-        const linePadding = 40;
-        const lineHeight = transposedScore.parts.length * partHeight + chordRowHeight + linePadding;
+        const totalHeight = lineHeights.reduce((a, b) => a + b, 0) + 20;
 
         const renderer = new VF.Renderer(container, VF.Renderer.Backends.SVG);
-        renderer.resize(totalWidth, numLines * lineHeight + 20);
+        renderer.resize(totalWidth * SCORE_SCALE, totalHeight * SCORE_SCALE);
         const context = renderer.getContext();
+        context.scale(SCORE_SCALE, SCORE_SCALE);
         context.setFont('Arial', 10);
 
-        let y = 10 + chordRowHeight;
-        for (const { start: startMeasure, end: endMeasure } of lines) {
+        let y = 10;
+        for (const [lineIndex, { start: startMeasure, end: endMeasure }] of lines.entries()) {
           let partY = y;
           let lastChordEndX = -Infinity;
           for (const [partIndex, part] of transposedScore.parts.entries()) {
             const clef = getClefForPart(part);
+            const layout = layouts[lineIndex][partIndex];
+            // Y of the top staff line; the stave itself starts above it.
+            const topLineY = partY + layout.above;
+            const lineLyrics: { note: any; text: string }[] = [];
             let x = 20;
 
             for (let m = startMeasure; m < endMeasure; m++) {
               const measure = measures[m];
               const staveWidth = measureWidths[m] + (m === startMeasure ? LINE_START_EXTRA_WIDTH : 0);
-              const stave = new VF.Stave(x, partY, staveWidth);
+              const stave = new VF.Stave(x, topLineY - STAVE_TOP_LINE_OFFSET, staveWidth);
               if (m === startMeasure) stave.addClef(clef);
               if (startMeasure === 0 && m === 0 && partIndex === 0) {
                 stave.addTimeSignature(`${ts.numerator}/${ts.denominator}`);
@@ -374,14 +426,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                     : sustained.has(event)
                       ? SUSTAIN_MARK
                       : undefined;
-                  if (lyricText) {
-                    vfNote.addModifier(
-                      new VF.Annotation(lyricText)
-                        .setFont('Arial', 10)
-                        .setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM),
-                      0,
-                    );
-                  }
+                  if (lyricText) lineLyrics.push({ note: vfNote, text: lyricText });
                   vfNotesInOrder.push(vfNote);
                   voice.addTickable(vfNote);
                 }
@@ -426,9 +471,9 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                 if (harmonyHere.length > 0) {
                   const contentStart = stave.getNoteStartX();
                   const contentWidth = stave.getNoteEndX() - contentStart;
-                  const chordFont = 'bold 12px Arial';
+                  const chordFont = `bold ${CHORD_FONT_PX}px Arial`;
                   context.save();
-                  context.setFont('Arial', 12, 'bold');
+                  context.setFont('Arial', `${CHORD_FONT_PX}px`, 'bold');
                   for (const h of harmonyHere) {
                     const symbol = harmonyChordSymbol(h, theorySystem, preferFlats);
                     const relStart = Math.max(0, h.start - measure.start);
@@ -437,7 +482,7 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
                     // one (in this line) has finished, even if the measure
                     // widened for note/lyric content rather than harmony.
                     const chordX = Math.max(proposedX, lastChordEndX);
-                    context.fillText(symbol, chordX, stave.getYForTopText(1));
+                    context.fillText(symbol, chordX, topLineY - layout.high - 10);
                     lastChordEndX = chordX + measureTextWidth(symbol, chordFont) + CHORD_GAP;
                   }
                   context.restore();
@@ -446,9 +491,27 @@ export function ScoreViewer({ score, semitones = 0, preferFlats = false, chordSy
 
               x += staveWidth;
             }
-            partY += partHeight;
+
+            // Lyrics on one baseline under the lowest note (and its ledger
+            // lines) of this line, centred under each notehead.
+            if (lineLyrics.length > 0) {
+              const lyricY = topLineY + STAFF_HEIGHT + layout.low + LYRIC_ROW_HEIGHT - 3;
+              context.save();
+              // VexFlow reads a bare number as points; ask for px so it matches the measured width.
+              context.setFont('Arial', `${LYRIC_FONT_PX}px`);
+              // Centred under the notehead, but never over the previous syllable.
+              let prevEnd = -Infinity;
+              for (const { note, text } of lineLyrics) {
+                const width = measureTextWidth(text, LYRIC_FONT);
+                const textX = Math.max(note.getAbsoluteX() + 5 - width / 2, prevEnd + 3);
+                context.fillText(text, textX, lyricY);
+                prevEnd = textX + width;
+              }
+              context.restore();
+            }
+            partY += layout.height;
           }
-          y = partY + linePadding;
+          y += lineHeights[lineIndex];
         }
 
         setRendered(true);

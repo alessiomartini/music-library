@@ -157,11 +157,6 @@ function SongPageContent({ slug }: { slug?: string }) {
             <strong>Meter</strong> {song.timeSignature}
           </span>
         )}
-        {song.tempoBpm && (
-          <span>
-            <strong>Tempo</strong> {song.tempoMarking ? `${song.tempoMarking}, ` : ''}♩ = {song.tempoBpm}
-          </span>
-        )}
       </div>
 
       <div className="song-links">
