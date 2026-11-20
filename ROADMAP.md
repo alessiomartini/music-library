@@ -4,6 +4,8 @@
 Letto automaticamente da Projects Overview (https://alessiomartini.github.io/projects-overview/):
 ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale di avanzamento,
 "## Log" è il diario (una riga per giorno, la più recente in alto).
+
+- 2026-11-20: lead sheet e pentagramma unico in pausa (decisione di Alessio dal brief).
 -->
 
 ## Fatto
@@ -30,7 +32,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Range vocale di Alessio (misurato il 17 settembre 2026): E2–Bb4 (Mi2–Sib4), già il valore di default in *My voice* (`prefs`/`VoiceSettings`)
 - [x] Istogramma del range vocale: di default solo «share of the singing time»; «share of the sung notes» solo come opzione (nota dal sito, 2026-10-26)
 - [x] Spartito: togliere l'indicazione della velocità (pulsazione) dal pentagramma; pentagramma più piccolo per scrollare il meno possibile; il testo si sovrappone al pentagramma e non si legge; Key e accordi non devono restare bloccati in alto mentre si scorre, massimizzare lo schermo utile (nota dal sito, 2026-10-18)
-- [ ] Un unico pentagramma per tutto il brano: melodia di un colore, basso e abbellimenti di un altro, con un tasto per mostrare/nascondere basso e abbellimenti (nota dal sito, 2026-10-18)
+- [ ] (in pausa, vedi Decisioni 2026-11-20) Un unico pentagramma per tutto il brano: melodia di un colore, basso e abbellimenti di un altro, con un tasto per mostrare/nascondere basso e abbellimenti (nota dal sito, 2026-10-18)
 - [x] Sezione con la storia del brano e curiosità (nota dal sito, 2026-10-18): già presente come «History & trivia» nella pagina canzone (1243 canzoni da Wikipedia, link e CC BY-SA 4.0, nascosta se vuota)
 - [x] Emoji degli strumenti usati nelle cover (433 cover su 1860, dove il canale o la nota nominano lo strumento)
 - [x] Range vocale dell'artista per trasporre al range comodo dell'utente
@@ -60,6 +62,8 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Registri della voce separati nell'istogramma: voce di petto, mista, di testa, falsetto (ognuno col suo range e colore), al posto della sola coppia comodo / estensione completa
 
 ## Decisioni e cose provate
+
+- 2026-11-20 (Alessio, dal brief): scrittura dei lead sheet abbandonata per ora: le trascrizioni venivano troppo imprecise e senza testi (vietati per il copyright) non hanno senso. In pausa anche il pentagramma unico melodia/basso (decisioni Q2/Q7 di DESIGN.md §20 non prese).
 
 Range dell'artista → range comodo: già coperto, nessun codice aggiunto. Nella pagina canzone `KeySuggestion` confronta il range misurato dalla registrazione (`measuredShift`, istogramma per tempo cantato; ripiego sul tipo di voce con `rangeShift`) con il range comodo di *My voice*, propone la trasposizione, scrive la tonalità di arrivo con l'ortografia giusta (`transposedKeyLabel`) e ha il pulsante «Apply» (o «✓ applied»); `VocalHistogram` mostra il range misurato accanto a quello comodo. Casi limite coperti in `src/lib/vocalRange.test.ts`. Resta aperta solo la copertura dei dati (161 canzoni senza video abbinato, voce già in lista).
 
