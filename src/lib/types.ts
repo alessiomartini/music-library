@@ -1,6 +1,7 @@
 import type { Score } from './score';
 import type { Instrument } from './instruments';
 import type { KeyEstimate } from './songKey';
+import type { KnownCover } from './musicbrainzCovers';
 
 /** One Spotify recording of a song; `artist` is who plays it (performers, for classical pieces). */
 export interface SpotifyVersion {
@@ -22,6 +23,8 @@ export interface SongLinks {
   spotifyVersions?: SpotifyVersion[];
   /** YouTube covers (artist = who plays it). */
   youtubeVersions?: SpotifyVersion[];
+  /** Recordings of the same work by other artists, from MusicBrainz (no playable link: opens the MusicBrainz page). */
+  knownCovers?: KnownCover[];
   youtube?: string;
   /** Where to consult the published sheet music this transcription was
    * checked against. A link to the publisher/retailer page, not a copy of

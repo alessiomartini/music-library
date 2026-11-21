@@ -15,6 +15,7 @@ import { spotifyLinks, spotifySongs } from './spotify';
 import { songKeys } from './keys';
 import { originals } from './originals';
 import { songInfo } from './songInfo';
+import { knownCovers } from './knownCovers';
 import { youtubeCovers } from './youtubeCovers';
 import { attachYoutubeCovers } from '../../lib/youtubeCovers';
 import yourSongScoreJson from './your-song.json';
@@ -88,7 +89,7 @@ const query = (s: Song) => encodeURIComponent(`${s.title} ${s.artist}`);
 /** Every song links to Spotify and YouTube: its own recording when known, else a search. */
 function withLinks(song: Song): Song {
   const s = { ...songInfo[song.slug], ...song };
-  const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) };
+  const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s), ...(knownCovers[s.slug] && { knownCovers: knownCovers[s.slug] }) };
   links.spotify ??= `https://open.spotify.com/search/${query(s)}`;
   links.youtube ??= youtubeLink(youtubeDirect, s.slug, s.title, s.artist);
   const liked = spotifyLinks[s.slug];
@@ -105,7 +106,7 @@ const words = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').
 export function coverCount(s: Song): number {
   const own = new Set(words(s.artist));
   const spotifyCovers = (s.links.spotifyVersions ?? []).filter((v) => !words(v.artist).some((w) => own.has(w)));
-  return spotifyCovers.length + (s.links.youtubeVersions?.length ?? 0) + (s.links.instagram?.length ?? 0);
+  return spotifyCovers.length + (s.links.youtubeVersions?.length ?? 0) + (s.links.knownCovers?.length ?? 0) + (s.links.instagram?.length ?? 0);
 }
 
 // YouTube covers attach to their songs; covered songs not in the library become light entries.

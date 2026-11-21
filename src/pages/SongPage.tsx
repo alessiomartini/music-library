@@ -234,7 +234,7 @@ function SongPageContent({ slug }: { slug?: string }) {
         <VocalHistogram profile={vocalRanges[song.slug]} system={globalPrefs.system} />
       )}
 
-      {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.instagram?.length) ? (
+      {(song.links.spotifyVersions?.length || song.links.youtubeVersions?.length || song.links.knownCovers?.length || song.links.instagram?.length) ? (
         <div className="song-saved-posts">
           <h2>Other versions</h2>
           <ul>
@@ -261,6 +261,14 @@ function SongPageContent({ slug }: { slug?: string }) {
                       </a>
                     </span>
                   ))}
+              </li>
+            ))}
+            {song.links.knownCovers?.map((c) => (
+              <li key={c.id}>
+                <a href={`https://musicbrainz.org/recording/${c.id}`} target="_blank" rel="noreferrer noopener" title="Recording listed on MusicBrainz (no player link)">
+                  {c.artist}
+                  {c.year ? ` · ${c.year}` : ''} (MusicBrainz)
+                </a>
               </li>
             ))}
             {song.links.instagram?.map((url, i) => (
