@@ -12,7 +12,7 @@ const norm = (s: string) =>
 const mainArtist = (artist: string) => artist.split(/,| ft\. | feat\. | & | and /i)[0].trim();
 
 // Versions that are not the original recording, unless the song title itself says so.
-const UNWANTED = ['live', 'cover', 'karaoke', 'lyrics', 'lyric', 'reaction', 'tutorial', 'lesson', 'instrumental', 'remix', 'acoustic', 'chords', 'testo', 'sped up', 'slowed', 'reverb', '8d', 'nightcore', 'performs', 'performance', 'concert', 'session', 'sessions', 'medley'];
+const UNWANTED = ['live', 'cover', 'karaoke', 'lyrics', 'lyric', 'reaction', 'tutorial', 'lesson', 'instrumental', 'remix', 'acoustic', 'chords', 'testo', 'sped up', 'slowed', 'reverb', '8d', 'nightcore', 'performs', 'performance', 'concert', 'session', 'sessions', 'medley', 'racconta', 'interview', 'intervista'];
 
 const has = (haystack: string, needle: string) => ` ${haystack} `.includes(` ${needle} `);
 

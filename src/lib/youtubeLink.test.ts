@@ -38,6 +38,9 @@ describe('matchesOriginal', () => {
     expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Cover)', 'Some Fan'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
     expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Karaoke)', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
   });
+  it('rejects talks and interviews', () => {
+    expect(matchesOriginal(c('Radio EelST: Elio racconta "Cateto"', 'Elio e le Storie Tese'), 'Cateto', 'Elio e le Storie Tese')).toBe(false);
+  });
   it('allows live when the song is live', () => {
     expect(matchesOriginal(c('Live and Let Die', 'Paul McCartney'), 'Live and Let Die', 'Paul McCartney')).toBe(true);
   });
