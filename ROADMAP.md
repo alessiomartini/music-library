@@ -1,102 +1,102 @@
 # Roadmap
 
 <!--
-Letto automaticamente da Projects Overview (https://alessiomartini.github.io/projects-overview/):
-ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale di avanzamento,
-"## Log" è il diario (una riga per giorno, la più recente in alto).
+Read automatically by Projects Overview (https://alessiomartini.github.io/projects-overview/):
+every "##" heading is a phase, the "- [ ]" / "- [x]" checkboxes give the progress percentage,
+"## Log" is the diary (one line per day, the most recent on top).
 
-- 2026-11-20: lead sheet e pentagramma unico in pausa (decisione di Alessio dal brief).
+- 2026-11-20: lead sheet and single staff on hold (Alessio's decision from the brief).
 -->
 
-## Fatto
-- [x] Metadati delle canzoni, ricerca, link a Spotify/YouTube/spartiti
-- [x] Score normalizzato e visualizzazione su pentagramma (VexFlow)
-- [x] Trasposizione e tonalità preferita
-- [x] Link diretti ad Accordi&Spartiti e Ultimate Guitar
+## Done
+- [x] Song metadata, search, links to Spotify/YouTube/sheet music
+- [x] Normalized score and staff display (VexFlow)
+- [x] Transposition and preferred key
+- [x] Direct links to Accordi&Spartiti and Ultimate Guitar
 
-- [x] Import di Spotify (preferiti e playlist) e Instagram, versioni multiple su una scheda
-- [x] Link Spotify/YouTube per tutte le canzoni, bollino con il numero di versioni, copertine degli album
+- [x] Spotify (favorites and playlists) and Instagram import, multiple versions on one card
+- [x] Spotify/YouTube links for all songs, badge with the number of versions, album covers
 
-- [x] Tonalità dal web (Hooktheory, Ultimate Guitar) con tonalità candidate quando incerta
-- [x] Nome dell'autore delle cover Instagram, bollino che conta solo le cover
+- [x] Key from the web (Hooktheory, Ultimate Guitar) with candidate keys when uncertain
+- [x] Author name of the Instagram covers, badge that counts only covers
 
-- [x] Cover YouTube di Paolo Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues (+768 canzoni nuove)
-- [x] Range vocale comodo dell'utente e suggerimento di tonalità dal tipo di voce dell'artista (codice)
-- [x] Foto degli artisti all'epoca della canzone e tipo di voce da Wikidata (872/995 artisti, override a mano degli omonimi)
-- [x] Istogrammi del range vocale misurato dalla registrazione (per tempo cantato e per numero di note), validati su 3 canzoni
-- [x] Note storiche dalla voce Wikipedia della canzone (1243/1979 canzoni, link e licenza CC BY-SA)
-- [x] Video dedicati a un artista e medley (Paolo Pilo, chitarradisagio): 314 voci dalle trascrizioni e dai commenti, col minuto
+- [x] YouTube covers by Paolo Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues (+768 new songs)
+- [x] The user's comfortable vocal range and key suggestion from the artist's voice type (code)
+- [x] Photos of the artists at the time of the song and voice type from Wikidata (872/995 artists, manual override of namesakes)
+- [x] Histograms of the vocal range measured from the recording (by singing time and by number of notes), validated on 3 songs
+- [x] Historical notes from the song's Wikipedia entry (1243/1979 songs, link and CC BY-SA license)
+- [x] Videos dedicated to an artist and medleys (Paolo Pilo, chitarradisagio): 314 entries from the transcripts and comments, with the minute
 
-## Da fare
-- [x] Cover chitarra e voce di Roberto Colella per «E cerca 'e me capi» (Pino Daniele): aggiungere il link YouTube alla canzone (già presente: video live all'Alexander Platz Jazz Club 2025, verificato con oEmbed; nella ricerca non c'è un altro video chitarra e voce) (nota dal sito, 2026-10-18)
-- [x] Range vocale di Alessio (misurato il 17 settembre 2026): E2–Bb4 (Mi2–Sib4), già il valore di default in *My voice* (`prefs`/`VoiceSettings`)
-- [x] Istogramma del range vocale: di default solo «share of the singing time»; «share of the sung notes» solo come opzione (nota dal sito, 2026-10-26)
-- [x] Spartito: togliere l'indicazione della velocità (pulsazione) dal pentagramma; pentagramma più piccolo per scrollare il meno possibile; il testo si sovrappone al pentagramma e non si legge; Key e accordi non devono restare bloccati in alto mentre si scorre, massimizzare lo schermo utile (nota dal sito, 2026-10-18)
-- [ ] (in pausa, vedi Decisioni 2026-11-20) Un unico pentagramma per tutto il brano: melodia di un colore, basso e abbellimenti di un altro, con un tasto per mostrare/nascondere basso e abbellimenti (nota dal sito, 2026-10-18)
-- [x] Sezione con la storia del brano e curiosità (nota dal sito, 2026-10-18): già presente come «History & trivia» nella pagina canzone (1243 canzoni da Wikipedia, link e CC BY-SA 4.0, nascosta se vuota)
-- [x] Emoji degli strumenti usati nelle cover (433 cover su 1860, dove il canale o la nota nominano lo strumento)
-- [x] Range vocale dell'artista per trasporre al range comodo dell'utente
-- [ ] Link YouTube diretti (oggi ricerca): `src/data/songs/youtubeDirect.ts` (generato da `npm run fetch:youtube-direct`, riprendibile) con ripiego sulla ricerca
-  - 430/2009 collegati (terzo giro: solo +5, YouTube blocca con 302 dopo ~125 canzoni, anche riprovando con PACE_MS=3000; da rilanciare più tardi), resto a ricerca: il match è prudente (canale dell'artista, Topic o VEVO, oppure titolo «Official» con l'artista su un canale di etichetta); lo script (`PACE_MS=3000` per rallentare) è stato fermato dopo ~450 canzoni riprovate, da rilanciare per il resto
-- [ ] Tonalità ed estensione vocale di ogni canzone
-- [ ] Tonalità per le ~1500 canzoni senza `originalKey` né fonte web: serve una fonte di accordi (stimatore dagli accordi pronto, ma senza accordi non c'è nulla da stimare)
-- [ ] Controllare «E cerca 'e me capi»: gli accordi del score suggeriscono D maggiore, `originalKey` dice Bb (capo 1)
-- [x] Range vocale misurato dalla registrazione: 1743 canzoni su 1904
-- [ ] Range vocale per le 161 canzoni senza video abbinabile automaticamente (scelta a mano del video)
-- [x] Link all'analisi Hooktheory (TheoryTab) nella pagina canzone, dove la pagina è verificata (153 canzoni)
-- [x] Import Spotify automatico ogni lunedì (GitHub Action), attivo quando ci sono i 3 secret Spotify
-- [x] Originali vs cover: correzioni a mano (`originals.ts`), versioni tradotte con link nella pagina dell'originale
-- [x] Filtri della lista: inglese, italiano, altre lingue, jazz standards; link a Wikipedia nella pagina canzone
-- [x] Filtri Classica / Non classica (78 brani classici, compresi 3 arrivati dalle cover YouTube)
-- [x] Istogramma del range vocale: oltre al range comodo, a righe la parte dell'estensione completa che non è comoda (da *My voice*)
-- [ ] Cover non ancora trovate: canzoni senza pagina Wikipedia (~680) da controllare
-- [ ] Tonalità dall'audio: 64% esatte sulle 265 canzoni con tonalità nota (accompagnamento + profilo Krumhansl); non pubblicata
-- [ ] Hooktheory Trends API (canzoni con la stessa progressione): serve un account Hooktheory di Alessio
-- [x] Suggerimento di tonalità dalla distribuzione misurata (oggi dal tipo di voce)
-- [ ] Schede Testo / Accordi a battute / Lead sheet
-- [x] Suggerimento automatico della tonalità dal range vocale (Mi2–Sib4)
-- [ ] Trascrivere altri brani come Score (oggi solo 2), con la pipeline di `music-library-offline`
+## To do
+- [x] Guitar and voice cover by Roberto Colella of «E cerca 'e me capi» (Pino Daniele): add the YouTube link to the song (already present: live video at the Alexander Platz Jazz Club 2025, verified with oEmbed; the search shows no other guitar and voice video) (note from the site, 2026-10-18)
+- [x] Alessio's vocal range (measured on 17 September 2026): E2–Bb4 (Mi2–Sib4), already the default value in *My voice* (`prefs`/`VoiceSettings`)
+- [x] Vocal range histogram: by default only «share of the singing time»; «share of the sung notes» only as an option (note from the site, 2026-10-26)
+- [x] Score: remove the tempo indication (pulse) from the staff; smaller staff to scroll as little as possible; the text overlaps the staff and cannot be read; Key and chords must not stay stuck at the top while scrolling, maximize the useful screen (note from the site, 2026-10-18)
+- [ ] (on hold, see Decisions 2026-11-20) A single staff for the whole piece: melody in one color, bass and ornaments in another, with a button to show/hide bass and ornaments (note from the site, 2026-10-18)
+- [x] Section with the history of the piece and trivia (note from the site, 2026-10-18): already present as «History & trivia» in the song page (1243 songs from Wikipedia, link and CC BY-SA 4.0, hidden when empty)
+- [x] Emoji of the instruments used in the covers (433 covers out of 1860, where the channel or the note names the instrument)
+- [x] Artist's vocal range to transpose to the user's comfortable range
+- [ ] Direct YouTube links (today search): `src/data/songs/youtubeDirect.ts` (generated by `npm run fetch:youtube-direct`, resumable) with fallback to search
+  - 430/2009 linked (third pass: only +5, YouTube blocks with a 302 after ~125 songs, even retrying with PACE_MS=3000; to be rerun later), the rest on search: the match is conservative (the artist's channel, Topic or VEVO, or an «Official» title with the artist on a label channel); the script (`PACE_MS=3000` to slow it down) was stopped after ~450 retried songs, to be rerun for the rest
+- [ ] Key and vocal range of every song
+- [ ] Key for the ~1500 songs with neither `originalKey` nor a web source: a chord source is needed (chord-based estimator ready, but without chords there is nothing to estimate)
+- [ ] Check «E cerca 'e me capi»: the chords of the score suggest D major, `originalKey` says Bb (capo 1)
+- [x] Vocal range measured from the recording: 1743 songs out of 1904
+- [ ] Vocal range for the 161 songs without an automatically matched video (manual choice of the video)
+- [x] Link to the Hooktheory analysis (TheoryTab) in the song page, where the page is verified (153 songs)
+- [x] Automatic Spotify import every Monday (GitHub Action), active when the 3 Spotify secrets are present
+- [x] Originals vs covers: manual corrections (`originals.ts`), translated versions with a link in the original's page
+- [x] List filters: English, Italian, other languages, jazz standards; link to Wikipedia in the song page
+- [x] Classical / Non-classical filters (78 classical pieces, including 3 coming from the YouTube covers)
+- [x] Vocal range histogram: besides the comfortable range, hatched the part of the full range that is not comfortable (from *My voice*)
+- [ ] Covers not yet found: songs without a Wikipedia page (~680) to check
+- [ ] Key from the audio: 64% exact on the 265 songs with a known key (accompaniment + Krumhansl profile); not published
+- [ ] Hooktheory Trends API (songs with the same progression): needs a Hooktheory account of Alessio
+- [x] Key suggestion from the measured distribution (today from the voice type)
+- [ ] Text / Bar chords / Lead sheet tabs
+- [x] Automatic key suggestion from the vocal range (Mi2–Sib4)
+- [ ] Transcribe more pieces as Score (today only 2), with the `music-library-offline` pipeline
 
-- [x] Ordine della lista per preferenza: Mio (ascolti reali ≥30 s dallo storico Spotify, solo percentile), Globale (popolarità Spotify), Mix 0.7/0.3; schede Artisti e Generi (Wikidata P136, altrimenti «No genre»)
-- [ ] Popolarità Spotify: `popularity.ts` è vuoto finché non gira l'import Spotify (lancia il workflow `spotify-import`, i secret sono su GitHub); finché è vuoto «Globale» non ordina e il Mix = Mio
-- [ ] Globale: aggiungere le views di YouTube (serve accesso di rete a YouTube)
+- [x] List order by preference: Mine (real listens ≥30 s from the Spotify history, percentile only), Global (Spotify popularity), Mix 0.7/0.3; Artists and Genres tabs (Wikidata P136, otherwise «No genre»)
+- [ ] Spotify popularity: `popularity.ts` is empty until the Spotify import runs (launch the `spotify-import` workflow, the secrets are on GitHub); while it is empty «Global» does not sort and the Mix = Mine
+- [ ] Global: add the YouTube views (needs network access to YouTube)
 
-## Idee
-- [ ] Registri della voce separati nell'istogramma: voce di petto, mista, di testa, falsetto (ognuno col suo range e colore), al posto della sola coppia comodo / estensione completa
+## Ideas
+- [ ] Separate voice registers in the histogram: chest voice, mixed, head voice, falsetto (each with its own range and color), instead of just the comfortable / full range pair
 
-## Decisioni e cose provate
+## Decisions and things tried
 
-Tonalità stimata dagli accordi (`estimateKeyFromChords` in `src/lib/songKey.ts`): punteggio su 24 tonalità = accordi dentro la scala (la radice pesa doppio) + tempo sull'accordo di tonica (e meno sulla dominante) + primo/ultimo accordo sulla tonica; così si distingue una maggiore dalla relativa minore. Oggi i soli accordi dei dati sono quelli dei 3 score (tutti già con tonalità curata): lo stimatore non cambia la pagina canzone (che mostra già «Key»/«Possible keys» dove c'è un dato, e il range misurato), ma in `validate` segnala se la tonalità del score non torna con gli accordi. Su Your Song e Anna e Marco torna, su E cerca 'e me capi no (D vs Bb). Limiti: una canzone che modula prende una sola tonalità; modi (dorico, misolidio) ambigui, es. Wonderwall esce D con scarto 0. Non pubblicato in UI perché senza accordi non c'è nulla da stimare; la stima dall'audio resta quella già provata (64%, non pubblicata).
+Key estimated from the chords (`estimateKeyFromChords` in `src/lib/songKey.ts`): score over 24 keys = chords inside the scale (the root counts double) + time on the tonic chord (and less on the dominant) + first/last chord on the tonic; this tells a major from its relative minor. Today the only chords in the data are those of the 3 scores (all already with a curated key): the estimator does not change the song page (which already shows «Key»/«Possible keys» where there is data, and the measured range), but in `validate` it reports when the score's key does not match the chords. On Your Song and Anna e Marco it matches, on E cerca 'e me capi it does not (D vs Bb). Limits: a song that modulates gets a single key; modes (Dorian, Mixolydian) are ambiguous, e.g. Wonderwall comes out D with a gap of 0. Not published in the UI because without chords there is nothing to estimate; the estimate from audio remains the one already tried (64%, not published).
 
-- 2026-11-20 (Alessio, dal brief): scrittura dei lead sheet abbandonata per ora: le trascrizioni venivano troppo imprecise e senza testi (vietati per il copyright) non hanno senso. In pausa anche il pentagramma unico melodia/basso (decisioni Q2/Q7 di DESIGN.md §20 non prese).
+- 2026-11-20 (Alessio, from the brief): writing lead sheets abandoned for now: the transcriptions were too imprecise and without lyrics (forbidden for copyright) they make no sense. Also on hold the single melody/bass staff (decisions Q2/Q7 of DESIGN.md §20 not taken).
 
-Range dell'artista → range comodo: già coperto, nessun codice aggiunto. Nella pagina canzone `KeySuggestion` confronta il range misurato dalla registrazione (`measuredShift`, istogramma per tempo cantato; ripiego sul tipo di voce con `rangeShift`) con il range comodo di *My voice*, propone la trasposizione, scrive la tonalità di arrivo con l'ortografia giusta (`transposedKeyLabel`) e ha il pulsante «Apply» (o «✓ applied»); `VocalHistogram` mostra il range misurato accanto a quello comodo. Casi limite coperti in `src/lib/vocalRange.test.ts`. Resta aperta solo la copertura dei dati (161 canzoni senza video abbinato, voce già in lista).
+Artist's range → comfortable range: already covered, no code added. In the song page `KeySuggestion` compares the range measured from the recording (`measuredShift`, histogram by singing time; fallback on voice type with `rangeShift`) with the comfortable range of *My voice*, proposes the transposition, writes the target key with the right spelling (`transposedKeyLabel`) and has the «Apply» button (or «✓ applied»); `VocalHistogram` shows the measured range next to the comfortable one. Edge cases covered in `src/lib/vocalRange.test.ts`. Only the data coverage remains open (161 songs without a matched video, a voice already in the list).
 
-Ranking: il sito è pubblico, quindi nel repo ci sono solo percentili (`mine.ts`), mai conteggi né date. Gli ascolti contano sulle registrazioni Spotify collegate alla canzone (link principale, versioni, traduzioni); canzoni mai ascoltate = 0, quindi anche un solo ascolto vale già oltre la metà classifica (pareggi a rango medio). Globale = percentile della popolarità Spotify migliore fra le registrazioni; senza popolarità il Mix usa solo Mio. Generi: nessuno inventato, 109 artisti senza P136 → «No genre».
+Ranking: the site is public, so the repo holds only percentiles (`mine.ts`), never counts or dates. Listens count on the Spotify recordings linked to the song (main link, versions, translations); never-listened songs = 0, so even a single listen is already worth more than the middle of the ranking (ties at mean rank). Global = percentile of the best Spotify popularity among the recordings; without popularity the Mix uses only Mine. Genres: none invented, 109 artists without P136 → «No genre».
 
-Emoji degli strumenti: il modello dati non aveva strumenti. Aggiunto `instruments` opzionale a `SpotifyVersion` e `YoutubeCover`; se manca, `src/lib/instruments.ts` lo ricava con parole chiave esplicite nel nome del canale o nella nota (chitarra/guitar/12-string/nylon-string, piano, violin, drums, sax, ukulele). Non si deduce nulla dall'artista o dalla canzone. Restano senza emoji le cover di Allie Sherlock, Fabio Rodrigues e Paolo Pilo (a meno che la nota nomini lo strumento): serve il dato da Alessio, da mettere a mano in `instruments`.
+Instrument emoji: the data model had no instruments. Added an optional `instruments` to `SpotifyVersion` and `YoutubeCover`; if missing, `src/lib/instruments.ts` derives it with explicit keywords in the channel name or in the note (chitarra/guitar/12-string/nylon-string, piano, violin, drums, sax, ukulele). Nothing is inferred from the artist or the song. The covers by Allie Sherlock, Fabio Rodrigues and Paolo Pilo stay without emoji (unless the note names the instrument): the data from Alessio is needed, to be put by hand in `instruments`.
 
-Suggerimento di tonalità dalla distribuzione misurata: tra le trasposizioni da −24 a +24 semitoni sceglie quella che mette più tempo cantato (istogramma per tempo) nel range comodo, a parità la più piccola (verso l'alto per prima); senza dati misurati resta il tipo di voce. Scartato per ora: pesare anche l'istogramma per numero di note o penalizzare le note fuori dal range *full* ma non comode (si potrebbe, ma è una scelta da fare con l'uso); la distribuzione non distingue i registri (voce di petto/falsetto), vedi idea già in lista. La stima resta approssimata: la registrazione misurata può essere in una tonalità diversa dal grafico.
+Key suggestion from the measured distribution: among the transpositions from −24 to +24 semitones it picks the one that puts the most singing time (time histogram) in the comfortable range, at equal score the smallest (upwards first); without measured data it stays on the voice type. Discarded for now: also weighting the histogram by number of notes or penalizing notes outside the *full* range but not comfortable (it could be done, but it is a choice to make with use); the distribution does not tell registers apart (chest voice/falsetto), see the idea already in the list. The estimate stays approximate: the measured recording may be in a different key from the chart.
 
-Suggerimento automatico dal range vocale (Mi2–Sib4 di default): la logica c'era già (`measuredShift`, ripiego su `rangeShift` dal tipo di voce); in questo passo solo test dei casi limite (parità → verso l'alto, brano più largo del range, adattamento esatto), suggerimento mostrato anche quando la tonalità è ignota (solo semitoni) e «✓ applied» al posto del pulsante Apply quando la trasposizione è già in uso. Algoritmo invariato: minimizza il tempo cantato fuori range, a parità il minimo spostamento assoluto. Limite risolto subito dopo: l'ortografia dell'etichetta (es. «La#» invece di «Sib») seguiva la tonalità originale.
+Automatic suggestion from the vocal range (Mi2–Sib4 by default): the logic was already there (`measuredShift`, fallback on `rangeShift` from the voice type); in this step only tests of the edge cases (tie → upwards, piece wider than the range, exact fit), suggestion shown also when the key is unknown (semitones only) and «✓ applied» in place of the Apply button when the transposition is already in use. Algorithm unchanged: minimizes the singing time outside the range, at equal score the minimum absolute shift. Limit solved right after: the label spelling (e.g. «La#» instead of «Sib») followed the original key.
 
-Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggiori F, Sib, Mib, Lab, Reb, Solb con i bemolli, le altre con i diesis; le minori seguono la relativa maggiore), non quella originale. Vale per l'etichetta della tonalità, il suggerimento, l'elenco della tonalità preferita e gli accordi nella vista trasposta (stesso `preferFlats`). Solb/Fa# maggiore: scelto Solb (coerente con Mib minore ai bemolli); Fa# minore ai diesis. Dati delle canzoni non toccati.
+Spelling of transposed keys: the target key now decides (majors F, Sib, Mib, Lab, Reb, Solb with flats, the others with sharps; minors follow the relative major), not the original. It applies to the key label, the suggestion, the preferred key list and the chords in the transposed view (same `preferFlats`). Solb/Fa# major: chose Solb (consistent with Mib minor with flats); Fa# minor with sharps. Song data not touched.
 
-Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
+Long design document (music representation, rendering, transposition, vocal range): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
-- 2026-11-21: 🤖 link YouTube diretti per l'originale (430 canzoni su 2009, file generato + ripiego sulla ricerca, script `fetch:youtube-direct` riprendibile; regola estesa ai caricamenti «Official» su canali di etichette, esclusi talk/interviste); verificata la cover di Roberto Colella, già presente; 🤖 stimatore di tonalità dagli accordi (`estimateKeyFromChords`, 24 tonalità) con test, usato in `npm run validate` come controllo (non sostituisce la tonalità curata)
-- 2026-11-14: 🤖 istogramma del range vocale: di default solo «share of the singing time», «share of the sung notes» con una casella opzionale; spartito più compatto (scala 0,85, testo su una riga sotto la nota più bassa, senza «Tempo ♩ = N» tra i dati del brano; Key e accordi non erano bloccati in alto: verificato, nessun `sticky`); verificato che la sezione «History & trivia» (Wikipedia, CC BY-SA, nascosta senza dati) c'è già per 1243 canzoni: voce spuntata
-- 2026-11-14: note dal sito portate nel ROADMAP
-- 2026-11-07: 🤖 verificato che la trasposizione al range comodo dal range dell'artista è già coperta (suggerimento, Apply, istogramma): voce spuntata, nessun codice nuovo
-- 2026-11-06: widget note v2 canonico (public/notes-widget.js) al posto di FeedbackBox (migra feedback-notes); tolti FeedbackBox, siteNotes.ts, CSS.
-- 2026-11-05: ordine per Mio / Globale / Mix e schede Artisti e Generi nella lista; `npm run compute:mine` (storico esteso Spotify → solo percentile in `mine.ts`), `npm run fetch:genres` (Wikidata P136, 763/872 artisti), l'import Spotify salva anche la popolarità per traccia
-- 2026-10-31: 🤖 suggerimento di tonalità dal range vocale: test dei casi limite, suggerimento anche senza tonalità nota, «applied» quando già in uso; tonalità e accordi trasposti scritti secondo la tonalità di arrivo (Sib, non La#)
-- 2026-10-20: 🤖 suggerimento di tonalità basato sulla distribuzione misurata del tempo cantato (con ripiego sul tipo di voce) e indicazione della base usata nella pagina canzone
-- 2026-10-19: filtri Classica / Non classica; nell'istogramma del range vocale anche la parte non comoda dell'estensione (a righe); idea: registri della voce separati; le note del sito ora vanno nel backend unico `site-notes` (prima restavano solo nel browser), con l'autore (`?sono-alessio` segna il browser di Alessio); 🤖 emoji degli strumenti accanto alle cover YouTube (433 su 1860, da canale e nota); installabile come app a sé dal telefono (manifest con nome, icona e perimetro propri)
-- 2026-10-18: docs/FUTURE-ARCHITECTURE.md rinominato docs/DESIGN.md (protocollo unico: niente file FUTURE-ARCHITECTURE); note isolate tolte dagli istogrammi; cover corrette con l'originale e versioni tradotte; filtri per lingua e jazz standards; import Spotify automatico; range vocale misurato per 1743 canzoni; link all'analisi Hooktheory nella pagina canzone
-- 2026-10-15 (notte): range vocale dalla registrazione (Demucs + pYIN) su 3 canzoni, due istogrammi nella pagina canzone
-- 2026-10-15 (notte): note storiche da Wikipedia per 1243 canzoni (script `fetch:history`, it per le canzoni italiane, en altrimenti)
-- 2026-10-15 (sera): foto degli artisti e tipo di voce da Wikipedia/Wikidata/Commons, controllo a campione e override degli omonimi, filtro delle foto non dell'artista
-- 2026-10-15 (sera): canzoni dei medley e dei video su un artista di Paolo Pilo e chitarradisagio, individuate dalle trascrizioni automatiche e dai commenti (+208 canzoni)
-- 2026-10-15: import Spotify/Instagram con versioni su una scheda; link Spotify/YouTube per tutte le canzoni, bollino versioni, copertine album; creata la roadmap per Projects Overview; tonalità dal web con candidate, autori delle cover Instagram; cover YouTube (Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues), range vocale e suggerimento tonalità
+- 2026-11-21: 🤖 ROADMAP translated to English (language rule: projects in English or bilingual EN/IT). 🤖 direct YouTube links for the original (430 songs out of 2009, generated file + fallback to search, resumable `fetch:youtube-direct` script; rule extended to «Official» uploads on label channels, excluding talks/interviews); verified Roberto Colella's cover, already present; 🤖 key estimator from the chords (`estimateKeyFromChords`, 24 keys) with tests, used in `npm run validate` as a check (it does not replace the curated key)
+- 2026-11-14: 🤖 vocal range histogram: by default only «share of the singing time», «share of the sung notes» with an optional checkbox; more compact score (scale 0.85, text on one line below the lowest note, without «Tempo ♩ = N» among the piece data; Key and chords were not stuck at the top: verified, no `sticky`); verified that the «History & trivia» section (Wikipedia, CC BY-SA, hidden without data) already exists for 1243 songs: item ticked
+- 2026-11-14: notes from the site brought into the ROADMAP
+- 2026-11-07: 🤖 verified that the transposition to the comfortable range from the artist's range is already covered (suggestion, Apply, histogram): item ticked, no new code
+- 2026-11-06: canonical notes widget v2 (public/notes-widget.js) in place of FeedbackBox (migrates feedback-notes); removed FeedbackBox, siteNotes.ts, CSS.
+- 2026-11-05: order by Mine / Global / Mix and Artists and Genres tabs in the list; `npm run compute:mine` (extended Spotify history → only percentile in `mine.ts`), `npm run fetch:genres` (Wikidata P136, 763/872 artists), the Spotify import also saves the popularity per track
+- 2026-10-31: 🤖 key suggestion from the vocal range: edge-case tests, suggestion also without a known key, «applied» when already in use; transposed keys and chords written according to the target key (Sib, not La#)
+- 2026-10-20: 🤖 key suggestion based on the measured distribution of singing time (with fallback on voice type) and indication of the basis used in the song page
+- 2026-10-19: Classical / Non-classical filters; in the vocal range histogram also the non-comfortable part of the full range (hatched); idea: separate voice registers; the site notes now go to the single backend `site-notes` (before they stayed only in the browser), with the author (`?sono-alessio` marks Alessio's browser); 🤖 instrument emoji next to the YouTube covers (433 out of 1860, from channel and note); installable as a standalone app from the phone (manifest with its own name, icon and scope)
+- 2026-10-18: docs/FUTURE-ARCHITECTURE.md renamed docs/DESIGN.md (single protocol: no FUTURE-ARCHITECTURE file); isolated notes removed from the histograms; covers corrected with the original and translated versions; filters by language and jazz standards; automatic Spotify import; vocal range measured for 1743 songs; link to the Hooktheory analysis in the song page
+- 2026-10-15 (night): vocal range from the recording (Demucs + pYIN) on 3 songs, two histograms in the song page
+- 2026-10-15 (night): historical notes from Wikipedia for 1243 songs (script `fetch:history`, it for Italian songs, en otherwise)
+- 2026-10-15 (evening): photos of the artists and voice type from Wikipedia/Wikidata/Commons, spot check and override of namesakes, filter of non-artist photos
+- 2026-10-15 (evening): songs from the medleys and from the videos about an artist by Paolo Pilo and chitarradisagio, found from the automatic transcripts and comments (+208 songs)
+- 2026-10-15: Spotify/Instagram import with versions on one card; Spotify/YouTube links for all songs, versions badge, album covers; created the roadmap for Projects Overview; key from the web with candidates, authors of the Instagram covers; YouTube covers (Pilo, chitarradisagio, Allie Sherlock, Fabio Rodrigues), vocal range and key suggestion
