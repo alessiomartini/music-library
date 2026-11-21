@@ -39,6 +39,8 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [ ] Link YouTube diretti (oggi ricerca): `src/data/songs/youtubeDirect.ts` (generato da `npm run fetch:youtube-direct`, riprendibile) con ripiego sulla ricerca
   - 425/2009 collegati, resto a ricerca: il match è prudente (canale dell'artista, Topic o VEVO, oppure titolo «Official» con l'artista su un canale di etichetta); lo script (`PACE_MS=3000` per rallentare) è stato fermato dopo ~450 canzoni riprovate, da rilanciare per il resto
 - [ ] Tonalità ed estensione vocale di ogni canzone
+- [ ] Tonalità per le ~1500 canzoni senza `originalKey` né fonte web: serve una fonte di accordi (stimatore dagli accordi pronto, ma senza accordi non c'è nulla da stimare)
+- [ ] Controllare «E cerca 'e me capi»: gli accordi del score suggeriscono D maggiore, `originalKey` dice Bb (capo 1)
 - [x] Range vocale misurato dalla registrazione: 1743 canzoni su 1904
 - [ ] Range vocale per le 161 canzoni senza video abbinabile automaticamente (scelta a mano del video)
 - [x] Link all'analisi Hooktheory (TheoryTab) nella pagina canzone, dove la pagina è verificata (153 canzoni)
@@ -64,6 +66,8 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 
 ## Decisioni e cose provate
 
+Tonalità stimata dagli accordi (`estimateKeyFromChords` in `src/lib/songKey.ts`): punteggio su 24 tonalità = accordi dentro la scala (la radice pesa doppio) + tempo sull'accordo di tonica (e meno sulla dominante) + primo/ultimo accordo sulla tonica; così si distingue una maggiore dalla relativa minore. Oggi i soli accordi dei dati sono quelli dei 3 score (tutti già con tonalità curata): lo stimatore non cambia la pagina canzone (che mostra già «Key»/«Possible keys» dove c'è un dato, e il range misurato), ma in `validate` segnala se la tonalità del score non torna con gli accordi. Su Your Song e Anna e Marco torna, su E cerca 'e me capi no (D vs Bb). Limiti: una canzone che modula prende una sola tonalità; modi (dorico, misolidio) ambigui, es. Wonderwall esce D con scarto 0. Non pubblicato in UI perché senza accordi non c'è nulla da stimare; la stima dall'audio resta quella già provata (64%, non pubblicata).
+
 - 2026-11-20 (Alessio, dal brief): scrittura dei lead sheet abbandonata per ora: le trascrizioni venivano troppo imprecise e senza testi (vietati per il copyright) non hanno senso. In pausa anche il pentagramma unico melodia/basso (decisioni Q2/Q7 di DESIGN.md §20 non prese).
 
 Range dell'artista → range comodo: già coperto, nessun codice aggiunto. Nella pagina canzone `KeySuggestion` confronta il range misurato dalla registrazione (`measuredShift`, istogramma per tempo cantato; ripiego sul tipo di voce con `rangeShift`) con il range comodo di *My voice*, propone la trasposizione, scrive la tonalità di arrivo con l'ortografia giusta (`transposedKeyLabel`) e ha il pulsante «Apply» (o «✓ applied»); `VocalHistogram` mostra il range misurato accanto a quello comodo. Casi limite coperti in `src/lib/vocalRange.test.ts`. Resta aperta solo la copertura dei dati (161 canzoni senza video abbinato, voce già in lista).
@@ -81,7 +85,7 @@ Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggior
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
-- 2026-11-21: 🤖 link YouTube diretti per l'originale (425 canzoni su 2009, file generato + ripiego sulla ricerca, script `fetch:youtube-direct` riprendibile; regola estesa ai caricamenti «Official» su canali di etichette, esclusi talk/interviste); verificata la cover di Roberto Colella, già presente
+- 2026-11-21: 🤖 link YouTube diretti per l'originale (425 canzoni su 2009, file generato + ripiego sulla ricerca, script `fetch:youtube-direct` riprendibile; regola estesa ai caricamenti «Official» su canali di etichette, esclusi talk/interviste); verificata la cover di Roberto Colella, già presente; 🤖 stimatore di tonalità dagli accordi (`estimateKeyFromChords`, 24 tonalità) con test, usato in `npm run validate` come controllo (non sostituisce la tonalità curata)
 - 2026-11-14: 🤖 istogramma del range vocale: di default solo «share of the singing time», «share of the sung notes» con una casella opzionale; spartito più compatto (scala 0,85, testo su una riga sotto la nota più bassa, senza «Tempo ♩ = N» tra i dati del brano; Key e accordi non erano bloccati in alto: verificato, nessun `sticky`); verificato che la sezione «History & trivia» (Wikipedia, CC BY-SA, nascosta senza dati) c'è già per 1243 canzoni: voce spuntata
 - 2026-11-14: note dal sito portate nel ROADMAP
 - 2026-11-07: 🤖 verificato che la trasposizione al range comodo dal range dell'artista è già coperta (suggerimento, Apply, istogramma): voce spuntata, nessun codice nuovo
