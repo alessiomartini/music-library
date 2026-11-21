@@ -9,6 +9,8 @@ import { amaraTerraMia } from './amara-terra-mia';
 import { annaEMarco } from './anna-e-marco';
 import { savedSongs } from './saved';
 import { chordSiteLinks } from './chordSiteLinks';
+import { youtubeDirect } from './youtubeDirect';
+import { youtubeLink } from '../../lib/youtubeLink';
 import { spotifyLinks, spotifySongs } from './spotify';
 import { songKeys } from './keys';
 import { originals } from './originals';
@@ -88,7 +90,7 @@ function withLinks(song: Song): Song {
   const s = { ...songInfo[song.slug], ...song };
   const links = { ...chordSiteLinks[s.slug], ...s.links, ...spotifyFor(s) };
   links.spotify ??= `https://open.spotify.com/search/${query(s)}`;
-  links.youtube ??= `https://www.youtube.com/results?search_query=${query(s)}`;
+  links.youtube ??= youtubeLink(youtubeDirect, s.slug, s.title, s.artist);
   const liked = spotifyLinks[s.slug];
   const albumImage = s.albumImage ?? (liked?.find((v) => v.url === links.spotify) ?? liked?.[0])?.albumImage;
   const keyEstimate = s.originalKey ? undefined : songKeys[s.slug];
