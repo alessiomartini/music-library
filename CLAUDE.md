@@ -1,120 +1,53 @@
 # Claude Code instructions
 
-## Project
+Static React/TypeScript personal song library on GitHub Pages: song metadata, Spotify/YouTube/Instagram
+imports, rankings, vocal-range tools, and a normalized `Score` model (VexFlow staff notation) for the songs
+transcribed so far. `README.md` describes current behavior; for the source of truth, read the code.
 
-Static React/TypeScript `music-library` application deployed to GitHub Pages.
+## Design document
 
-The current implementation is a chord/lyrics-oriented song library. The
-project is planned to migrate toward a normalized symbolic score
-representation. The detailed architecture and roadmap are documented in
-[`docs/DESIGN.md`](docs/DESIGN.md).
+`docs/DESIGN.md` is the long-term design but is partly outdated: it still opens by describing a move away
+from a chord/lyric chart (the legacy `LeadSheet*` model is already removed), and parts of its roadmap are
+done or paused (lead sheets and the single-staff view are on hold, see `ROADMAP.md`). Trust the code and
+README over it, and do not treat planned features as implemented. Do not rewrite it unless asked.
 
-## Source of truth
+## Architecture decisions to keep
 
-For current behavior, inspect the actual source code and `README.md`.
+- The web app stays static. Normalized JSON is the published score format; the runtime uses the
+  normalized TypeScript `Score` model.
+- Audio recordings are the primary offline source for new scores. MusicXML is only an optional offline
+  source/interchange format. Heavy audio, source separation and ML stay out of the browser, in the sibling
+  repo `music-library-offline` (pipeline and intermediates).
+- Harmony is an independent timed layer, never a `ScorePart`. All parts and harmony share one timeline.
+  Voice, bass and instrumental material are explicit parts.
+- Lyrics attach to vocal notes (syllabification, melisma, multiple lines/elements, elision as in the model).
+- Each media item is one recording with one external URL; never store raw iframe HTML. Embedded playback
+  depends on the provider and falls back to a plain link; Spotify is never embedded.
+- Reuse existing music-theory code (`src/lib/`). Do not keep the legacy data model only for compatibility
+  when a requested migration chunk replaces it.
 
-For the long-term design, use `docs/DESIGN.md`. Do not treat
-planned features as already implemented.
+## Score-model migration chunks
 
-## Implementation workflow
-
-Implement the project incrementally in small, independently verifiable
-chunks. A session must implement only the chunk explicitly requested by the
-user; do not proactively implement later roadmap phases.
-
-Do not silently resolve decisions still marked as **OPEN QUESTION** in the
-future architecture. When a current chunk exposes a problem, fix it only if
-necessary for that chunk; otherwise report it and stop.
-
-The intended migration sequence is:
-
-```text
-foundation
-→ one-song vertical slice
-→ three-song validation
-→ all-song migration
-→ audio-first offline transcription pipeline
-```
-
-## Architecture rules
-
-Preserve these established decisions:
-
-- The web application remains static.
-- Normalized JSON is the published score format in the web repository.
-- Audio recordings are the primary offline source for new score curation.
-- MusicXML is an optional offline source, authoring, inspection, and
-  interchange format.
-- The runtime application uses a normalized TypeScript `Score` model.
-- Harmony is an independent timed layer, never a `ScorePart`.
-- All score parts and harmony events share one musical timeline.
-- Voice, bass, and instrumental material are explicit musical parts.
-- Lyrics are associated with vocal notes and support the decided
-  syllabification, melisma, multiple-line, multiple-element, and elision
-  semantics.
-- Heavy audio transcription, source separation, and ML processing stay outside
-  the browser.
-- Reuse existing music-theory logic where appropriate.
-
-Do not preserve the legacy music-data model merely for compatibility when the
-requested migration chunk explicitly replaces it. Avoid unnecessary rewrites
-and song-specific special cases.
+Planned sequence: foundation, one-song slice, three-song validation, all-song migration, audio-first
+pipeline. When asked to implement a migration chunk, implement only that chunk and stop; do not start later
+phases. Do not silently resolve decisions marked **OPEN QUESTION** in `docs/DESIGN.md`; report them. Fix
+problems the chunk exposes only if the chunk needs it, otherwise report them. Other work (imports, UI,
+ranking, data fetching) has no such limit.
 
 ## Verification
 
-After relevant changes run `npm run build`, `npm run lint`, `npm run validate` and the relevant unit or integration tests. Fix failures that belong to the current chunk; report pre-existing failures separately. For UI changes inspect the affected flow with `npm run dev`.
+After relevant changes run `npm run build`, `npm run lint`, `npm run validate` and the relevant tests
+(`npm test`). For UI changes check the flow with `npm run dev`. Fix failures caused by your change and
+report pre-existing ones separately.
 
-## Music-data changes
+## Music data
 
-Treat musical correctness as seriously as software correctness. When changing
-score data, verify pitches, timing, measures, lyrics, harmony, part
-assignment, and transposition behavior.
-
-Do not silently alter unrelated song data or mass-convert all songs without an
-explicit migration request.
-
-## External media
-
-The planned media model is:
-
-```text
-song
-└── media
-    ├── original: one recording
-    └── covers: zero or more recordings
-```
-
-Each media item represents exactly one recording and exactly one external URL.
-Do not store raw iframe HTML in song data. Embedded playback is
-provider-dependent and should gracefully fall back to a normal external link.
-Spotify is not an embedded-player requirement.
-
-## Files and dependencies
-
-Do not commit large ML models, audio files, or local MusicXML working files to the web repository unless explicitly requested.
+Check pitches, timing, measures, lyrics, harmony, part assignment and transposition when changing score
+data (musical correctness matters as much as code). Do not alter unrelated songs or mass-convert songs
+without an explicit request. Do not commit large ML models, audio files or local MusicXML to this repo.
+The site is public: no listening counts, dates or other personal data in `src/data/`.
 
 ## Completion report
 
-At the end of every chunk, report:
-
-```text
-CHUNK:
-STATUS:
-
-FILES CHANGED:
-
-IMPLEMENTED:
-
-TESTS RUN:
-
-BUILD:
-LINT:
-VALIDATE:
-
-KNOWN ISSUES:
-
-ARCHITECTURAL DECISIONS / OPEN QUESTIONS:
-```
-
-Do not claim completion if relevant verification fails. After completing the
-requested chunk, stop and wait for the next explicit instruction.
+End each task with 3-4 lines: status (done / partial / blocked), checks run with results (build, lint,
+validate, tests), and known issues or open questions.
