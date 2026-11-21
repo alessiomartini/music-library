@@ -14,6 +14,7 @@
  */
 import { songs } from '../src/data/songs';
 import { validateScore } from '../src/lib/score';
+import { estimateScoreKey, normalizeKey } from '../src/lib/songKey';
 
 interface Problem {
   song: string;
@@ -55,6 +56,12 @@ for (const song of songs) {
   const status = found.length === 0 ? 'OK  ' : 'FAIL';
   console.log(`${status} ${song.title}  (${events} events, ${harmonyEvents} harmony events)`);
   for (const p of found) console.log(`       ${p.where}: ${p.message}`);
+  // Informational only: the curated key wins, the chord-based estimate is a sanity check.
+  const guess = estimateScoreKey(song.score);
+  const curated = normalizeKey(song.score.originalKey);
+  if (guess && curated && guess.key !== curated) {
+    console.log(`       note: harmony suggests ${guess.key} (estimated), score says ${curated}`);
+  }
 }
 
 const validated = songs.length - pending.length;
