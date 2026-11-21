@@ -13,6 +13,7 @@
     "fetch:spotify": "esbuild scripts/fetch-spotify.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-spotify.mjs --log-level=error && node node_modules/.cache/fetch-spotify.mjs",
     "fetch:instagram-authors": "esbuild scripts/fetch-instagram-authors.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-instagram-authors.mjs --log-level=error && node node_modules/.cache/fetch-instagram-authors.mjs",
     "fetch:artists": "esbuild scripts/fetch-artists.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-artists.mjs --log-level=error && node node_modules/.cache/fetch-artists.mjs",
+    "fetch:youtube-direct": "esbuild scripts/fetch-youtube-direct.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-youtube-direct.mjs --log-level=error && node node_modules/.cache/fetch-youtube-direct.mjs",
     "fetch:keys": "esbuild scripts/fetch-keys.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-keys.mjs --log-level=error && node node_modules/.cache/fetch-keys.mjs",
     "fetch:song-info": "esbuild scripts/fetch-song-info.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-song-info.mjs --log-level=error && node node_modules/.cache/fetch-song-info.mjs",
     "fetch:history": "esbuild scripts/fetch-history.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/fetch-history.mjs --log-level=error && node node_modules/.cache/fetch-history.mjs",
