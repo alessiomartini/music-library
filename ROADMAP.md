@@ -37,7 +37,7 @@ ogni titolo "##" è una fase, le checkbox "- [ ]" / "- [x]" danno la percentuale
 - [x] Emoji degli strumenti usati nelle cover (433 cover su 1860, dove il canale o la nota nominano lo strumento)
 - [x] Range vocale dell'artista per trasporre al range comodo dell'utente
 - [ ] Link YouTube diretti (oggi ricerca): `src/data/songs/youtubeDirect.ts` (generato da `npm run fetch:youtube-direct`, riprendibile) con ripiego sulla ricerca
-  - 425/2009 collegati, resto a ricerca: il match è prudente (canale dell'artista, Topic o VEVO, oppure titolo «Official» con l'artista su un canale di etichetta); lo script (`PACE_MS=3000` per rallentare) è stato fermato dopo ~450 canzoni riprovate, da rilanciare per il resto
+  - 430/2009 collegati (terzo giro: solo +5, YouTube blocca con 302 dopo ~125 canzoni, anche riprovando con PACE_MS=3000; da rilanciare più tardi), resto a ricerca: il match è prudente (canale dell'artista, Topic o VEVO, oppure titolo «Official» con l'artista su un canale di etichetta); lo script (`PACE_MS=3000` per rallentare) è stato fermato dopo ~450 canzoni riprovate, da rilanciare per il resto
 - [ ] Tonalità ed estensione vocale di ogni canzone
 - [ ] Tonalità per le ~1500 canzoni senza `originalKey` né fonte web: serve una fonte di accordi (stimatore dagli accordi pronto, ma senza accordi non c'è nulla da stimare)
 - [ ] Controllare «E cerca 'e me capi»: gli accordi del score suggeriscono D maggiore, `originalKey` dice Bb (capo 1)
@@ -85,7 +85,7 @@ Ortografia delle tonalità trasposte: ora decide la tonalità di arrivo (maggior
 Documento di progetto lungo (rappresentazione musicale, rendering, trasposizione, range vocale): [`docs/DESIGN.md`](docs/DESIGN.md).
 
 ## Log
-- 2026-11-21: 🤖 link YouTube diretti per l'originale (425 canzoni su 2009, file generato + ripiego sulla ricerca, script `fetch:youtube-direct` riprendibile; regola estesa ai caricamenti «Official» su canali di etichette, esclusi talk/interviste); verificata la cover di Roberto Colella, già presente; 🤖 stimatore di tonalità dagli accordi (`estimateKeyFromChords`, 24 tonalità) con test, usato in `npm run validate` come controllo (non sostituisce la tonalità curata)
+- 2026-11-21: 🤖 link YouTube diretti per l'originale (430 canzoni su 2009, file generato + ripiego sulla ricerca, script `fetch:youtube-direct` riprendibile; regola estesa ai caricamenti «Official» su canali di etichette, esclusi talk/interviste); verificata la cover di Roberto Colella, già presente; 🤖 stimatore di tonalità dagli accordi (`estimateKeyFromChords`, 24 tonalità) con test, usato in `npm run validate` come controllo (non sostituisce la tonalità curata)
 - 2026-11-14: 🤖 istogramma del range vocale: di default solo «share of the singing time», «share of the sung notes» con una casella opzionale; spartito più compatto (scala 0,85, testo su una riga sotto la nota più bassa, senza «Tempo ♩ = N» tra i dati del brano; Key e accordi non erano bloccati in alto: verificato, nessun `sticky`); verificato che la sezione «History & trivia» (Wikipedia, CC BY-SA, nascosta senza dati) c'è già per 1243 canzoni: voce spuntata
 - 2026-11-14: note dal sito portate nel ROADMAP
 - 2026-11-07: 🤖 verificato che la trasposizione al range comodo dal range dell'artista è già coperta (suggerimento, Apply, istogramma): voce spuntata, nessun codice nuovo
