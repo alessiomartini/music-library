@@ -28,6 +28,19 @@ describe('matchesOriginal', () => {
     expect(matchesOriginal(c('Yesterday', 'Other Band'), 'Yesterday', 'The Beatles')).toBe(false);
     expect(matchesOriginal(c('Tomorrow', 'The Beatles'), 'Yesterday', 'The Beatles')).toBe(false);
   });
+  it('accepts official uploads on label channels only with artist and "official" in the title', () => {
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Music Video)', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(true);
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Audio)', 'Defected Records'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(true);
+    expect(matchesOriginal(c('Never Gonna Give You Up', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+    expect(matchesOriginal(c('Official Music Video - Never Gonna Give You Up', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Live Performance)', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Cover)', 'Some Fan'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+    expect(matchesOriginal(c('Rick Astley - Never Gonna Give You Up (Official Karaoke)', 'Rhino'), 'Never Gonna Give You Up', 'Rick Astley')).toBe(false);
+  });
+  it('rejects talks and interviews', () => {
+    expect(matchesOriginal(c('Radio EelST: Elio racconta "Cateto"', 'Elio e le Storie Tese'), 'Cateto', 'Elio e le Storie Tese')).toBe(false);
+  });
   it('allows live when the song is live', () => {
     expect(matchesOriginal(c('Live and Let Die', 'Paul McCartney'), 'Live and Let Die', 'Paul McCartney')).toBe(true);
   });

@@ -4,7 +4,7 @@
  *
  * For each song without a curated YouTube link: searches "<artist> <title>", reads the candidates from
  * ytInitialData and accepts one only if its title contains the song title and the channel is the artist's
- * (or "- Topic" / VEVO) or the title names the artist, rejecting live/cover/karaoke/lyrics... (see
+ * (or "- Topic" / VEVO) or an "official" title naming the artist on a label channel, rejecting live/cover/karaoke/lyrics... (see
  * src/lib/youtubeLink.ts). The accepted video is then confirmed with oEmbed.
  *
  * Sequential, ~1.5 s between requests. Resumable: songs already in the output (or already tried, see
@@ -22,6 +22,7 @@ import { pickOriginal, type YoutubeCandidate } from '../src/lib/youtubeLink';
 const OUT = 'src/data/songs/youtubeDirect.ts';
 const TRIED = 'node_modules/.cache/youtube-direct.json';
 const UA = 'Mozilla/5.0 (music-library link lookup)';
+const PACE = Number(process.env.PACE_MS) || 1500;
 const run = promisify(execFile);
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 mkdirSync('node_modules/.cache', { recursive: true });
@@ -84,7 +85,7 @@ console.log(`${todo.length} songs to try (of ${songs.length}), limit ${limit}`);
 let n = 0;
 try {
   for (const s of todo.slice(0, limit)) {
-    await sleep(1500);
+    await sleep(PACE);
     const cands = await search(`${s.artist.split(/,| & /)[0]} ${s.title}`);
     const hit = pickOriginal(cands, s.title, s.artist);
     await sleep(500);

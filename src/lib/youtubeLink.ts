@@ -12,7 +12,7 @@ const norm = (s: string) =>
 const mainArtist = (artist: string) => artist.split(/,| ft\. | feat\. | & | and /i)[0].trim();
 
 // Versions that are not the original recording, unless the song title itself says so.
-const UNWANTED = ['live', 'cover', 'karaoke', 'lyrics', 'lyric', 'reaction', 'tutorial', 'lesson', 'instrumental', 'remix', 'acoustic', 'chords', 'testo', 'sped up', 'slowed', 'reverb', '8d', 'nightcore', 'performs', 'performance', 'concert', 'session', 'sessions', 'medley'];
+const UNWANTED = ['live', 'cover', 'karaoke', 'lyrics', 'lyric', 'reaction', 'tutorial', 'lesson', 'instrumental', 'remix', 'acoustic', 'chords', 'testo', 'sped up', 'slowed', 'reverb', '8d', 'nightcore', 'performs', 'performance', 'concert', 'session', 'sessions', 'medley', 'racconta', 'interview', 'intervista'];
 
 const has = (haystack: string, needle: string) => ` ${haystack} `.includes(` ${needle} `);
 
@@ -33,7 +33,10 @@ export function matchesOriginal(c: YoutubeCandidate, title: string, artist: stri
   // Otherwise the channel itself must be the artist's: a title naming the artist is not enough,
   // since fan uploads of live shows and covers do that too.
   const compact = (x: string) => x.replace(/ /g, '');
-  return compact(ch).includes(compact(a)) || (ch.length > 3 && compact(a).includes(compact(ch)));
+  if (compact(ch).includes(compact(a)) || (ch.length > 3 && compact(a).includes(compact(ch)))) return true;
+  // Official uploads on label channels (Rhino, Defected, UMG...): the title must name the artist
+  // and say "official" (official video/audio/music video/visualizer); the exclusions above still apply.
+  return official && has(t, a);
 }
 
 /** First candidate accepted by `matchesOriginal`, or undefined. */
